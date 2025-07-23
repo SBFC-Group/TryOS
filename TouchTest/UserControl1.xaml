@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TouchTest"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <MediaElement x:Name="MediaThingy" HorizontalAlignment="Left" Height="286" Margin="90,10,0,0" VerticalAlignment="Top" Width="505" Source="pack://siteoforigin:,,,/Resources/TryOS_USW.mp4" OpacityMask="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Border x:Name="Namething" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="622,121,0,0" VerticalAlignment="Top" Width="100"/>
+    </Grid>
+</UserControl>

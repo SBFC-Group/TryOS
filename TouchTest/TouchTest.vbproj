@@ -1,0 +1,698 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{197B1B09-BAA7-4125-AEA3-441CF70675A9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>TouchTest.My.MyApplication</StartupObject>
+    <RootNamespace>TouchTest</RootNamespace>
+    <AssemblyName>TouchTest</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>TouchTest.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>TouchTest.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>TryOS_png.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.2739.15, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.2739.15\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.2739.15, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.2739.15\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.2739.15, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.2739.15\lib\net462\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.7.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About2.Designer.vb">
+      <DependentUpon>About2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="About2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminSettings.Designer.vb">
+      <DependentUpon>AdminSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminSettings.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="AppRunner.Designer.vb">
+      <DependentUpon>AppRunner.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AppRunner.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Commander.Designer.vb">
+      <DependentUpon>Commander.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Commander.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Console.Designer.vb">
+      <DependentUpon>Console.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Console.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsoleHelper.Designer.vb">
+      <DependentUpon>ConsoleHelper.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConsoleHelper.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data Formater.Designer.vb">
+      <DependentUpon>Data Formater.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Data Formater.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DebugApp.Designer.vb">
+      <DependentUpon>DebugApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DebugApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog1.Designer.vb">
+      <DependentUpon>Dialog1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacebookApp.Designer.vb">
+      <DependentUpon>FacebookApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacebookApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form15.Designer.vb">
+      <DependentUpon>Form15.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form15.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.vb">
+      <DependentUpon>Form2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form28.vb" />
+    <Compile Include="Form48.Designer.vb">
+      <DependentUpon>Form48.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form48.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form55.Designer.vb">
+      <DependentUpon>Form55.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form55.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FToL.Designer.vb">
+      <DependentUpon>FToL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FToL.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpWindow.Designer.vb">
+      <DependentUpon>HelpWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HelpWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HomePageUserControl.Designer.vb">
+      <DependentUpon>HomePageUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HomePageUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InfoApp.Designer.vb">
+      <DependentUpon>InfoApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InfoApp.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InfoDialog.Designer.vb">
+      <DependentUpon>InfoDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InfoDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InstagramApp.Designer.vb">
+      <DependentUpon>InstagramApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InstagramApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Internetplusplus.Designer.vb">
+      <DependentUpon>Internetplusplus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Internetplusplus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InternetSettingsUserControl.Designer.vb">
+      <DependentUpon>InternetSettingsUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InternetSettingsUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Keyboard.Designer.vb">
+      <DependentUpon>Keyboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Keyboard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="load at start.Designer.vb">
+      <DependentUpon>load at start.vb</DependentUpon>
+    </Compile>
+    <Compile Include="load at start.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module1.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="NewNoteDialog.Designer.vb">
+      <DependentUpon>NewNoteDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NewNoteDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpenNoteDialog.Designer.vb">
+      <DependentUpon>OpenNoteDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OpenNoteDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PageSettings.Designer.vb">
+      <DependentUpon>PageSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PageSettings.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PluginLoader.vb" />
+    <Compile Include="Search_App.Designer.vb">
+      <DependentUpon>Search_App.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Search_App.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsForm.Designer.vb">
+      <DependentUpon>SettingsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartMenu_GUI.Designer.vb">
+      <DependentUpon>StartMenu_GUI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StartMenu_GUI.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StopWindow.Designer.vb">
+      <DependentUpon>StopWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StopWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Taskbar_GUI.Designer.vb">
+      <DependentUpon>Taskbar_GUI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Taskbar_GUI.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ThemeApp.Designer.vb">
+      <DependentUpon>ThemeApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ThemeApp.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TryController.Designer.vb">
+      <DependentUpon>TryController.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TryController.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI.Designer.vb">
+      <DependentUpon>UI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsApp.Designer.vb">
+      <DependentUpon>SettingsApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsApp.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UpdateApp.Designer.vb">
+      <DependentUpon>UpdateApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateApp.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.xaml.vb">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserSettingsApp.Designer.vb">
+      <DependentUpon>UserSettingsApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserSettingsApp.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="USWApp.Designer.vb">
+      <DependentUpon>USWApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="USWApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="USWData.vb" />
+    <Compile Include="UUWApp.Designer.vb">
+      <DependentUpon>UUWApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UUWApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UUWData.vb" />
+    <Compile Include="VolumeControl.vb" />
+    <Compile Include="Webview.Designer.vb">
+      <DependentUpon>Webview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Webview.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WebviewUserControl.Designer.vb">
+      <DependentUpon>WebviewUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WebviewUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WifiSignalStrength.vb" />
+    <Compile Include="YoutubeApp.Designer.vb">
+      <DependentUpon>YoutubeApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="YoutubeApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="About2.resx">
+      <DependentUpon>About2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminSettings.resx">
+      <DependentUpon>AdminSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppRunner.resx">
+      <DependentUpon>AppRunner.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Commander.resx">
+      <DependentUpon>Commander.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Console.resx">
+      <DependentUpon>Console.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsoleHelper.resx">
+      <DependentUpon>ConsoleHelper.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data Formater.resx">
+      <DependentUpon>Data Formater.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DebugApp.resx">
+      <DependentUpon>DebugApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog1.resx">
+      <DependentUpon>Dialog1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacebookApp.resx">
+      <DependentUpon>FacebookApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form15.resx">
+      <DependentUpon>Form15.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form48.resx">
+      <DependentUpon>Form48.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form55.resx">
+      <DependentUpon>Form55.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FToL.resx">
+      <DependentUpon>FToL.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpWindow.resx">
+      <DependentUpon>HelpWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomePageUserControl.resx">
+      <DependentUpon>HomePageUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoApp.resx">
+      <DependentUpon>InfoApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoDialog.resx">
+      <DependentUpon>InfoDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstagramApp.resx">
+      <DependentUpon>InstagramApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Internetplusplus.resx">
+      <DependentUpon>Internetplusplus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InternetSettingsUserControl.resx">
+      <DependentUpon>InternetSettingsUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="load at start.resx">
+      <DependentUpon>load at start.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewNoteDialog.resx">
+      <DependentUpon>NewNoteDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenNoteDialog.resx">
+      <DependentUpon>OpenNoteDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PageSettings.resx">
+      <DependentUpon>PageSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Search_App.resx">
+      <DependentUpon>Search_App.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsApp.resx">
+      <DependentUpon>SettingsApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartMenu_GUI.resx">
+      <DependentUpon>StartMenu_GUI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StopWindow.resx">
+      <DependentUpon>StopWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Taskbar_GUI.resx">
+      <DependentUpon>Taskbar_GUI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThemeApp.resx">
+      <DependentUpon>ThemeApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TryController.resx">
+      <DependentUpon>TryController.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateApp.resx">
+      <DependentUpon>UpdateApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserSettingsApp.resx">
+      <DependentUpon>UserSettingsApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="USWApp.resx">
+      <DependentUpon>USWApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UUWApp.resx">
+      <DependentUpon>UUWApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Webview.resx">
+      <DependentUpon>Webview.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebviewUserControl.resx">
+      <DependentUpon>WebviewUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YoutubeApp.resx">
+      <DependentUpon>YoutubeApp.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\internet_world_wide_web_www_globe_communication_website_browser_network_connection_icon_195710.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\internet_world_wide_web_www_globe_communication_website_browser_network_connection_icon_195710.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimize2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1266721.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2920659-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout_90894.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout_90894.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restart_icon_227406.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restart_icon_227406.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3643769-building-home-house-main-menu-start_113416.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3643769-building-home-house-main-menu-start_113416.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_find_locate_1542.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_find_locate_1542.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\task_manager_18854.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\task_manager_18854.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1455554377_line-10_icon-icons.com_53304.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1455554377_line-10_icon-icons.com_53304.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_local_grocery_store_128_28460.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_local_grocery_store_128_28460.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_online_web_pc_mac_monitor_icon-icons.com_59975.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_online_web_pc_mac_monitor_icon-icons.com_59975.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\30-Text_256x256_35366.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\30-Text_256x256_35366.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picture_file_image_photo_gallery_icon_219527.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile_picture_user_icon_153847.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile_picture_user_icon_153847.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picture_file_image_photo_gallery_icon_219527.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Not Done icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TryOS_USW.mp4" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TryOS_png.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Test\Test.vbproj">
+      <Project>{4743f52d-ef37-41ad-a245-76bfebd6f124}</Project>
+      <Name>Test</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="..\packages\Microsoft.Web.WebView2.1.0.2739.15\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.2739.15\build\Microsoft.Web.WebView2.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.2739.15\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.2739.15\build\Microsoft.Web.WebView2.targets'))" />
+  </Target>
+</Project>
