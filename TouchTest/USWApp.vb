@@ -94,9 +94,11 @@
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & TextBox1.Text) Then
-            MsgBox("This User already exists.")
+            'MsgBox("This User already exists.")
+            UI.ShowError("This User already exists.")
         ElseIf My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\Dev") Then
-            MsgBox("This User is not allowed.")
+            'MsgBox("This User is not allowed.")
+            UI.ShowError("This User is not allowed.")
         Else
             My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text)
             My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Apps")

@@ -17,6 +17,7 @@
                         commandHistory.Add(lastCommand)
                         historyIndex = commandHistory.Count
                         HandleCommand(lastCommand)
+                        'UI.RunCommands(lastCommand)
                     End If
                 End If
 

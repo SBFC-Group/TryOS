@@ -11,17 +11,19 @@
 
             If NewstVersion.Contains(ProgramVersion) Then
                 Label3.Text = "Version: You're up to date"
+
             Else
                 Label3.Text = "Version: " & NewstVersion
-                Dim Pointy1 As Int64 = Label3.Size.Width
-                Pointy1 = Pointy1 + 10
-                Button2.Location = New Point(Pointy1, Button2.Location.Y)
+                'Dim Pointy1 As Int64 = Label3.Size.Width
+                'Pointy1 = Pointy1 + 20
+                'Button2.Location = New Point(Pointy1, Button2.Location.Y)
                 Button2.Visible = True
             End If
 
             My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\Version")
         Catch ex As Exception
-            MsgBox("Is Internet working?")
+            UI.ShowError("Is Internet working?")
+            'MsgBox("Is Internet working?")
         End Try
 
     End Sub

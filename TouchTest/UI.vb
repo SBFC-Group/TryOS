@@ -477,6 +477,16 @@ Public Class UI
 " & source
     End Sub
 
+    Public Sub ShowError()
+        ErrorMSGBox.ShowError("", ErrorMSGBox.Alerts.Information)
+    End Sub
 
+    Public Sub ShowError(Text As String)
+        ErrorMSGBox.ShowError(Text, ErrorMSGBox.Alerts.Information)
+    End Sub
+
+    Public Sub ShowError(Text As String, Alert As ErrorMSGBox.Alerts)
+        ErrorMSGBox.ShowError(Text, Alert)
+    End Sub
 
 End Class

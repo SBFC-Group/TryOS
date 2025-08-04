@@ -14,4 +14,8 @@
             My.Computer.FileSystem.WriteAllBytes("C:\Dis_finder\HH", Text2, False)
         End If
     End Sub
+
+    Private Sub SaveAsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveAsToolStripMenuItem.Click
+
+    End Sub
 End Class

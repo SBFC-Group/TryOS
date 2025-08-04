@@ -1,4 +1,6 @@
 ﻿Public Class SettingsApp
+
+
     Public ThemePanel As New ThemeApp
     Public UpdatePanel As New UpdateApp
     Public InfoPanel As New InfoApp

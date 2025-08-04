@@ -24,7 +24,8 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>TouchTest.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -34,7 +35,8 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>TouchTest.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -68,9 +70,14 @@
     <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
@@ -150,6 +157,12 @@
     <Compile Include="Commander.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CommanderApp.Designer.vb">
+      <DependentUpon>CommanderApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CommanderApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Console.Designer.vb">
       <DependentUpon>Console.vb</DependentUpon>
     </Compile>
@@ -178,6 +191,12 @@
       <DependentUpon>Dialog1.vb</DependentUpon>
     </Compile>
     <Compile Include="Dialog1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorMSGBox.Designer.vb">
+      <DependentUpon>ErrorMSGBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorMSGBox.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FacebookApp.Designer.vb">
@@ -272,6 +291,7 @@
     <Compile Include="Keyboard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LanguageManager.vb" />
     <Compile Include="load at start.Designer.vb">
       <DependentUpon>load at start.vb</DependentUpon>
     </Compile>
@@ -377,6 +397,7 @@
     <Compile Include="UserControl1.xaml.vb">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserManager.vb" />
     <Compile Include="UserSettingsApp.Designer.vb">
       <DependentUpon>UserSettingsApp.vb</DependentUpon>
     </Compile>
@@ -431,6 +452,9 @@
     <EmbeddedResource Include="Commander.resx">
       <DependentUpon>Commander.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CommanderApp.resx">
+      <DependentUpon>CommanderApp.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Console.resx">
       <DependentUpon>Console.vb</DependentUpon>
     </EmbeddedResource>
@@ -445,6 +469,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog1.resx">
       <DependentUpon>Dialog1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorMSGBox.resx">
+      <DependentUpon>ErrorMSGBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FacebookApp.resx">
       <DependentUpon>FacebookApp.vb</DependentUpon>

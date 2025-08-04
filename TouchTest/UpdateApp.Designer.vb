@@ -24,12 +24,12 @@ Partial Class UpdateApp
     Private Sub InitializeComponent()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -64,12 +64,28 @@ Partial Class UpdateApp
         Me.Panel1.Size = New System.Drawing.Size(887, 524)
         Me.Panel1.TabIndex = 2
         '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(152, 252)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox2.TabIndex = 8
+        Me.TextBox2.Visible = False
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(152, 226)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox1.TabIndex = 7
+        Me.TextBox1.Visible = False
+        '
         'Button2
         '
         Me.Button2.BackColor = System.Drawing.Color.Gainsboro
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(243, 144)
+        Me.Button2.Location = New System.Drawing.Point(42, 184)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(122, 36)
         Me.Button2.TabIndex = 6
@@ -106,20 +122,6 @@ Partial Class UpdateApp
         Me.Label1.Size = New System.Drawing.Size(185, 29)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Version: 0.0.0.0"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(152, 226)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 7
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(152, 252)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox2.TabIndex = 8
         '
         'UpdateApp
         '

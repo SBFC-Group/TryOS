@@ -1,12 +1,7 @@
 ﻿Public Class Console
-    Private Sub RichTextBox2_TextChanged(sender As Object, e As EventArgs) Handles RichTextBox2.TextChanged
-
-    End Sub
-
     Private Sub RichTextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles RichTextBox2.KeyDown
         If e.KeyCode = Keys.Enter Then
             UI.RunCommands(sender.Text, Me)
-
         End If
     End Sub
 
@@ -42,13 +37,5 @@
             Number2 = Number2 + 1
             RunAutoToShell(Number2)
         End If
-    End Sub
-
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-
-    End Sub
-
-    Private Sub LoadShellToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadShellToolStripMenuItem.Click
-        'UI.LoadShell()
     End Sub
 End Class

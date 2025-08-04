@@ -10,6 +10,11 @@
     Public SizeX As Integer = 0
     Public SizeY As Integer = 0
 
+    Public Wallpaper
+    Public LoadedWallpaper As String = ""
+
+
+    Private lang As New LanguageManager()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Start()
@@ -17,22 +22,8 @@
             MenuStrip1.Visible = True
         End If
 
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Wallpaper.swfiles") Then
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Wallpaper.swfiles")
-            If Reader.StartsWith("jpg=") Then
-                Reader = Reader.Replace("jpg=", "")
-                UI.RunCommands("Loadjpg " & Reader)
-            ElseIf Reader.StartsWith("png=") Then
-                Reader = Reader.Replace("png=", "")
-                UI.RunCommands("Loadpng " & Reader)
-            ElseIf Reader.StartsWith("gif=") Then
-                Reader = Reader.Replace("gif=", "")
-                UI.RunCommands("Loadgif " & Reader)
-            End If
-        End If
+        UserManager.LoadWallpaperFromUserSettings()
 
-        'Label1.Text = Username
-        'Label2.Text = Password
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\Internet++.swfiles") Then
             InternetPlusPlus.Visible = True
         Else
@@ -48,6 +39,27 @@
         Else
             YoutubeButton.Visible = False
         End If
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\InstagramApp.swfiles") Then
+            InstagramButton.Visible = True
+        Else
+            InstagramButton.Visible = False
+        End If
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\FacebookApp.swfiles") Then
+            FacebookButton.Visible = True
+        Else
+            FacebookButton.Visible = False
+        End If
+    End Sub
+
+    Private Sub LoadLanguage(langCode As String)
+        lang.LoadLanguage(langCode)
+        ApplyTranslations()
+    End Sub
+
+    Private Sub ApplyTranslations()
+        'lblWelcome.Text = lang.Translate("welcome")
+        'btnExit.Text = lang.Translate("exit")
+        'lblGreeting.Text = lang.Translate("greeting")
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -209,6 +221,16 @@
             YoutubeButton.Visible = True
         Else
             YoutubeButton.Visible = False
+        End If
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\InstagramApp.swfiles") Then
+            InstagramButton.Visible = True
+        Else
+            InstagramButton.Visible = False
+        End If
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\FacebookApp.swfiles") Then
+            FacebookButton.Visible = True
+        Else
+            FacebookButton.Visible = False
         End If
     End Sub
 
@@ -765,6 +787,7 @@
 
     Private Sub PowerButton_Click(sender As Object, e As EventArgs) Handles PowerButton.Click
         If IsControlCenterOpen = True Then
+            CloseControlCenter()
         ElseIf IsControlCenterOpen = False Then
             ShowControlCenter()
         End If

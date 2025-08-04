@@ -2,6 +2,10 @@
     Public FileFormat As String = "jpg"
 
     Private Sub ThemeApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim DevParts As TryController.Roles = Form1.GetRole()
+        If DevParts = TryController.Roles.Developer Then
+            Panel3.Visible = True
+        End If
         LoadWallpaperPicker()
     End Sub
     ' 62
@@ -373,5 +377,10 @@
             Button6.BackColor = Color.Gainsboro
 
         End If
+    End Sub
+
+    Private Sub WallpaperButton1_Click(sender As Object, e As EventArgs) Handles WallpaperButton1.Click, WallpaperButton2.Click, WallpaperButton3.Click, WallpaperButton4.Click, WallpaperButton5.Click, WallpaperButton6.Click, WallpaperButton7.Click, WallpaperButton8.Click, WallpaperButton9.Click, WallpaperButton10.Click, WallpaperButton11.Click, WallpaperButton12.Click, WallpaperButton13.Click, WallpaperButton14.Click, WallpaperButton15.Click, WallpaperButton16.Click, WallpaperButton17.Click, WallpaperButton18.Click, WallpaperButton19.Click, WallpaperButton20.Click, WallpaperButton21.Click, WallpaperButton22.Click, WallpaperButton23.Click, WallpaperButton24.Click, WallpaperButton25.Click, WallpaperButton26.Click, WallpaperButton27.Click, WallpaperButton28.Click, WallpaperButton29.Click, WallpaperButton30.Click, WallpaperButton31.Click, WallpaperButton32.Click, WallpaperButton33.Click
+        Dim WallpaperText As String = sender.Name
+        MsgBox(WallpaperText)
     End Sub
 End Class

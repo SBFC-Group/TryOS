@@ -5,7 +5,8 @@
         Public Sub SetupUSWUser()
             If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\Program") Then
             ElseIf My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\Dev") Then
-                MsgBox("This User is not allowed.")
+                'MsgBox("This User is not allowed.")
+                UI.ShowError("This User is not allowed.")
             Else
                 If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder) Then
                 Else

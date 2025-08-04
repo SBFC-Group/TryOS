@@ -1,4 +1,6 @@
 ﻿Public Class Form48
+    Private lang As New LanguageManager()
+
     Private Sub Form48_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Checks if "LogonWallpaper.setting" exists in Settings Folder
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LogonWallpaper.setting") Then
@@ -33,6 +35,26 @@
                 End If
             End If
         End If
+
+
+    End Sub
+
+    Private Sub LoadLanguage()
+        Dim langCode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\Settings\Language.swfiles")
+        lang.LoadLanguage(langCode)
+        ApplyTranslations()
+    End Sub
+
+    Private Sub ApplyTranslations()
+        'Label1.Text = LanguageManager.WelcomeUser
+        'Label2.Text = LanguageManager.Username
+        'Label3.Text = LanguageManager.Password
+        'Label4.Text = LanguageManager.WelcomeUser
+        'Label5.Text = LanguageManager.PinCode
+
+        'lblWelcome.Text = lang.Translate("welcome")
+        'btnExit.Text = lang.Translate("exit")
+        'lblGreeting.Text = lang.Translate("greeting")
     End Sub
 
     Public PinEncoded As String
@@ -48,13 +70,15 @@
                         Dim b As Byte() = Convert.FromBase64String(Password)
                         Password = System.Text.Encoding.UTF8.GetString(b)
                     Catch ex As Exception
-                        MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                        'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                        UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
                     End Try
                     Try
                         Dim b As Byte() = Convert.FromBase64String(Password)
                         Password = System.Text.Encoding.UTF8.GetString(b)
                     Catch ex As Exception
-                        MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                        UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+                        'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
                     End Try
                     If Password = TextBox2.Text Then
                         'MsgBox("Welcome " & TextBox1.Text)
@@ -75,7 +99,8 @@
 
             End If
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit")
+            UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+            'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit")
         End Try
 
     End Sub
@@ -209,5 +234,29 @@
             TextBox3.Text = TextBox3.Text & "0"
             Timer1_Tick()
         End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Panel3.Visible = False
+        NumberButton0.Enabled = False
+        NumberButton1.Enabled = False
+        NumberButton2.Enabled = False
+        NumberButton3.Enabled = False
+        NumberButton4.Enabled = False
+        NumberButton5.Enabled = False
+        NumberButton6.Enabled = False
+        NumberButton7.Enabled = False
+        NumberButton8.Enabled = False
+        NumberButton9.Enabled = False
+        TextBox1.Enabled = True
+        TextBox1.Text = ""
+        TextBox2.Enabled = True
+    End Sub
+
+    Private Sub CommanderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CommanderToolStripMenuItem.Click
+        Commander.Show()
+        Commander.FormBorderStyle = FormBorderStyle.Sizable
+        Commander.ShowIcon = True
+        Commander.ShowInTaskbar = True
     End Sub
 End Class
