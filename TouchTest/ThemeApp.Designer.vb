@@ -643,11 +643,12 @@ Partial Class ThemeApp
         Me.MenuStrip1.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Wallpaper1ToolStripMenuItem, Me.Wallpaper2ToolStripMenuItem, Me.Wallpaper3ToolStripMenuItem, Me.Wallpaper4ToolStripMenuItem, Me.Wallpaper5ToolStripMenuItem, Me.Wallpaper6ToolStripMenuItem, Me.Wallpaper7ToolStripMenuItem, Me.Wallpaper8ToolStripMenuItem, Me.Wallpaper9ToolStripMenuItem, Me.Wallpaper10ToolStripMenuItem, Me.Wallpaper11ToolStripMenuItem, Me.Wallpaper12ToolStripMenuItem, Me.Wallpaper13ToolStripMenuItem, Me.Wallpaper14ToolStripMenuItem, Me.Wallpaper15ToolStripMenuItem, Me.Wallpaper16ToolStripMenuItem, Me.Wallpaper17ToolStripMenuItem, Me.Wallpaper18ToolStripMenuItem, Me.Wallpaper19ToolStripMenuItem, Me.Wallpaper20ToolStripMenuItem})
         Me.MenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow
-        Me.MenuStrip1.Location = New System.Drawing.Point(956, 4)
+        Me.MenuStrip1.Location = New System.Drawing.Point(867, 4)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(130, 34)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
+        Me.MenuStrip1.Visible = False
         '
         'Wallpaper1ToolStripMenuItem
         '
@@ -793,7 +794,7 @@ Partial Class ThemeApp
         Me.Button2.BackColor = System.Drawing.Color.Gainsboro
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(938, 274)
+        Me.Button2.Location = New System.Drawing.Point(519, 201)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(148, 38)
         Me.Button2.TabIndex = 4
@@ -806,7 +807,7 @@ Partial Class ThemeApp
         Me.Button3.Enabled = False
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(938, 318)
+        Me.Button3.Location = New System.Drawing.Point(519, 245)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(148, 38)
         Me.Button3.TabIndex = 5
@@ -818,7 +819,7 @@ Partial Class ThemeApp
         Me.Button4.BackColor = System.Drawing.Color.Gainsboro
         Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button4.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(938, 362)
+        Me.Button4.Location = New System.Drawing.Point(519, 289)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(148, 38)
         Me.Button4.TabIndex = 6
@@ -827,9 +828,11 @@ Partial Class ThemeApp
         '
         'PictureBox1
         '
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PictureBox1.Location = New System.Drawing.Point(519, 4)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(178, 128)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -862,7 +865,7 @@ Partial Class ThemeApp
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.Panel4)
         Me.Panel3.Controls.Add(Me.Label4)
-        Me.Panel3.Location = New System.Drawing.Point(925, 32)
+        Me.Panel3.Location = New System.Drawing.Point(703, 4)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(161, 126)
         Me.Panel3.TabIndex = 9
@@ -899,6 +902,7 @@ Partial Class ThemeApp
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button1.Enabled = False
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(519, 138)

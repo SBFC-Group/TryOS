@@ -31,6 +31,8 @@ Partial Class AdminSettings
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.DebugAppButton = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -57,7 +59,7 @@ Partial Class AdminSettings
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PictureBox1.Location = New System.Drawing.Point(25, 85)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(184, 124)
+        Me.PictureBox1.Size = New System.Drawing.Size(184, 128)
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
@@ -78,7 +80,7 @@ Partial Class AdminSettings
         Me.TextBox1.BackColor = System.Drawing.Color.Gainsboro
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox1.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(215, 85)
+        Me.TextBox1.Location = New System.Drawing.Point(218, 85)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(229, 30)
         Me.TextBox1.TabIndex = 3
@@ -111,11 +113,35 @@ Partial Class AdminSettings
         '
         Me.Timer1.Enabled = True
         '
+        'TextBox2
+        '
+        Me.TextBox2.BackColor = System.Drawing.Color.Gainsboro
+        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBox2.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox2.Location = New System.Drawing.Point(218, 183)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(229, 30)
+        Me.TextBox2.TabIndex = 7
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Location = New System.Drawing.Point(218, 121)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(229, 56)
+        Me.Button3.TabIndex = 6
+        Me.Button3.Text = "Shell Form Name"
+        Me.Button3.UseVisualStyleBackColor = False
+        '
         'AdminSettings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkGray
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.DebugAppButton)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.TextBox1)
@@ -138,4 +164,6 @@ Partial Class AdminSettings
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents DebugAppButton As Button
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Button3 As Button
 End Class

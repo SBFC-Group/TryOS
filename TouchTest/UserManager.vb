@@ -14,4 +14,37 @@
             End If
         End If
     End Sub
+
+    Public Shared Sub CheckForDarkThemeFile()
+        If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles") Then
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles")
+            If Reader = "True" Then
+                Form1.IsUsingDarkThemeForApps = True
+            ElseIf Reader = "False" Then
+                Form1.IsUsingDarkThemeForApps = False
+            Else
+                Form1.IsUsingDarkThemeForApps = False
+            End If
+        Else
+            Form1.IsUsingDarkThemeForApps = False
+        End If
+    End Sub
+
+    Public Shared Sub LoadShellColors()
+        If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\DarkThemeForPrograms.swfiles") Then
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles")
+            If Reader = "True" Then
+                Form1.IsUsingDarkThemeForPrograms = True
+            ElseIf Reader = "False" Then
+                Form1.IsUsingDarkThemeForPrograms = False
+            Else
+                Form1.IsUsingDarkThemeForPrograms = False
+            End If
+        Else
+            Form1.IsUsingDarkThemeForPrograms = False
+        End If
+
+        'Form1.Panel2.BackColor = Color.FromArgb(55, Color.Silver)
+        'Form1.TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
+    End Sub
 End Class

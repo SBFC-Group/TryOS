@@ -6,14 +6,15 @@
     Public IsGuestUser As Boolean = False
 
     Public IsUsingDarkThemeForApps As Boolean = False
+    Public IsUsingDarkThemeForPrograms As Boolean = False
 
     Public SizeX As Integer = 0
     Public SizeY As Integer = 0
 
-    Public Wallpaper
-    Public LoadedWallpaper As String = ""
+    Public WallpaperFileFormat As String = ""
+    Public LoadedWallpaper As Int64 = 0
 
-
+    Private User As New UserManager()
     Private lang As New LanguageManager()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -22,7 +23,20 @@
             MenuStrip1.Visible = True
         End If
 
+        UserManager.LoadShellColors()
+
+        UserManager.CheckForDarkThemeFile()
+
         UserManager.LoadWallpaperFromUserSettings()
+
+        If IsUsingDarkThemeForPrograms = True Then
+            Panel2.BackColor = Color.FromArgb(55, Color.Gray)
+            TimebarPanel.BackColor = Color.FromArgb(55, Color.Gray)
+        ElseIf IsUsingDarkThemeForPrograms = False Then
+            Panel2.BackColor = Color.FromArgb(55, Color.Silver)
+            TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
+        End If
+
 
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\Internet++.swfiles") Then
             InternetPlusPlus.Visible = True
@@ -48,6 +62,11 @@
             FacebookButton.Visible = True
         Else
             FacebookButton.Visible = False
+        End If
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\SpotifyApp.swfiles") Then
+            SpotifyButton.Visible = True
+        Else
+            SpotifyButton.Visible = False
         End If
     End Sub
 
@@ -185,6 +204,7 @@
     Public IsYoutubeAppOpen As Boolean = False
     Public IsInstagramAppOpen As Boolean = False
     Public IsFacebookAppOpen As Boolean = False
+    Public IsSpotifyAppOpen As Boolean = False
 
     Private Sub InternetPlusPlus_Click(sender As Object, e As EventArgs) Handles InternetPlusPlus.Click
         UI.RunApp("Internet++")
@@ -231,6 +251,11 @@
             FacebookButton.Visible = True
         Else
             FacebookButton.Visible = False
+        End If
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\SpotifyApp.swfiles") Then
+            SpotifyButton.Visible = True
+        Else
+            SpotifyButton.Visible = False
         End If
     End Sub
 
@@ -344,6 +369,14 @@
 
     Private Sub TimeAndDate_Tick(sender As Object, e As EventArgs) Handles TimeAndDate.Tick
         TimeLabel.Text = Format(Now, "HH:mm:ss")
+
+        If IsUsingDarkThemeForPrograms = True Then
+            Panel2.BackColor = Color.FromArgb(55, Color.Gray)
+            TimebarPanel.BackColor = Color.FromArgb(55, Color.Gray)
+        ElseIf IsUsingDarkThemeForPrograms = False Then
+            Panel2.BackColor = Color.FromArgb(55, Color.Silver)
+            TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
+        End If
         'Label5.Text = Format(Now, "dd-MM-yyyy")
         'If VolumeControl.IsMute() = True Then
         '    VolumeButton.BackgroundImage = VolumeList.Images.Item(0)
@@ -871,5 +904,9 @@
 
     Private Sub FacebookButton_Click(sender As Object, e As EventArgs) Handles FacebookButton.Click
         UI.RunApp("FacebookApp")
+    End Sub
+
+    Private Sub SpotifyButton_Click(sender As Object, e As EventArgs) Handles SpotifyButton.Click
+        UI.RunApp("SpotifyApp")
     End Sub
 End Class

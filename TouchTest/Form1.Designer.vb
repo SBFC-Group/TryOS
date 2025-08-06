@@ -61,6 +61,7 @@ Partial Class Form1
         Me.VolumeList = New System.Windows.Forms.ImageList(Me.components)
         Me.InternetList = New System.Windows.Forms.ImageList(Me.components)
         Me.PowerList = New System.Windows.Forms.ImageList(Me.components)
+        Me.SpotifyButton = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.TimebarPanel.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -239,6 +240,7 @@ Partial Class Form1
         Me.FlowLayoutPanel1.Controls.Add(Me.YoutubeButton)
         Me.FlowLayoutPanel1.Controls.Add(Me.InstagramButton)
         Me.FlowLayoutPanel1.Controls.Add(Me.FacebookButton)
+        Me.FlowLayoutPanel1.Controls.Add(Me.SpotifyButton)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
@@ -450,6 +452,19 @@ Partial Class Form1
         Me.PowerList.Images.SetKeyName(4, "gui_battery_empty.png")
         Me.PowerList.Images.SetKeyName(5, "battery_charging.png")
         '
+        'SpotifyButton
+        '
+        Me.SpotifyButton.BackColor = System.Drawing.Color.Transparent
+        Me.SpotifyButton.BackgroundImage = CType(resources.GetObject("SpotifyButton.BackgroundImage"), System.Drawing.Image)
+        Me.SpotifyButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.SpotifyButton.FlatAppearance.BorderSize = 0
+        Me.SpotifyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.SpotifyButton.Location = New System.Drawing.Point(403, 3)
+        Me.SpotifyButton.Name = "SpotifyButton"
+        Me.SpotifyButton.Size = New System.Drawing.Size(74, 70)
+        Me.SpotifyButton.TabIndex = 8
+        Me.SpotifyButton.UseVisualStyleBackColor = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -511,4 +526,5 @@ Partial Class Form1
     Friend WithEvents Button5 As Button
     Friend WithEvents InstagramButton As Button
     Friend WithEvents FacebookButton As Button
+    Friend WithEvents SpotifyButton As Button
 End Class

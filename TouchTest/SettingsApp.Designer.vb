@@ -34,19 +34,16 @@ Partial Class SettingsApp
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Silver
-        Me.Panel1.Controls.Add(Me.Button5)
-        Me.Panel1.Controls.Add(Me.Button6)
-        Me.Panel1.Controls.Add(Me.Button4)
-        Me.Panel1.Controls.Add(Me.Button3)
-        Me.Panel1.Controls.Add(Me.Button2)
-        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.FlowLayoutPanel1)
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
@@ -59,7 +56,7 @@ Partial Class SettingsApp
         Me.Button5.BackColor = System.Drawing.Color.Gainsboro
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.Location = New System.Drawing.Point(4, 481)
+        Me.Button5.Location = New System.Drawing.Point(3, 307)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(250, 70)
         Me.Button5.TabIndex = 5
@@ -71,7 +68,7 @@ Partial Class SettingsApp
         Me.Button6.BackColor = System.Drawing.Color.Gainsboro
         Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button6.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.Location = New System.Drawing.Point(4, 405)
+        Me.Button6.Location = New System.Drawing.Point(3, 231)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(250, 70)
         Me.Button6.TabIndex = 6
@@ -83,7 +80,7 @@ Partial Class SettingsApp
         Me.Button4.BackColor = System.Drawing.Color.Gainsboro
         Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button4.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(4, 557)
+        Me.Button4.Location = New System.Drawing.Point(3, 383)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(250, 70)
         Me.Button4.TabIndex = 4
@@ -95,7 +92,7 @@ Partial Class SettingsApp
         Me.Button3.BackColor = System.Drawing.Color.Gainsboro
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(4, 329)
+        Me.Button3.Location = New System.Drawing.Point(3, 155)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(250, 70)
         Me.Button3.TabIndex = 3
@@ -107,10 +104,10 @@ Partial Class SettingsApp
         Me.Button2.BackColor = System.Drawing.Color.Gainsboro
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(4, 253)
+        Me.Button2.Location = New System.Drawing.Point(3, 79)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(250, 70)
-        Me.Button2.TabIndex = 2
+        Me.Button2.TabIndex = 1
         Me.Button2.Text = "Program Info"
         Me.Button2.UseVisualStyleBackColor = False
         '
@@ -119,10 +116,10 @@ Partial Class SettingsApp
         Me.Button1.BackColor = System.Drawing.Color.Gainsboro
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(4, 177)
+        Me.Button1.Location = New System.Drawing.Point(3, 3)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(250, 70)
-        Me.Button1.TabIndex = 1
+        Me.Button1.TabIndex = 0
         Me.Button1.Text = "Change Look of MainWindow"
         Me.Button1.UseVisualStyleBackColor = False
         '
@@ -138,6 +135,7 @@ Partial Class SettingsApp
         '
         'Panel2
         '
+        Me.Panel2.BackColor = System.Drawing.Color.DarkGray
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(257, 0)
         Me.Panel2.Name = "Panel2"
@@ -147,6 +145,22 @@ Partial Class SettingsApp
         'Timer1
         '
         Me.Timer1.Enabled = True
+        '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button1)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button2)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button3)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button6)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button5)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button4)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 167)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(257, 748)
+        Me.FlowLayoutPanel1.TabIndex = 1
         '
         'SettingsApp
         '
@@ -158,6 +172,7 @@ Partial Class SettingsApp
         Me.Size = New System.Drawing.Size(1396, 915)
         Me.Panel1.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -172,4 +187,5 @@ Partial Class SettingsApp
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
 End Class

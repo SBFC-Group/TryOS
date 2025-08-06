@@ -62,7 +62,7 @@ Partial Class NewNoteDialog
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.Button2)
         Me.SplitContainer1.Size = New System.Drawing.Size(236, 49)
-        Me.SplitContainer1.SplitterDistance = 113
+        Me.SplitContainer1.SplitterDistance = 112
         Me.SplitContainer1.TabIndex = 0
         '
         'Button1
@@ -75,7 +75,7 @@ Partial Class NewNoteDialog
         Me.Button1.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(3, 3)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(107, 42)
+        Me.Button1.Size = New System.Drawing.Size(106, 42)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "Create"
         Me.Button1.UseVisualStyleBackColor = False
@@ -90,7 +90,7 @@ Partial Class NewNoteDialog
         Me.Button2.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Location = New System.Drawing.Point(3, 3)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(113, 42)
+        Me.Button2.Size = New System.Drawing.Size(114, 42)
         Me.Button2.TabIndex = 2
         Me.Button2.Text = "Back"
         Me.Button2.UseVisualStyleBackColor = False
@@ -177,7 +177,7 @@ Partial Class NewNoteDialog
         Me.MinimizeBox = False
         Me.Name = "NewNoteDialog"
         Me.ShowInTaskbar = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "NewNoteDialog"
         Me.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)

@@ -130,8 +130,8 @@ Public Class UI
 
     Public Sub LoadShell(Optional Username As String = "", Optional Password As String = "")
         Form1.Show()
-        Form1.Panel2.BackColor = Color.FromArgb(55, Color.Silver)
-        Form1.TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
+        'Form1.Panel2.BackColor = Color.FromArgb(55, Color.Silver)
+        'Form1.TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
         If Username = "" Then
 
         Else
@@ -222,6 +222,9 @@ Public Class UI
             If Form1.IsYoutubeAppOpen = True Then
                 Form1.IsYoutubeAppOpen = False
             End If
+            If Form1.IsSpotifyAppOpen = True Then
+                Form1.IsSpotifyAppOpen = False
+            End If
         ElseIf Run_ = "Internet++" Then
             If Form1.IsInternetOpen = False Then
                 Form1.OpenChildForm(New Internetplusplus)
@@ -241,6 +244,9 @@ Public Class UI
             End If
             If Form1.IsYoutubeAppOpen = True Then
                 Form1.IsYoutubeAppOpen = False
+            End If
+            If Form1.IsSpotifyAppOpen = True Then
+                Form1.IsSpotifyAppOpen = False
             End If
         ElseIf Run_ = "QuickNotes" Then
             If Form1.IsQuickNotesOpen = False Then
@@ -262,6 +268,9 @@ Public Class UI
             If Form1.IsYoutubeAppOpen = True Then
                 Form1.IsYoutubeAppOpen = False
             End If
+            If Form1.IsSpotifyAppOpen = True Then
+                Form1.IsSpotifyAppOpen = False
+            End If
         ElseIf Run_ = "YoutubeApp" Then
             If Form1.IsYoutubeAppOpen = False Then
                 Form1.OpenChildForm(New YoutubeApp)
@@ -281,6 +290,9 @@ Public Class UI
             End If
             If Form1.IsQuickNotesOpen = True Then
                 Form1.IsQuickNotesOpen = False
+            End If
+            If Form1.IsSpotifyAppOpen = True Then
+                Form1.IsSpotifyAppOpen = False
             End If
         ElseIf Run_ = "InstagramApp" Then
             If Form1.IsInstagramAppOpen = False Then
@@ -302,6 +314,9 @@ Public Class UI
             If Form1.IsQuickNotesOpen = True Then
                 Form1.IsQuickNotesOpen = False
             End If
+            If Form1.IsSpotifyAppOpen = True Then
+                Form1.IsSpotifyAppOpen = False
+            End If
         ElseIf Run_ = "FacebookApp" Then
             If Form1.IsFacebookAppOpen = False Then
                 Form1.OpenChildForm(New FacebookApp)
@@ -322,9 +337,36 @@ Public Class UI
             If Form1.IsQuickNotesOpen = True Then
                 Form1.IsQuickNotesOpen = False
             End If
+            If Form1.IsSpotifyAppOpen = True Then
+                Form1.IsSpotifyAppOpen = False
+            End If
+        ElseIf Run_ = "SpotifyApp" Then
+            If Form1.IsSpotifyAppOpen = False Then
+                Form1.OpenChildForm(New SpotifyApp)
+                Form1.IsSpotifyAppOpen = True
+            End If
+            If Form1.IsInstagramAppOpen = True Then
+                Form1.IsInstagramAppOpen = False
+            End If
+            If Form1.IsFacebookAppOpen = True Then
+                Form1.IsFacebookAppOpen = False
+            End If
+            If Form1.IsYoutubeAppOpen = True Then
+                Form1.IsYoutubeAppOpen = False
+            End If
+            If Form1.IsSettingOpen = True Then
+                Form1.IsSettingOpen = False
+            End If
+            If Form1.IsInternetOpen = True Then
+                Form1.IsInternetOpen = False
+            End If
+            If Form1.IsQuickNotesOpen = True Then
+                Form1.IsQuickNotesOpen = False
+            End If
         End If
     End Sub
 
+    Public GiveValuestoForm1 As Boolean = True
     Public WallpaperNumber As Integer = 1
     Public Sub UploadWallpaperToShell(Number As Integer, FileFormat As String)
         If FileFormat.StartsWith(".") Then
@@ -332,13 +374,22 @@ Public Class UI
         End If
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Wallpapers\Wallpaper_" & Number.ToString & "." & FileFormat) Then
             WallpaperNumber = Number
-            Dim sd As New PictureBox
-            sd.Load(My.Application.Info.DirectoryPath & "\Wallpapers\Wallpaper_" & Number.ToString & "." & FileFormat)
-            Form1.Panel1.BackgroundImage = sd.Image
+
+            Dim Test As Bitmap = Bitmap.FromFile(WallpaperFolder & "\Wallpaper_" & Number.ToString & "." & FileFormat)
+            'Dim sd As New PictureBox
+            'sd.Load(My.Application.Info.DirectoryPath & "\Wallpapers\Wallpaper_" & Number.ToString & "." & FileFormat)
+            Form1.Panel1.BackgroundImage = Test
+            If GiveValuestoForm1 = True Then
+                Form1.LoadedWallpaper = Number
+                Form1.WallpaperFileFormat = FileFormat
+            End If
         Else
-            Dim Number2 As Integer = Number
-            Number2 = Number2 - 1
-            UploadWallpaperToShell(Number2, FileFormat)
+            If Number = 0 Then
+            Else
+                Dim Number2 As Integer = Number
+                Number2 = Number2 - 1
+                UploadWallpaperToShell(Number2, FileFormat)
+            End If
         End If
     End Sub
 

@@ -346,6 +346,12 @@
     <Compile Include="SettingsForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SpotifyApp.Designer.vb">
+      <DependentUpon>SpotifyApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SpotifyApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="StartMenu_GUI.Designer.vb">
       <DependentUpon>StartMenu_GUI.vb</DependentUpon>
     </Compile>
@@ -541,6 +547,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpotifyApp.resx">
+      <DependentUpon>SpotifyApp.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartMenu_GUI.resx">
       <DependentUpon>StartMenu_GUI.vb</DependentUpon>

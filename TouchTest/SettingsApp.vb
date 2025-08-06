@@ -85,6 +85,7 @@
         If Dark = True Then
             ColorMode = "Dark"
             Panel1.BackColor = Color.DimGray
+            Panel2.BackColor = Color.Gray
             Button1.BackColor = Color.DarkGray
             Button2.BackColor = Color.DarkGray
             Button3.BackColor = Color.DarkGray
@@ -94,6 +95,7 @@
         ElseIf Dark = False Then
             ColorMode = "Normal"
             Panel1.BackColor = Color.Silver
+            Panel2.BackColor = Color.DarkGray
             Button1.BackColor = Color.Gainsboro
             Button2.BackColor = Color.Gainsboro
             Button3.BackColor = Color.Gainsboro
@@ -102,5 +104,9 @@
             Button6.BackColor = Color.Gainsboro
 
         End If
+    End Sub
+
+    Private Sub SettingsApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ChangeDesign(Form1.IsUsingDarkThemeForApps)
     End Sub
 End Class

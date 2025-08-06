@@ -36,11 +36,12 @@
             End If
         End If
 
+        LoadLanguage()
 
     End Sub
 
     Private Sub LoadLanguage()
-        Dim langCode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\Settings\Language.swfiles")
+        Dim langCode As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\ProgramLanguage.setting")
         lang.LoadLanguage(langCode)
         ApplyTranslations()
     End Sub
@@ -51,6 +52,12 @@
         'Label3.Text = LanguageManager.Password
         'Label4.Text = LanguageManager.WelcomeUser
         'Label5.Text = LanguageManager.PinCode
+
+        Label1.Text = lang.Translate("welcomeuser")
+        Label2.Text = lang.Translate("username")
+        Label3.Text = lang.Translate("password")
+        Label4.Text = lang.Translate("welcomeuser")
+        Label5.Text = lang.Translate("pincode")
 
         'lblWelcome.Text = lang.Translate("welcome")
         'btnExit.Text = lang.Translate("exit")

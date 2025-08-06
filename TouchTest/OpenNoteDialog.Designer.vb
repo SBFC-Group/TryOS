@@ -79,7 +79,10 @@ Partial Class OpenNoteDialog
         Me.Button54 = New System.Windows.Forms.Button()
         Me.Button55 = New System.Windows.Forms.Button()
         Me.Button56 = New System.Windows.Forms.Button()
+        Me.Button57 = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'FlowLayoutPanel1
@@ -140,9 +143,9 @@ Partial Class OpenNoteDialog
         Me.FlowLayoutPanel1.Controls.Add(Me.Button54)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button55)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button56)
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(2, 2)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 3)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(876, 600)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(876, 548)
         Me.FlowLayoutPanel1.TabIndex = 1
         '
         'Button1
@@ -873,12 +876,36 @@ Partial Class OpenNoteDialog
         Me.Button56.UseVisualStyleBackColor = False
         Me.Button56.Visible = False
         '
+        'Button57
+        '
+        Me.Button57.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button57.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button57.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button57.Location = New System.Drawing.Point(760, 555)
+        Me.Button57.Name = "Button57"
+        Me.Button57.Size = New System.Drawing.Size(119, 47)
+        Me.Button57.TabIndex = 57
+        Me.Button57.Text = "Cancel"
+        Me.Button57.UseVisualStyleBackColor = False
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.DarkGray
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Panel1.Controls.Add(Me.Button57)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(883, 605)
+        Me.Panel1.TabIndex = 58
+        '
         'OpenNoteDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(883, 605)
-        Me.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -887,6 +914,7 @@ Partial Class OpenNoteDialog
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "OpenNoteDialog"
         Me.FlowLayoutPanel1.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -948,4 +976,6 @@ Partial Class OpenNoteDialog
     Friend WithEvents Button54 As Button
     Friend WithEvents Button55 As Button
     Friend WithEvents Button56 As Button
+    Friend WithEvents Button57 As Button
+    Friend WithEvents Panel1 As Panel
 End Class

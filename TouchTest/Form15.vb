@@ -370,7 +370,7 @@ Public Class Form15
 
     Private Sub NewNoteButton_Click(sender As Object, e As EventArgs) Handles NewNoteButton.Click
         NewNoteDialog.Form15Text = TextBox1.Text
-        NewNoteDialog.Show()
+        NewNoteDialog.ShowDialog()
     End Sub
 
     Private Sub OpenNoteButton_Click(sender As Object, e As EventArgs) Handles OpenNoteButton.Click

@@ -37,4 +37,34 @@
         Process.Start(My.Application.Info.DirectoryPath & "\TryOSUpdateWindow.exe")
         UI.RunCommands("end")
     End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If Form1.IsUsingDarkThemeForApps = True Then
+            If ColorMode = "Normal" Then
+                ChangeDesign(True)
+            End If
+        ElseIf Form1.IsUsingDarkThemeForApps = False Then
+            If ColorMode = "Dark" Then
+                ChangeDesign(False)
+            End If
+        End If
+    End Sub
+
+    Private ColorMode As String = "Normal"
+
+    Public Sub ChangeDesign(Dark As Boolean)
+        If Dark = True Then
+            ColorMode = "Dark"
+            Me.BackColor = Color.Gray
+            Panel1.BackColor = Color.DarkGray
+            Button1.BackColor = Color.Silver
+            Button2.BackColor = Color.Silver
+        ElseIf Dark = False Then
+            ColorMode = "Normal"
+            Me.BackColor = Color.DarkGray
+            Panel1.BackColor = Color.Silver
+            Button1.BackColor = Color.Gainsboro
+            Button2.BackColor = Color.Gainsboro
+        End If
+    End Sub
 End Class

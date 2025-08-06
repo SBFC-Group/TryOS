@@ -241,4 +241,8 @@ Public Class OpenNoteDialog
 
         Close()
     End Sub
+
+    Private Sub Button57_Click(sender As Object, e As EventArgs) Handles Button57.Click
+        Close()
+    End Sub
 End Class
