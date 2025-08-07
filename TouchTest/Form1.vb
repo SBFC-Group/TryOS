@@ -909,4 +909,11 @@
     Private Sub SpotifyButton_Click(sender As Object, e As EventArgs) Handles SpotifyButton.Click
         UI.RunApp("SpotifyApp")
     End Sub
+
+    Private Sub CommanderWindowedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CommanderWindowedToolStripMenuItem.Click
+        Commander.Show()
+        Commander.FormBorderStyle = FormBorderStyle.Sizable
+        Commander.ShowIcon = True
+        Commander.ShowInTaskbar = True
+    End Sub
 End Class

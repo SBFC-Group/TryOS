@@ -43,6 +43,7 @@ Partial Class Form1
         Me.YoutubeButton = New System.Windows.Forms.Button()
         Me.InstagramButton = New System.Windows.Forms.Button()
         Me.FacebookButton = New System.Windows.Forms.Button()
+        Me.SpotifyButton = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -61,7 +62,7 @@ Partial Class Form1
         Me.VolumeList = New System.Windows.Forms.ImageList(Me.components)
         Me.InternetList = New System.Windows.Forms.ImageList(Me.components)
         Me.PowerList = New System.Windows.Forms.ImageList(Me.components)
-        Me.SpotifyButton = New System.Windows.Forms.Button()
+        Me.CommanderWindowedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.TimebarPanel.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -92,9 +93,9 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.TimebarPanel)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Location = New System.Drawing.Point(0, 24)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1243, 851)
+        Me.Panel1.Size = New System.Drawing.Size(1243, 827)
         Me.Panel1.TabIndex = 1
         '
         'Panel3
@@ -103,7 +104,7 @@ Partial Class Form1
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 36)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1243, 741)
+        Me.Panel3.Size = New System.Drawing.Size(1243, 717)
         Me.Panel3.TabIndex = 2
         '
         'TimebarPanel
@@ -202,7 +203,7 @@ Partial Class Form1
         Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel2.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.Panel2.Location = New System.Drawing.Point(0, 777)
+        Me.Panel2.Location = New System.Drawing.Point(0, 753)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1243, 74)
         Me.Panel2.TabIndex = 1
@@ -312,6 +313,19 @@ Partial Class Form1
         Me.FacebookButton.TabIndex = 7
         Me.FacebookButton.UseVisualStyleBackColor = False
         '
+        'SpotifyButton
+        '
+        Me.SpotifyButton.BackColor = System.Drawing.Color.Transparent
+        Me.SpotifyButton.BackgroundImage = CType(resources.GetObject("SpotifyButton.BackgroundImage"), System.Drawing.Image)
+        Me.SpotifyButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.SpotifyButton.FlatAppearance.BorderSize = 0
+        Me.SpotifyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.SpotifyButton.Location = New System.Drawing.Point(403, 3)
+        Me.SpotifyButton.Name = "SpotifyButton"
+        Me.SpotifyButton.Size = New System.Drawing.Size(74, 70)
+        Me.SpotifyButton.TabIndex = 8
+        Me.SpotifyButton.UseVisualStyleBackColor = False
+        '
         'Button3
         '
         Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -352,7 +366,7 @@ Partial Class Form1
         '
         'DebugMenuToolStripMenuItem
         '
-        Me.DebugMenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CommanderToolStripMenuItem, Me.LoadConsoleToolStripMenuItem, Me.UserNameToolStripMenuItem, Me.PasswordToolStripMenuItem})
+        Me.DebugMenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CommanderToolStripMenuItem, Me.CommanderWindowedToolStripMenuItem, Me.LoadConsoleToolStripMenuItem, Me.UserNameToolStripMenuItem, Me.PasswordToolStripMenuItem})
         Me.DebugMenuToolStripMenuItem.Name = "DebugMenuToolStripMenuItem"
         Me.DebugMenuToolStripMenuItem.Size = New System.Drawing.Size(88, 20)
         Me.DebugMenuToolStripMenuItem.Text = "Debug Menu"
@@ -361,7 +375,7 @@ Partial Class Form1
         '
         Me.CommanderToolStripMenuItem.Name = "CommanderToolStripMenuItem"
         Me.CommanderToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Shift Or System.Windows.Forms.Keys.F10), System.Windows.Forms.Keys)
-        Me.CommanderToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.CommanderToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
         Me.CommanderToolStripMenuItem.Text = "Commander"
         '
         'LoadConsoleToolStripMenuItem
@@ -369,14 +383,14 @@ Partial Class Form1
         Me.LoadConsoleToolStripMenuItem.Name = "LoadConsoleToolStripMenuItem"
         Me.LoadConsoleToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.Shift) _
             Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.LoadConsoleToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.LoadConsoleToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
         Me.LoadConsoleToolStripMenuItem.Text = "Load Console"
         '
         'UserNameToolStripMenuItem
         '
         Me.UserNameToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripTextBox1, Me.ApplyToolStripMenuItem})
         Me.UserNameToolStripMenuItem.Name = "UserNameToolStripMenuItem"
-        Me.UserNameToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.UserNameToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
         Me.UserNameToolStripMenuItem.Text = "Username"
         '
         'ToolStripTextBox1
@@ -395,7 +409,7 @@ Partial Class Form1
         '
         Me.PasswordToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripTextBox2, Me.EncodePasswordToolStripMenuItem})
         Me.PasswordToolStripMenuItem.Name = "PasswordToolStripMenuItem"
-        Me.PasswordToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.PasswordToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
         Me.PasswordToolStripMenuItem.Text = "Password"
         '
         'ToolStripTextBox2
@@ -452,18 +466,13 @@ Partial Class Form1
         Me.PowerList.Images.SetKeyName(4, "gui_battery_empty.png")
         Me.PowerList.Images.SetKeyName(5, "battery_charging.png")
         '
-        'SpotifyButton
+        'CommanderWindowedToolStripMenuItem
         '
-        Me.SpotifyButton.BackColor = System.Drawing.Color.Transparent
-        Me.SpotifyButton.BackgroundImage = CType(resources.GetObject("SpotifyButton.BackgroundImage"), System.Drawing.Image)
-        Me.SpotifyButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.SpotifyButton.FlatAppearance.BorderSize = 0
-        Me.SpotifyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.SpotifyButton.Location = New System.Drawing.Point(403, 3)
-        Me.SpotifyButton.Name = "SpotifyButton"
-        Me.SpotifyButton.Size = New System.Drawing.Size(74, 70)
-        Me.SpotifyButton.TabIndex = 8
-        Me.SpotifyButton.UseVisualStyleBackColor = False
+        Me.CommanderWindowedToolStripMenuItem.Name = "CommanderWindowedToolStripMenuItem"
+        Me.CommanderWindowedToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+            Or System.Windows.Forms.Keys.F10), System.Windows.Forms.Keys)
+        Me.CommanderWindowedToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.CommanderWindowedToolStripMenuItem.Text = "Commander Windowed"
         '
         'Form1
         '
@@ -527,4 +536,5 @@ Partial Class Form1
     Friend WithEvents InstagramButton As Button
     Friend WithEvents FacebookButton As Button
     Friend WithEvents SpotifyButton As Button
+    Friend WithEvents CommanderWindowedToolStripMenuItem As ToolStripMenuItem
 End Class

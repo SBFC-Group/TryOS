@@ -36,10 +36,12 @@
             End If
         End If
 
-        LoadLanguage()
+        If TestingMode = True Then
+            LoadLanguage()
+        End If
 
     End Sub
-
+    Public TestingMode As Boolean = True
     Private Sub LoadLanguage()
         Dim langCode As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\ProgramLanguage.setting")
         lang.LoadLanguage(langCode)

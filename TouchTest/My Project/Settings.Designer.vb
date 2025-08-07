@@ -53,15 +53,6 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public ReadOnly Property Setting() As Byte
-            Get
-                Return CType(Me("Setting"),Byte)
-            End Get
-        End Property
     End Class
 End Namespace
 
