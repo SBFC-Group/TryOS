@@ -9,7 +9,6 @@
                                If frm IsNot Me Then
                                    frm.Close()
                                End If
-                               Commander.Show()
                            Next
                        End Sub)
     End Sub

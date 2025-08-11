@@ -6,6 +6,7 @@
     Public InfoPanel As New InfoApp
     Public UserPanel As New UserSettingsApp
     Public AdminPanel As New AdminSettings
+    Public DeviceInfoPanel As New DeviceInto
 
     Public RoleLevel As TryController.Roles = Form1.GetRole()
 
@@ -16,6 +17,7 @@
         Panel2.Controls.Remove(UserPanel)
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(AdminPanel)
+        Panel2.Controls.Remove(DeviceInfoPanel)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -25,6 +27,7 @@
         Panel2.Controls.Remove(UserPanel)
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(AdminPanel)
+        Panel2.Controls.Remove(DeviceInfoPanel)
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -34,6 +37,7 @@
         Panel2.Controls.Remove(InfoPanel)
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(AdminPanel)
+        Panel2.Controls.Remove(DeviceInfoPanel)
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -53,6 +57,7 @@
         Panel2.Controls.Remove(InfoPanel)
         Panel2.Controls.Remove(UserPanel)
         Panel2.Controls.Remove(UpdatePanel)
+        Panel2.Controls.Remove(DeviceInfoPanel)
         'MsgBox("This Settings Page doesn't exist yet.", MsgBoxStyle.Information, "TryOS")
     End Sub
 
@@ -92,6 +97,7 @@
             Button4.BackColor = Color.DarkGray
             Button5.BackColor = Color.DarkGray
             Button6.BackColor = Color.DarkGray
+            Button7.BackColor = Color.DarkGray
         ElseIf Dark = False Then
             ColorMode = "Normal"
             Panel1.BackColor = Color.Silver
@@ -102,11 +108,34 @@
             Button4.BackColor = Color.Gainsboro
             Button5.BackColor = Color.Gainsboro
             Button6.BackColor = Color.Gainsboro
-
+            Button7.BackColor = Color.Gainsboro
         End If
     End Sub
 
     Private Sub SettingsApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ChangeDesign(Form1.IsUsingDarkThemeForApps)
+
+        Dim ShowButton7 As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group", "ShowDeviceInfoPage", Nothing)
+        If ShowButton7 = "True" Then
+            Button7.Visible = True
+        ElseIf ShowButton7 = "False" Then
+            Button7.Visible = False
+        ElseIf ShowButton7 = "1" Then
+            Button7.Visible = True
+        ElseIf ShowButton7 = "0" Then
+            Button7.Visible = False
+        Else
+            Button7.Visible = False
+        End If
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Panel2.Controls.Remove(UserPanel)
+        DeviceInfoPanel.Dock = DockStyle.Fill
+        Panel2.Controls.Remove(ThemePanel)
+        Panel2.Controls.Remove(InfoPanel)
+        Panel2.Controls.Remove(UpdatePanel)
+        Panel2.Controls.Remove(AdminPanel)
+        Panel2.Controls.Add(DeviceInfoPanel)
     End Sub
 End Class

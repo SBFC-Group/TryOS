@@ -26,12 +26,34 @@
 
             If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & Reader) Then
                 TextBox1.Text = Reader
+                If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Settings\Password.swfiles") Then
+                    Dim SecondReader As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Reader & "\Settings\Password.swfiles")
+                    Try
+                        Dim b As Byte() = Convert.FromBase64String(SecondReader)
+                        SecondReader = System.Text.Encoding.UTF8.GetString(b)
+                    Catch ex As Exception
+                        'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                        UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+                    End Try
+                    Try
+                        Dim b As Byte() = Convert.FromBase64String(SecondReader)
+                        SecondReader = System.Text.Encoding.UTF8.GetString(b)
+                    Catch ex As Exception
+                        UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+                        'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                    End Try
+                    If SecondReader = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
+                        Login()
+                    Else
+                        If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles") Then
+                            Panel3.Visible = True
+                            TextBox1.Enabled = False
+                            TextBox2.Enabled = False
+                            PinEncoded = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles")
+                        End If
+                    End If
 
-                If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles") Then
-                    Panel3.Visible = True
-                    TextBox1.Enabled = False
-                    TextBox2.Enabled = False
-                    PinEncoded = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles")
+
                 End If
             End If
         End If
@@ -75,6 +97,9 @@
 
 
                     Dim Password As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles")
+                    If Password = """Password.swfiles"" can't be nothing." Then
+                        UI.ShowError("", ErrorMSGBox.Alerts.Critical)
+                    End If
                     Try
                         Dim b As Byte() = Convert.FromBase64String(Password)
                         Password = System.Text.Encoding.UTF8.GetString(b)

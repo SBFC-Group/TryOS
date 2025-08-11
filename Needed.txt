@@ -1,0 +1,7 @@
+T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g
+
+VkY5b1gybGZjMTlWWDNOZlpWOXlYMGhmWVY5elgwNWZiMTkwWDJoZmFWOXVYMmM9
+
+If TextBox2.Text = "" Then
+	ReaderForPassword = "VkY5b1gybGZjMTlWWDNOZlpWOXlYMGhmWVY5elgwNWZiMTkwWDJoZmFWOXVYMmM9"
+End If

@@ -304,10 +304,16 @@
 
             Dim ReaderForPassword As String = TextBox2.Text
 
+
+
             Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(ReaderForPassword)
             ReaderForPassword = Convert.ToBase64String(byt)
             Dim byt2 As Byte() = System.Text.Encoding.UTF8.GetBytes(ReaderForPassword)
             ReaderForPassword = Convert.ToBase64String(byt2)
+
+            If TextBox2.Text = "" Then
+                ReaderForPassword = "VkY5b1gybGZjMTlWWDNOZlpWOXlYMGhmWVY5elgwNWZiMTkwWDJoZmFWOXVYMmM9"
+            End If
 
             My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles", ReaderForPassword, False)
             My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Role.swfiles", "VkRCU1RrNUZNVFpXV0hCUVZrVnJPUT09", False)

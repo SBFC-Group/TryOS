@@ -122,6 +122,7 @@ Partial Class AdminSettings
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(229, 30)
         Me.TextBox2.TabIndex = 7
+        Me.TextBox2.Visible = False
         '
         'Button3
         '
@@ -134,6 +135,7 @@ Partial Class AdminSettings
         Me.Button3.TabIndex = 6
         Me.Button3.Text = "Shell Form Name"
         Me.Button3.UseVisualStyleBackColor = False
+        Me.Button3.Visible = False
         '
         'AdminSettings
         '

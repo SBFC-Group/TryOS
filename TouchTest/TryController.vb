@@ -39,5 +39,4 @@
         Program = 4
         Developer = 5
     End Enum
-
 End Class

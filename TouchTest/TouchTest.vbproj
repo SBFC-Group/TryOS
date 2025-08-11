@@ -187,10 +187,28 @@
     <Compile Include="DebugApp.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DeviceInto.Designer.vb">
+      <DependentUpon>DeviceInto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceInto.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Dialog1.Designer.vb">
       <DependentUpon>Dialog1.vb</DependentUpon>
     </Compile>
     <Compile Include="Dialog1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog8.Designer.vb">
+      <DependentUpon>Dialog8.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog8.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="D_e_b_u_g_Window.Designer.vb">
+      <DependentUpon>D_e_b_u_g_Window.vb</DependentUpon>
+    </Compile>
+    <Compile Include="D_e_b_u_g_Window.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ErrorMSGBox.Designer.vb">
@@ -473,8 +491,17 @@
     <EmbeddedResource Include="DebugApp.resx">
       <DependentUpon>DebugApp.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DeviceInto.resx">
+      <DependentUpon>DeviceInto.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog1.resx">
       <DependentUpon>Dialog1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog8.resx">
+      <DependentUpon>Dialog8.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="D_e_b_u_g_Window.resx">
+      <DependentUpon>D_e_b_u_g_Window.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ErrorMSGBox.resx">
       <DependentUpon>ErrorMSGBox.vb</DependentUpon>
