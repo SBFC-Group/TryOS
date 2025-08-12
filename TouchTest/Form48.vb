@@ -63,7 +63,7 @@
         End If
 
     End Sub
-    Public TestingMode As Boolean = True
+    Public TestingMode As Boolean = False
     Private Sub LoadLanguage()
         Dim langCode As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\ProgramLanguage.setting")
         lang.LoadLanguage(langCode)
@@ -288,9 +288,13 @@
     End Sub
 
     Private Sub CommanderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CommanderToolStripMenuItem.Click
-        Commander.Show()
-        Commander.FormBorderStyle = FormBorderStyle.Sizable
-        Commander.ShowIcon = True
-        Commander.ShowInTaskbar = True
+        Dim args As String = Environment.CommandLine
+
+        If args.Contains("/DevMode") = True Then
+            Commander.Show()
+            Commander.FormBorderStyle = FormBorderStyle.Sizable
+            Commander.ShowIcon = True
+            Commander.ShowInTaskbar = True
+        End If
     End Sub
 End Class

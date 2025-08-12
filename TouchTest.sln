@@ -9,6 +9,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TryOSUpdateWindow", "TryOSU
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Test", "Test\Test.vbproj", "{4743F52D-EF37-41AD-A245-76BFEBD6F124}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UserController", "UserController\UserController.vbproj", "{052CF78D-5FBF-4716-B55D-D16D92140A18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4743F52D-EF37-41AD-A245-76BFEBD6F124}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4743F52D-EF37-41AD-A245-76BFEBD6F124}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4743F52D-EF37-41AD-A245-76BFEBD6F124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{052CF78D-5FBF-4716-B55D-D16D92140A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{052CF78D-5FBF-4716-B55D-D16D92140A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{052CF78D-5FBF-4716-B55D-D16D92140A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{052CF78D-5FBF-4716-B55D-D16D92140A18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

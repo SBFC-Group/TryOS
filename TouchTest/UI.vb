@@ -60,6 +60,14 @@ Public Class UI
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("RunUserControl ", "")
             RunUserControl(Text1)
+        ElseIf Command.Contains("RunTestSniper") = True Then
+            Dim gg As New Sniper
+            gg.ShowDialog()
+        ElseIf Command.Contains("RunTestFileExplorer") = True Then
+            TestFileExplorer.Show()
+        ElseIf Command.Contains("RunUserTestFileExplorer") = True Then
+            TestFileExplorer.rootPath = UserFolder
+            TestFileExplorer.Show()
         End If
     End Sub
     Public Sub StartCMD(Optional GG As String = "New")

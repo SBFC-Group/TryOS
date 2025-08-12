@@ -25,6 +25,8 @@
 
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Apps\Internet++.swfiles", "", False)
             End If
+
+
         End Sub
 
         Public Sub RemoveUSWUser()

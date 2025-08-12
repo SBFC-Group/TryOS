@@ -364,6 +364,12 @@
     <Compile Include="SettingsForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Sniper.Designer.vb">
+      <DependentUpon>Sniper.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sniper.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SpotifyApp.Designer.vb">
       <DependentUpon>SpotifyApp.vb</DependentUpon>
     </Compile>
@@ -387,6 +393,12 @@
     </Compile>
     <Compile Include="Taskbar_GUI.vb">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestFileExplorer.Designer.vb">
+      <DependentUpon>TestFileExplorer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TestFileExplorer.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ThemeApp.Designer.vb">
       <DependentUpon>ThemeApp.vb</DependentUpon>
@@ -575,6 +587,9 @@
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sniper.resx">
+      <DependentUpon>Sniper.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SpotifyApp.resx">
       <DependentUpon>SpotifyApp.vb</DependentUpon>
     </EmbeddedResource>
@@ -586,6 +601,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Taskbar_GUI.resx">
       <DependentUpon>Taskbar_GUI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestFileExplorer.resx">
+      <DependentUpon>TestFileExplorer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ThemeApp.resx">
       <DependentUpon>ThemeApp.vb</DependentUpon>
@@ -748,6 +766,10 @@
     <ProjectReference Include="..\Test\Test.vbproj">
       <Project>{4743f52d-ef37-41ad-a245-76bfebd6f124}</Project>
       <Name>Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserController\UserController.vbproj">
+      <Project>{052cf78d-5fbf-4716-b55d-d16d92140a18}</Project>
+      <Name>UserController</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
