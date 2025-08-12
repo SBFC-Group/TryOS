@@ -34,7 +34,7 @@ Partial Class DeviceInto
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Trebuchet MS", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(12, 147)
+        Me.Label4.Location = New System.Drawing.Point(12, 104)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(132, 35)
         Me.Label4.TabIndex = 7
@@ -44,11 +44,12 @@ Partial Class DeviceInto
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Trebuchet MS", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(12, 102)
+        Me.Label3.Location = New System.Drawing.Point(66, 396)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(248, 35)
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "Has Touch Support:"
+        Me.Label3.Visible = False
         '
         'Label2
         '
