@@ -59,6 +59,14 @@ Public Class Form1
                 Catch ex As Exception
 
                 End Try
+                If My.Computer.FileSystem.FileExists("TryOSZip.zip") Then
+
+                Else
+                    Label2.Text = "Info: Trying to Download the Zip again."
+                    ProgressBar1.Value = 0
+                    Exit Sub
+                End If
+
             ElseIf ProgressBar1.Value = 30 Then
                 Label2.Text = "Info: Creating ""UpdateFiles"" Directory."
                 My.Computer.FileSystem.CreateDirectory(My.Application.Info.DirectoryPath & "\UpdateFiles")

@@ -25,6 +25,7 @@ Partial Class Form48
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.RemoveLetterButton = New System.Windows.Forms.Button()
         Me.NumberButton0 = New System.Windows.Forms.Button()
         Me.NumberButton9 = New System.Windows.Forms.Button()
@@ -46,7 +47,6 @@ Partial Class Form48
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CommanderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -107,6 +107,19 @@ Partial Class Form48
         Me.Panel3.Size = New System.Drawing.Size(702, 430)
         Me.Panel3.TabIndex = 6
         Me.Panel3.Visible = False
+        '
+        'Button2
+        '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(496, 382)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(203, 45)
+        Me.Button2.TabIndex = 75
+        Me.Button2.Text = "Login as another user"
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'RemoveLetterButton
         '
@@ -348,25 +361,12 @@ Partial Class Form48
         'PictureBox1
         '
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 24)
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(1033, 625)
+        Me.PictureBox1.Size = New System.Drawing.Size(1033, 649)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
-        '
-        'Button2
-        '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(496, 382)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(203, 45)
-        Me.Button2.TabIndex = 75
-        Me.Button2.Text = "Login as another user"
-        Me.Button2.UseVisualStyleBackColor = False
         '
         'MenuStrip1
         '

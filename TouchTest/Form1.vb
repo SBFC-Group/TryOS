@@ -1,4 +1,6 @@
-﻿Public Class Form1
+﻿Imports System.IO
+
+Public Class Form1
     Public Username As String = "Administrator"
     Public Password As String = ""
     Public ShutdownConsole As Boolean = True
@@ -18,6 +20,14 @@
     Private lang As New LanguageManager()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")
+        Dim plugins = Q_U_U_U_Q.LoadPlugins(pluginPath)
+
+        For Each plugin In plugins
+            MsgBox("Loaded plugin: " & plugin.Name)
+            plugin.ExecuteDebug(Me)
+        Next
+
         Timer1.Start()
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LoadDebugMenu.setting") Then
             MenuStrip1.Visible = True

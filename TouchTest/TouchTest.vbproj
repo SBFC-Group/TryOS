@@ -352,6 +352,8 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PluginLoader.vb" />
+    <Compile Include="Q_U-U-U_Q.vb" />
+    <Compile Include="Q_U-U-U_Q_I.vb" />
     <Compile Include="Search_App.Designer.vb">
       <DependentUpon>Search_App.vb</DependentUpon>
     </Compile>

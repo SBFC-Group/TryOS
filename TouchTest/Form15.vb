@@ -373,7 +373,7 @@ Public Class Form15
         NewNoteDialog.ShowDialog()
     End Sub
 
-    Private Sub OpenNoteButton_Click(sender As Object, e As EventArgs) Handles OpenNoteButton.Click
+    Private Sub OpenNoteButton_Click() Handles OpenNoteButton.Click
         Dim Checker As String
         Checker = OpenNoteDialog.GetValueNow()
         If Checker = "" Then

@@ -74,11 +74,15 @@ Public Class TestFileExplorer
         ' When double-click or Enter is pressed
         If ListView1.SelectedItems.Count > 0 Then
             Dim filePath As String = ListView1.SelectedItems(0).Tag.ToString()
-            Try
-                Process.Start(New ProcessStartInfo(filePath) With {.UseShellExecute = True})
-            Catch ex As Exception
-                MessageBox.Show("Cannot open file: " & ex.Message)
-            End Try
+            If filePath.EndsWith(".swnote") Then
+
+            Else
+                Try
+                    Process.Start(New ProcessStartInfo(filePath) With {.UseShellExecute = True})
+                Catch ex As Exception
+                    MessageBox.Show("Cannot open file: " & ex.Message)
+                End Try
+            End If
         End If
     End Sub
 End Class

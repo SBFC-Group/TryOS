@@ -29,6 +29,7 @@ Partial Class TestFileExplorer
         'TreeView1
         '
         Me.TreeView1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.TreeView1.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TreeView1.Location = New System.Drawing.Point(0, 0)
         Me.TreeView1.Name = "TreeView1"
         Me.TreeView1.Size = New System.Drawing.Size(218, 603)
@@ -37,6 +38,7 @@ Partial Class TestFileExplorer
         'ListView1
         '
         Me.ListView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ListView1.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ListView1.HideSelection = False
         Me.ListView1.Location = New System.Drawing.Point(218, 0)
         Me.ListView1.Name = "ListView1"
