@@ -1,4 +1,10 @@
 ﻿Public Class UserManager
+    Public ReadOnly Username As String
+
+    Public Sub New(TheUserName As String)
+        Username = TheUserName
+    End Sub
+
     Public Shared Sub LoadWallpaperFromUserSettings()
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Settings\Wallpaper.swfiles") Then
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Settings\Wallpaper.swfiles")

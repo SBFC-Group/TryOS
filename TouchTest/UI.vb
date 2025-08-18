@@ -209,7 +209,7 @@ Public Class UI
         End If
     End Sub
 
-    Public Sub RunApp(Run_ As String)
+    Public Sub RunApp(Run_ As String, Optional arg1 As String = "Null=Nothing")
         If Run_ = "Settings" Then
             If Form1.IsSettingOpen = False Then
                 Form1.OpenChildForm(New SettingsForm)
@@ -259,6 +259,11 @@ Public Class UI
         ElseIf Run_ = "QuickNotes" Then
             If Form1.IsQuickNotesOpen = False Then
                 Form1.OpenChildForm(New Form15)
+                If arg1 = "" Then
+                ElseIf arg1 = "Null=Nothing" Then
+                Else
+
+                End If
                 Form1.IsQuickNotesOpen = True
             End If
             If Form1.IsInstagramAppOpen = True Then
@@ -518,22 +523,27 @@ Public Class UI
     'ChangeObjectPropertyByName(Me, "Button1", "Text", "Clicked!")
 
     Public Sub ShowStopWindow(ex As Exception)
-        Dim MyForm As StopWindow = GetForm("TouchTest.StopWindow")
+        Dim MyForm As New StopWindow
         MyForm.RichTextBox1.Text = ex.Message & "
 
 " & ex.Source
+        MyForm.Show()
     End Sub
 
     Public Sub ShowStopWindow(ex As String)
-        Dim MyForm As StopWindow = GetForm("TouchTest.StopWindow")
+        Dim MyForm As New StopWindow
         MyForm.RichTextBox1.Text = ex
+        MyForm.Show()
     End Sub
 
     Public Sub ShowStopWindow(ex As String, source As String)
-        Dim MyForm As StopWindow = GetForm("TouchTest.StopWindow")
+        Dim MyForm As New StopWindow
+        MyForm.FullStopMessage = ex
         MyForm.RichTextBox1.Text = ex & "
 
 " & source
+
+        MyForm.Show()
     End Sub
 
     Public Sub ShowError()

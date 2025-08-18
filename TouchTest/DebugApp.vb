@@ -11,6 +11,10 @@ Loadjpg <number> - Loads a wallpaper with the jpg format
 Loadpng <number> - Loads a wallpaper with the png format
 Loadgif <number> - Loads a wallpaper with the gif format
 RunUserControl <usercontrol> - Opens a form that will contain the UserControl"
+            ElseIf RichTextBox1.Text.Contains("TestErrorBox") = True Then
+                UI.ShowError("Hello World")
+            ElseIf RichTextBox1.Text.Contains("TestStopWindow") = True Then
+                UI.ShowStopWindow("Hello World")
             Else
                 UI.RunCommands(RichTextBox1.Text, Me)
             End If

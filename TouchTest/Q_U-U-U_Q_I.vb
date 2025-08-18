@@ -2,4 +2,6 @@
     ReadOnly Property Name As String
 
     Sub ExecuteDebug(mainForm As Form1)
+
+    Sub ExecuteUISubs(mainForm As UI)
 End Interface

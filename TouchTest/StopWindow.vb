@@ -1,4 +1,7 @@
 ﻿Public Class StopWindow
+    Public FullStopMessage As String = ""
+    Public MessageSource As String = ""
+
     Private Sub StopWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CloseEveryForm()
     End Sub

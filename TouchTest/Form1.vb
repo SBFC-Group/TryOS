@@ -16,17 +16,11 @@ Public Class Form1
     Public WallpaperFileFormat As String = ""
     Public LoadedWallpaper As Int64 = 0
 
-    Private User As New UserManager()
+    Private User As New UserManager(Username)
     Private lang As New LanguageManager()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")
-        Dim plugins = Q_U_U_U_Q.LoadPlugins(pluginPath)
 
-        For Each plugin In plugins
-            MsgBox("Loaded plugin: " & plugin.Name)
-            plugin.ExecuteDebug(Me)
-        Next
 
         Timer1.Start()
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LoadDebugMenu.setting") Then
@@ -78,6 +72,15 @@ Public Class Form1
         Else
             SpotifyButton.Visible = False
         End If
+
+        Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")
+        Dim plugins = Q_U_U_U_Q.LoadPlugins(pluginPath)
+
+        For Each plugin In plugins
+            Debug.WriteLine("Loaded plugin: " & plugin.Name)
+            plugin.ExecuteDebug(Me)
+            plugin.ExecuteUISubs(UI)
+        Next
     End Sub
 
     Private Sub LoadLanguage(langCode As String)
@@ -105,8 +108,11 @@ Public Class Form1
     End Sub
 
     Public currentForm As Form = Nothing
-    Public Sub OpenChildForm(ByVal childForm As Form)
+    Public Sub OpenChildForm(ByVal childForm As Form, Optional arg1 As String = "Null=Nothing")
         If currentForm IsNot Nothing Then currentForm.Close()
+        If childForm.Name = "Form15" Then
+
+        End If
         currentForm = childForm
         childForm.TopLevel = False
         'childForm.WindowState = FormWindowState.Maximized

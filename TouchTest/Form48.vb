@@ -46,12 +46,7 @@
                         Login()
                     Else
                         If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles") Then
-                            Panel3.Visible = True
-                            TextBox1.Enabled = False
-                            TextBox2.Enabled = False
-                            PinEncoded = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles")
-                            Me.KeyPreview = True
-                            Me.Activate()
+
                             'NumberButton1.Select()
                         End If
                     End If
@@ -66,8 +61,20 @@
         End If
 
     End Sub
+
+    Private Sub ActivatePincodeLayout()
+        Panel3.Visible = True
+        TextBox1.Enabled = False
+        TextBox2.Enabled = False
+        PinEncoded = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles")
+        Me.KeyPreview = True
+        Me.Activate()
+    End Sub
+
     Public TestingMode As Boolean = False
     Private Sub LoadLanguage()
+
+
         Dim langCode As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\ProgramLanguage.setting")
         lang.LoadLanguage(langCode)
         ApplyTranslations()
