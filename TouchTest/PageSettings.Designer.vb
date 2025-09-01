@@ -96,7 +96,7 @@ Partial Class PageSettings
         'Timer2
         '
         Me.Timer2.Enabled = True
-        Me.Timer2.Interval = 1000
+        Me.Timer2.Interval = 500
         '
         'PageSettings
         '

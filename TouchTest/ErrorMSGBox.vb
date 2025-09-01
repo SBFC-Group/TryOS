@@ -21,15 +21,15 @@
         ShowError(Text, Alerts.Information)
     End Sub
 
-    Public Sub ShowError(Text As String, Alert As Alerts)
-        Me.ShowDialog()
+    Public Function ShowError(Text As String, Alert As Alerts)
         RichTextBox1.Text = Text
+        Me.ShowDialog()
         If Alert = Alerts.Critical Then
         ElseIf Alert = Alerts.Exclamation Then
         ElseIf Alert = Alerts.Information Then
         ElseIf Alert = Alerts.Question Then
         End If
-    End Sub
+    End Function
 
     'Public Enum MsgBoxStyle
 

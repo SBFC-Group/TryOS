@@ -43,6 +43,7 @@ Public Class Form1
 
 
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\Internet++.swfiles") Then
+
             InternetPlusPlus.Visible = True
         Else
             InternetPlusPlus.Visible = False
@@ -73,15 +74,21 @@ Public Class Form1
             SpotifyButton.Visible = False
         End If
 
-        Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")
-        Dim plugins = Q_U_U_U_Q.LoadPlugins(pluginPath)
+        If TestingMode = True Then
+            Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")
+            Dim plugins = Q_U_U_U_Q.LoadPlugins(pluginPath)
 
-        For Each plugin In plugins
-            Debug.WriteLine("Loaded plugin: " & plugin.Name)
-            plugin.ExecuteDebug(Me)
-            plugin.ExecuteUISubs(UI)
-        Next
+            For Each plugin In plugins
+                Debug.WriteLine("Loaded plugin: " & plugin.Name)
+                plugin.ExecuteDebug(Me)
+                plugin.ExecuteUISubs(UI)
+            Next
+        End If
+
+
     End Sub
+
+    Private TestingMode As Boolean = False
 
     Private Sub LoadLanguage(langCode As String)
         lang.LoadLanguage(langCode)

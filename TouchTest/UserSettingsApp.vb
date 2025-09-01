@@ -190,6 +190,9 @@
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
         End Try
+        If TextBox3.Text = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
+            TextBox3.Text = ""
+        End If
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles UserButton1.Click, UserButton2.Click, UserButton3.Click, UserButton4.Click, UserButton5.Click, UserButton6.Click, UserButton7.Click, UserButton8.Click, UserButton9.Click, UserButton10.Click, UserButton11.Click, UserButton12.Click

@@ -46,7 +46,7 @@
                         Login()
                     Else
                         If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles") Then
-
+                            ActivatePincodeLayout(Reader)
                             'NumberButton1.Select()
                         End If
                     End If
@@ -54,6 +54,9 @@
 
                 End If
             End If
+        ElseIf My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
+            Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
+            TextBox1.Text = ReadMyUserData
         End If
 
         If TestingMode = True Then
@@ -62,7 +65,8 @@
 
     End Sub
 
-    Private Sub ActivatePincodeLayout()
+    Private Sub ActivatePincodeLayout(Reader As String)
+        PincodeBoolean = True
         Panel3.Visible = True
         TextBox1.Enabled = False
         TextBox2.Enabled = False
@@ -124,11 +128,28 @@
                         UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
                         'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
                     End Try
+
+                    If Password = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
+                        Password = ""
+                    ElseIf Password = "" Then
+                        UI.ShowError("The password is not supported.", ErrorMSGBox.Alerts.Critical)
+                        Exit Sub
+                    End If
+
                     If Password = TextBox2.Text Then
                         'MsgBox("Welcome " & TextBox1.Text)
                         Form1.Username = TextBox1.Text
                         UI.UserFolder = UI.UsersFolder & "\" & TextBox1.Text
                         UI.LoadShell(TextBox1.Text, My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles"))
+                        If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
+                            Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
+                            If TextBox1.Text = ReadMyUserData Then
+                            Else
+                                My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                            End If
+                        Else
+                            My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                        End If
                         Close()
                     End If
                 Else
@@ -149,7 +170,7 @@
 
     End Sub
 
-    Private Sub TextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox2.KeyDown
+    Private Sub TextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox2.KeyDown, TextBox1.KeyDown
         If e.KeyCode = Keys.Enter Then
             Login()
         End If
@@ -281,6 +302,7 @@
     End Sub
 
     Private Sub Button2_Click() Handles Button2.Click
+        PincodeBoolean = False
         Panel3.Visible = False
         NumberButton0.Enabled = False
         NumberButton1.Enabled = False
@@ -311,32 +333,36 @@
     Private PincodeBoolean As Boolean = False
 
     Private Sub NumberButton1_KeyDown(sender As Object, e As KeyEventArgs) Handles NumberButton1.KeyDown, NumberButton2.KeyDown, NumberButton3.KeyDown, NumberButton4.KeyDown, NumberButton5.KeyDown, NumberButton6.KeyDown, NumberButton7.KeyDown, NumberButton8.KeyDown, NumberButton9.KeyDown, NumberButton0.KeyDown, RemoveLetterButton.KeyDown, Button2.KeyDown, MyBase.KeyDown
-        If e.KeyValue = 48 Then ' Key 0
-            NumberButton0_Click()
-        ElseIf e.KeyValue = 49 Then ' Key 1
-            NumberButton1_Click()
-        ElseIf e.KeyValue = 50 Then ' Key 2
-            NumberButton2_Click()
-        ElseIf e.KeyValue = 51 Then ' Key 3
-            NumberButton3_Click()
-        ElseIf e.KeyValue = 52 Then ' Key 4
-            NumberButton4_Click()
-        ElseIf e.KeyValue = 53 Then ' Key 5
-            NumberButton5_Click()
-        ElseIf e.KeyValue = 54 Then ' Key 6
-            NumberButton6_Click()
-        ElseIf e.KeyValue = 55 Then ' Key 7
-            NumberButton7_Click()
-        ElseIf e.KeyValue = 56 Then ' Key 8
-            NumberButton8_Click()
-        ElseIf e.KeyValue = 57 Then ' Key 9
-            NumberButton9_Click()
-        ElseIf e.KeyValue = 8 Then ' Key Backspace
-            RemoveLetterButton_Click()
-        ElseIf e.KeyValue = 46 Then ' Key Delete
-            RemoveLetterButton_Click()
+        If PincodeBoolean = True Then
+            If e.KeyValue = 48 Then ' Key 0
+                NumberButton0_Click()
+            ElseIf e.KeyValue = 49 Then ' Key 1
+                NumberButton1_Click()
+            ElseIf e.KeyValue = 50 Then ' Key 2
+                NumberButton2_Click()
+            ElseIf e.KeyValue = 51 Then ' Key 3
+                NumberButton3_Click()
+            ElseIf e.KeyValue = 52 Then ' Key 4
+                NumberButton4_Click()
+            ElseIf e.KeyValue = 53 Then ' Key 5
+                NumberButton5_Click()
+            ElseIf e.KeyValue = 54 Then ' Key 6
+                NumberButton6_Click()
+            ElseIf e.KeyValue = 55 Then ' Key 7
+                NumberButton7_Click()
+            ElseIf e.KeyValue = 56 Then ' Key 8
+                NumberButton8_Click()
+            ElseIf e.KeyValue = 57 Then ' Key 9
+                NumberButton9_Click()
+            ElseIf e.KeyValue = 8 Then ' Key Backspace
+                RemoveLetterButton_Click()
+            ElseIf e.KeyValue = 46 Then ' Key Delete
+                RemoveLetterButton_Click()
+            End If
         End If
     End Sub
 
+    Private Sub Login(sender As Object, e As EventArgs) Handles Button1.Click
 
+    End Sub
 End Class
