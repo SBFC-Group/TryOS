@@ -151,6 +151,8 @@
                             My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
                         End If
                         Close()
+                    Else
+                        UI.ShowError("Can't find an user with that password.")
                     End If
                 Else
                     If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & TextBox1.Text & "\Password.swfiles") Then
@@ -161,7 +163,7 @@
                     End If
                 End If
             Else
-
+                UI.ShowError("Can't find an user with that username.")
             End If
         Catch ex As Exception
             UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)

@@ -31,11 +31,12 @@ Partial Class SettingsApp
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,6 +65,7 @@ Partial Class SettingsApp
         Me.FlowLayoutPanel1.Controls.Add(Me.Button5)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button7)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button4)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button8)
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 167)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(257, 748)
@@ -129,6 +131,18 @@ Partial Class SettingsApp
         Me.Button5.Text = "Administrator Settings"
         Me.Button5.UseVisualStyleBackColor = False
         '
+        'Button7
+        '
+        Me.Button7.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button7.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button7.Location = New System.Drawing.Point(3, 383)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(250, 70)
+        Me.Button7.TabIndex = 4
+        Me.Button7.Text = "Device Info"
+        Me.Button7.UseVisualStyleBackColor = False
+        '
         'Button4
         '
         Me.Button4.BackColor = System.Drawing.Color.Gainsboro
@@ -164,17 +178,17 @@ Partial Class SettingsApp
         '
         Me.Timer1.Enabled = True
         '
-        'Button7
+        'Button8
         '
-        Me.Button7.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.Location = New System.Drawing.Point(3, 383)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(250, 70)
-        Me.Button7.TabIndex = 4
-        Me.Button7.Text = "Device Info"
-        Me.Button7.UseVisualStyleBackColor = False
+        Me.Button8.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button8.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button8.Location = New System.Drawing.Point(3, 535)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(250, 70)
+        Me.Button8.TabIndex = 7
+        Me.Button8.Text = "Log Out"
+        Me.Button8.UseVisualStyleBackColor = False
         '
         'SettingsApp
         '
@@ -203,4 +217,5 @@ Partial Class SettingsApp
     Friend WithEvents Timer1 As Timer
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Button7 As Button
+    Friend WithEvents Button8 As Button
 End Class

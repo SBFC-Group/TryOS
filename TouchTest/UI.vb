@@ -5,7 +5,7 @@ Public Class UI
     Public WallpaperFolder As String = My.Application.Info.DirectoryPath & "\Wallpapers"
     Public UsersFolder As String = My.Application.Info.DirectoryPath & "\Users"
 
-    'The User that is logged in's Folder
+    'The User that's logged in's Folder
     Public UserFolder As String = My.Application.Info.DirectoryPath & "\Users\"
 
     Public Sub RunCommands(Command As String, Optional TheForm As Object = Nothing)

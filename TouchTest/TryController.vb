@@ -79,6 +79,7 @@ Public Class TryController
             Dim Reader As String = Writer.ReadOlderSWFilesFile(Path)
 
             My.Computer.FileSystem.DeleteFile(Path, FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
+            My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Temp\NoneS", "TryOS created file.", False)
             Writer.CreateSWFiles3File(Path, Reader, My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Temp")
         End If
     End Function

@@ -127,6 +127,12 @@
         Else
             Button7.Visible = False
         End If
+
+        If Environment.CommandLine.Contains("/DevMode") = True Then
+            Button8.Visible = True
+        Else
+            Button8.Visible = False
+        End If
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
@@ -137,5 +143,9 @@
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(AdminPanel)
         Panel2.Controls.Add(DeviceInfoPanel)
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        Form1.LogOut()
     End Sub
 End Class

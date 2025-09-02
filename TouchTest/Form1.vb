@@ -138,6 +138,18 @@ Public Class Form1
         End Try
     End Sub
 
+    Public Sub LogOut()
+        UI.UserFolder = UI.UsersFolder & "\"
+        Try
+            currentForm.Close()
+        Catch ex As Exception
+
+        End Try
+        Form48.Show()
+        System.Threading.Thread.Sleep(500)
+        Close()
+    End Sub
+
     Public IsSettingOpen As Boolean = False
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click

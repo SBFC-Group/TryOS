@@ -151,21 +151,51 @@
             End If
         End If
 
+        Dim MyRole2 As TryController.Roles = Form1.GetRole()
+        If MyRole2 = TryController.Roles.Guest Then
+            Panel5.Visible = False
+        ElseIf MyRole2 = TryController.Roles.Standard Then
+            Panel5.Visible = False
+        Else
+            Panel5.Visible = True
+        End If
+
         UserToChange = Text_
         Panel3.Visible = True
         Label7.Text = "User: " & Text_
         TextBox4.Text = UserToChange
         TextBox3.Text = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & UserToChange & "\Settings\Password.swfiles")
+
+
         Dim TheRole As TryController.Roles = GetRole(Text_)
         If TheRole = TryController.Roles.Guest Then
             Label8.Text = "Role: Guest"
-            Button11.Enabled = True
-            Button12.Enabled = True
+
+            If MyRole2 = TryController.Roles.Guest Then
+                Button11.Enabled = False
+                Button12.Enabled = False
+            ElseIf MyRole2 = TryController.Roles.Standard Then
+                Button11.Enabled = False
+                Button12.Enabled = False
+            Else
+                Button11.Enabled = False
+                Button12.Enabled = True
+            End If
         ElseIf TheRole = TryController.Roles.Standard Then
             Label8.Text = "Role: Standard"
-            Button11.Enabled = False
-            Button12.Enabled = True
+            If MyRole2 = TryController.Roles.Guest Then
+                Button11.Enabled = False
+                Button12.Enabled = False
+            ElseIf MyRole2 = TryController.Roles.Standard Then
+                Button11.Enabled = False
+                Button12.Enabled = False
+            Else
+                Button11.Enabled = False
+                Button12.Enabled = True
+            End If
+
         ElseIf TheRole = TryController.Roles.Administrator Then
+
             Label8.Text = "Role: Administrator"
             Button11.Enabled = True
             Button12.Enabled = False
@@ -204,21 +234,30 @@
             My.Computer.FileSystem.DeleteFile(UI.UsersFolder & "\" & TextBox4.Text & "\Settings\Password.swfiles")
             Dim df As String = TextBox3.Text
             'Encodes New Password
-
-            Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(df)
-            df = Convert.ToBase64String(byt)
-            Dim byt2 As Byte() = System.Text.Encoding.UTF8.GetBytes(df)
-            df = Convert.ToBase64String(byt2)
-
-            If Button11.Enabled = False Then
-                'Sets Role to Standard.
-
-                My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox4.Text & "\Settings\Role.swfiles", "VkRCU1RrNUZNVFpXV0hCUVZrVnJPUT09", False)
-            ElseIf Button12.Enabled = False Then
-                'Sets Role to Administrator.
-
-                My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox4.Text & "\Settings\Role.swfiles", "Vkd0U1RrMXJNVFphZWtKUFlXdHJPUT09", False)
+            If df = "" Then
+                df = "VkY5b1gybGZjMTlWWDNOZlpWOXlYMGhmWVY5elgwNWZiMTkwWDJoZmFWOXVYMmM9"
+            Else
+                Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(df)
+                df = Convert.ToBase64String(byt)
+                Dim byt2 As Byte() = System.Text.Encoding.UTF8.GetBytes(df)
+                df = Convert.ToBase64String(byt2)
             End If
+
+            Dim TheRole1 As TryController.Roles = GetRole(TextBox4.Text)
+            If TheRole1 = TryController.Roles.Guest Then
+            ElseIf TheRole1 = TryController.Roles.Standard Then
+            Else
+                If Button11.Enabled = False Then
+                    'Sets Role to Standard.
+
+                    My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox4.Text & "\Settings\Role.swfiles", "VkRCU1RrNUZNVFpXV0hCUVZrVnJPUT09", False)
+                ElseIf Button12.Enabled = False Then
+                    'Sets Role to Administrator.
+
+                    My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox4.Text & "\Settings\Role.swfiles", "Vkd0U1RrMXJNVFphZWtKUFlXdHJPUT09", False)
+                End If
+            End If
+
 
             'Writes Password File
             My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox4.Text & "\Settings\Password.swfiles", df, False)
