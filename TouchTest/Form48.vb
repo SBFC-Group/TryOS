@@ -66,7 +66,10 @@
     End Sub
 
     Private Sub ActivatePincodeLayout(Reader As String)
+<<<<<<< Updated upstream
         PincodeBoolean = True
+=======
+>>>>>>> Stashed changes
         Panel3.Visible = True
         TextBox1.Enabled = False
         TextBox2.Enabled = False
