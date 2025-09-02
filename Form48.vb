@@ -67,10 +67,7 @@
 
     Private Sub ActivatePincodeLayout(Reader As String)
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
         PincodeBoolean = True
-=======
->>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         Panel3.Visible = True
