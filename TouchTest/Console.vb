@@ -21,9 +21,6 @@
                 'Me.WindowState = FormWindowState.Minimized
             End If
         End If
-        If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\UseKeyboard.setting") Then
-            UI.IsKeyboardEnabled = True
-        End If
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\AutorunCommands.setting") Then
             RunAutoToShell(1)
         End If
@@ -38,4 +35,20 @@
             RunAutoToShell(Number2)
         End If
     End Sub
+
+    Public Sub WriteLine(value As String)
+        Debug.WriteLine(value)
+    End Sub
+
+    Public Function ReadLine() As String
+        Return ""
+    End Function
+
+    Public Sub Beep()
+        System.Console.Beep()
+    End Sub
+
+
+
+
 End Class

@@ -246,6 +246,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form28.vb" />
+    <Compile Include="Form40.Designer.vb">
+      <DependentUpon>Form40.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form40.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form48.Designer.vb">
       <DependentUpon>Form48.vb</DependentUpon>
     </Compile>
@@ -534,6 +540,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form40.resx">
+      <DependentUpon>Form40.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form48.resx">
       <DependentUpon>Form48.vb</DependentUpon>

@@ -114,12 +114,11 @@ Public Class Form1
         SizeY = Panel3.Size.Height ' - 57
     End Sub
 
+
+
     Public currentForm As Form = Nothing
     Public Sub OpenChildForm(ByVal childForm As Form, Optional arg1 As String = "Null=Nothing")
         If currentForm IsNot Nothing Then currentForm.Close()
-        If childForm.Name = "Form15" Then
-
-        End If
         currentForm = childForm
         childForm.TopLevel = False
         'childForm.WindowState = FormWindowState.Maximized
@@ -130,13 +129,18 @@ Public Class Form1
         'childForm.Location = New Point(1, 1)
         childForm.Size = New Size(Me.Size.Width, Me.Size.Height - 57)
         'childForm.BringToFront()
-
+        If arg1 = "Null=Nothing" Then
+        Else
+            ArgData = arg1
+        End If
         Try
             childForm.Show()
         Catch ex As Exception
 
         End Try
     End Sub
+
+    Public ArgData As String = Nothing
 
     Public Sub LogOut()
         UI.UserFolder = UI.UsersFolder & "\"

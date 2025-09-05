@@ -15,6 +15,8 @@ Public Class TryController
             Me.WindowState = FormWindowState.Minimized
 
             Me.ShowInTaskbar = False
+        Else
+            Console.Show()
         End If
 
         If args.Contains("/DevMode") = True Then

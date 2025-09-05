@@ -98,6 +98,7 @@
             Button5.BackColor = Color.DarkGray
             Button6.BackColor = Color.DarkGray
             Button7.BackColor = Color.DarkGray
+            Button8.BackColor = Color.DarkGray
         ElseIf Dark = False Then
             ColorMode = "Normal"
             Panel1.BackColor = Color.Silver
@@ -109,6 +110,7 @@
             Button5.BackColor = Color.Gainsboro
             Button6.BackColor = Color.Gainsboro
             Button7.BackColor = Color.Gainsboro
+            Button8.BackColor = Color.Gainsboro
         End If
     End Sub
 
