@@ -25,4 +25,8 @@
         mkv = 7
     End Enum
 
+    Public Function LoadPicture(FilePath As String)
+
+    End Function
+
 End Class

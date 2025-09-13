@@ -40,6 +40,11 @@ Public Class UI
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("start ", "")
             OpenFormByName("TouchTest." & Text1)
+        ElseIf Command.Contains("RunApp ") = True Then
+            Dim Text1 As String = Command
+            Text1 = Text1.Replace("Console>", "")
+            Text1 = Text1.Replace("RunApp ", "")
+            Form1.OpenChildForm(GetForm("TouchTest." & Text1))
         ElseIf Command.Contains("Loadjpg ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")

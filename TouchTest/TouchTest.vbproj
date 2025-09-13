@@ -444,6 +444,7 @@
     <Compile Include="UserControl1.xaml.vb">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserInfoHelper.vb" />
     <Compile Include="UserManager.vb" />
     <Compile Include="UserSettingsApp.Designer.vb">
       <DependentUpon>UserSettingsApp.vb</DependentUpon>

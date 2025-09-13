@@ -27,12 +27,6 @@ Public Class TryController
             Console.Show()
             Console.WindowState = FormWindowState.Minimized
         End If
-
-        If args.Contains("/AllowDebugWindow") = True Then
-
-        End If
-
-
     End Sub
 
     Public Dev As Boolean = False
@@ -83,6 +77,8 @@ Public Class TryController
             My.Computer.FileSystem.DeleteFile(Path, FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
             My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Temp\NoneS", "TryOS created file.", False)
             Writer.CreateSWFiles3File(Path, Reader, My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Temp")
+        Else
+            Return True
         End If
     End Function
 End Class

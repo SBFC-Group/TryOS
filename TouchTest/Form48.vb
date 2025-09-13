@@ -57,9 +57,9 @@
         ElseIf My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
             Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
             TextBox1.Text = ReadMyUserData
-            If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\PinCode.swfiles") Then
-
-            End If
+            'If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\PinCode.swfiles") Then
+            'ActivatePincodeLayout(ReadMyUserData)
+            'End If
         End If
 
         If TestingMode = True Then
@@ -87,12 +87,19 @@
         Panel3.Visible = True
         TextBox1.Enabled = False
         TextBox2.Enabled = False
-        TryController.IsMySWFilesNew(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles")
+        If TryController.IsMySWFilesNew(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles") = False Then
+        Else
+
+        End If
+
+        If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Temp\NoneS.swfiles") Then
+            My.Computer.FileSystem.DeleteFile(UI.UsersFolder & "\" & Reader & "\Temp\NoneS.swfiles", FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
+        End If
         Dim Reader2 As New SWFiles.CreateSWFiles
         Dim Reader3 As String = Reader2.ReadSWFiles3File(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles", UI.UsersFolder & "\" & Reader & "\Temp")
 
 
-        PinEncoded = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles")
+        PinEncoded = Reader3
         Me.KeyPreview = True
         Me.Activate()
     End Sub
