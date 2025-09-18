@@ -61,6 +61,7 @@ Partial Class UserSettingsApp
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -351,7 +352,7 @@ Partial Class UserSettingsApp
         Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Location = New System.Drawing.Point(3, 273)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(446, 264)
+        Me.Panel3.Size = New System.Drawing.Size(481, 264)
         Me.Panel3.TabIndex = 4
         Me.Panel3.Visible = False
         '
@@ -361,6 +362,7 @@ Partial Class UserSettingsApp
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel4.Controls.Add(Me.Button3)
         Me.Panel4.Controls.Add(Me.Panel5)
         Me.Panel4.Controls.Add(Me.Label8)
         Me.Panel4.Controls.Add(Me.Label7)
@@ -372,7 +374,7 @@ Partial Class UserSettingsApp
         Me.Panel4.Controls.Add(Me.Label6)
         Me.Panel4.Location = New System.Drawing.Point(-1, 26)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(446, 237)
+        Me.Panel4.Size = New System.Drawing.Size(481, 237)
         Me.Panel4.TabIndex = 2
         '
         'Panel5
@@ -380,7 +382,7 @@ Partial Class UserSettingsApp
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel5.Controls.Add(Me.Label9)
         Me.Panel5.Controls.Add(Me.Panel6)
-        Me.Panel5.Location = New System.Drawing.Point(295, 3)
+        Me.Panel5.Location = New System.Drawing.Point(330, 3)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(146, 119)
         Me.Panel5.TabIndex = 5
@@ -473,7 +475,7 @@ Partial Class UserSettingsApp
         Me.TextBox3.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox3.Location = New System.Drawing.Point(8, 151)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(254, 26)
+        Me.TextBox3.Size = New System.Drawing.Size(301, 26)
         Me.TextBox3.TabIndex = 10
         '
         'Label5
@@ -493,7 +495,7 @@ Partial Class UserSettingsApp
         Me.TextBox4.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox4.Location = New System.Drawing.Point(8, 90)
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(254, 26)
+        Me.TextBox4.Size = New System.Drawing.Size(301, 26)
         Me.TextBox4.TabIndex = 8
         '
         'Label6
@@ -511,7 +513,7 @@ Partial Class UserSettingsApp
         Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(88, -1)
+        Me.Label4.Location = New System.Drawing.Point(105, -1)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(268, 24)
         Me.Label4.TabIndex = 1
@@ -520,6 +522,18 @@ Partial Class UserSettingsApp
         'Timer1
         '
         Me.Timer1.Enabled = True
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Location = New System.Drawing.Point(324, 183)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(152, 49)
+        Me.Button3.TabIndex = 14
+        Me.Button3.Text = "Change Pincode"
+        Me.Button3.UseVisualStyleBackColor = False
         '
         'UserSettingsApp
         '
@@ -586,4 +600,5 @@ Partial Class UserSettingsApp
     Friend WithEvents UserButton11 As Button
     Friend WithEvents UserButton12 As Button
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents Button3 As Button
 End Class

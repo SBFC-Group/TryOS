@@ -17,11 +17,13 @@
         Path = 4
     End Enum
 
-    Public Function CreateNewUser(Username As String, Password As String, Pincode As String, Optional Role As TryController.Roles = TryController.Roles.Standard) As Boolean
+    Public Shared Function CreateNewUser(Username As String, Password As String, Pincode As String, Optional Role As TryController.Roles = TryController.Roles.Standard) As Boolean
         If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & Username) Then
             MsgBox("This User already exists.")
+            Return False
         ElseIf My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\Dev") Then
             MsgBox("This User is not allowed.")
+            Return False
         Else
             My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & Username)
             My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & Username & "\Apps")
@@ -46,6 +48,7 @@
             My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & Username & "\Settings\Wallpaper.swfiles", "jpg=1", False)
 
             My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & Username & "\Apps\Internet++.swfiles", "", False)
+            Return True
         End If
     End Function
 End Class

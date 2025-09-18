@@ -22,12 +22,13 @@
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Try
             If WebView21.CoreWebView2.ContainsFullScreenElement = True Then
-                Form1.HideTaskbar(True)
+                Form1.EnableFullAppMode(True)
                 IsWebView2FullScreen = True
             ElseIf WebView21.CoreWebView2.ContainsFullScreenElement = False Then
                 If IsWebView2FullScreen = True Then
                     IsWebView2FullScreen = False
-                    Form1.HideTaskbar(False)
+                    Form1.EnableFullAppMode(False)
+
                 End If
             End If
         Catch ex As Exception

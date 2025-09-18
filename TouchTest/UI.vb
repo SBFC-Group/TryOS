@@ -563,4 +563,36 @@ Public Class UI
         ErrorMSGBox.ShowError(Text, Alert)
     End Sub
 
+    ''' <summary>Allows an App to enter or leave Fullscreen Mode</summary>
+    Public Sub EnableFullAppMode(IsAppFull As Boolean)
+        Form1.EnableFullAppMode(IsAppFull)
+    End Sub
+
+    Public Sub LoadAppButtonOnTaskbar(FormName As Form, Icon As Bitmap, Optional ImageLayout As System.Windows.Forms.ImageLayout = System.Windows.Forms.ImageLayout.Stretch)
+        Dim AppButton As New Button
+
+        AppButton.BackColor = System.Drawing.Color.Transparent
+        AppButton.BackgroundImage = Icon
+        AppButton.BackgroundImageLayout = ImageLayout
+        AppButton.FlatAppearance.BorderSize = 0
+        AppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        AppButton.Location = New System.Drawing.Point(3, 3)
+        AppButton.Name = FormName.Text
+        AppButton.Size = New System.Drawing.Size(74, 70)
+        AppButton.UseVisualStyleBackColor = False
+
+        AddHandler AppButton.Click, AddressOf OpenApp
+
+        FormThing = FormName
+
+        Form1.FlowLayoutPanel1.Controls.Add(AppButton)
+    End Sub
+
+    Private FormThing As Form
+
+    Private Function OpenApp(sender As Object, e As EventArgs)
+
+
+        Form1.OpenChildForm(FormThing)
+    End Function
 End Class

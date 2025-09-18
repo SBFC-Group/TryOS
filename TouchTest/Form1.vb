@@ -73,6 +73,10 @@ Public Class Form1
         Else
             SpotifyButton.Visible = False
         End If
+        If TestingMode = True Then
+            OpenFramework_Data.OpenFramework.LoadApps()
+        End If
+
 
         If TestingMode = True Then
             Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")
@@ -88,7 +92,7 @@ Public Class Form1
 
     End Sub
 
-    Private TestingMode As Boolean = False
+    Private TestingMode As Boolean = True
 
     Private Sub LoadLanguage(langCode As String)
         lang.LoadLanguage(langCode)
@@ -296,6 +300,8 @@ Public Class Form1
         Else
             SpotifyButton.Visible = False
         End If
+
+
     End Sub
 
     Private Sub QuickNotes_Click(sender As Object, e As EventArgs) Handles QuickNotes.Click
@@ -315,6 +321,18 @@ Public Class Form1
         'End If
     End Sub
 
+    ''' <summary>Allows an App to enter or leave Fullscreen Mode</summary>
+    Public Sub EnableFullAppMode(IsAppFull As Boolean)
+        If IsAppFull = True Then
+            Panel2.Visible = False
+            TimebarPanel.Visible = False
+        ElseIf IsAppFull = False Then
+            Panel2.Visible = True
+            TimebarPanel.Visible = True
+        End If
+    End Sub
+
+    ''' <summary>This has been replaced by "EnableFullAppMode"</summary>
     Public Sub HideTaskbar(HideTheTaskbar As Boolean)
         If HideTheTaskbar = True Then
             Panel2.Visible = False
@@ -325,6 +343,7 @@ Public Class Form1
         End If
     End Sub
 
+    ''' <summary>This has been replaced by "EnableFullAppMode"</summary>
     Public Sub HideTaskbar(HideTheTaskbar As Boolean, HideOnlyTaskbar As Boolean)
         If HideOnlyTaskbar = True Then
             If HideTheTaskbar = True Then
@@ -888,6 +907,7 @@ Public Class Form1
     Private ControlCenterHasBeenOpened As Boolean = False
     Public ControlCenter As PageSettings
 
+    ''' <summary>This opens the Control Center</summary>
     Private Sub ShowControlCenter()
         IsControlCenterOpen = True
         Try
@@ -904,6 +924,7 @@ Public Class Form1
         ControlCenter.Dock = DockStyle.Fill
     End Sub
 
+    ''' <summary>This closes the Control Center</summary>
     Private Sub CloseControlCenter()
         IsControlCenterOpen = False
         HideTaskbar(False)
