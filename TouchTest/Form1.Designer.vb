@@ -49,6 +49,7 @@ Partial Class Form1
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.DebugMenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CommanderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CommanderWindowedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadConsoleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserNameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
@@ -62,7 +63,6 @@ Partial Class Form1
         Me.VolumeList = New System.Windows.Forms.ImageList(Me.components)
         Me.InternetList = New System.Windows.Forms.ImageList(Me.components)
         Me.PowerList = New System.Windows.Forms.ImageList(Me.components)
-        Me.CommanderWindowedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.TimebarPanel.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -93,9 +93,9 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.TimebarPanel)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 24)
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1243, 827)
+        Me.Panel1.Size = New System.Drawing.Size(1243, 851)
         Me.Panel1.TabIndex = 1
         '
         'Panel3
@@ -104,7 +104,7 @@ Partial Class Form1
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 36)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1243, 717)
+        Me.Panel3.Size = New System.Drawing.Size(1243, 741)
         Me.Panel3.TabIndex = 2
         '
         'TimebarPanel
@@ -130,6 +130,7 @@ Partial Class Form1
         Me.Button5.TabIndex = 5
         Me.Button5.Text = "Button5"
         Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.Visible = False
         '
         'Label1
         '
@@ -203,7 +204,7 @@ Partial Class Form1
         Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel2.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.Panel2.Location = New System.Drawing.Point(0, 753)
+        Me.Panel2.Location = New System.Drawing.Point(0, 777)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1243, 74)
         Me.Panel2.TabIndex = 1
@@ -378,6 +379,14 @@ Partial Class Form1
         Me.CommanderToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
         Me.CommanderToolStripMenuItem.Text = "Commander"
         '
+        'CommanderWindowedToolStripMenuItem
+        '
+        Me.CommanderWindowedToolStripMenuItem.Name = "CommanderWindowedToolStripMenuItem"
+        Me.CommanderWindowedToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+            Or System.Windows.Forms.Keys.F10), System.Windows.Forms.Keys)
+        Me.CommanderWindowedToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.CommanderWindowedToolStripMenuItem.Text = "Commander Windowed"
+        '
         'LoadConsoleToolStripMenuItem
         '
         Me.LoadConsoleToolStripMenuItem.Name = "LoadConsoleToolStripMenuItem"
@@ -465,14 +474,6 @@ Partial Class Form1
         Me.PowerList.Images.SetKeyName(3, "gui_battery_quarter.png")
         Me.PowerList.Images.SetKeyName(4, "gui_battery_empty.png")
         Me.PowerList.Images.SetKeyName(5, "battery_charging.png")
-        '
-        'CommanderWindowedToolStripMenuItem
-        '
-        Me.CommanderWindowedToolStripMenuItem.Name = "CommanderWindowedToolStripMenuItem"
-        Me.CommanderWindowedToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
-            Or System.Windows.Forms.Keys.F10), System.Windows.Forms.Keys)
-        Me.CommanderWindowedToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.CommanderWindowedToolStripMenuItem.Text = "Commander Windowed"
         '
         'Form1
         '

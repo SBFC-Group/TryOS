@@ -1,17 +1,17 @@
 ﻿Imports System.Windows.Input
 
 Public Class DeviceInto
-    Private Function GetOSVersion() As String
-        Dim OSVersion As String = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentMajorVersionNumber", Nothing)
-        OSVersion = OSVersion & "." & My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentMinorVersionNumber", Nothing)
-        OSVersion = OSVersion & "." & My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuild", Nothing)
-        OSVersion = OSVersion & "." & My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "UBR", Nothing)
-        Return OSVersion
-    End Function
+    'Private Function GetOSVersion() As String
+    '    Dim OSVersion As String = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentMajorVersionNumber", Nothing)
+    '    OSVersion = OSVersion & "." & My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentMinorVersionNumber", Nothing)
+    '    OSVersion = OSVersion & "." & My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuild", Nothing)
+    '    OSVersion = OSVersion & "." & My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "UBR", Nothing)
+    '    Return OSVersion
+    'End Function
 
     Private Sub DeviceInto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Label1.Text = "OS Name: " & My.Computer.Info.OSFullName
-        Label2.Text = "OS Version: " & GetOSVersion()
+        Label1.Text = "OS Name: " & TryController.GetOSVersion(False)
+        Label2.Text = "OS Version: " & TryController.GetOSVersion(True)
         Label4.Text = "Computer Name: " & Environment.MachineName
     End Sub
 

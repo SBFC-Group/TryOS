@@ -568,7 +568,7 @@ Public Class UI
         Form1.EnableFullAppMode(IsAppFull)
     End Sub
 
-    Public Sub LoadAppButtonOnTaskbar(FormName As Form, Icon As Bitmap, Optional ImageLayout As System.Windows.Forms.ImageLayout = System.Windows.Forms.ImageLayout.Stretch)
+    Public Sub LoadAppButtonOnTaskbar(FormName As Form, Icon As Bitmap, Optional RootName As String = "TouchTest.", Optional ImageLayout As System.Windows.Forms.ImageLayout = System.Windows.Forms.ImageLayout.Stretch)
         Dim AppButton As New Button
 
         AppButton.BackColor = System.Drawing.Color.Transparent
@@ -581,7 +581,15 @@ Public Class UI
         AppButton.Size = New System.Drawing.Size(74, 70)
         AppButton.UseVisualStyleBackColor = False
 
-        AddHandler AppButton.Click, AddressOf OpenApp
+        AddHandler AppButton.Click, Sub()
+                                        Try
+                                            Dim AppName As Form = GetForm(RootName & AppButton.Name)
+                                            Form1.OpenChildForm(AppName)
+                                        Catch ex As Exception
+
+                                        End Try
+
+                                    End Sub
 
         FormThing = FormName
 
@@ -591,8 +599,6 @@ Public Class UI
     Private FormThing As Form
 
     Private Function OpenApp(sender As Object, e As EventArgs)
-
-
         Form1.OpenChildForm(FormThing)
     End Function
 End Class

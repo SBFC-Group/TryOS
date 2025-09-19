@@ -29,6 +29,23 @@ Public Class TryController
         End If
     End Sub
 
+    Public Function GetVersion() As String
+        Return My.Application.Info.Version.ToString
+    End Function
+
+    Public Function GetOSVersion(Optional GetVersionNumber As Boolean = False) As String
+        If GetVersionNumber = True Then
+            Dim MajorVersion As String = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentMajorVersionNumber", Nothing)
+            Dim MinorVersion As String = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentMinorVersionNumber", Nothing)
+            Dim Build As String = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuild", Nothing)
+            Dim UBR As String = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "UBR", Nothing)
+            Return MajorVersion & "." & MinorVersion & "." & Build & "." & UBR
+        Else
+            Return My.Computer.Info.OSFullName
+        End If
+
+    End Function
+
     Public Dev As Boolean = False
 
     Public Enum Roles

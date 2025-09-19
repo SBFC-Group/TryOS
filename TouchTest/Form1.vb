@@ -92,7 +92,7 @@ Public Class Form1
 
     End Sub
 
-    Private TestingMode As Boolean = True
+    Private TestingMode As Boolean = False
 
     Private Sub LoadLanguage(langCode As String)
         lang.LoadLanguage(langCode)
