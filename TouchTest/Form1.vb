@@ -105,7 +105,7 @@ Public Class Form1
 
     End Sub
 
-    Private TestingMode As Boolean = False
+    Private TestingMode As Boolean = True
 
     Private Sub LoadLanguage(langCode As String)
         lang.LoadLanguage(langCode)

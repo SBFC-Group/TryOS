@@ -1,6 +1,9 @@
 ﻿Imports System.Reflection
+Imports TouchTest
 
 Public Class UI
+
+
     Public SettingsFolder As String = My.Application.Info.DirectoryPath & "\Settings"
     Public WallpaperFolder As String = My.Application.Info.DirectoryPath & "\Wallpapers"
     Public UsersFolder As String = My.Application.Info.DirectoryPath & "\Users"
@@ -570,38 +573,4 @@ Public Class UI
     Public Sub EnableFullAppMode(IsAppFull As Boolean)
         Form1.EnableFullAppMode(IsAppFull)
     End Sub
-
-    Public Sub LoadAppButtonOnTaskbar(FormName As Form, Icon As Bitmap, Optional RootName As String = "TouchTest.", Optional ImageLayout As System.Windows.Forms.ImageLayout = System.Windows.Forms.ImageLayout.Stretch)
-        Dim AppButton As New Button
-
-        AppButton.BackColor = System.Drawing.Color.Transparent
-        AppButton.BackgroundImage = Icon
-        AppButton.BackgroundImageLayout = ImageLayout
-        AppButton.FlatAppearance.BorderSize = 0
-        AppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        AppButton.Location = New System.Drawing.Point(3, 3)
-        AppButton.Name = FormName.Text
-        AppButton.Size = New System.Drawing.Size(74, 70)
-        AppButton.UseVisualStyleBackColor = False
-
-        AddHandler AppButton.Click, Sub()
-                                        Try
-                                            Dim AppName As Form = GetForm(RootName & AppButton.Name)
-                                            Form1.OpenChildForm(AppName)
-                                        Catch ex As Exception
-
-                                        End Try
-
-                                    End Sub
-
-        FormThing = FormName
-
-        Form1.FlowLayoutPanel1.Controls.Add(AppButton)
-    End Sub
-
-    Private FormThing As Form
-
-    Private Function OpenApp(sender As Object, e As EventArgs)
-        Form1.OpenChildForm(FormThing)
-    End Function
 End Class

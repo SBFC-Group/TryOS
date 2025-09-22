@@ -3,34 +3,56 @@ Imports System.Reflection
 
 Namespace OpenFramework_Data
     Module OpenFramework
-        Public Sub LoadApps()
-            Dim pluginPath As String = Path.Combine(Application.StartupPath, "Apps")
-            Dim plugins = LoadPlugins(pluginPath)
+        Dim host As New OpenFramework_Handler()
 
-            For Each plugin In plugins
-                plugin.UISubs(UI)
-                Debug.WriteLine("Loaded " & plugin.Name)
+        Public Sub LoadApps()
+            Dim plugins = LoadPlugins(IO.Path.Combine(Application.StartupPath, "Apps"))
+
+            For Each p In plugins
+                p.Initialize(host)
+                Dim btn As New Button()
+                'btn.Text = p.Name
+                btn.BackgroundImage = p.Icon
+                'btn.TextImageRelation = TextImageRelation.ImageAboveText
+                btn.FlatStyle = FlatStyle.Flat
+                btn.FlatAppearance.BorderSize = 0
+                btn.BackgroundImageLayout = ImageLayout.Stretch
+                btn.Tag = p
+                btn.Size = New Size(74, 70)
+                'btn.AutoSize = True
+                'btn.AutoSizeMode = AutoSizeMode.GrowAndShrink
+                'btn.Padding = New Padding(5)
+                AddHandler btn.Click, AddressOf PluginButton_Click
+                Form1.FlowLayoutPanel1.Controls.Add(btn)
             Next
         End Sub
 
+        Private Sub PluginButton_Click(sender As Object, e As EventArgs)
+            Dim btn As Button = CType(sender, Button)
+            Dim plugin As OpenFramework_Interface = CType(btn.Tag, OpenFramework_Interface)
 
-        Public Function LoadPlugins(folderPath As String) As List(Of OpenFramework_Interface)
+            Dim frm As Form = plugin.GetForm()
+            frm.Text = plugin.Name
+            Form1.OpenChildForm(frm)
+        End Sub
+
+
+        Public Function LoadPlugins(folder As String) As List(Of OpenFramework_Interface)
             Dim plugins As New List(Of OpenFramework_Interface)()
 
-            If Directory.Exists(folderPath) Then
-                Dim dllFiles = Directory.GetFiles(folderPath, "*.dll")
+            If Not IO.Directory.Exists(folder) Then Return plugins
 
-                For Each dll In dllFiles
-                    Dim asm = Assembly.LoadFrom(dll)
+            For Each dll In IO.Directory.GetFiles(folder, "*.dll")
+                Dim asm As Assembly = Assembly.LoadFrom(dll)
 
-                    For Each type In asm.GetTypes()
-                        If GetType(OpenFramework_Interface).IsAssignableFrom(type) AndAlso Not type.IsInterface AndAlso Not type.IsAbstract Then
-                            Dim pluginInstance = CType(Activator.CreateInstance(type), OpenFramework_Interface)
-                            plugins.Add(pluginInstance)
-                        End If
-                    Next
+                ' Find all types that implement IPluginForm
+                For Each t In asm.GetTypes()
+                    If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
+                        Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)
+                        plugins.Add(plugin)
+                    End If
                 Next
-            End If
+            Next
 
             Return plugins
         End Function

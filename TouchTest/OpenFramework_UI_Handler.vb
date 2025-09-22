@@ -1,3 +1,12 @@
-﻿Public Class OpenFramework_UI_Handler
-
-End Class
+﻿Public Interface OpenFramework_UI_Handler
+    Sub EnableFullscreen(IsEnabled As Boolean)
+    Sub RunCommand(Command As String, Optional TheForm As Object = Nothing)
+    Sub ShowError()
+    Sub ShowError(Text As String)
+    Sub ShowError(Text As String, Alert As ErrorMSGBox.Alerts)
+    Function GetProgramVersion() As String
+    Function GetOSVersion(Optional GetVersionNumber As Boolean = False) As String
+    Function GetUsername() As String
+    Function GetUserFolder() As String
+    Function GetWebView2Panel() As UserControl
+End Interface
