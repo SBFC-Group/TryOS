@@ -16,6 +16,9 @@ Public Class Form1
     Public WallpaperFileFormat As String = ""
     Public LoadedWallpaper As Int64 = 0
 
+    Public DisableFullScreenConsole As Boolean = False
+    Public DisableConsole As Boolean = False
+
     Private User As New UserManager(Username)
     Private lang As New LanguageManager()
 
@@ -25,6 +28,16 @@ Public Class Form1
         Timer1.Start()
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LoadDebugMenu.setting") Then
             MenuStrip1.Visible = True
+        End If
+
+        If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\DisableConsole.setting") Then
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\DisableConsole.setting")
+            Try
+                Dim reader2 As Boolean = Convert.ToBoolean(Reader)
+                DisableConsole = reader2
+            Catch ex As Exception
+
+            End Try
         End If
 
         UserManager.LoadShellColors()
@@ -192,24 +205,33 @@ Public Class Form1
 
     Public Shit As Integer = 1
     Private Sub LoadConsoleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadConsoleToolStripMenuItem.Click
-        If Shit = 1 Then
-            Console.ShowInTaskbar = True
-            Console.WindowState = FormWindowState.Maximized
-            Console.BringToFront()
-            Shit = 2
-        ElseIf Shit = 2 Then
-            Console.ShowInTaskbar = False
-            Console.WindowState = FormWindowState.Minimized
-            BringToFront()
-            Shit = 1
+        If DisableConsole = False Then
+            If Shit = 1 Then
+                Console.ShowInTaskbar = True
+                Console.WindowState = FormWindowState.Maximized
+                Console.BringToFront()
+                Shit = 2
+            ElseIf Shit = 2 Then
+                Console.ShowInTaskbar = False
+                Console.WindowState = FormWindowState.Minimized
+                BringToFront()
+                Shit = 1
+            End If
         End If
     End Sub
 
     Private Sub CommanderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CommanderToolStripMenuItem.Click
-        UI.StartCMD()
-        If Panel2.Visible = False Then
-            HideTaskbar(False)
+        If DisableConsole = False Then
+            If DisableFullScreenConsole = True Then
+                CommanderWindowedToolStripMenuItem_Click(sender, e)
+            Else
+                UI.StartCMD()
+                If Panel2.Visible = False Then
+                    HideTaskbar(False)
+                End If
+            End If
         End If
+
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -971,9 +993,11 @@ Public Class Form1
     End Sub
 
     Private Sub CommanderWindowedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CommanderWindowedToolStripMenuItem.Click
-        Commander.Show()
-        Commander.FormBorderStyle = FormBorderStyle.Sizable
-        Commander.ShowIcon = True
-        Commander.ShowInTaskbar = True
+        If DisableConsole = False Then
+            Commander.Show()
+            Commander.FormBorderStyle = FormBorderStyle.Sizable
+            Commander.ShowIcon = True
+            Commander.ShowInTaskbar = True
+        End If
     End Sub
 End Class

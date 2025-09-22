@@ -8,9 +8,14 @@ Public Class TryController
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\ShellName.setting")
             'UI.OpenFormByName(Reader)
 
-            Dim form As Form = UI.GetForm(Reader)
-            form.Show()
-            form.BringToFront()
+            Try
+                Dim form As Form = UI.GetForm(Reader)
+                form.Show()
+                form.BringToFront()
+            Catch ex As Exception
+
+            End Try
+
 
             Me.WindowState = FormWindowState.Minimized
 

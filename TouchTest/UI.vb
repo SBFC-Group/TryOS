@@ -140,6 +140,9 @@ Public Class UI
         End If
     End Sub
 
+    Public Sub CreateNewUser(Username As String, Password As String)
+
+    End Sub
 
     Public Sub LoadShell(Optional Username As String = "", Optional Password As String = "")
         Form1.Show()

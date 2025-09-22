@@ -46,20 +46,58 @@
                         Login()
                     Else
                         If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles") Then
-                            ActivatePincodeLayout()
-                            'NumberButton1.Select()                      
+                            UI.ShowError("TryOS is facing out ""AutoUser.setting"" and replacing it with ""LastKnownUser.setting"".
+Why is it getting faced out? 
+""LastKnownUser.setting"" remembers the last logged on user.
+""AutoUser.setting"" can't do that.")
+                            If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
+                                My.Computer.FileSystem.RenameFile(UI.SettingsFolder & "\AutoUser.setting", "AutoUser.setting.old")
+                            Else
+                                'Writes an new "LastKnownUser.setting" file
+                                My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", Reader, False)
+
+                                My.Computer.FileSystem.RenameFile(UI.SettingsFolder & "\AutoUser.setting", "AutoUser.setting.old")
+                            End If
+                            If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles") Then
+                                ActivatePincodeLayout()
+                                'NumberButton1.Select()                      
+                            End If
                         End If
                     End If
 
 
-                End If
+                    End If
             End If
         ElseIf My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
             Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
             TextBox1.Text = ReadMyUserData
-            'If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\PinCode.swfiles") Then
-            'ActivatePincodeLayout(ReadMyUserData)
-            'End If
+            If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\Password.swfiles") Then
+                Dim SecondReader As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\Password.swfiles")
+                Try
+                    Dim b As Byte() = Convert.FromBase64String(SecondReader)
+                    SecondReader = System.Text.Encoding.UTF8.GetString(b)
+                Catch ex As Exception
+                    'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                    UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+                End Try
+                Try
+                    Dim b As Byte() = Convert.FromBase64String(SecondReader)
+                    SecondReader = System.Text.Encoding.UTF8.GetString(b)
+                Catch ex As Exception
+                    UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+                    'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                End Try
+                If SecondReader = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
+                    Login()
+                Else
+                    If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\PinCode.swfiles") Then
+                        ActivatePincodeLayout()
+                        'NumberButton1.Select()                      
+                    End If
+                End If
+
+
+            End If
         End If
 
         If TestingMode = True Then

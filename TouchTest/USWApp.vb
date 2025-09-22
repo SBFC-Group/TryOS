@@ -133,7 +133,7 @@
                 ThePin = Convert.ToBase64String(byt4)
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Pincode.swfiles", ThePin, False)
 
-                My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\AutoUser.setting", TextBox1.Text, False)
+                My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
             End If
 
             'Calls for shutdown of USW and restart of program.

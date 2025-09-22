@@ -18,10 +18,10 @@
     End Sub
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
-        Dim TExt_ As New RichTextBox
-        TExt_.Text = "C:/Sebs-SW-CV/startup"
-        UI.RunCommands(TExt_.Text, "")
-        Timer2.Start()
+        'Dim TExt_ As New RichTextBox
+        'TExt_.Text = "C:/Sebs-SW-CV/startup"
+        'UI.RunCommands(TExt_.Text, "")
+        'Timer2.Start()
     End Sub
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick

@@ -41,6 +41,7 @@
             UI.LoadShell("Program", "")
             Form1.HideTaskbar(True)
             Form1.OpenChildForm(New USWApp)
+            Form1.DisableFullScreenConsole = True
         End Sub
 
         Public Sub CloseUSW()
