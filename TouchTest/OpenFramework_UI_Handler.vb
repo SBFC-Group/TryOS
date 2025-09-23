@@ -8,5 +8,6 @@
     Function GetOSVersion(Optional GetVersionNumber As Boolean = False) As String
     Function GetUsername() As String
     Function GetUserFolder() As String
-    Function GetWebView2Panel() As UserControl
+    Function GetRole() As String
+    Sub StartCMD(Optional GG As String = "New")
 End Interface

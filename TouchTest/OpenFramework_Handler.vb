@@ -23,6 +23,12 @@ Public Class OpenFramework_Handler
         UI.ShowError(Text, Alert)
     End Sub
 
+    Public Sub StartCMD(Optional GG As String = "New") Implements OpenFramework_UI_Handler.StartCMD
+        If GG = "NotNew" Then
+            UI.StartCMD()
+        End If
+    End Sub
+
     Public Function GetProgramVersion() As String Implements OpenFramework_UI_Handler.GetProgramVersion
         Return TryController.GetVersion
     End Function
@@ -39,7 +45,7 @@ Public Class OpenFramework_Handler
         Return UI.UserFolder
     End Function
 
-    Public Function GetWebView2Panel() As UserControl Implements OpenFramework_UI_Handler.GetWebView2Panel
-        Return New WebviewUserControl
+    Public Function GetRole() As String Implements OpenFramework_UI_Handler.GetRole
+        Return Form1.GetRole()
     End Function
 End Class

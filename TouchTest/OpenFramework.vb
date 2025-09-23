@@ -27,13 +27,22 @@ Namespace OpenFramework_Data
             Next
         End Sub
 
+        Public AppName As String
+
         Private Sub PluginButton_Click(sender As Object, e As EventArgs)
             Dim btn As Button = CType(sender, Button)
             Dim plugin As OpenFramework_Interface = CType(btn.Tag, OpenFramework_Interface)
 
             Dim frm As Form = plugin.GetForm()
+            If Form1.currentForm IsNot Nothing Then
+                If frm.Text = AppName Then
+                    Exit Sub
+                End If
+            End If
+            AppName = frm.Text
             frm.Text = plugin.Name
             Form1.OpenChildForm(frm)
+
         End Sub
 
 
