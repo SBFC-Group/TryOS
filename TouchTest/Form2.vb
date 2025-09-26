@@ -13,6 +13,8 @@
     End Sub
 
     Private Sub Form2_Load(sender As Object, e As EventArgs)
-
+        Close()
     End Sub
+
+
 End Class

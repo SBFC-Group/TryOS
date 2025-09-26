@@ -86,10 +86,11 @@ Public Class Form1
         Else
             SpotifyButton.Visible = False
         End If
-        If TestingMode = True Then
+
+        Dim regit As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group", "UseOpenFramework", Nothing)
+        If regit = "1" Then
             OpenFramework_Data.OpenFramework.LoadApps()
         End If
-
 
         If TestingMode = True Then
             Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")

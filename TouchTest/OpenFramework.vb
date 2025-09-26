@@ -6,7 +6,10 @@ Namespace OpenFramework_Data
         Dim host As New OpenFramework_Handler()
 
         Public Sub LoadApps()
-            Dim plugins = LoadPlugins(IO.Path.Combine(Application.StartupPath, "Apps"))
+
+
+
+            Dim plugins = LoadPlugins_New()
 
             For Each p In plugins
                 p.Initialize(host)
@@ -45,6 +48,55 @@ Namespace OpenFramework_Data
 
         End Sub
 
+        Public Function LoadPlugins_New() As List(Of OpenFramework_Interface)
+
+            Dim plugins As New List(Of OpenFramework_Interface)()
+
+            Dim dir1 = My.Application.Info.DirectoryPath & "\Apps"
+            Dim files() As System.IO.DirectoryInfo
+            Dim dirinfo As New System.IO.DirectoryInfo(dir1)
+            files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
+            For Each file In files
+
+                Dim Path As String = ""
+
+                Path = file.FullName
+
+                If Not IO.Directory.Exists(Path) Then
+                Else
+                    Dim DllPath As String = ""
+
+                    If My.Computer.FileSystem.FileExists(Path & "\DllPath.txt") = True Then
+                        DllPath = My.Computer.FileSystem.ReadAllText(Path & "\DllPath.txt")
+                    Else
+                        DllPath = Path & "\Main.dll"
+                    End If
+
+
+
+                    'For Each dll In IO.Directory.GetFiles(folder, "*.dll")
+                    Dim asm As Assembly = Assembly.LoadFrom(DllPath)
+
+                    ' Find all types that implement IPluginForm
+                    For Each t In asm.GetTypes()
+                        If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
+                            Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)
+                            plugins.Add(plugin)
+                        End If
+                    Next
+                End If
+
+
+
+
+            Next
+
+            Return plugins
+
+            'Next
+
+
+        End Function
 
         Public Function LoadPlugins(folder As String) As List(Of OpenFramework_Interface)
             Dim plugins As New List(Of OpenFramework_Interface)()
