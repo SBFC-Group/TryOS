@@ -3,31 +3,41 @@ Imports System.Reflection
 
 Namespace OpenFramework_Data
     Module OpenFramework
+
+        Public Function GetOpenFrameworkVersion()
+            Return "0.35.0"
+        End Function
+
         Dim host As New OpenFramework_Handler()
 
         Public Sub LoadApps()
 
+            Try
+                Dim plugins = LoadPlugins_New()
+
+                For Each p In plugins
+                    Debug.WriteLine("Loaded " & p.Name)
+                    p.Initialize(host)
+                    Dim btn As New Button()
+                    'btn.Text = p.Name
+                    btn.BackgroundImage = p.Icon
+                    'btn.TextImageRelation = TextImageRelation.ImageAboveText
+                    btn.FlatStyle = FlatStyle.Flat
+                    btn.FlatAppearance.BorderSize = 0
+                    btn.BackgroundImageLayout = ImageLayout.Stretch
+                    btn.Tag = p
+                    btn.Size = New Size(74, 70)
+                    'btn.AutoSize = True
+                    'btn.AutoSizeMode = AutoSizeMode.GrowAndShrink
+                    'btn.Padding = New Padding(5)
+                    AddHandler btn.Click, AddressOf PluginButton_Click
+                    Form1.FlowLayoutPanel1.Controls.Add(btn)
+                Next
+            Catch ex As Exception
+                UI.ShowError("Is this App updated to this version of OpenFramework.")
+            End Try
 
 
-            Dim plugins = LoadPlugins_New()
-
-            For Each p In plugins
-                p.Initialize(host)
-                Dim btn As New Button()
-                'btn.Text = p.Name
-                btn.BackgroundImage = p.Icon
-                'btn.TextImageRelation = TextImageRelation.ImageAboveText
-                btn.FlatStyle = FlatStyle.Flat
-                btn.FlatAppearance.BorderSize = 0
-                btn.BackgroundImageLayout = ImageLayout.Stretch
-                btn.Tag = p
-                btn.Size = New Size(74, 70)
-                'btn.AutoSize = True
-                'btn.AutoSizeMode = AutoSizeMode.GrowAndShrink
-                'btn.Padding = New Padding(5)
-                AddHandler btn.Click, AddressOf PluginButton_Click
-                Form1.FlowLayoutPanel1.Controls.Add(btn)
-            Next
         End Sub
 
         Public AppName As String

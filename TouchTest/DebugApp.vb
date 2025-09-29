@@ -15,6 +15,10 @@ RunUserControl <usercontrol> - Opens a form that will contain the UserControl"
                 UI.ShowError("Hello World")
             ElseIf RichTextBox1.Text.Contains("TestStopWindow") = True Then
                 UI.ShowStopWindow("Hello World")
+            ElseIf RichTextBox1.Text.Contains("TestThis") = True Then
+                TryOS_Store_Manager.Class1.PackageCreator(My.Application.Info.DirectoryPath & "\Apps\0_Internet++", My.Application.Info.DirectoryPath & "\Internet++.tryapp", "Internet++", TryController.GetVersion, "InternetplusplusLoader.dll")
+            ElseIf RichTextBox1.Text.Contains("TestMe") = True Then
+                TryOS_Store_Manager.Class1.InstallTryOSApp(My.Application.Info.DirectoryPath & "\Internet++.tryapp")
             Else
                 UI.RunCommands(RichTextBox1.Text, Me)
             End If

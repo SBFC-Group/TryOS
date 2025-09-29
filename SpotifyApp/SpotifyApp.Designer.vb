@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form55
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class SpotifyApp
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form55
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
+    <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.WebView21 = New Microsoft.Web.WebView2.WinForms.WebView2()
         CType(Me.WebView21, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -34,21 +34,18 @@ Partial Class Form55
         Me.WebView21.Dock = System.Windows.Forms.DockStyle.Fill
         Me.WebView21.Location = New System.Drawing.Point(0, 0)
         Me.WebView21.Name = "WebView21"
-        Me.WebView21.Size = New System.Drawing.Size(1351, 671)
-        Me.WebView21.Source = New System.Uri("https://app-web-cv.netlify.app/tryos_store/", System.UriKind.Absolute)
-        Me.WebView21.TabIndex = 1
+        Me.WebView21.Size = New System.Drawing.Size(800, 450)
+        Me.WebView21.TabIndex = 0
         Me.WebView21.ZoomFactor = 1.0R
         '
-        'Form55
+        'SpotifyApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.DarkGray
-        Me.ClientSize = New System.Drawing.Size(1351, 671)
+        Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.WebView21)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "Form55"
-        Me.Text = "App Manager"
+        Me.Name = "SpotifyApp"
+        Me.Text = "SpotifyApp"
         CType(Me.WebView21, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

@@ -278,6 +278,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form28.vb" />
+    <Compile Include="Form3.Designer.vb">
+      <DependentUpon>Form3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form40.Designer.vb">
       <DependentUpon>Form40.vb</DependentUpon>
     </Compile>
@@ -578,6 +584,9 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form40.resx">
       <DependentUpon>Form40.vb</DependentUpon>
     </EmbeddedResource>
@@ -820,6 +829,10 @@
     <ProjectReference Include="..\Test\Test.vbproj">
       <Project>{4743f52d-ef37-41ad-a245-76bfebd6f124}</Project>
       <Name>Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TryOS_Store_Manager\TryOS_Store_Manager.vbproj">
+      <Project>{e8b0a93f-e583-4238-b6e0-28cc96c423a2}</Project>
+      <Name>TryOS_Store_Manager</Name>
     </ProjectReference>
     <ProjectReference Include="..\UserController\UserController.vbproj">
       <Project>{052cf78d-5fbf-4716-b55d-d16d92140a18}</Project>

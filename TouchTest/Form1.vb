@@ -245,6 +245,9 @@ Public Class Form1
         Catch ex As Exception
 
         End Try
+
+        OpenFramework_Data.AppName = ""
+
         If IsSettingOpen = True Then
             IsSettingOpen = False
         End If
@@ -978,7 +981,8 @@ Public Class Form1
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        FToL.Show()
+        UI.RunCommands("RunApp Form55")
+        'FToL.Show()
     End Sub
 
     Private Sub InstagramButton_Click(sender As Object, e As EventArgs) Handles InstagramButton.Click
