@@ -5,7 +5,7 @@ Namespace OpenFramework_Data
     Module OpenFramework
 
         Public Function GetOpenFrameworkVersion()
-            Return "0.35.0"
+            Return "0.35.1"
         End Function
 
         Dim host As New OpenFramework_Handler()

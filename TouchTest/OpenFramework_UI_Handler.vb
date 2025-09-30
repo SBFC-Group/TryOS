@@ -9,5 +9,6 @@
     Function GetUsername() As String
     Function GetUserFolder() As String
     Function GetRole() As String
+    Function IsDarkMode() As Boolean
     Sub StartCMD(Optional GG As String = "New")
 End Interface

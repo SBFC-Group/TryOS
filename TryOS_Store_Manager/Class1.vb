@@ -48,7 +48,7 @@ Public Class Class1
 
         Dim ReaderVersion As String = My.Computer.FileSystem.ReadAllText(TempFolder & "\Version.swfiles")
 
-        If My.Application.Info.Version.ToString.Contains(ReaderVersion) Then
+        If ReaderVersion.Contains(My.Application.Info.Version.ToString) Then
         Else
             Exit Function
         End If
@@ -156,5 +156,29 @@ Public Class Class1
         Else
             Return MyNumber
         End If
+    End Function
+
+    Public Shared Function UpdateTryOSApp(FileName As String)
+        Dim TempFolder As String = My.Application.Info.DirectoryPath & "\Temp"
+
+        'Creates the folder "Temp" inside the programs root directory.
+        My.Computer.FileSystem.CreateDirectory(TempFolder)
+
+        IO.Compression.ZipFile.ExtractToDirectory(FileName, TempFolder)
+
+        Dim ReaderVersion As String = My.Computer.FileSystem.ReadAllText(TempFolder & "\Version.swfiles")
+
+        ReaderVersion = ReaderVersion & "
+" & My.Application.Info.Version.ToString
+
+        My.Computer.FileSystem.DeleteFile(TempFolder & "\Version.swfiles")
+
+        My.Computer.FileSystem.WriteAllText(TempFolder & "\Version.swfiles", ReaderVersion, False)
+
+        IO.Compression.ZipFile.CreateFromDirectory(TempFolder, FileName)
+
+        System.Threading.Thread.Sleep(200)
+
+        My.Computer.FileSystem.DeleteDirectory(TempFolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
     End Function
 End Class

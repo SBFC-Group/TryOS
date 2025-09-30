@@ -4,6 +4,10 @@ Public Class TryController
     Private Sub TryController_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim args As String = Environment.CommandLine
 
+        If args.Contains("/InstallApp:") = True Then
+            'Does nothing.
+        End If
+
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\ShellName.setting") Then
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\ShellName.setting")
             'UI.OpenFormByName(Reader)

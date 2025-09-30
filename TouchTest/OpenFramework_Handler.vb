@@ -48,4 +48,14 @@ Public Class OpenFramework_Handler
     Public Function GetRole() As String Implements OpenFramework_UI_Handler.GetRole
         Return Form1.GetRole()
     End Function
+
+    Public Function IsDarkMode() As Boolean Implements OpenFramework_UI_Handler.IsDarkMode
+        If Form1.IsUsingDarkThemeForApps = True Then
+            Return True
+        ElseIf Form1.IsUsingDarkThemeForApps = False Then
+            Return False
+        Else
+            Return False
+        End If
+    End Function
 End Class
