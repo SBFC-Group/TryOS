@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.IO.Compression
+
 Public Class Class1
     Private Number As Int64 = 1
 
@@ -38,7 +39,7 @@ Public Class Class1
         End If
     End Function
 
-    Public Shared Function InstallTryOSApp(FileName As String)
+    Public Shared Function InstallTryOSApp(FileName As String, Optional TryOSVersion As String = "Null")
         Dim TempFolder As String = My.Application.Info.DirectoryPath & "\Temp"
 
         'Creates the folder "Temp" inside the programs root directory.
@@ -46,9 +47,13 @@ Public Class Class1
 
         IO.Compression.ZipFile.ExtractToDirectory(FileName, TempFolder)
 
+        If TryOSVersion = "Null" Then
+            TryOSVersion = My.Application.Info.Version.ToString
+        End If
+
         Dim ReaderVersion As String = My.Computer.FileSystem.ReadAllText(TempFolder & "\Version.swfiles")
 
-        If ReaderVersion.Contains(My.Application.Info.Version.ToString) Then
+        If ReaderVersion.Contains(TryOSVersion) Then
         Else
             Exit Function
         End If
@@ -158,7 +163,7 @@ Public Class Class1
         End If
     End Function
 
-    Public Shared Function UpdateTryOSApp(FileName As String)
+    Public Shared Function UpdateTryOSApp(FileName As String, TryOSVersion As String, Optional HasOpenFrameworkUpdated As Boolean = False)
         Dim TempFolder As String = My.Application.Info.DirectoryPath & "\Temp"
 
         'Creates the folder "Temp" inside the programs root directory.
@@ -167,18 +172,24 @@ Public Class Class1
         IO.Compression.ZipFile.ExtractToDirectory(FileName, TempFolder)
 
         Dim ReaderVersion As String = My.Computer.FileSystem.ReadAllText(TempFolder & "\Version.swfiles")
-
-        ReaderVersion = ReaderVersion & "
-" & My.Application.Info.Version.ToString
+        If HasOpenFrameworkUpdated = True Then
+            ReaderVersion = ReaderVersion & "
+" & TryOSVersion
+        ElseIf HasOpenFrameworkUpdated = False Then
+            ReaderVersion = TryOSVersion
+        End If
 
         My.Computer.FileSystem.DeleteFile(TempFolder & "\Version.swfiles")
 
         My.Computer.FileSystem.WriteAllText(TempFolder & "\Version.swfiles", ReaderVersion, False)
+
+        My.Computer.FileSystem.DeleteFile(FileName)
 
         IO.Compression.ZipFile.CreateFromDirectory(TempFolder, FileName)
 
         System.Threading.Thread.Sleep(200)
 
         My.Computer.FileSystem.DeleteDirectory(TempFolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
+
     End Function
 End Class

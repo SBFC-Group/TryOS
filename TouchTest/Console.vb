@@ -1,6 +1,7 @@
 ﻿Public Class Console
     Private Sub RichTextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles RichTextBox2.KeyDown
         If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
             UI.RunCommands(sender.Text, Me)
         End If
     End Sub
