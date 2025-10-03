@@ -103,7 +103,6 @@ Public Class Form1
             Next
         End If
 
-
     End Sub
 
     Private TestingMode As Boolean = True

@@ -1,5 +1,6 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
+Imports System.Drawing
 
 Public Class Form15
     Public opened As String = "0"
@@ -170,6 +171,31 @@ Public Class Form15
         TToolStripMenuItem.Visible = False
     End Sub
 
+    'If Dark = True Then
+    '    ColorMode = "Dark"
+    '    Panel1.BackColor = Color.DimGray
+    '    Panel2.BackColor = Color.Gray
+    '    Button1.BackColor = Color.DarkGray
+    '    Button2.BackColor = Color.DarkGray
+    '    Button3.BackColor = Color.DarkGray
+    '    Button4.BackColor = Color.DarkGray
+    '    Button5.BackColor = Color.DarkGray
+    '    Button6.BackColor = Color.DarkGray
+    '    Button7.BackColor = Color.DarkGray
+    '    Button8.BackColor = Color.DarkGray
+    'ElseIf Dark = False Then
+    '    ColorMode = "Normal"
+    '    Panel1.BackColor = Color.Silver
+    '    Panel2.BackColor = Color.DarkGray
+    '    Button1.BackColor = Color.Gainsboro
+    '    Button2.BackColor = Color.Gainsboro
+    '    Button3.BackColor = Color.Gainsboro
+    '    Button4.BackColor = Color.Gainsboro
+    '    Button5.BackColor = Color.Gainsboro
+    '    Button6.BackColor = Color.Gainsboro
+    '    Button7.BackColor = Color.Gainsboro
+    '    Button8.BackColor = Color.Gainsboro
+    'End If
 
     Public Path As String
     Private Sub Form15_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -184,6 +210,18 @@ Public Class Form15
         'SettingsToolStripMenuItem.Enabled = False
         'End If
         'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath + "\Users\" & Form1.Username & "\Apps\QuickNotes.swfiles") Then
+        If Class1._host.IsDarkMode() = True Then
+            TextBox1.BackColor = Color.DarkGray
+            Panel5.BackColor = Color.Silver
+            Windowborder1.BackColor = Color.Gray
+            Windowborder2.BackColor = Color.Gray
+            Panel6.BackColor = Color.Gray
+            Panel7.BackColor = Color.Gray
+
+            NewNoteButton.BackColor = Color.LightGray
+            OpenNoteButton.BackColor = Color.LightGray
+        End If
+
         RemoveUnusedParts()
         'Else
         'Close()
