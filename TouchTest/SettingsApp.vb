@@ -7,6 +7,7 @@
     Public UserPanel As New UserSettingsApp
     Public AdminPanel As New AdminSettings
     Public DeviceInfoPanel As New DeviceInto
+    Public AppsPanel As New AppsApp
 
     Public RoleLevel As TryController.Roles = Form1.GetRole()
 
@@ -18,6 +19,7 @@
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(AdminPanel)
         Panel2.Controls.Remove(DeviceInfoPanel)
+        Panel2.Controls.Remove(AppsPanel)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -28,6 +30,7 @@
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(AdminPanel)
         Panel2.Controls.Remove(DeviceInfoPanel)
+        Panel2.Controls.Remove(AppsPanel)
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -38,6 +41,7 @@
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(AdminPanel)
         Panel2.Controls.Remove(DeviceInfoPanel)
+        Panel2.Controls.Remove(AppsPanel)
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -58,6 +62,7 @@
         Panel2.Controls.Remove(UserPanel)
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(DeviceInfoPanel)
+        Panel2.Controls.Remove(AppsPanel)
         'MsgBox("This Settings Page doesn't exist yet.", MsgBoxStyle.Information, "TryOS")
     End Sub
 
@@ -68,6 +73,7 @@
         Panel2.Controls.Remove(InfoPanel)
         Panel2.Controls.Remove(UserPanel)
         Panel2.Controls.Remove(AdminPanel)
+        Panel2.Controls.Remove(AppsPanel)
     End Sub
 
     Private IsHasChanged As Boolean = False
@@ -120,20 +126,27 @@
         Dim ShowButton7 As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group", "ShowDeviceInfoPage", Nothing)
         If ShowButton7 = "True" Then
             Button7.Visible = True
+            Button7.Enabled = True
         ElseIf ShowButton7 = "False" Then
             Button7.Visible = False
+            Button7.Enabled = False
         ElseIf ShowButton7 = "1" Then
             Button7.Visible = True
+            Button7.Enabled = True
         ElseIf ShowButton7 = "0" Then
             Button7.Visible = False
+            Button7.Enabled = False
         Else
             Button7.Visible = False
+            Button7.Enabled = False
         End If
 
         If Environment.CommandLine.Contains("/DevMode") = True Then
             Button8.Visible = True
+            Button9.Visible = True
         Else
             Button8.Visible = False
+            Button9.Visible = False
         End If
     End Sub
 
@@ -145,9 +158,22 @@
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(AdminPanel)
         Panel2.Controls.Add(DeviceInfoPanel)
+        Panel2.Controls.Remove(AppsPanel)
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         Form1.LogOut()
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        Panel2.Controls.Add(AppsPanel)
+        AppsPanel.Dock = DockStyle.Fill
+        Panel2.Controls.Remove(ThemePanel)
+        Panel2.Controls.Remove(InfoPanel)
+        Panel2.Controls.Remove(UpdatePanel)
+        Panel2.Controls.Remove(AdminPanel)
+        Panel2.Controls.Remove(DeviceInfoPanel)
+        Panel2.Controls.Remove(UserPanel)
+
     End Sub
 End Class

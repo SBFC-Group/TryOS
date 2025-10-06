@@ -46,6 +46,8 @@ Public Class Form1
 
         UserManager.LoadWallpaperFromUserSettings()
 
+
+
         If IsUsingDarkThemeForPrograms = True Then
             Panel2.BackColor = Color.FromArgb(55, Color.Gray)
             TimebarPanel.BackColor = Color.FromArgb(55, Color.Gray)
@@ -55,42 +57,44 @@ Public Class Form1
         End If
 
 
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\Internet++.swfiles") Then
+        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\Internet++.swfiles") Then
 
-            InternetPlusPlus.Visible = True
-        Else
-            InternetPlusPlus.Visible = False
-        End If
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\QuickNotes.swfiles") Then
-            QuickNotes.Visible = True
-        Else
-            QuickNotes.Visible = False
-        End If
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\YoutubeApp.swfiles") Then
-            YoutubeButton.Visible = True
-        Else
-            YoutubeButton.Visible = False
-        End If
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\InstagramApp.swfiles") Then
-            InstagramButton.Visible = True
-        Else
-            InstagramButton.Visible = False
-        End If
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\FacebookApp.swfiles") Then
-            FacebookButton.Visible = True
-        Else
-            FacebookButton.Visible = False
-        End If
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\SpotifyApp.swfiles") Then
-            SpotifyButton.Visible = True
-        Else
-            SpotifyButton.Visible = False
-        End If
+        '    InternetPlusPlus.Visible = True
+        'Else
+        '    InternetPlusPlus.Visible = False
+        'End If
+        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\QuickNotes.swfiles") Then
+        '    QuickNotes.Visible = True
+        'Else
+        '    QuickNotes.Visible = False
+        'End If
+        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\YoutubeApp.swfiles") Then
+        '    YoutubeButton.Visible = True
+        'Else
+        '    YoutubeButton.Visible = False
+        'End If
+        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\InstagramApp.swfiles") Then
+        '    InstagramButton.Visible = True
+        'Else
+        '    InstagramButton.Visible = False
+        'End If
+        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\FacebookApp.swfiles") Then
+        '    FacebookButton.Visible = True
+        'Else
+        '    FacebookButton.Visible = False
+        'End If
+        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\SpotifyApp.swfiles") Then
+        '    SpotifyButton.Visible = True
+        'Else
+        '    SpotifyButton.Visible = False
+        'End If
 
         Dim regit As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group", "UseOpenFramework", Nothing)
         If regit = "1" Then
             OpenFramework_Data.OpenFramework.LoadApps()
         End If
+
+        UserManager.LoadTaskbarButtons()
 
         If TestingMode = True Then
             Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")
@@ -295,36 +299,36 @@ Public Class Form1
         'Label1.Text = Username
         'Label2.Text = Password
 
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\Internet++.swfiles") Then
-            InternetPlusPlus.Visible = True
-        Else
-            InternetPlusPlus.Visible = False
-        End If
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\QuickNotes.swfiles") Then
-            QuickNotes.Visible = True
-        Else
-            QuickNotes.Visible = False
-        End If
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\YoutubeApp.swfiles") Then
-            YoutubeButton.Visible = True
-        Else
-            YoutubeButton.Visible = False
-        End If
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\InstagramApp.swfiles") Then
-            InstagramButton.Visible = True
-        Else
-            InstagramButton.Visible = False
-        End If
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\FacebookApp.swfiles") Then
-            FacebookButton.Visible = True
-        Else
-            FacebookButton.Visible = False
-        End If
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\SpotifyApp.swfiles") Then
-            SpotifyButton.Visible = True
-        Else
-            SpotifyButton.Visible = False
-        End If
+        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\Internet++.swfiles") Then
+        '    InternetPlusPlus.Visible = True
+        'Else
+        '    InternetPlusPlus.Visible = False
+        'End If
+        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\QuickNotes.swfiles") Then
+        '    QuickNotes.Visible = True
+        'Else
+        '    QuickNotes.Visible = False
+        'End If
+        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\YoutubeApp.swfiles") Then
+        '    YoutubeButton.Visible = True
+        'Else
+        '    YoutubeButton.Visible = False
+        'End If
+        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\InstagramApp.swfiles") Then
+        '    InstagramButton.Visible = True
+        'Else
+        '    InstagramButton.Visible = False
+        'End If
+        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\FacebookApp.swfiles") Then
+        '    FacebookButton.Visible = True
+        'Else
+        '    FacebookButton.Visible = False
+        'End If
+        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\SpotifyApp.swfiles") Then
+        '    SpotifyButton.Visible = True
+        'Else
+        '    SpotifyButton.Visible = False
+        'End If
 
 
     End Sub
@@ -1003,5 +1007,9 @@ Public Class Form1
             Commander.ShowIcon = True
             Commander.ShowInTaskbar = True
         End If
+    End Sub
+
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        OpenFramework_Data.SaveButtonOrder()
     End Sub
 End Class

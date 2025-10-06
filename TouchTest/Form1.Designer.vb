@@ -64,10 +64,10 @@ Partial Class Form1
         Me.InternetList = New System.Windows.Forms.ImageList(Me.components)
         Me.PowerList = New System.Windows.Forms.ImageList(Me.components)
         Me.Panel1.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.TimebarPanel.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
-        Me.FlowLayoutPanel1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -101,6 +101,12 @@ Partial Class Form1
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.Transparent
+        Me.Panel3.Controls.Add(Me.InternetPlusPlus)
+        Me.Panel3.Controls.Add(Me.QuickNotes)
+        Me.Panel3.Controls.Add(Me.SpotifyButton)
+        Me.Panel3.Controls.Add(Me.YoutubeButton)
+        Me.Panel3.Controls.Add(Me.FacebookButton)
+        Me.Panel3.Controls.Add(Me.InstagramButton)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 36)
         Me.Panel3.Name = "Panel3"
@@ -236,12 +242,6 @@ Partial Class Form1
         '
         'FlowLayoutPanel1
         '
-        Me.FlowLayoutPanel1.Controls.Add(Me.InternetPlusPlus)
-        Me.FlowLayoutPanel1.Controls.Add(Me.QuickNotes)
-        Me.FlowLayoutPanel1.Controls.Add(Me.YoutubeButton)
-        Me.FlowLayoutPanel1.Controls.Add(Me.InstagramButton)
-        Me.FlowLayoutPanel1.Controls.Add(Me.FacebookButton)
-        Me.FlowLayoutPanel1.Controls.Add(Me.SpotifyButton)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
@@ -255,11 +255,12 @@ Partial Class Form1
         Me.InternetPlusPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.InternetPlusPlus.FlatAppearance.BorderSize = 0
         Me.InternetPlusPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.InternetPlusPlus.Location = New System.Drawing.Point(3, 3)
+        Me.InternetPlusPlus.Location = New System.Drawing.Point(3, 665)
         Me.InternetPlusPlus.Name = "InternetPlusPlus"
         Me.InternetPlusPlus.Size = New System.Drawing.Size(74, 70)
         Me.InternetPlusPlus.TabIndex = 3
         Me.InternetPlusPlus.UseVisualStyleBackColor = False
+        Me.InternetPlusPlus.Visible = False
         '
         'QuickNotes
         '
@@ -268,11 +269,12 @@ Partial Class Form1
         Me.QuickNotes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.QuickNotes.FlatAppearance.BorderSize = 0
         Me.QuickNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.QuickNotes.Location = New System.Drawing.Point(83, 3)
+        Me.QuickNotes.Location = New System.Drawing.Point(83, 665)
         Me.QuickNotes.Name = "QuickNotes"
         Me.QuickNotes.Size = New System.Drawing.Size(74, 70)
         Me.QuickNotes.TabIndex = 4
         Me.QuickNotes.UseVisualStyleBackColor = False
+        Me.QuickNotes.Visible = False
         '
         'YoutubeButton
         '
@@ -281,11 +283,12 @@ Partial Class Form1
         Me.YoutubeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.YoutubeButton.FlatAppearance.BorderSize = 0
         Me.YoutubeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.YoutubeButton.Location = New System.Drawing.Point(163, 3)
+        Me.YoutubeButton.Location = New System.Drawing.Point(163, 665)
         Me.YoutubeButton.Name = "YoutubeButton"
         Me.YoutubeButton.Size = New System.Drawing.Size(74, 70)
         Me.YoutubeButton.TabIndex = 5
         Me.YoutubeButton.UseVisualStyleBackColor = False
+        Me.YoutubeButton.Visible = False
         '
         'InstagramButton
         '
@@ -294,11 +297,12 @@ Partial Class Form1
         Me.InstagramButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.InstagramButton.FlatAppearance.BorderSize = 0
         Me.InstagramButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.InstagramButton.Location = New System.Drawing.Point(243, 3)
+        Me.InstagramButton.Location = New System.Drawing.Point(243, 665)
         Me.InstagramButton.Name = "InstagramButton"
         Me.InstagramButton.Size = New System.Drawing.Size(74, 70)
         Me.InstagramButton.TabIndex = 6
         Me.InstagramButton.UseVisualStyleBackColor = False
+        Me.InstagramButton.Visible = False
         '
         'FacebookButton
         '
@@ -307,11 +311,12 @@ Partial Class Form1
         Me.FacebookButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.FacebookButton.FlatAppearance.BorderSize = 0
         Me.FacebookButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.FacebookButton.Location = New System.Drawing.Point(323, 3)
+        Me.FacebookButton.Location = New System.Drawing.Point(323, 665)
         Me.FacebookButton.Name = "FacebookButton"
         Me.FacebookButton.Size = New System.Drawing.Size(74, 70)
         Me.FacebookButton.TabIndex = 7
         Me.FacebookButton.UseVisualStyleBackColor = False
+        Me.FacebookButton.Visible = False
         '
         'SpotifyButton
         '
@@ -320,11 +325,12 @@ Partial Class Form1
         Me.SpotifyButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.SpotifyButton.FlatAppearance.BorderSize = 0
         Me.SpotifyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.SpotifyButton.Location = New System.Drawing.Point(403, 3)
+        Me.SpotifyButton.Location = New System.Drawing.Point(403, 665)
         Me.SpotifyButton.Name = "SpotifyButton"
         Me.SpotifyButton.Size = New System.Drawing.Size(74, 70)
         Me.SpotifyButton.TabIndex = 8
         Me.SpotifyButton.UseVisualStyleBackColor = False
+        Me.SpotifyButton.Visible = False
         '
         'Button3
         '
@@ -486,11 +492,11 @@ Partial Class Form1
         Me.Text = "MainForm"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
         Me.TimebarPanel.ResumeLayout(False)
         Me.TimebarPanel.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
-        Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)

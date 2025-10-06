@@ -58,6 +58,39 @@ Namespace OpenFramework_Data
 
         End Sub
 
+        Public Sub SaveButtonOrder()
+            Dim order As New List(Of String)
+            For Each ctrl As Control In Form1.FlowLayoutPanel1.Controls
+                order.Add(ctrl.Tag.ToString())
+            Next
+            IO.File.WriteAllText("button_order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
+        End Sub
+
+        Public Sub RestoreButtonOrder()
+            Dim path As String = "button_order.json"
+            If IO.File.Exists(path) Then
+                Dim order = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of String))(IO.File.ReadAllText(path))
+                Dim sortedButtons As New List(Of Control)
+
+                For Each id In order
+                    Dim match = Form1.FlowLayoutPanel1.Controls.Cast(Of Control)().FirstOrDefault(Function(c) c.Tag.ToString() = id)
+                    If match IsNot Nothing Then
+                        sortedButtons.Add(match)
+                    End If
+                Next
+
+                ' Add any new buttons not in saved list
+                For Each c In Form1.FlowLayoutPanel1.Controls.Cast(Of Control)()
+                    If Not sortedButtons.Contains(c) Then
+                        sortedButtons.Add(c)
+                    End If
+                Next
+
+                Form1.FlowLayoutPanel1.Controls.Clear()
+                Form1.FlowLayoutPanel1.Controls.AddRange(sortedButtons.ToArray())
+            End If
+        End Sub
+
         Public Function LoadPlugins_New() As List(Of OpenFramework_Interface)
 
             Dim plugins As New List(Of OpenFramework_Interface)()
@@ -75,29 +108,41 @@ Namespace OpenFramework_Data
                 If Not IO.Directory.Exists(Path) Then
                 Else
                     Dim DllPath As String = ""
+                    Dim ContinueThis As Boolean = False
 
                     If My.Computer.FileSystem.FileExists(Path & "\DllPath.txt") = True Then
                         DllPath = My.Computer.FileSystem.ReadAllText(Path & "\DllPath.txt")
+                        If My.Computer.FileSystem.FileExists(DllPath) = True Then
+                            ContinueThis = True
+                        Else
+                            UI.ShowError("Can't find this app due to no existing dll to load.")
+                            ContinueThis = False
+                        End If
                     Else
-                        DllPath = Path & "\Main.dll"
+                        If My.Computer.FileSystem.FileExists(Path & "\Main.dll") = True Then
+                            DllPath = Path & "\Main.dll"
+                            ContinueThis = True
+                        Else
+                            UI.ShowError("Can't find this app due to no existing dll to load.")
+                            ContinueThis = False
+                        End If
+
                     End If
 
 
+                    If ContinueThis = True Then
+                        'For Each dll In IO.Directory.GetFiles(folder, "*.dll")
+                        Dim asm As Assembly = Assembly.LoadFrom(DllPath)
 
-                    'For Each dll In IO.Directory.GetFiles(folder, "*.dll")
-                    Dim asm As Assembly = Assembly.LoadFrom(DllPath)
-
-                    ' Find all types that implement IPluginForm
-                    For Each t In asm.GetTypes()
-                        If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
-                            Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)
-                            plugins.Add(plugin)
-                        End If
-                    Next
+                        ' Find all types that implement IPluginForm
+                        For Each t In asm.GetTypes()
+                            If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
+                                Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)
+                                plugins.Add(plugin)
+                            End If
+                        Next
+                    End If
                 End If
-
-
-
 
             Next
 

@@ -33,10 +33,11 @@ Partial Class SettingsApp
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button9 = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button8 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,6 +63,7 @@ Partial Class SettingsApp
         Me.FlowLayoutPanel1.Controls.Add(Me.Button2)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button3)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button6)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button9)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button5)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button7)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button4)
@@ -103,7 +105,7 @@ Partial Class SettingsApp
         Me.Button3.Location = New System.Drawing.Point(3, 155)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(250, 70)
-        Me.Button3.TabIndex = 3
+        Me.Button3.TabIndex = 2
         Me.Button3.Text = "User System"
         Me.Button3.UseVisualStyleBackColor = False
         '
@@ -115,7 +117,7 @@ Partial Class SettingsApp
         Me.Button6.Location = New System.Drawing.Point(3, 231)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(250, 70)
-        Me.Button6.TabIndex = 6
+        Me.Button6.TabIndex = 3
         Me.Button6.Text = "TryOS Update"
         Me.Button6.UseVisualStyleBackColor = False
         '
@@ -124,7 +126,7 @@ Partial Class SettingsApp
         Me.Button5.BackColor = System.Drawing.Color.Gainsboro
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.Location = New System.Drawing.Point(3, 307)
+        Me.Button5.Location = New System.Drawing.Point(3, 383)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(250, 70)
         Me.Button5.TabIndex = 5
@@ -136,10 +138,10 @@ Partial Class SettingsApp
         Me.Button7.BackColor = System.Drawing.Color.Gainsboro
         Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button7.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.Location = New System.Drawing.Point(3, 383)
+        Me.Button7.Location = New System.Drawing.Point(3, 459)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(250, 70)
-        Me.Button7.TabIndex = 4
+        Me.Button7.TabIndex = 6
         Me.Button7.Text = "Device Info"
         Me.Button7.UseVisualStyleBackColor = False
         '
@@ -148,12 +150,36 @@ Partial Class SettingsApp
         Me.Button4.BackColor = System.Drawing.Color.Gainsboro
         Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button4.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(3, 459)
+        Me.Button4.Location = New System.Drawing.Point(3, 535)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(250, 70)
-        Me.Button4.TabIndex = 5
+        Me.Button4.TabIndex = 7
         Me.Button4.Text = "Close Program"
         Me.Button4.UseVisualStyleBackColor = False
+        '
+        'Button8
+        '
+        Me.Button8.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button8.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button8.Location = New System.Drawing.Point(3, 611)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(250, 70)
+        Me.Button8.TabIndex = 8
+        Me.Button8.Text = "Log Out"
+        Me.Button8.UseVisualStyleBackColor = False
+        '
+        'Button9
+        '
+        Me.Button9.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button9.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button9.Location = New System.Drawing.Point(3, 307)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(250, 70)
+        Me.Button9.TabIndex = 4
+        Me.Button9.Text = "Apps"
+        Me.Button9.UseVisualStyleBackColor = False
         '
         'PictureBox1
         '
@@ -177,18 +203,6 @@ Partial Class SettingsApp
         'Timer1
         '
         Me.Timer1.Enabled = True
-        '
-        'Button8
-        '
-        Me.Button8.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button8.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button8.Location = New System.Drawing.Point(3, 535)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(250, 70)
-        Me.Button8.TabIndex = 7
-        Me.Button8.Text = "Log Out"
-        Me.Button8.UseVisualStyleBackColor = False
         '
         'SettingsApp
         '
@@ -218,4 +232,5 @@ Partial Class SettingsApp
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Button7 As Button
     Friend WithEvents Button8 As Button
+    Friend WithEvents Button9 As Button
 End Class

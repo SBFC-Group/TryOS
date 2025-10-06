@@ -53,4 +53,8 @@
         'Form1.Panel2.BackColor = Color.FromArgb(55, Color.Silver)
         'Form1.TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
     End Sub
+
+    Public Shared Sub LoadTaskbarButtons()
+        OpenFramework_Data.RestoreButtonOrder()
+    End Sub
 End Class
