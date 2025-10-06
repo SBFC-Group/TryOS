@@ -5,7 +5,7 @@ Namespace OpenFramework_Data
     Module OpenFramework
 
         Public Function GetOpenFrameworkVersion()
-            Return "0.35.1"
+            Return "0.35.2"
         End Function
 
         Dim host As New OpenFramework_Handler()
@@ -34,7 +34,7 @@ Namespace OpenFramework_Data
                     Form1.FlowLayoutPanel1.Controls.Add(btn)
                 Next
             Catch ex As Exception
-                UI.ShowError("Is this App updated to this version of OpenFramework.")
+                UI.ShowError("Did my OpenFramework fix not work?")
             End Try
 
 
@@ -58,36 +58,46 @@ Namespace OpenFramework_Data
 
         End Sub
 
-        Public Sub SaveButtonOrder()
+        Public Sub SaveButtonOrder(Optional AllowCustom As Boolean = False, Optional ControlThing As Control = Nothing)
             Dim order As New List(Of String)
-            For Each ctrl As Control In Form1.FlowLayoutPanel1.Controls
-                order.Add(ctrl.Tag.ToString())
-            Next
-            IO.File.WriteAllText("button_order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
+            If AllowCustom = True Then
+                For Each ctrl As Control In ControlThing.Controls
+                    order.Add(ctrl.Tag.ToString())
+                Next
+            Else
+                For Each ctrl As Control In Form1.FlowLayoutPanel1.Controls
+                    order.Add(ctrl.Tag.ToString())
+                Next
+            End If
+            IO.File.WriteAllText(UI.UserFolder & "\Settings\Taskbar_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
         End Sub
 
-        Public Sub RestoreButtonOrder()
-            Dim path As String = "button_order.json"
+        Public Sub RestoreButtonOrder(Optional AllowCustom As Boolean = False, Optional ControlThing As Control = Nothing)
+            If AllowCustom = False Then
+                ControlThing = Form1.FlowLayoutPanel1
+            End If
+
+            Dim path As String = UI.UserFolder & "\Settings\Taskbar_Order.json"
             If IO.File.Exists(path) Then
                 Dim order = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of String))(IO.File.ReadAllText(path))
                 Dim sortedButtons As New List(Of Control)
 
                 For Each id In order
-                    Dim match = Form1.FlowLayoutPanel1.Controls.Cast(Of Control)().FirstOrDefault(Function(c) c.Tag.ToString() = id)
+                    Dim match = ControlThing.Controls.Cast(Of Control)().FirstOrDefault(Function(c) c.Tag.ToString() = id)
                     If match IsNot Nothing Then
                         sortedButtons.Add(match)
                     End If
                 Next
 
                 ' Add any new buttons not in saved list
-                For Each c In Form1.FlowLayoutPanel1.Controls.Cast(Of Control)()
+                For Each c In ControlThing.Controls.Cast(Of Control)()
                     If Not sortedButtons.Contains(c) Then
                         sortedButtons.Add(c)
                     End If
                 Next
 
-                Form1.FlowLayoutPanel1.Controls.Clear()
-                Form1.FlowLayoutPanel1.Controls.AddRange(sortedButtons.ToArray())
+                ControlThing.Controls.Clear()
+                ControlThing.Controls.AddRange(sortedButtons.ToArray())
             End If
         End Sub
 
@@ -134,7 +144,7 @@ Namespace OpenFramework_Data
                         'For Each dll In IO.Directory.GetFiles(folder, "*.dll")
                         Dim asm As Assembly = Assembly.LoadFrom(DllPath)
 
-                        ' Find all types that implement IPluginForm
+                        ' Find all types that implement OpenFramework_Interface
                         For Each t In asm.GetTypes()
                             If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
                                 Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)

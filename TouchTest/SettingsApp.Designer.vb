@@ -30,11 +30,11 @@ Partial Class SettingsApp
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button9 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -121,6 +121,18 @@ Partial Class SettingsApp
         Me.Button6.Text = "TryOS Update"
         Me.Button6.UseVisualStyleBackColor = False
         '
+        'Button9
+        '
+        Me.Button9.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button9.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button9.Location = New System.Drawing.Point(3, 307)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(250, 70)
+        Me.Button9.TabIndex = 4
+        Me.Button9.Text = "Taskbar Order"
+        Me.Button9.UseVisualStyleBackColor = False
+        '
         'Button5
         '
         Me.Button5.BackColor = System.Drawing.Color.Gainsboro
@@ -168,18 +180,6 @@ Partial Class SettingsApp
         Me.Button8.TabIndex = 8
         Me.Button8.Text = "Log Out"
         Me.Button8.UseVisualStyleBackColor = False
-        '
-        'Button9
-        '
-        Me.Button9.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button9.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button9.Location = New System.Drawing.Point(3, 307)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(250, 70)
-        Me.Button9.TabIndex = 4
-        Me.Button9.Text = "Apps"
-        Me.Button9.UseVisualStyleBackColor = False
         '
         'PictureBox1
         '

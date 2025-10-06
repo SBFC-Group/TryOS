@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class AppsApp
+Partial Class TaskbarOrderApp
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
@@ -23,10 +23,9 @@ Partial Class AppsApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AppsApp))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TaskbarOrderApp))
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -44,22 +43,11 @@ Partial Class AppsApp
         '
         'FlowLayoutPanel1
         '
+        Me.FlowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 3)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(783, 74)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(805, 74)
         Me.FlowLayoutPanel1.TabIndex = 1
-        '
-        'Button4
-        '
-        Me.Button4.BackColor = System.Drawing.Color.LightGray
-        Me.Button4.BackgroundImage = CType(resources.GetObject("Button4.BackgroundImage"), System.Drawing.Image)
-        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Location = New System.Drawing.Point(714, 258)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(72, 70)
-        Me.Button4.TabIndex = 12
-        Me.Button4.UseVisualStyleBackColor = False
         '
         'Button5
         '
@@ -114,17 +102,18 @@ Partial Class AppsApp
         '
         'PictureBox1
         '
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PictureBox1.Location = New System.Drawing.Point(161, 83)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(73, 77)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 16
         Me.PictureBox1.TabStop = False
         '
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button1.Enabled = False
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(240, 83)
@@ -142,7 +131,6 @@ Partial Class AppsApp
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Name = "AppsApp"
         Me.Size = New System.Drawing.Size(993, 646)
@@ -155,7 +143,6 @@ Partial Class AppsApp
 
     Friend WithEvents Timer1 As Timer
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
-    Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel

@@ -21,6 +21,10 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "InternetplusplusLoader", "I
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TryOS_Store_Manager", "TryOS_Store_Manager\TryOS_Store_Manager.vbproj", "{E8B0A93F-E583-4238-B6E0-28CC96C423A2}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TryOS_Store_Loader", "TryOS_Store_Loader\TryOS_Store_Loader.vbproj", "{F392DAFB-A731-40B6-924A-7F74CE3A4345}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FacebookApp", "ClassLibrary1\FacebookApp.vbproj", "{65F084F3-F451-4E7F-AC0A-BD0573377514}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{E8B0A93F-E583-4238-B6E0-28CC96C423A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8B0A93F-E583-4238-B6E0-28CC96C423A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8B0A93F-E583-4238-B6E0-28CC96C423A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F392DAFB-A731-40B6-924A-7F74CE3A4345}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F392DAFB-A731-40B6-924A-7F74CE3A4345}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F392DAFB-A731-40B6-924A-7F74CE3A4345}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F392DAFB-A731-40B6-924A-7F74CE3A4345}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65F084F3-F451-4E7F-AC0A-BD0573377514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65F084F3-F451-4E7F-AC0A-BD0573377514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65F084F3-F451-4E7F-AC0A-BD0573377514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65F084F3-F451-4E7F-AC0A-BD0573377514}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,7 +7,7 @@
     Public UserPanel As New UserSettingsApp
     Public AdminPanel As New AdminSettings
     Public DeviceInfoPanel As New DeviceInto
-    Public AppsPanel As New AppsApp
+    Public TaskbarOrderPanel As New TaskbarOrderApp
 
     Public RoleLevel As TryController.Roles = Form1.GetRole()
 
@@ -19,7 +19,7 @@
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(AdminPanel)
         Panel2.Controls.Remove(DeviceInfoPanel)
-        Panel2.Controls.Remove(AppsPanel)
+        Panel2.Controls.Remove(TaskbarOrderPanel)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -30,7 +30,7 @@
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(AdminPanel)
         Panel2.Controls.Remove(DeviceInfoPanel)
-        Panel2.Controls.Remove(AppsPanel)
+        Panel2.Controls.Remove(TaskbarOrderPanel)
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -41,7 +41,7 @@
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(AdminPanel)
         Panel2.Controls.Remove(DeviceInfoPanel)
-        Panel2.Controls.Remove(AppsPanel)
+        Panel2.Controls.Remove(TaskbarOrderPanel)
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -62,7 +62,7 @@
         Panel2.Controls.Remove(UserPanel)
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(DeviceInfoPanel)
-        Panel2.Controls.Remove(AppsPanel)
+        Panel2.Controls.Remove(TaskbarOrderPanel)
         'MsgBox("This Settings Page doesn't exist yet.", MsgBoxStyle.Information, "TryOS")
     End Sub
 
@@ -73,7 +73,8 @@
         Panel2.Controls.Remove(InfoPanel)
         Panel2.Controls.Remove(UserPanel)
         Panel2.Controls.Remove(AdminPanel)
-        Panel2.Controls.Remove(AppsPanel)
+        Panel2.Controls.Remove(DeviceInfoPanel)
+        Panel2.Controls.Remove(TaskbarOrderPanel)
     End Sub
 
     Private IsHasChanged As Boolean = False
@@ -105,6 +106,7 @@
             Button6.BackColor = Color.DarkGray
             Button7.BackColor = Color.DarkGray
             Button8.BackColor = Color.DarkGray
+            Button9.BackColor = Color.DarkGray
         ElseIf Dark = False Then
             ColorMode = "Normal"
             Panel1.BackColor = Color.Silver
@@ -117,6 +119,7 @@
             Button6.BackColor = Color.Gainsboro
             Button7.BackColor = Color.Gainsboro
             Button8.BackColor = Color.Gainsboro
+            Button9.BackColor = Color.Gainsboro
         End If
     End Sub
 
@@ -158,7 +161,7 @@
         Panel2.Controls.Remove(UpdatePanel)
         Panel2.Controls.Remove(AdminPanel)
         Panel2.Controls.Add(DeviceInfoPanel)
-        Panel2.Controls.Remove(AppsPanel)
+        Panel2.Controls.Remove(TaskbarOrderPanel)
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
@@ -166,8 +169,8 @@
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
-        Panel2.Controls.Add(AppsPanel)
-        AppsPanel.Dock = DockStyle.Fill
+        Panel2.Controls.Add(TaskbarOrderPanel)
+        TaskbarOrderPanel.Dock = DockStyle.Fill
         Panel2.Controls.Remove(ThemePanel)
         Panel2.Controls.Remove(InfoPanel)
         Panel2.Controls.Remove(UpdatePanel)

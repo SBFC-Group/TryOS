@@ -187,10 +187,10 @@
     <Compile Include="AppRunner.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AppsApp.Designer.vb">
-      <DependentUpon>AppsApp.vb</DependentUpon>
+    <Compile Include="TaskbarOrderApp.Designer.vb">
+      <DependentUpon>TaskbarOrderApp.vb</DependentUpon>
     </Compile>
-    <Compile Include="AppsApp.vb">
+    <Compile Include="TaskbarOrderApp.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Commander.Designer.vb">
@@ -546,8 +546,8 @@
     <EmbeddedResource Include="AppRunner.resx">
       <DependentUpon>AppRunner.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AppsApp.resx">
-      <DependentUpon>AppsApp.vb</DependentUpon>
+    <EmbeddedResource Include="TaskbarOrderApp.resx">
+      <DependentUpon>TaskbarOrderApp.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Commander.resx">
       <DependentUpon>Commander.vb</DependentUpon>

@@ -5,7 +5,7 @@ Public Class TryController
         Dim args As String = Environment.CommandLine
 
         If args.Contains("/InstallApp:") = True Then
-            'Does nothing.
+            'Does nothing right now.
         End If
 
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\ShellName.setting") Then

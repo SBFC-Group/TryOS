@@ -6,10 +6,10 @@
 
     Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
         If e.IsSuccess Then
-            WebView21.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = False
             Dim UserRole As TryController.Roles = Form1.GetRole()
             If UserRole = TryController.Roles.Developer Then
             Else
+                WebView21.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = False
                 WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
                 WebView21.CoreWebView2.Settings.AreDefaultContextMenusEnabled = False
             End If

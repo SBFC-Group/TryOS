@@ -27,6 +27,12 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.InternetPlusPlus = New System.Windows.Forms.Button()
+        Me.QuickNotes = New System.Windows.Forms.Button()
+        Me.SpotifyButton = New System.Windows.Forms.Button()
+        Me.YoutubeButton = New System.Windows.Forms.Button()
+        Me.FacebookButton = New System.Windows.Forms.Button()
+        Me.InstagramButton = New System.Windows.Forms.Button()
         Me.TimebarPanel = New System.Windows.Forms.Panel()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -38,12 +44,6 @@ Partial Class Form1
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.InternetPlusPlus = New System.Windows.Forms.Button()
-        Me.QuickNotes = New System.Windows.Forms.Button()
-        Me.YoutubeButton = New System.Windows.Forms.Button()
-        Me.InstagramButton = New System.Windows.Forms.Button()
-        Me.FacebookButton = New System.Windows.Forms.Button()
-        Me.SpotifyButton = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -113,6 +113,90 @@ Partial Class Form1
         Me.Panel3.Size = New System.Drawing.Size(1243, 741)
         Me.Panel3.TabIndex = 2
         '
+        'InternetPlusPlus
+        '
+        Me.InternetPlusPlus.BackColor = System.Drawing.Color.Transparent
+        Me.InternetPlusPlus.BackgroundImage = CType(resources.GetObject("InternetPlusPlus.BackgroundImage"), System.Drawing.Image)
+        Me.InternetPlusPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.InternetPlusPlus.FlatAppearance.BorderSize = 0
+        Me.InternetPlusPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.InternetPlusPlus.Location = New System.Drawing.Point(3, 665)
+        Me.InternetPlusPlus.Name = "InternetPlusPlus"
+        Me.InternetPlusPlus.Size = New System.Drawing.Size(74, 70)
+        Me.InternetPlusPlus.TabIndex = 3
+        Me.InternetPlusPlus.UseVisualStyleBackColor = False
+        Me.InternetPlusPlus.Visible = False
+        '
+        'QuickNotes
+        '
+        Me.QuickNotes.BackColor = System.Drawing.Color.Transparent
+        Me.QuickNotes.BackgroundImage = CType(resources.GetObject("QuickNotes.BackgroundImage"), System.Drawing.Image)
+        Me.QuickNotes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.QuickNotes.FlatAppearance.BorderSize = 0
+        Me.QuickNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.QuickNotes.Location = New System.Drawing.Point(83, 665)
+        Me.QuickNotes.Name = "QuickNotes"
+        Me.QuickNotes.Size = New System.Drawing.Size(74, 70)
+        Me.QuickNotes.TabIndex = 4
+        Me.QuickNotes.UseVisualStyleBackColor = False
+        Me.QuickNotes.Visible = False
+        '
+        'SpotifyButton
+        '
+        Me.SpotifyButton.BackColor = System.Drawing.Color.Transparent
+        Me.SpotifyButton.BackgroundImage = CType(resources.GetObject("SpotifyButton.BackgroundImage"), System.Drawing.Image)
+        Me.SpotifyButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.SpotifyButton.FlatAppearance.BorderSize = 0
+        Me.SpotifyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.SpotifyButton.Location = New System.Drawing.Point(403, 665)
+        Me.SpotifyButton.Name = "SpotifyButton"
+        Me.SpotifyButton.Size = New System.Drawing.Size(74, 70)
+        Me.SpotifyButton.TabIndex = 8
+        Me.SpotifyButton.UseVisualStyleBackColor = False
+        Me.SpotifyButton.Visible = False
+        '
+        'YoutubeButton
+        '
+        Me.YoutubeButton.BackColor = System.Drawing.Color.Transparent
+        Me.YoutubeButton.BackgroundImage = CType(resources.GetObject("YoutubeButton.BackgroundImage"), System.Drawing.Image)
+        Me.YoutubeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.YoutubeButton.FlatAppearance.BorderSize = 0
+        Me.YoutubeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.YoutubeButton.Location = New System.Drawing.Point(163, 665)
+        Me.YoutubeButton.Name = "YoutubeButton"
+        Me.YoutubeButton.Size = New System.Drawing.Size(74, 70)
+        Me.YoutubeButton.TabIndex = 5
+        Me.YoutubeButton.UseVisualStyleBackColor = False
+        Me.YoutubeButton.Visible = False
+        '
+        'FacebookButton
+        '
+        Me.FacebookButton.BackColor = System.Drawing.Color.Transparent
+        Me.FacebookButton.BackgroundImage = CType(resources.GetObject("FacebookButton.BackgroundImage"), System.Drawing.Image)
+        Me.FacebookButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.FacebookButton.FlatAppearance.BorderSize = 0
+        Me.FacebookButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.FacebookButton.Location = New System.Drawing.Point(323, 665)
+        Me.FacebookButton.Name = "FacebookButton"
+        Me.FacebookButton.Size = New System.Drawing.Size(74, 70)
+        Me.FacebookButton.TabIndex = 7
+        Me.FacebookButton.UseVisualStyleBackColor = False
+        Me.FacebookButton.Visible = False
+        '
+        'InstagramButton
+        '
+        Me.InstagramButton.BackColor = System.Drawing.Color.Transparent
+        Me.InstagramButton.BackgroundImage = CType(resources.GetObject("InstagramButton.BackgroundImage"), System.Drawing.Image)
+        Me.InstagramButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.InstagramButton.FlatAppearance.BorderSize = 0
+        Me.InstagramButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.InstagramButton.Location = New System.Drawing.Point(243, 665)
+        Me.InstagramButton.Name = "InstagramButton"
+        Me.InstagramButton.Size = New System.Drawing.Size(74, 70)
+        Me.InstagramButton.TabIndex = 6
+        Me.InstagramButton.UseVisualStyleBackColor = False
+        Me.InstagramButton.Visible = False
+        '
         'TimebarPanel
         '
         Me.TimebarPanel.BackColor = System.Drawing.Color.Silver
@@ -136,6 +220,7 @@ Partial Class Form1
         Me.Button5.TabIndex = 5
         Me.Button5.Text = "Start TryOS Store"
         Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.Visible = False
         '
         'Label1
         '
@@ -247,90 +332,6 @@ Partial Class Form1
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(1091, 74)
         Me.FlowLayoutPanel1.TabIndex = 0
-        '
-        'InternetPlusPlus
-        '
-        Me.InternetPlusPlus.BackColor = System.Drawing.Color.Transparent
-        Me.InternetPlusPlus.BackgroundImage = CType(resources.GetObject("InternetPlusPlus.BackgroundImage"), System.Drawing.Image)
-        Me.InternetPlusPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.InternetPlusPlus.FlatAppearance.BorderSize = 0
-        Me.InternetPlusPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.InternetPlusPlus.Location = New System.Drawing.Point(3, 665)
-        Me.InternetPlusPlus.Name = "InternetPlusPlus"
-        Me.InternetPlusPlus.Size = New System.Drawing.Size(74, 70)
-        Me.InternetPlusPlus.TabIndex = 3
-        Me.InternetPlusPlus.UseVisualStyleBackColor = False
-        Me.InternetPlusPlus.Visible = False
-        '
-        'QuickNotes
-        '
-        Me.QuickNotes.BackColor = System.Drawing.Color.Transparent
-        Me.QuickNotes.BackgroundImage = CType(resources.GetObject("QuickNotes.BackgroundImage"), System.Drawing.Image)
-        Me.QuickNotes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.QuickNotes.FlatAppearance.BorderSize = 0
-        Me.QuickNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.QuickNotes.Location = New System.Drawing.Point(83, 665)
-        Me.QuickNotes.Name = "QuickNotes"
-        Me.QuickNotes.Size = New System.Drawing.Size(74, 70)
-        Me.QuickNotes.TabIndex = 4
-        Me.QuickNotes.UseVisualStyleBackColor = False
-        Me.QuickNotes.Visible = False
-        '
-        'YoutubeButton
-        '
-        Me.YoutubeButton.BackColor = System.Drawing.Color.Transparent
-        Me.YoutubeButton.BackgroundImage = CType(resources.GetObject("YoutubeButton.BackgroundImage"), System.Drawing.Image)
-        Me.YoutubeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.YoutubeButton.FlatAppearance.BorderSize = 0
-        Me.YoutubeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.YoutubeButton.Location = New System.Drawing.Point(163, 665)
-        Me.YoutubeButton.Name = "YoutubeButton"
-        Me.YoutubeButton.Size = New System.Drawing.Size(74, 70)
-        Me.YoutubeButton.TabIndex = 5
-        Me.YoutubeButton.UseVisualStyleBackColor = False
-        Me.YoutubeButton.Visible = False
-        '
-        'InstagramButton
-        '
-        Me.InstagramButton.BackColor = System.Drawing.Color.Transparent
-        Me.InstagramButton.BackgroundImage = CType(resources.GetObject("InstagramButton.BackgroundImage"), System.Drawing.Image)
-        Me.InstagramButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.InstagramButton.FlatAppearance.BorderSize = 0
-        Me.InstagramButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.InstagramButton.Location = New System.Drawing.Point(243, 665)
-        Me.InstagramButton.Name = "InstagramButton"
-        Me.InstagramButton.Size = New System.Drawing.Size(74, 70)
-        Me.InstagramButton.TabIndex = 6
-        Me.InstagramButton.UseVisualStyleBackColor = False
-        Me.InstagramButton.Visible = False
-        '
-        'FacebookButton
-        '
-        Me.FacebookButton.BackColor = System.Drawing.Color.Transparent
-        Me.FacebookButton.BackgroundImage = CType(resources.GetObject("FacebookButton.BackgroundImage"), System.Drawing.Image)
-        Me.FacebookButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.FacebookButton.FlatAppearance.BorderSize = 0
-        Me.FacebookButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.FacebookButton.Location = New System.Drawing.Point(323, 665)
-        Me.FacebookButton.Name = "FacebookButton"
-        Me.FacebookButton.Size = New System.Drawing.Size(74, 70)
-        Me.FacebookButton.TabIndex = 7
-        Me.FacebookButton.UseVisualStyleBackColor = False
-        Me.FacebookButton.Visible = False
-        '
-        'SpotifyButton
-        '
-        Me.SpotifyButton.BackColor = System.Drawing.Color.Transparent
-        Me.SpotifyButton.BackgroundImage = CType(resources.GetObject("SpotifyButton.BackgroundImage"), System.Drawing.Image)
-        Me.SpotifyButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.SpotifyButton.FlatAppearance.BorderSize = 0
-        Me.SpotifyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.SpotifyButton.Location = New System.Drawing.Point(403, 665)
-        Me.SpotifyButton.Name = "SpotifyButton"
-        Me.SpotifyButton.Size = New System.Drawing.Size(74, 70)
-        Me.SpotifyButton.TabIndex = 8
-        Me.SpotifyButton.UseVisualStyleBackColor = False
-        Me.SpotifyButton.Visible = False
         '
         'Button3
         '
