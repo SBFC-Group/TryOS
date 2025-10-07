@@ -3,13 +3,15 @@ Imports TouchTest
 
 Public Class UI
 
-
+    Public AppsFolder As String = My.Application.Info.DirectoryPath & "\Apps"
     Public SettingsFolder As String = My.Application.Info.DirectoryPath & "\Settings"
     Public WallpaperFolder As String = My.Application.Info.DirectoryPath & "\Wallpapers"
     Public UsersFolder As String = My.Application.Info.DirectoryPath & "\Users"
 
     'The User that's logged in's Folder
     Public UserFolder As String = My.Application.Info.DirectoryPath & "\Users\"
+
+    Public DisableOpenFramework As Boolean = False
 
     Public Sub RunCommands(Command As String, Optional TheForm As Object = Nothing)
         If Command.Contains("exit") = True Then

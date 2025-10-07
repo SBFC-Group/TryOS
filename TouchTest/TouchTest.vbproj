@@ -805,6 +805,7 @@
     <None Include="Resources\Not Done icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\TryOS_Store.tryapp" />
     <None Include="Resources\TryOS_USW.mp4" />
   </ItemGroup>
   <ItemGroup>

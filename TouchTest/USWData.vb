@@ -15,6 +15,8 @@
                 My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program")
                 My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program\Apps")
                 My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program\Settings")
+                My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program\Downloads")
+                My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program\Pictures")
                 My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program\Temp")
 
                 Dim ReaderForPassword As String = ""
@@ -22,8 +24,6 @@
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Password.swfiles", ReaderForPassword, False)
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Role.swfiles", "VkRCU1RrNUZNVFpXV0hCUVZrVnJPUT09", False)
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Wallpaper.swfiles", "jpg=1", False)
-
-                My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Apps\Internet++.swfiles", "", False)
             End If
 
 
@@ -38,6 +38,7 @@
             Else
                 My.Computer.FileSystem.WriteAllBytes(UI.UsersFolder & "\Program\Temp\USW.mp4", My.Resources.TryOS_USW, False)
             End If
+            UI.DisableOpenFramework = True
             UI.LoadShell("Program", "")
             Form1.HideTaskbar(True)
             Form1.OpenChildForm(New USWApp)

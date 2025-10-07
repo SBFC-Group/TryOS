@@ -69,6 +69,9 @@ Public Class Form1
 
             ElseIf ProgressBar1.Value = 30 Then
                 Label2.Text = "Info: Creating ""UpdateFiles"" Directory."
+                If My.Computer.FileSystem.DirectoryExists(My.Application.Info.DirectoryPath & "\UpdateFiles") Then
+                    My.Computer.FileSystem.DeleteDirectory(My.Application.Info.DirectoryPath & "\UpdateFiles", FileIO.DeleteDirectoryOption.DeleteAllContents)
+                End If
                 My.Computer.FileSystem.CreateDirectory(My.Application.Info.DirectoryPath & "\UpdateFiles")
             ElseIf ProgressBar1.Value = 40 Then
                 Label2.Text = "Info: Extracting Zip To ""UpdateFiles""."
@@ -146,7 +149,7 @@ Public Class Form1
                 My.Computer.FileSystem.MoveDirectory(My.Application.Info.DirectoryPath & "\Wallpapers.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\Wallpapers")
             ElseIf ProgressBar1.Value = 96 Then
                 Label2.Text = "Info: Updating ""ShellName.setting"" and deleting temp files."
-                'My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\ShellName.setting", "TouchTest.UUWApp", False)
+                My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\ShellName.setting", "TouchTest.UUWApp", False)
                 My.Computer.FileSystem.DeleteDirectory(My.Application.Info.DirectoryPath & "\UpdateFiles\Settings", FileIO.DeleteDirectoryOption.DeleteAllContents, FileIO.RecycleOption.DeletePermanently)
             ElseIf ProgressBar1.Value = 98 Then
                 Label2.Text = "Info: Renaming ""UpdateFiles"" to ""TryOSBackup"""

@@ -46,8 +46,6 @@
             My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & Username & "\Settings\Password.swfiles", ReaderForPassword, False)
             My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & Username & "\Settings\Role.swfiles", "VkRCU1RrNUZNVFpXV0hCUVZrVnJPUT09", False)
             My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & Username & "\Settings\Wallpaper.swfiles", "jpg=1", False)
-
-            My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & Username & "\Apps\Internet++.swfiles", "", False)
             Return True
         End If
     End Function

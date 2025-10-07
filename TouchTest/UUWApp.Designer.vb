@@ -26,9 +26,9 @@ Partial Class UUWApp
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.SetupPanel = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel3.SuspendLayout()
         Me.SetupPanel.SuspendLayout()
@@ -74,6 +74,25 @@ Partial Class UUWApp
         Me.Panel1.Size = New System.Drawing.Size(874, 488)
         Me.Panel1.TabIndex = 2
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(14, 215)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(381, 27)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "Updating Settings File: Hello_World.txt"
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ProgressBar1.Location = New System.Drawing.Point(19, 170)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(835, 42)
+        Me.ProgressBar1.TabIndex = 3
+        '
         'Label1
         '
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Top
@@ -85,27 +104,9 @@ Partial Class UUWApp
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Updating Program Settings. 0%"
         '
-        'ProgressBar1
-        '
-        Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(19, 170)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(835, 42)
-        Me.ProgressBar1.TabIndex = 3
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(14, 215)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(381, 27)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "Updating Settings File: Hello_World.txt"
-        '
         'Timer1
         '
+        Me.Timer1.Interval = 3000
         '
         'UUWApp
         '

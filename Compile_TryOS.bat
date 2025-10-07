@@ -39,4 +39,9 @@ copy ".\TouchTest\bin\Debug\TouchTest.exe" ".\TouchTest\bin\Debug\TryOS_Build\Tr
 
 copy ".\TryOSUpdateWindow\bin\Debug\TryOSUpdateWindow.exe" ".\TouchTest\bin\Debug\TryOS_Build\"
 
+:: Creates TryOS Store App
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps"
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store"
+copy ".\TryOS_Store_Loader\bin\Debug\TryOS_Store_Loader.dll" ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store\Main.dll"
+
 pause

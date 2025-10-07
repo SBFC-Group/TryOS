@@ -46,8 +46,6 @@ Public Class Form1
 
         UserManager.LoadWallpaperFromUserSettings()
 
-
-
         If IsUsingDarkThemeForPrograms = True Then
             Panel2.BackColor = Color.FromArgb(55, Color.Gray)
             TimebarPanel.BackColor = Color.FromArgb(55, Color.Gray)
@@ -55,7 +53,6 @@ Public Class Form1
             Panel2.BackColor = Color.FromArgb(55, Color.Silver)
             TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
         End If
-
 
         'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\Internet++.swfiles") Then
 
@@ -89,12 +86,16 @@ Public Class Form1
         '    SpotifyButton.Visible = False
         'End If
 
-        Dim regit As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group", "UseOpenFramework", Nothing)
-        If regit = "1" Then
-            OpenFramework_Data.OpenFramework.LoadApps()
+        If UI.DisableOpenFramework = False Then
+            Dim regit As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group", "UseOpenFramework", Nothing)
+            If regit = "1" Then
+                OpenFramework_Data.OpenFramework.LoadApps()
+            End If
+
+            UserManager.LoadTaskbarButtons()
         End If
 
-        UserManager.LoadTaskbarButtons()
+
 
         If TestingMode = True Then
             Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")
@@ -1010,6 +1011,8 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        OpenFramework_Data.SaveButtonOrder()
+        If UI.DisableOpenFramework = False Then
+            OpenFramework_Data.SaveButtonOrder()
+        End If
     End Sub
 End Class

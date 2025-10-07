@@ -75,10 +75,10 @@ Public Class Class1
             'Dim jj As Int64 = 
             Dim myfile As String = file.FullName
             fullpath = myfile
-            myfile = myfile.Replace(My.Application.Info.DirectoryPath & "\Apps\", "")
-            Folderandnumber = myfile
-            myfile = myfile.Remove(0, 2)
-            Foldernameonly = myfile
+            'myfile = myfile.Replace(My.Application.Info.DirectoryPath & "\Apps\", "")
+            'Folderandnumber = myfile
+            'myfile = myfile.Remove(0, 2)
+            'Foldernameonly = myfile
 
             If myfile = Reader Then
                 exists = True
@@ -96,14 +96,15 @@ Public Class Class1
 
 
         If exists = True Then
-            Exit Function
+
+            Return False
         ElseIf exists = False Then
         End If
 
-        Dim Numberthing As Int64 = GetAppNumber()
-        Numberthing = Numberthing + 1
+        'Dim Numberthing As Int64 = GetAppNumber()
+        'Numberthing = Numberthing + 1
 
-        Dim AppFolderName As String = Numberthing.ToString & "_" & Reader
+        Dim AppFolderName As String = Reader
 
 
 

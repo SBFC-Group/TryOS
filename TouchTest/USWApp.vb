@@ -12,8 +12,6 @@
             AxWindowsMediaPlayer1.uiMode = "none"
             AxWindowsMediaPlayer1.URL = UI.UsersFolder & "\Program\Temp\USW.mp4"
             StartMainTimer.Start()
-
-
         End If
     End Sub
 
@@ -103,6 +101,8 @@
             My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text)
             My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Apps")
             My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Settings")
+            My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Downloads")
+            My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Pictures")
             My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Temp")
 
             Dim ReaderForPassword As String = TextBox2.Text
