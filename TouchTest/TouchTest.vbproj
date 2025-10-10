@@ -187,6 +187,12 @@
     <Compile Include="AppRunner.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LogonForm.Designer.vb">
+      <DependentUpon>LogonForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LogonForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TaskbarOrderApp.Designer.vb">
       <DependentUpon>TaskbarOrderApp.vb</DependentUpon>
     </Compile>

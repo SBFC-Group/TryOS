@@ -173,6 +173,7 @@ Public Class Form1
         End Try
         Form48.Show()
         System.Threading.Thread.Sleep(500)
+        UI.DisableOpenFramework = True
         Close()
     End Sub
 

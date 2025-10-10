@@ -66,7 +66,7 @@ Why is it getting faced out?
                     End If
 
 
-                    End If
+                End If
             End If
         ElseIf My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
             Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
@@ -104,6 +104,84 @@ Why is it getting faced out?
             LoadLanguage()
         End If
 
+        If Environment.CommandLine.Contains("/DevMode") Then
+            Dim dir1 = UI.UsersFolder
+            Dim files() As System.IO.DirectoryInfo
+            Dim dirinfo As New System.IO.DirectoryInfo(dir1)
+            files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
+            For Each file In files
+                'Creates a new button with the name of a user.
+                Dim btn As New Button()
+                btn.Text = file.Name
+                btn.FlatStyle = FlatStyle.Flat
+                btn.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+                btn.BackColor = Color.Gainsboro
+                btn.BackgroundImageLayout = ImageLayout.Stretch
+                btn.Size = New Size(209, 45)
+                AddHandler btn.Click, AddressOf OpenUserButton_Click
+                FlowLayoutPanel1.Controls.Add(btn)
+            Next
+        Else
+            FlowLayoutPanel1.Visible = False
+        End If
+    End Sub
+
+    Private HasOpenUserButton_ClickBeenOpened As Boolean = False
+
+    Private Sub OpenUserButton_Click(sender As Object, e As EventArgs)
+        Dim btn As Button = CType(sender, Button)
+
+        TextBox1.Text = btn.Text
+
+        Panel3.Visible = True
+
+
+        If HasOpenUserButton_ClickBeenOpened = False Then
+            TextBox1.Enabled = False
+            TextBox2.Enabled = False
+
+            Label5.Text = "Password"
+            NumberButton0.Visible = False
+            NumberButton1.Visible = False
+            NumberButton2.Visible = False
+            NumberButton3.Visible = False
+            NumberButton4.Visible = False
+            NumberButton5.Visible = False
+            NumberButton6.Visible = False
+            NumberButton7.Visible = False
+            NumberButton8.Visible = False
+            NumberButton9.Visible = False
+            RemoveLetterButton.Visible = False
+
+            TextBox3.Enabled = True
+            TextBox3.UseSystemPasswordChar = True
+
+            AddHandler TextBox3.KeyDown, AddressOf MayNeedThis
+
+            Dim NewPoint1 As Int64 = Label5.Location.Y
+            Dim NewPoint2 As Int64 = Label5.Location.X
+
+            Dim NewPoint3 As Int64 = TextBox3.Location.Y
+            Dim NewPoint4 As Int64 = TextBox3.Location.X
+
+            NewPoint1 = NewPoint1 + 30
+
+            NewPoint3 = NewPoint3 + 30
+
+            Label5.Location = New Point(NewPoint2, NewPoint1)
+
+            TextBox3.Location = New Point(NewPoint4, NewPoint3)
+            HasOpenUserButton_ClickBeenOpened = True
+        End If
+
+
+    End Sub
+
+    Private Sub MayNeedThis(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Enter Then
+            TextBox2.Text = TextBox3.Text
+            Login()
+        End If
     End Sub
 
     Private NeedsPincode As Boolean = False
@@ -117,6 +195,7 @@ Why is it getting faced out?
         TextBox2.Enabled = False
         PinEncoded = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\PinCode.swfiles")
         Me.KeyPreview = True
+        FlowLayoutPanel1.Visible = False
         Me.Activate()
     End Sub
 
@@ -204,6 +283,7 @@ Why is it getting faced out?
                     End If
 
                     If Password = TextBox2.Text Then
+                        UI.DisableOpenFramework = False
                         'MsgBox("Welcome " & TextBox1.Text)
                         Form1.Username = TextBox1.Text
                         UI.UserFolder = UI.UsersFolder & "\" & TextBox1.Text
@@ -383,9 +463,13 @@ Why is it getting faced out?
         NumberButton7.Enabled = False
         NumberButton8.Enabled = False
         NumberButton9.Enabled = False
+        RemoveLetterButton.Enabled = False
         TextBox1.Enabled = True
         TextBox1.Text = ""
         TextBox2.Enabled = True
+        If Environment.CommandLine.Contains("/DevMode") Then
+            FlowLayoutPanel1.Visible = True
+        End If
     End Sub
 
     Private Sub CommanderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CommanderToolStripMenuItem.Click
@@ -431,7 +515,7 @@ Why is it getting faced out?
         End If
     End Sub
 
-    Private Sub Login(sender As Object, e As EventArgs) Handles Button1.Click
-
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Button2_Click()
     End Sub
 End Class

@@ -23,8 +23,11 @@ Partial Class Form48
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.RemoveLetterButton = New System.Windows.Forms.Button()
         Me.NumberButton0 = New System.Windows.Forms.Button()
@@ -40,6 +43,7 @@ Partial Class Form48
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -51,6 +55,7 @@ Partial Class Form48
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CommanderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
+        Me.FlowLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -59,6 +64,7 @@ Partial Class Form48
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.FlowLayoutPanel1)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.MenuStrip1)
@@ -68,12 +74,39 @@ Partial Class Form48
         Me.Panel1.Size = New System.Drawing.Size(1033, 649)
         Me.Panel1.TabIndex = 0
         '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.Silver
+        Me.FlowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button3)
+        Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(12, 12)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Padding = New System.Windows.Forms.Padding(3)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(221, 625)
+        Me.FlowLayoutPanel1.TabIndex = 3
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Location = New System.Drawing.Point(6, 569)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(209, 45)
+        Me.Button3.TabIndex = 76
+        Me.Button3.Text = "Login as another user"
+        Me.Button3.UseVisualStyleBackColor = False
+        '
         'Panel2
         '
         Me.Panel2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Panel2.BackColor = System.Drawing.Color.Silver
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.Panel3)
+        Me.Panel2.Controls.Add(Me.CheckBox1)
         Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Controls.Add(Me.Label3)
         Me.Panel2.Controls.Add(Me.Label2)
@@ -87,6 +120,7 @@ Partial Class Form48
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.CheckBox2)
         Me.Panel3.Controls.Add(Me.Button2)
         Me.Panel3.Controls.Add(Me.RemoveLetterButton)
         Me.Panel3.Controls.Add(Me.NumberButton0)
@@ -107,6 +141,18 @@ Partial Class Form48
         Me.Panel3.Size = New System.Drawing.Size(702, 430)
         Me.Panel3.TabIndex = 6
         Me.Panel3.Visible = False
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox2.Location = New System.Drawing.Point(10, 390)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(169, 28)
+        Me.CheckBox2.TabIndex = 77
+        Me.CheckBox2.Text = "Show User Panel"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.CheckBox2.Visible = False
         '
         'Button2
         '
@@ -291,6 +337,17 @@ Partial Class Form48
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Welcome User"
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox1.Location = New System.Drawing.Point(10, 399)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(169, 28)
+        Me.CheckBox1.TabIndex = 76
+        Me.CheckBox1.Text = "Show User Panel"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'Button1
         '
         Me.Button1.Anchor = System.Windows.Forms.AnchorStyles.Top
@@ -405,6 +462,7 @@ Partial Class Form48
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
@@ -444,4 +502,8 @@ Partial Class Form48
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents MenuToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CommanderToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents Button3 As Button
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents CheckBox2 As CheckBox
 End Class
