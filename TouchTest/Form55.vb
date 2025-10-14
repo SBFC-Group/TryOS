@@ -10,6 +10,7 @@
                 WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
                 WebView21.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = False
             End If
+            WebView21.CoreWebView2.Profile.DefaultDownloadFolderPath = UI.UsersFolder & "\" & Form1.Username & "\Downloads\"
             WebView21.CoreWebView2.Settings.IsStatusBarEnabled = False
             AddHandler WebView21.CoreWebView2.DownloadStarting, AddressOf DD
         End If
@@ -29,10 +30,12 @@
     Private Testing As String = ""
 
     Private Function MyTimer_Tick(sender As Object, e As EventArgs)
+        sender.Stop()
         My.Computer.FileSystem.MoveFile(sender.Tag, UI.UserFolder & "\Temp\App.tryapp")
         TryOS_Store_Manager.Class1.InstallTryOSApp(UI.UserFolder & "\Temp\App.tryapp")
         My.Computer.FileSystem.DeleteFile(UI.UserFolder & "\Temp\App.tryapp")
-        sender.Stop()
+
+        'sender.Stop()
     End Function
 
 

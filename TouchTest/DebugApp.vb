@@ -17,7 +17,8 @@ RunUserControl <usercontrol> - Opens a form that will contain the UserControl"
                 UI.ShowError("Hello World")
             ElseIf RichTextBox1.Text.Contains("TestStopWindow") = True Then
                 UI.ShowStopWindow("Hello World")
-
+            ElseIf RichTextBox1.Text.Contains("ShowProgramVersion") = True Then
+                RichTextBox2.Text = My.Application.Info.Version.ToString
             ElseIf RichTextBox1.Text.Contains("TestThis") = True Then
                 TryOS_Store_Manager.Class1.PackageCreator(My.Application.Info.DirectoryPath & "\Apps\2_YoutubeApp", My.Application.Info.DirectoryPath & "\YoutubeApp.tryapp", "Youtube", TryController.GetVersion, "YoutubeApp.dll")
             ElseIf RichTextBox1.Text.Contains("TestMe") = True Then

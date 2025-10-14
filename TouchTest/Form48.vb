@@ -92,12 +92,16 @@ Why is it getting faced out?
                 Else
                     If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\PinCode.swfiles") Then
                         ActivatePincodeLayout()
-                        'NumberButton1.Select()                      
+                        'NumberButton1.Select()  
+                    Else
+                        FlowLayoutPanel1.Visible = True
                     End If
                 End If
 
 
             End If
+        Else
+            'FlowLayoutPanel1.Visible = True
         End If
 
         If TestingMode = True Then

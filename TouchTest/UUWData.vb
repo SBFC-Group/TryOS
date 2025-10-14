@@ -22,7 +22,7 @@
                 Dim ReaderForPassword As String = ""
 
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Password.swfiles", ReaderForPassword, False)
-                My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Role.swfiles", "VkRCU1RrNUZNVFpXV0hCUVZrVnJPUT09", False)
+                My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Role.swfiles", "VkZod2NrMUZOVlZYVkVaUFVrVXdPUT09", False)
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Wallpaper.swfiles", "jpg=1", False)
 
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Apps\Internet++.swfiles", "", False)

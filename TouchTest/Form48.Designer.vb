@@ -87,6 +87,7 @@ Partial Class Form48
         Me.FlowLayoutPanel1.Padding = New System.Windows.Forms.Padding(3)
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(221, 625)
         Me.FlowLayoutPanel1.TabIndex = 3
+        Me.FlowLayoutPanel1.Visible = False
         '
         'Button3
         '

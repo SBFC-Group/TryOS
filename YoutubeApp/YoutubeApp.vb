@@ -13,4 +13,23 @@
             End If
         End If
     End Sub
+
+    Private IsWebView2FullScreen As Boolean = False
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Try
+            If WebView21.CoreWebView2.ContainsFullScreenElement = True Then
+                Class1._host.EnableFullscreen(True)
+                IsWebView2FullScreen = True
+            ElseIf WebView21.CoreWebView2.ContainsFullScreenElement = False Then
+                If IsWebView2FullScreen = True Then
+                    IsWebView2FullScreen = False
+                    Class1._host.EnableFullscreen(False)
+
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class
