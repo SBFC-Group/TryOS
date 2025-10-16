@@ -93,20 +93,23 @@ Public Class Form1
             End If
 
             UserManager.LoadTaskbarButtons()
+
+            Dim regit2 As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group", "LoadCustomPls", Nothing)
+            If regit2 = "1" Then
+                Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")
+                Dim plugins = Q_U_U_U_Q.LoadPlugins(pluginPath)
+
+                For Each plugin In plugins
+                    Debug.WriteLine("Loaded plugin: " & plugin.Name)
+                    plugin.ExecuteDebug(Me)
+                    plugin.ExecuteUISubs(UI)
+                Next
+            End If
         End If
 
 
 
-        If TestingMode = True Then
-            Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")
-            Dim plugins = Q_U_U_U_Q.LoadPlugins(pluginPath)
 
-            For Each plugin In plugins
-                Debug.WriteLine("Loaded plugin: " & plugin.Name)
-                plugin.ExecuteDebug(Me)
-                plugin.ExecuteUISubs(UI)
-            Next
-        End If
 
     End Sub
 
