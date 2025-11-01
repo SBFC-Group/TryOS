@@ -2,6 +2,7 @@
 Imports TouchTest
 
 Public Class UI
+    Public ReadOnly ShellAppIDs As String() = {"825162", "936352"}
 
     Public AppsFolder As String = My.Application.Info.DirectoryPath & "\Apps"
     Public SettingsFolder As String = My.Application.Info.DirectoryPath & "\Settings"
@@ -78,6 +79,13 @@ Public Class UI
         ElseIf Command.Contains("RunUserTestFileExplorer") = True Then
             TestFileExplorer.rootPath = UserFolder
             TestFileExplorer.Show()
+        ElseIf Command.Contains("Restore-TryOS-Store") = True Then
+            If My.Computer.FileSystem.DirectoryExists(AppsFolder & "\TryOS_Store") Then
+                My.Computer.FileSystem.DeleteDirectory(AppsFolder & "\TryOS_Store", FileIO.DeleteDirectoryOption.DeleteAllContents)
+            End If
+            My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\Store.tryapp", My.Resources.TryOS_Store, False)
+            TryOS_Store_Manager.Class1.InstallTryOSApp(My.Application.Info.DirectoryPath & "\Store.tryapp")
+            My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\Store.tryapp", FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
         End If
     End Sub
     Public Sub StartCMD(Optional GG As String = "New")

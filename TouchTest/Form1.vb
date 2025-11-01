@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Windows.Forms
 
 Public Class Form1
     Public Username As String = "Administrator"
@@ -18,6 +19,8 @@ Public Class Form1
 
     Public DisableFullScreenConsole As Boolean = False
     Public DisableConsole As Boolean = False
+
+    Public AllowOnlyVerifyedShellCode As Boolean = True
 
     Private User As New UserManager(Username)
     Private lang As New LanguageManager()
@@ -89,7 +92,7 @@ Public Class Form1
         If UI.DisableOpenFramework = False Then
             Dim regit As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group", "UseOpenFramework", Nothing)
             If regit = "1" Then
-                OpenFramework_Data.OpenFramework.LoadApps()
+                OpenFramework_Data.LoadApps()
             End If
 
             UserManager.LoadTaskbarButtons()
@@ -105,6 +108,14 @@ Public Class Form1
                     plugin.ExecuteUISubs(UI)
                 Next
             End If
+
+            CustomController_Data.LoadCodeParts()
+
+            If AllowOnlyVerifyedShellCode = False Then
+                If Shit = 1 Then
+                    UI.ShowError("Your running in an unsafe mode. Close the program if you don't know what you're doing.", ErrorMSGBox.Alerts.Information)
+                End If
+            End If
         End If
 
 
@@ -113,7 +124,11 @@ Public Class Form1
 
     End Sub
 
-    Private TestingMode As Boolean = True
+    Public Function funnything() As Panel
+        Return Panel2
+    End Function
+
+    Public TestingMode As Boolean = True
 
     Private Sub LoadLanguage(langCode As String)
         lang.LoadLanguage(langCode)
@@ -172,7 +187,6 @@ Public Class Form1
         Try
             currentForm.Close()
         Catch ex As Exception
-
         End Try
         Form48.Show()
         System.Threading.Thread.Sleep(500)

@@ -19,7 +19,7 @@ Namespace OpenFramework_Data
                     Debug.WriteLine("Loaded " & p.Name)
                     p.Initialize(host)
                     Dim btn As New Button()
-                    'btn.Text = p.Name
+                    btn.Name = p.Name
                     btn.BackgroundImage = p.Icon
                     'btn.TextImageRelation = TextImageRelation.ImageAboveText
                     btn.FlatStyle = FlatStyle.Flat
@@ -36,7 +36,6 @@ Namespace OpenFramework_Data
             Catch ex As Exception
                 UI.ShowError("Did my OpenFramework fix not work?")
             End Try
-
 
         End Sub
 

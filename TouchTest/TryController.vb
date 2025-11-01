@@ -32,6 +32,10 @@ Public Class TryController
             Dev = True
         End If
 
+        If args.Contains("/TurnOff_VerifyedShellOnly") = True Then
+            Form1.AllowOnlyVerifyedShellCode = False
+        End If
+
         If args.Contains("/ShowConsole") = True Then
             Console.Show()
             Console.WindowState = FormWindowState.Minimized
