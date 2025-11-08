@@ -4,12 +4,26 @@
 
     Public Sub New(TheUserName As String)
         Username = TheUserName
-        Role = Form1.GetRole()
+        Role = GetRole()
     End Sub
 
     Public Sub LoadUserSettings()
+        Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\Software.swfiles")
+        Try
+            Dim b As Byte() = Convert.FromBase64String(usedencode)
+            usedencode = System.Text.Encoding.UTF8.GetString(b)
+        Catch ex As Exception
+
+        End Try
+        Try
+            Dim b2 As Byte() = Convert.FromBase64String(usedencode)
+            usedencode = System.Text.Encoding.UTF8.GetString(b2)
+        Catch ex As Exception
+
+        End Try
+
         Dim settingstemp As String()
-        settingstemp = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\Software.swfiles").Split(Environment.NewLine)
+        settingstemp = usedencode.Split(Environment.NewLine)
         For Each setting As String In settingstemp
             If setting.StartsWith("Wallpaper=") Then
                 setting = setting.Replace("Wallpaper=", "")
@@ -43,14 +57,72 @@
 
     End Sub
 
-    Public Sub SaveUserSettings()
+    Public Sub SaveUserSettings(Optional SettingsList As String = "Null")
         Dim Reader As String = Nothing
-        Reader = "Wallpaper=Load" & Form1.WallpaperFileFormat & "=" & Form1.LoadedWallpaper.ToString & Environment.NewLine
 
-        Reader = Reader & "IsDarkModeForApps=" & Form1.IsUsingDarkThemeForApps.ToString & Environment.NewLine
+        If SettingsList = "Null" Then
+            Reader = "Wallpaper=Load" & Form1.WallpaperFileFormat & "=" & Form1.LoadedWallpaper.ToString & Environment.NewLine
 
-        Reader = Reader & "IsDarkModeForProgram=" & Form1.IsUsingDarkThemeForPrograms.ToString & Environment.NewLine
+            Reader = Reader & "IsDarkModeForApps=" & Form1.IsUsingDarkThemeForApps.ToString & Environment.NewLine
+
+            Reader = Reader & "IsDarkModeForProgram=" & Form1.IsUsingDarkThemeForPrograms.ToString & Environment.NewLine
+        Else
+            Reader = SettingsList
+        End If
+
+        Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(Reader)
+        Reader = Convert.ToBase64String(byt)
+        Dim byt2 As Byte() = System.Text.Encoding.UTF8.GetBytes(Reader)
+        Reader = Convert.ToBase64String(byt2)
+
+        My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Settings\Software.swfiles", "", False)
     End Sub
+
+    Private Function GetRole() As TryController.Roles
+        If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\Role.swfiles") Then
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\Role.swfiles")
+            Try
+                Dim b As Byte() = Convert.FromBase64String(Reader)
+                Reader = System.Text.Encoding.UTF8.GetString(b)
+            Catch ex As Exception
+
+            End Try
+            Try
+                Dim b2 As Byte() = Convert.FromBase64String(Reader)
+                Reader = System.Text.Encoding.UTF8.GetString(b2)
+            Catch ex As Exception
+
+            End Try
+            Try
+                Dim b3 As Byte() = Convert.FromBase64String(Reader)
+                Reader = System.Text.Encoding.UTF8.GetString(b3)
+            Catch ex As Exception
+
+            End Try
+            Try
+                Dim b4 As Byte() = Convert.FromBase64String(Reader)
+                Reader = System.Text.Encoding.UTF8.GetString(b4)
+            Catch ex As Exception
+
+            End Try
+
+            If Reader = "73593736" Then
+                Return TryController.Roles.Guest
+            ElseIf Reader = "83835392" Then
+                Return TryController.Roles.Standard
+            ElseIf Reader = "43638462" Then
+                Return TryController.Roles.Administrator
+            ElseIf Reader = "39456543" Then
+                Return TryController.Roles.Program
+            ElseIf Reader = "19563469" Then
+                Return TryController.Roles.Developer
+            Else
+                Return Nothing
+            End If
+        Else
+            Return Nothing
+        End If
+    End Function
 
     Public Shared Sub LoadWallpaperFromUserSettings()
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Settings\Wallpaper.swfiles") Then
