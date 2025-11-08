@@ -69,6 +69,10 @@ Public Class TryController
         Developer = 5
     End Enum
 
+    Public Function ShowStopWindow()
+
+    End Function
+
     Public Function IsZipFile(filePath As String) As Boolean
         ' ZIP files start with "PK" (50 4B in hex)
         Dim buffer(3) As Byte

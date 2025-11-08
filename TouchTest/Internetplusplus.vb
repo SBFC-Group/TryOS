@@ -147,6 +147,7 @@ Public Class Internetplusplus
             Panel1.Visible = False
             loadweb("1")
         Else
+
             FormBorderStyle = FormBorderStyle.None
             Panel1.Visible = False
             MaxiButton.Enabled = False
@@ -738,5 +739,17 @@ Public Class Internetplusplus
         InternetSettings.Controls.Add(SettingsBackButton)
         SettingsBackButton.Visible = False
         TabControl1.Visible = True
+    End Sub
+
+    Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
+        If e.IsSuccess = True Then
+            Dim webviewy As Microsoft.Web.WebView2.WinForms.WebView2 = CType(sender, Microsoft.Web.WebView2.WinForms.WebView2)
+            If Form1.IsUsingDarkThemeForApps = True Then
+                webviewy.CoreWebView2.Profile.PreferredColorScheme = Microsoft.Web.WebView2.Core.CoreWebView2PreferredColorScheme.Dark
+            ElseIf Form1.IsUsingDarkThemeForApps = False Then
+                webviewy.CoreWebView2.Profile.PreferredColorScheme = Microsoft.Web.WebView2.Core.CoreWebView2PreferredColorScheme.Light
+            End If
+        End If
+
     End Sub
 End Class

@@ -287,21 +287,44 @@ Why is it getting faced out?
                     End If
 
                     If Password = TextBox2.Text Then
-                        UI.DisableOpenFramework = False
-                        'MsgBox("Welcome " & TextBox1.Text)
-                        Form1.Username = TextBox1.Text
-                        UI.UserFolder = UI.UsersFolder & "\" & TextBox1.Text
-                        UI.LoadShell(TextBox1.Text, My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles"))
-                        If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
-                            Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
-                            If TextBox1.Text = ReadMyUserData Then
+                        If Environment.CommandLine.Contains("/NewLogin") Then
+                            Dim LogonLoadingUser As New LoadingUser
+
+                            LogonLoadingUser.Show()
+
+                            If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
+                                Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
+                                If TextBox1.Text = ReadMyUserData Then
+                                Else
+                                    My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                                End If
                             Else
                                 My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
                             End If
+
+                            LogonLoadingUser.Username = TextBox1.Text
+                            LogonLoadingUser.Password = TextBox2.Text
+
+
                         Else
-                            My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                            UI.DisableOpenFramework = False
+                            'MsgBox("Welcome " & TextBox1.Text)
+                            Form1.Username = TextBox1.Text
+                            UI.UserFolder = UI.UsersFolder & "\" & TextBox1.Text
+                            UI.LoadShell(TextBox1.Text, My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles"))
+                            If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
+                                Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
+                                If TextBox1.Text = ReadMyUserData Then
+                                Else
+                                    My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                                End If
+                            Else
+                                My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                            End If
+                            Close()
                         End If
-                        Close()
+
+
                     Else
                         UI.ShowError("Can't find an user with that password.")
                     End If

@@ -33,7 +33,7 @@ Partial Class StopWindow
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(800, 450)
+        Me.Panel1.Size = New System.Drawing.Size(1100, 509)
         Me.Panel1.TabIndex = 0
         '
         'RichTextBox1
@@ -49,7 +49,7 @@ Partial Class StopWindow
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
         Me.RichTextBox1.ShortcutsEnabled = False
-        Me.RichTextBox1.Size = New System.Drawing.Size(800, 450)
+        Me.RichTextBox1.Size = New System.Drawing.Size(1100, 509)
         Me.RichTextBox1.TabIndex = 0
         Me.RichTextBox1.Text = ""
         '
@@ -57,7 +57,7 @@ Partial Class StopWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(1100, 509)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "StopWindow"
         Me.Text = "StopWindow"

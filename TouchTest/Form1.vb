@@ -49,6 +49,8 @@ Public Class Form1
 
         UserManager.LoadWallpaperFromUserSettings()
 
+        'User.LoadUserSettings()
+
         If IsUsingDarkThemeForPrograms = True Then
             Panel2.BackColor = Color.FromArgb(55, Color.Gray)
             TimebarPanel.BackColor = Color.FromArgb(55, Color.Gray)

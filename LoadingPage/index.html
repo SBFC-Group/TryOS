@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">    
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Loading Page</title>
+</head>
+<body>
+    
+<div class="login-box">
+
+
+    <div class="HHH1">
+<center>
+        <div class="HHH">
+
+        <h2 class="label_top">Loading</h2>
+        <h2 class="label_bottom">Loading User Settings</h2>
+        <div class="loader"></div> 
+        </div>
+</center>
+    </div>
+        
+    <!--<input  onclick="myFunction()" type="button" class="btn" value="Sign License "> -->
+        
+      </div>
+
+         <style>
+body{
+    background-color: silver;
+    background: url(imgs/Wallpaper.jpg);
+    
+    background-size: cover;
+    font-family: Trebuchet MS, sans-serif;    
+}
+
+.HHH{
+    height: 220px;
+    width: 400px;
+    background-color: rgba(134, 134, 134, 0.39);
+    border-color: rgba(128, 128, 128, 0.39);     
+    border-style: solid;
+    
+}
+
+.label_top{
+    padding-top: 10px;
+    color: black;
+}
+
+.label_bottom{
+    color: black;
+    padding-bottom: 10px;
+}
+
+.HHH1{
+    
+    padding-top: 100px;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 70px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid #000000;
+  animation:
+    l20-1 0.8s infinite linear alternate,
+    l20-2 1.6s infinite linear;
+}
+@keyframes l20-1{
+   0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}
+   12.5% {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100%   0%, 100%   0%, 100%   0% )}
+   25%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 100% 100%, 100% 100% )}
+   50%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+   62.5% {clip-path: polygon(50% 50%,100%    0, 100%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+   75%   {clip-path: polygon(50% 50%,100% 100%, 100% 100%,  100% 100%, 100% 100%, 50%  100%, 0%   100% )}
+   100%  {clip-path: polygon(50% 50%,50%  100%,  50% 100%,   50% 100%,  50% 100%, 50%  100%, 0%   100% )}
+}
+@keyframes l20-2{ 
+  0%    {transform:scaleY(1)  rotate(0deg)}
+  49.99%{transform:scaleY(1)  rotate(135deg)}
+  50%   {transform:scaleY(-1) rotate(0deg)}
+  100%  {transform:scaleY(-1) rotate(-135deg)}
+}
+    </style>
+</body>
+</html>
