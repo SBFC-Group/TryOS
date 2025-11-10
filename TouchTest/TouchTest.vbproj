@@ -544,6 +544,12 @@
     <Compile Include="WebviewUserControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="WifiPanel.Designer.vb">
+      <DependentUpon>WifiPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WifiPanel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="WifiSignalStrength.vb" />
     <Compile Include="YoutubeApp.Designer.vb">
       <DependentUpon>YoutubeApp.vb</DependentUpon>
@@ -720,6 +726,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WebviewUserControl.resx">
       <DependentUpon>WebviewUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WifiPanel.resx">
+      <DependentUpon>WifiPanel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YoutubeApp.resx">
       <DependentUpon>YoutubeApp.vb</DependentUpon>

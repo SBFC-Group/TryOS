@@ -47,11 +47,11 @@
                     End If
                     If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles") Then
                         Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles")
-                        SettingsListy = SettingsListy & "Wallpaper=" & Reader & Environment.NewLine
+                        SettingsListy = SettingsListy & "IsDarkModeForApps=" & Reader & Environment.NewLine
                     End If
                     If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\DarkThemeForPrograms.swfiles") Then
                         Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\DarkThemeForPrograms.swfiles")
-                        SettingsListy = SettingsListy & "Wallpaper=" & Reader & Environment.NewLine
+                        SettingsListy = SettingsListy & "IsDarkModeForProgram=" & Reader & Environment.NewLine
                     End If
 
                     If SettingsListy IsNot Nothing Then

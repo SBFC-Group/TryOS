@@ -953,12 +953,12 @@ Public Class Form1
 
     End Sub
 
-    Private IsControlCenterOpen As Boolean = False
-    Private ControlCenterHasBeenOpened As Boolean = False
+    Public IsControlCenterOpen As Boolean = False
+    Public ControlCenterHasBeenOpened As Boolean = False
     Public ControlCenter As PageSettings
 
     ''' <summary>This opens the Control Center</summary>
-    Private Sub ShowControlCenter()
+    Public Sub ShowControlCenter()
         IsControlCenterOpen = True
         Try
             currentForm.Hide()
@@ -975,7 +975,7 @@ Public Class Form1
     End Sub
 
     ''' <summary>This closes the Control Center</summary>
-    Private Sub CloseControlCenter()
+    Public Sub CloseControlCenter()
         IsControlCenterOpen = False
         HideTaskbar(False)
         Panel3.Controls.Remove(ControlCenter)

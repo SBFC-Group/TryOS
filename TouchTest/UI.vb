@@ -150,6 +150,14 @@ Public Class UI
             WindowThing.Size = UserControlThing2.Size
             WindowThing.Text = UserControlThing2.Name
             WindowThing.Show()
+        ElseIf UserControl = "WifiPanel" Then
+            Dim WindowThing As New Form
+            Dim UserControlThing2 As New WifiPanel
+            WindowThing.Dock = DockStyle.None
+            WindowThing.Controls.Add(UserControlThing2)
+            WindowThing.Size = UserControlThing2.Size
+            WindowThing.Text = UserControlThing2.Name
+            WindowThing.Show()
         End If
     End Sub
 
