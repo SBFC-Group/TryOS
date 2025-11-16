@@ -36,21 +36,21 @@
 
         Else
             If ProgressBar1.Value = 30 Then
-                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Software.swfiles") Then
+                If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\Software.swfiles") Then
                 Else
                     Dim SettingsListy As String = Nothing
 
                     'This is converting settings files to text
-                    If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Wallpaper.swfiles") Then
-                        Dim Reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Wallpaper.swfiles")
+                    If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Settings\Wallpaper.swfiles") Then
+                        Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\Wallpaper.swfiles")
                         SettingsListy = SettingsListy & "Wallpaper=" & Reader & Environment.NewLine
                     End If
-                    If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\DarkThemeForApps.swfiles") Then
-                        Dim Reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\DarkThemeForApps.swfiles")
+                    If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles") Then
+                        Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles")
                         SettingsListy = SettingsListy & "IsDarkModeForApps=" & Reader & Environment.NewLine
                     End If
-                    If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\DarkThemeForPrograms.swfiles") Then
-                        Dim Reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\DarkThemeForPrograms.swfiles")
+                    If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\DarkThemeForPrograms.swfiles") Then
+                        Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\DarkThemeForPrograms.swfiles")
                         SettingsListy = SettingsListy & "IsDarkModeForProgram=" & Reader & Environment.NewLine
                     End If
 

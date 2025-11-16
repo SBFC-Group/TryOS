@@ -2,18 +2,6 @@
     Private lang As New LanguageManager()
 
     Private Sub Form48_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Environment.CommandLine.Contains("/UseNewLoader") Then
-            If Form48_Things.HasBeenOpened = False Then
-                Form48_Things.HasBeenOpened = True
-                Form48_Things.OpenLogonPage()
-                Close()
-            ElseIf Form48_Things.HasBeenOpened = True Then
-                'UI.RunCommands("Loadjpg 1")
-
-            End If
-        End If
-
-
         'Checks if "LogonWallpaper.setting" exists in Settings Folder
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LogonWallpaper.setting") Then
             'Gets the data thats inside "LogonWallpaper.setting"
@@ -39,62 +27,7 @@
             If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & Reader) Then
                 TextBox1.Text = Reader
                 If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Settings\Password.swfiles") Then
-                    Dim UserMode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Reader & "\Settings\UserMode.swfiles")
-                    If UserMode = "UserMode=Disabled" Then
-                    Else
-                        Dim SecondReader As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Reader & "\Settings\Password.swfiles")
-                        Try
-                            Dim b As Byte() = Convert.FromBase64String(SecondReader)
-                            SecondReader = System.Text.Encoding.UTF8.GetString(b)
-                        Catch ex As Exception
-                            'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
-                            UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
-                        End Try
-                        Try
-                            Dim b As Byte() = Convert.FromBase64String(SecondReader)
-                            SecondReader = System.Text.Encoding.UTF8.GetString(b)
-                        Catch ex As Exception
-                            UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
-                            'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
-                        End Try
-                        If SecondReader = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
-                            Login()
-                        Else
-                            If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles") Then
-                                UI.ShowError("TryOS is facing out ""AutoUser.setting"" and replacing it with ""LastKnownUser.setting"".
-Why is it getting faced out? 
-""LastKnownUser.setting"" remembers the last logged on user.
-""AutoUser.setting"" can't do that.")
-                                If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
-                                    My.Computer.FileSystem.RenameFile(UI.SettingsFolder & "\AutoUser.setting", "AutoUser.setting.old")
-                                Else
-                                    'Writes an new "LastKnownUser.setting" file
-                                    My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", Reader, False)
-
-                                    My.Computer.FileSystem.RenameFile(UI.SettingsFolder & "\AutoUser.setting", "AutoUser.setting.old")
-                                End If
-                                If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles") Then
-                                    ActivatePincodeLayout()
-                                    'NumberButton1.Select()                      
-                                End If
-                            End If
-                        End If
-                    End If
-
-
-                End If
-            End If
-        ElseIf My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
-            Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
-            TextBox1.Text = ReadMyUserData
-            If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\Password.swfiles") Then
-                Dim UserMode As String = Nothing
-                If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\UserMode.swfiles") Then
-                    UserMode = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\UserMode.swfiles")
-                End If
-                If UserMode = "UserMode=Disabled" Then
-                Else
-                    Dim SecondReader As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\Password.swfiles")
+                    Dim SecondReader As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Reader & "\Settings\Password.swfiles")
                     Try
                         Dim b As Byte() = Convert.FromBase64String(SecondReader)
                         SecondReader = System.Text.Encoding.UTF8.GetString(b)
@@ -112,16 +45,58 @@ Why is it getting faced out?
                     If SecondReader = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
                         Login()
                     Else
-                        If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\PinCode.swfiles") Then
-                            ActivatePincodeLayout()
-                            'NumberButton1.Select()  
-                        Else
-                            FlowLayoutPanel1.Visible = True
+                        If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles") Then
+                            UI.ShowError("TryOS is facing out ""AutoUser.setting"" and replacing it with ""LastKnownUser.setting"".
+Why is it getting faced out? 
+""LastKnownUser.setting"" remembers the last logged on user.
+""AutoUser.setting"" can't do that.")
+                            If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
+                                My.Computer.FileSystem.RenameFile(UI.SettingsFolder & "\AutoUser.setting", "AutoUser.setting.old")
+                            Else
+                                'Writes an new "LastKnownUser.setting" file
+                                My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", Reader, False)
+
+                                My.Computer.FileSystem.RenameFile(UI.SettingsFolder & "\AutoUser.setting", "AutoUser.setting.old")
+                            End If
+                            If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles") Then
+                                ActivatePincodeLayout()
+                                'NumberButton1.Select()                      
+                            End If
                         End If
                     End If
+
+
                 End If
-
-
+            End If
+        ElseIf My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
+            Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
+            TextBox1.Text = ReadMyUserData
+            If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\Password.swfiles") Then
+                Dim SecondReader As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\Password.swfiles")
+                Try
+                    Dim b As Byte() = Convert.FromBase64String(SecondReader)
+                    SecondReader = System.Text.Encoding.UTF8.GetString(b)
+                Catch ex As Exception
+                    'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                    UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+                End Try
+                Try
+                    Dim b As Byte() = Convert.FromBase64String(SecondReader)
+                    SecondReader = System.Text.Encoding.UTF8.GetString(b)
+                Catch ex As Exception
+                    UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+                    'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                End Try
+                If SecondReader = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
+                    Login()
+                Else
+                    If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\PinCode.swfiles") Then
+                        ActivatePincodeLayout()
+                        'NumberButton1.Select()  
+                    Else
+                        FlowLayoutPanel1.Visible = True
+                    End If
+                End If
 
 
             End If
@@ -134,30 +109,21 @@ Why is it getting faced out?
         End If
 
         If Environment.CommandLine.Contains("/DevMode") Then
-            FlowLayoutPanel1.Visible = True
             Dim dir1 = UI.UsersFolder
             Dim files() As System.IO.DirectoryInfo
             Dim dirinfo As New System.IO.DirectoryInfo(dir1)
             files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
             For Each file In files
-                Dim UserMode As String = Nothing
-                If My.Computer.FileSystem.FileExists(file.FullName & "\Settings\UserMode.swfiles") Then
-                    UserMode = My.Computer.FileSystem.ReadAllText(file.FullName & "\Settings\UserMode.swfiles")
-                End If
-                If UserMode = "UserMode=Disabled" Then
-                Else
-                    'Creates a new button with the name of a user.
-                    Dim btn As New Button()
-                    btn.Text = file.Name
-                    btn.FlatStyle = FlatStyle.Flat
-                    btn.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-                    btn.BackColor = Color.Gainsboro
-                    btn.BackgroundImageLayout = ImageLayout.Stretch
-                    btn.Size = New Size(209, 45)
-                    AddHandler btn.Click, AddressOf OpenUserButton_Click
-                    FlowLayoutPanel1.Controls.Add(btn)
-                End If
-
+                'Creates a new button with the name of a user.
+                Dim btn As New Button()
+                btn.Text = file.Name
+                btn.FlatStyle = FlatStyle.Flat
+                btn.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+                btn.BackColor = Color.Gainsboro
+                btn.BackgroundImageLayout = ImageLayout.Stretch
+                btn.Size = New Size(209, 45)
+                AddHandler btn.Click, AddressOf OpenUserButton_Click
+                FlowLayoutPanel1.Controls.Add(btn)
             Next
         Else
             FlowLayoutPanel1.Visible = False
@@ -292,85 +258,76 @@ Why is it getting faced out?
         Try
             If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & TextBox1.Text) Then
                 If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles") Then
-                    Dim UserMode As String = Nothing
-                    If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\UserMode.swfiles") Then
-                        UserMode = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\UserMode.swfiles")
+
+
+                    Dim Password As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles")
+                    If Password = """Password.swfiles"" can't be nothing." Then
+                        UI.ShowError("", ErrorMSGBox.Alerts.Critical)
+                    End If
+                    Try
+                        Dim b As Byte() = Convert.FromBase64String(Password)
+                        Password = System.Text.Encoding.UTF8.GetString(b)
+                    Catch ex As Exception
+                        'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                        UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+                    End Try
+                    Try
+                        Dim b As Byte() = Convert.FromBase64String(Password)
+                        Password = System.Text.Encoding.UTF8.GetString(b)
+                    Catch ex As Exception
+                        UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+                        'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                    End Try
+
+                    If Password = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
+                        Password = ""
+                    ElseIf Password = "" Then
+                        UI.ShowError("The password is not supported.", ErrorMSGBox.Alerts.Critical)
+                        Exit Sub
                     End If
 
-                    If UserMode = "UserMode=Disabled" Then
-                        UI.ShowError("Can't find an user with that password.")
-                    Else
-                        Dim Password As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles")
-                        If Password = """Password.swfiles"" can't be nothing." Then
-                            UI.ShowError("", ErrorMSGBox.Alerts.Critical)
-                        End If
-                        Try
-                            Dim b As Byte() = Convert.FromBase64String(Password)
-                            Password = System.Text.Encoding.UTF8.GetString(b)
-                        Catch ex As Exception
-                            'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
-                            UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
-                        End Try
-                        Try
-                            Dim b As Byte() = Convert.FromBase64String(Password)
-                            Password = System.Text.Encoding.UTF8.GetString(b)
-                        Catch ex As Exception
-                            UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
-                            'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
-                        End Try
+                    If Password = TextBox2.Text Then
+                        If Environment.CommandLine.Contains("/NewLogin") Then
+                            Dim LogonLoadingUser As New LoadingUser
 
-                        If Password = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
-                            Password = ""
-                        ElseIf Password = "" Then
-                            UI.ShowError("The password is not supported.", ErrorMSGBox.Alerts.Critical)
-                            Exit Sub
-                        End If
+                            LogonLoadingUser.Show()
 
-                        If Password = TextBox2.Text Then
-                            If Environment.CommandLine.Contains("/NewLogin") Then
-                                Dim LogonLoadingUser As New LoadingUser
-
-                                LogonLoadingUser.Show()
-
-                                If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
-                                    Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
-                                    If TextBox1.Text = ReadMyUserData Then
-                                    Else
-                                        My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
-                                    End If
+                            If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
+                                Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
+                                If TextBox1.Text = ReadMyUserData Then
                                 Else
                                     My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
                                 End If
-
-                                LogonLoadingUser.Username = TextBox1.Text
-                                LogonLoadingUser.Password = TextBox2.Text
-
-                                Form48_Things.CloseUSW()
                             Else
-                                UI.DisableOpenFramework = False
-                                'MsgBox("Welcome " & TextBox1.Text)
-                                Form1.Username = TextBox1.Text
-                                UI.UserFolder = UI.UsersFolder & "\" & TextBox1.Text
-                                UI.LoadShell(TextBox1.Text, My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles"))
-                                If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
-                                    Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
-                                    If TextBox1.Text = ReadMyUserData Then
-                                    Else
-                                        My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
-                                    End If
-                                Else
-                                    My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
-                                End If
-                                Close()
+                                My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
                             End If
+
+                            LogonLoadingUser.Username = TextBox1.Text
+                            LogonLoadingUser.Password = TextBox2.Text
 
 
                         Else
-                            UI.ShowError("Can't find an user with that password.")
+                            UI.DisableOpenFramework = False
+                            'MsgBox("Welcome " & TextBox1.Text)
+                            Form1.Username = TextBox1.Text
+                            UI.UserFolder = UI.UsersFolder & "\" & TextBox1.Text
+                            UI.LoadShell(TextBox1.Text, My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles"))
+                            If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
+                                Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
+                                If TextBox1.Text = ReadMyUserData Then
+                                Else
+                                    My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                                End If
+                            Else
+                                My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                            End If
+                            Close()
                         End If
+
+
+                    Else
+                        UI.ShowError("Can't find an user with that password.")
                     End If
-
-
                 Else
                     If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & TextBox1.Text & "\Password.swfiles") Then
                         If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & TextBox1.Text & "\Settings") Then
@@ -537,6 +494,9 @@ Why is it getting faced out?
         TextBox1.Enabled = True
         TextBox1.Text = ""
         TextBox2.Enabled = True
+        If Environment.CommandLine.Contains("/DevMode") Then
+            FlowLayoutPanel1.Visible = True
+        End If
     End Sub
 
     Private Sub CommanderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CommanderToolStripMenuItem.Click
@@ -584,14 +544,5 @@ Why is it getting faced out?
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Button2_Click()
-    End Sub
-
-    Private Sub CheckBox1Or2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged, CheckBox2.CheckedChanged
-        Dim TheCheckBox As CheckBox = CType(sender, CheckBox)
-        If TheCheckBox.CheckState = CheckState.Checked Then
-            FlowLayoutPanel1.Visible = True
-        ElseIf TheCheckBox.CheckState = CheckState.Unchecked Then
-            FlowLayoutPanel1.Visible = False
-        End If
     End Sub
 End Class
