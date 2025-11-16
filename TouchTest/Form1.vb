@@ -22,7 +22,7 @@ Public Class Form1
 
     Public AllowOnlyVerifyedShellCode As Boolean = True
 
-    Private User As New UserManager(Username)
+    Public User As New UserManager(Username)
     Private lang As New LanguageManager()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load

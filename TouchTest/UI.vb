@@ -92,6 +92,8 @@ Public Class UI
         Form1.OpenChildForm(New Commander)
     End Sub
 
+    Public LogonBool As Boolean = False
+
     Public Sub RunUserControl(UserControl As String)
         Dim UserControlThing = UserControl
         If UserControl = "InfoApp" Then
@@ -166,15 +168,16 @@ Public Class UI
     End Sub
 
     Public Sub LoadShell(Optional Username As String = "", Optional Password As String = "")
-        Form1.Show()
-        'Form1.Panel2.BackColor = Color.FromArgb(55, Color.Silver)
-        'Form1.TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
         If Username = "" Then
 
         Else
             Form1.Username = Username
             Form1.Password = Password
         End If
+        Form1.Show()
+        'Form1.Panel2.BackColor = Color.FromArgb(55, Color.Silver)
+        'Form1.TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
+
     End Sub
 
     Public Sub RunShellPrograms(Run_ As String)
