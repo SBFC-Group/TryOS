@@ -8,7 +8,7 @@
     End Sub
 
     Public Sub LoadUserSettings()
-        Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\Software.swfiles")
+        Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
         Try
             Dim b As Byte() = Convert.FromBase64String(usedencode)
             usedencode = System.Text.Encoding.UTF8.GetString(b)
@@ -75,7 +75,7 @@
         Dim byt2 As Byte() = System.Text.Encoding.UTF8.GetBytes(Reader)
         Reader = Convert.ToBase64String(byt2)
 
-        My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Settings\Software.swfiles", "", False)
+        My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Software.swfiles", Reader, False)
     End Sub
 
     Private Function GetRole() As TryController.Roles

@@ -43,13 +43,16 @@ Public Class Form1
             End Try
         End If
 
-        UserManager.LoadShellColors()
 
-        UserManager.CheckForDarkThemeFile()
+        If Environment.CommandLine.Contains("/NewLogin") Then
+            User.LoadUserSettings()
+        Else
+            UserManager.LoadShellColors()
 
-        UserManager.LoadWallpaperFromUserSettings()
+            UserManager.CheckForDarkThemeFile()
 
-        'User.LoadUserSettings()
+            UserManager.LoadWallpaperFromUserSettings()
+        End If
 
         If IsUsingDarkThemeForPrograms = True Then
             Panel2.BackColor = Color.FromArgb(55, Color.Gray)

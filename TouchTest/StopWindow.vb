@@ -2,8 +2,18 @@
     Public FullStopMessage As String = ""
     Public MessageSource As String = ""
 
-    Private Sub StopWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub Crash(e As Exception)
         CloseEveryForm()
+        Me.Show()
+        RichTextBox1.Text = "The Program Crashed and will restart soon." & "
+" & e.Message & "
+" & e.Source & "
+
+" & e.StackTrace
+    End Sub
+
+    Private Sub StopWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 
     Private Sub CloseEveryForm()

@@ -31,9 +31,9 @@ Partial Class StopWindow
         '
         Me.Panel1.Controls.Add(Me.RichTextBox1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Location = New System.Drawing.Point(2, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1100, 509)
+        Me.Panel1.Size = New System.Drawing.Size(1096, 505)
         Me.Panel1.TabIndex = 0
         '
         'RichTextBox1
@@ -43,23 +43,28 @@ Partial Class StopWindow
         Me.RichTextBox1.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.RichTextBox1.DetectUrls = False
         Me.RichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RichTextBox1.Enabled = False
         Me.RichTextBox1.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RichTextBox1.ForeColor = System.Drawing.Color.White
         Me.RichTextBox1.Location = New System.Drawing.Point(0, 0)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
         Me.RichTextBox1.ShortcutsEnabled = False
-        Me.RichTextBox1.Size = New System.Drawing.Size(1100, 509)
+        Me.RichTextBox1.Size = New System.Drawing.Size(1096, 505)
         Me.RichTextBox1.TabIndex = 0
-        Me.RichTextBox1.Text = ""
+        Me.RichTextBox1.Text = "TestingThis"
         '
         'StopWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(1100, 509)
         Me.Controls.Add(Me.Panel1)
+        Me.ForeColor = System.Drawing.Color.White
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "StopWindow"
+        Me.Padding = New System.Windows.Forms.Padding(2)
         Me.Text = "StopWindow"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
