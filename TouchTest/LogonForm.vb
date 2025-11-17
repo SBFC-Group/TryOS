@@ -210,6 +210,7 @@
                         LogonLoadingUser.Password = TextBox2.Text
 
                         LogonFormThings.CloseLogonForm()
+
                     Else
                         UI.ShowError("Can't find an user with that password.")
                     End If

@@ -2,8 +2,12 @@
     Public ReadOnly Username As String
     Public ReadOnly Role As TryController.Roles
 
-    Public Sub New(TheUserName As String)
-        Username = TheUserName
+    Public Sub New(Optional TheUserName As String = "")
+        If TheUserName = "" Then
+            Username = Form1.Username
+        Else
+            Username = TheUserName
+        End If
         Role = GetRole()
     End Sub
 

@@ -22,11 +22,10 @@ Public Class Form1
 
     Public AllowOnlyVerifyedShellCode As Boolean = True
 
-    Public User As New UserManager(Username)
+    Public User As UserManager
     Private lang As New LanguageManager()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
 
         Timer1.Start()
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LoadDebugMenu.setting") Then
@@ -43,8 +42,9 @@ Public Class Form1
             End Try
         End If
 
+        User = New UserManager(Username)
 
-        If Environment.CommandLine.Contains("/NewLogin") Then
+        If Environment.CommandLine.Contains("/UseNewLoader") Then
             User.LoadUserSettings()
         Else
             UserManager.LoadShellColors()

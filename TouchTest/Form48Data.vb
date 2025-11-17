@@ -12,10 +12,12 @@
             '    My.Computer.FileSystem.WriteAllBytes(UI.UsersFolder & "\Program\Temp\USW.mp4", My.Resources.TryOS_USW, False)
             'End If
             UI.DisableOpenFramework = True
+            UI.UserFolder = UI.UsersFolder & "\SuperSecretUser"
+            Form1.Username = "SuperSecretUser"
             UI.LoadShell("SuperSecretUser", "")
             Form1.HideTaskbar(True)
             Form1.OpenChildForm(New LogonForm)
-            Form1.DisableFullScreenConsole = True
+            Form1.DisableConsole = True
         End Sub
 
         Public Sub CloseLogonForm()

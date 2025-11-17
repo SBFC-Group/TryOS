@@ -2,6 +2,13 @@
     Private lang As New LanguageManager()
 
     Private Sub Form48_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If Environment.CommandLine.Contains("/UseNewLoader") = True Then
+            UI.OpenFormByName("TouchTest.LogonForm")
+            Close()
+            Exit Sub
+        End If
+
         'Checks if "LogonWallpaper.setting" exists in Settings Folder
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LogonWallpaper.setting") Then
             'Gets the data thats inside "LogonWallpaper.setting"

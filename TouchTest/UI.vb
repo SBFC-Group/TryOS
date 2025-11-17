@@ -438,6 +438,20 @@ Public Class UI
         End If
     End Sub
 
+    Public Sub LogOut()
+        Try
+            Form1.currentForm.Close()
+        Catch ex As Exception
+        End Try
+        Form1.Close()
+        UserFolder = UsersFolder & "\"
+        System.Threading.Thread.Sleep(500)
+        LogonBool = False
+        LogonForm.Show()
+        System.Threading.Thread.Sleep(500)
+        Close()
+    End Sub
+
     Public IsKeyboardEnabled As Boolean = False
 
     Public Function GetKeyboard(Optional KeepText As String = Nothing) As DialogResult

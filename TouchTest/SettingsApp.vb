@@ -163,7 +163,11 @@
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
-        Form1.LogOut()
+        If Environment.CommandLine.Contains("/UseNewLoader") = True Then
+            UI.LogOut()
+        Else
+            Form1.LogOut()
+        End If
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click

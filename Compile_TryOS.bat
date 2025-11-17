@@ -6,6 +6,12 @@ mkdir ".\TouchTest\bin\Debug\TryOS_Build\Settings"
 copy ".\TouchTest\bin\Debug\Settings\ShellName USW.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\ShellName.setting"
 copy ".\TouchTest\bin\Debug\Settings\LogonWallpaper.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\"
 
+:Copys new Logon page
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\Settings\Page"
+copy ".\TouchTest\bin\Debug\Settings\Page\index.html" ".\TouchTest\bin\Debug\TryOS_Build\Settings\Page"
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\Settings\Page\imgs"
+copy ".\TouchTest\bin\Debug\Settings\Page\imgs\Wallpaper.jpg" ".\TouchTest\bin\Debug\TryOS_Build\Settings\Page\imgs\"
+
 :: Creates Admin User Folder.
 ::mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users"
 ::mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\Admin"
