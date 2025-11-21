@@ -11,7 +11,14 @@
         Role = GetRole()
     End Sub
 
-    Public Sub LoadUserSettings()
+    Public Enum HowWasTaskDone
+        Completed = 1
+        Failed = 2
+        Paused = 3
+        Canceled = 4
+    End Enum
+
+    Public Function LoadUserSettings() As HowWasTaskDone
         Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
         Try
             Dim b As Byte() = Convert.FromBase64String(usedencode)
@@ -58,10 +65,10 @@
                 'ElseIf setting.StartsWith("") Then
             End If
         Next
+        Return HowWasTaskDone.Completed
+    End Function
 
-    End Sub
-
-    Public Sub SaveUserSettings(Optional SettingsList As String = "Null")
+    Public Function SaveUserSettings(Optional SettingsList As String = "Null") As HowWasTaskDone
         Dim Reader As String = Nothing
 
         If SettingsList = "Null" Then
@@ -73,14 +80,77 @@
         Else
             Reader = SettingsList
         End If
-
-        Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(Reader)
-        Reader = Convert.ToBase64String(byt)
-        Dim byt2 As Byte() = System.Text.Encoding.UTF8.GetBytes(Reader)
-        Reader = Convert.ToBase64String(byt2)
+        Try
+            Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(Reader)
+            Reader = Convert.ToBase64String(byt)
+            Dim byt2 As Byte() = System.Text.Encoding.UTF8.GetBytes(Reader)
+            Reader = Convert.ToBase64String(byt2)
+        Catch ex As Exception
+        End Try
 
         My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Software.swfiles", Reader, False)
-    End Sub
+
+        Return HowWasTaskDone.Completed
+    End Function
+
+    Public Function DoesSettingExist(SettingName As String) As Boolean
+        'Gets Data
+        Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
+
+        'Makes it readable
+        Try
+            Dim b As Byte() = Convert.FromBase64String(usedencode)
+            usedencode = System.Text.Encoding.UTF8.GetString(b)
+        Catch ex As Exception
+
+        End Try
+        Try
+            Dim b2 As Byte() = Convert.FromBase64String(usedencode)
+            usedencode = System.Text.Encoding.UTF8.GetString(b2)
+        Catch ex As Exception
+
+        End Try
+
+        'Finds out if the setting exists
+        If usedencode.Contains(SettingName) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function AddSettingToUserSettings(SettingName As String) As HowWasTaskDone
+        'Gets Data
+        Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
+
+        'Makes it readable
+        Try
+            Dim b As Byte() = Convert.FromBase64String(usedencode)
+            usedencode = System.Text.Encoding.UTF8.GetString(b)
+        Catch ex As Exception
+
+        End Try
+        Try
+            Dim b2 As Byte() = Convert.FromBase64String(usedencode)
+            usedencode = System.Text.Encoding.UTF8.GetString(b2)
+        Catch ex As Exception
+
+        End Try
+        Dim settingslisttemp As New List(Of String)
+        Dim settingstemp As String()
+        settingstemp = usedencode.Split(Environment.NewLine)
+        For Each setting As String In settingstemp
+            settingslisttemp.Add(setting)
+        Next
+    End Function
+
+    Public Function RemoveSettingFromUserSettings(SettingName As String) As HowWasTaskDone
+
+    End Function
+
+    Public Function ReplaceSettingInUserSettings(SettingName As String, NewName As String) As HowWasTaskDone
+
+    End Function
 
     Private Function GetRole() As TryController.Roles
         If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\Role.swfiles") Then

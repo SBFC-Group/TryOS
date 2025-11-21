@@ -28,11 +28,13 @@
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If ProgressBar1.Value = ProgressBar1.Maximum Then
             If Username = "" Then
+                Close()
             Else
                 UI.DisableOpenFramework = False
                 Form1.Username = Username
                 UI.UserFolder = UI.UsersFolder & "\" & Username
                 UI.LoadShell(Username, Password)
+                Close()
             End If
 
         Else
@@ -61,9 +63,16 @@
                     End If
 
                 End If
+
+            ElseIf ProgressBar1.Value = 50 Then
+                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles") Then
+                Else
+                    My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles", TryController.GetVersion(), False)
+
+                End If
             End If
 
-            ProgressBar1.Increment(1)
+                ProgressBar1.Increment(1)
         End If
     End Sub
 End Class

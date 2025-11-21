@@ -2,10 +2,6 @@
     Public FileFormat As String = "jpg"
 
     Private Sub ThemeApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim DevParts As TryController.Roles = Form1.GetRole()
-        If DevParts = TryController.Roles.Developer Then
-            Panel3.Visible = True
-        End If
         LoadWallpaperPicker()
     End Sub
 

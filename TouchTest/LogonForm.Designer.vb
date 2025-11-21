@@ -54,6 +54,7 @@ Partial Class LogonForm
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.LogonButton2 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -349,6 +350,7 @@ Partial Class LogonForm
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.LogonButton2)
         Me.Panel3.Controls.Add(Me.CheckBox2)
         Me.Panel3.Controls.Add(Me.Button2)
         Me.Panel3.Controls.Add(Me.RemoveLetterButton)
@@ -451,6 +453,20 @@ Partial Class LogonForm
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
+        'LogonButton2
+        '
+        Me.LogonButton2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LogonButton2.BackColor = System.Drawing.Color.Gainsboro
+        Me.LogonButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.LogonButton2.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LogonButton2.Location = New System.Drawing.Point(228, 117)
+        Me.LogonButton2.Name = "LogonButton2"
+        Me.LogonButton2.Size = New System.Drawing.Size(203, 45)
+        Me.LogonButton2.TabIndex = 78
+        Me.LogonButton2.Text = "Login"
+        Me.LogonButton2.UseVisualStyleBackColor = False
+        Me.LogonButton2.Visible = False
+        '
         'LogonForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -506,4 +522,5 @@ Partial Class LogonForm
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents LogonButton2 As Button
 End Class

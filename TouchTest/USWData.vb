@@ -38,11 +38,12 @@
             Else
                 My.Computer.FileSystem.WriteAllBytes(UI.UsersFolder & "\Program\Temp\USW.mp4", My.Resources.TryOS_USW, False)
             End If
+            Form1.AllowNewerLoader = False
             UI.DisableOpenFramework = True
             UI.LoadShell("Program", "")
             Form1.HideTaskbar(True)
             Form1.OpenChildForm(New USWApp)
-            Form1.DisableFullScreenConsole = True
+            Form1.DisableConsole = True
         End Sub
 
         Public Sub CloseUSW()

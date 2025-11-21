@@ -29,38 +29,47 @@
 
             If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
                 Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
-                TextBox1.Text = ReadMyUserData
-                If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\Password.swfiles") Then
-                    Dim SecondReader As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\Password.swfiles")
-                    Try
-                        Dim b As Byte() = Convert.FromBase64String(SecondReader)
-                        SecondReader = System.Text.Encoding.UTF8.GetString(b)
-                    Catch ex As Exception
-                        'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
-                        UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
-                    End Try
-                    Try
-                        Dim b As Byte() = Convert.FromBase64String(SecondReader)
-                        SecondReader = System.Text.Encoding.UTF8.GetString(b)
-                    Catch ex As Exception
-                        UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
-                        'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
-                    End Try
-                    If SecondReader = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
-                        'Login()
-                    Else
-                        If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\PinCode.swfiles") Then
-                            ActivatePincodeLayout()
-                            'NumberButton1.Select()  
-                        Else
-                            FlowLayoutPanel1.Visible = True
-                        End If
-                    End If
 
-
+                Dim UserMode As String = Nothing
+                If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\UserMode.swfiles") Then
+                    UserMode = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\UserMode.swfiles")
                 End If
+
+                If UserMode = "UserMode=Disabled" Then
+                Else
+                    TextBox1.Text = ReadMyUserData
+                    If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\Password.swfiles") Then
+                        Dim SecondReader As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\Password.swfiles")
+                        Try
+                            Dim b As Byte() = Convert.FromBase64String(SecondReader)
+                            SecondReader = System.Text.Encoding.UTF8.GetString(b)
+                        Catch ex As Exception
+                            'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                            UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+                        End Try
+                        Try
+                            Dim b As Byte() = Convert.FromBase64String(SecondReader)
+                            SecondReader = System.Text.Encoding.UTF8.GetString(b)
+                        Catch ex As Exception
+                            UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+                            'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
+                        End Try
+                        If SecondReader = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
+                            'Login()
+                        Else
+                            If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & ReadMyUserData & "\Settings\PinCode.swfiles") Then
+                                ActivatePincodeLayout()
+                                'NumberButton1.Select()  
+                            Else
+                            End If
+                        End If
+
+
+                    End If
+                End If
+
+
             Else
-                'FlowLayoutPanel1.Visible = True
             End If
 
             If Environment.CommandLine.Contains("/DevMode") Then
@@ -69,18 +78,23 @@
                 Dim dirinfo As New System.IO.DirectoryInfo(dir1)
                 files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
                 For Each file In files
-
-
-                    'Creates a new button with the name of a user.
-                    Dim btn As New Button()
-                    btn.Text = file.Name
-                    btn.FlatStyle = FlatStyle.Flat
-                    btn.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-                    btn.BackColor = Color.Gainsboro
-                    btn.BackgroundImageLayout = ImageLayout.Stretch
-                    btn.Size = New Size(209, 45)
-                    AddHandler btn.Click, AddressOf OpenUserButton_Click
-                    FlowLayoutPanel1.Controls.Add(btn)
+                    Dim UserMode As String = Nothing
+                    If My.Computer.FileSystem.FileExists(file.FullName & "\Settings\UserMode.swfiles") Then
+                        UserMode = My.Computer.FileSystem.ReadAllText(file.FullName & "\Settings\UserMode.swfiles")
+                    End If
+                    If UserMode = "UserMode=Disabled" Then
+                    Else
+                        'Creates a new button with the name of a user.
+                        Dim btn As New Button()
+                        btn.Text = file.Name
+                        btn.FlatStyle = FlatStyle.Flat
+                        btn.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+                        btn.BackColor = Color.Gainsboro
+                        btn.BackgroundImageLayout = ImageLayout.Stretch
+                        btn.Size = New Size(209, 45)
+                        AddHandler btn.Click, AddressOf OpenUserButton_Click
+                        FlowLayoutPanel1.Controls.Add(btn)
+                    End If
                 Next
             Else
                 FlowLayoutPanel1.Visible = False
@@ -424,5 +438,21 @@
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Button2_Click()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+    End Sub
+
+    Private Sub LogonButton2_Click(sender As Object, e As EventArgs) Handles LogonButton2.Click
+        TextBox2.Text = TextBox3.Text
+        Login()
+    End Sub
+
+    Private Sub TextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox2.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            Login()
+        End If
     End Sub
 End Class

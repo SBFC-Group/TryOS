@@ -21,6 +21,7 @@ Public Class Form1
     Public DisableConsole As Boolean = False
 
     Public AllowOnlyVerifyedShellCode As Boolean = True
+    Public AllowNewerLoader As Boolean = True
 
     Public User As UserManager
     Private lang As New LanguageManager()
@@ -44,8 +45,16 @@ Public Class Form1
 
         User = New UserManager(Username)
 
-        If Environment.CommandLine.Contains("/UseNewLoader") Then
-            User.LoadUserSettings()
+        If AllowNewerLoader = True Then
+            If Environment.CommandLine.Contains("/UseOldLoader") Then
+                UserManager.LoadShellColors()
+
+                UserManager.CheckForDarkThemeFile()
+
+                UserManager.LoadWallpaperFromUserSettings()
+            Else
+                User.LoadUserSettings()
+            End If
         Else
             UserManager.LoadShellColors()
 
@@ -53,6 +62,7 @@ Public Class Form1
 
             UserManager.LoadWallpaperFromUserSettings()
         End If
+
 
         If IsUsingDarkThemeForPrograms = True Then
             Panel2.BackColor = Color.FromArgb(55, Color.Gray)

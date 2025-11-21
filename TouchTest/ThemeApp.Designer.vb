@@ -869,7 +869,6 @@ Partial Class ThemeApp
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(161, 126)
         Me.Panel3.TabIndex = 9
-        Me.Panel3.Visible = False
         '
         'Panel4
         '
