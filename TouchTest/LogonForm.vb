@@ -69,6 +69,8 @@
                 Dim dirinfo As New System.IO.DirectoryInfo(dir1)
                 files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
                 For Each file In files
+
+
                     'Creates a new button with the name of a user.
                     Dim btn As New Button()
                     btn.Text = file.Name

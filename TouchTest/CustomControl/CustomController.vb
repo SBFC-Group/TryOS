@@ -3,7 +3,7 @@ Imports System.Reflection
 
 Namespace CustomController_Data
     Module CustomController
-        Dim host As New OpenFramework_Handler()
+        Dim host As New CustomController_Handler()
 
         Public Sub LoadCodeParts()
             Dim pluginPath As String = Path.Combine(Application.StartupPath, "ShellApps")
