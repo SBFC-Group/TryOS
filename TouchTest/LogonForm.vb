@@ -72,33 +72,29 @@
             Else
             End If
 
-            If Environment.CommandLine.Contains("/DevMode") Then
-                Dim dir1 = UI.UsersFolder
-                Dim files() As System.IO.DirectoryInfo
-                Dim dirinfo As New System.IO.DirectoryInfo(dir1)
-                files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
-                For Each file In files
-                    Dim UserMode As String = Nothing
-                    If My.Computer.FileSystem.FileExists(file.FullName & "\Settings\UserMode.swfiles") Then
-                        UserMode = My.Computer.FileSystem.ReadAllText(file.FullName & "\Settings\UserMode.swfiles")
-                    End If
-                    If UserMode = "UserMode=Disabled" Then
-                    Else
-                        'Creates a new button with the name of a user.
-                        Dim btn As New Button()
-                        btn.Text = file.Name
-                        btn.FlatStyle = FlatStyle.Flat
-                        btn.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-                        btn.BackColor = Color.Gainsboro
-                        btn.BackgroundImageLayout = ImageLayout.Stretch
-                        btn.Size = New Size(209, 45)
-                        AddHandler btn.Click, AddressOf OpenUserButton_Click
-                        FlowLayoutPanel1.Controls.Add(btn)
-                    End If
-                Next
-            Else
-                FlowLayoutPanel1.Visible = False
-            End If
+            Dim dir1 = UI.UsersFolder
+            Dim files() As System.IO.DirectoryInfo
+            Dim dirinfo As New System.IO.DirectoryInfo(dir1)
+            files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
+            For Each file In files
+                Dim UserMode As String = Nothing
+                If My.Computer.FileSystem.FileExists(file.FullName & "\Settings\UserMode.swfiles") Then
+                    UserMode = My.Computer.FileSystem.ReadAllText(file.FullName & "\Settings\UserMode.swfiles")
+                End If
+                If UserMode = "UserMode=Disabled" Then
+                Else
+                    'Creates a new button with the name of a user.
+                    Dim btn As New Button()
+                    btn.Text = file.Name
+                    btn.FlatStyle = FlatStyle.Flat
+                    btn.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+                    btn.BackColor = Color.Gainsboro
+                    btn.BackgroundImageLayout = ImageLayout.Stretch
+                    btn.Size = New Size(209, 45)
+                    AddHandler btn.Click, AddressOf OpenUserButton_Click
+                    FlowLayoutPanel1.Controls.Add(btn)
+                End If
+            Next
         End If
     End Sub
 
@@ -129,6 +125,7 @@
             NumberButton9.Visible = False
             RemoveLetterButton.Visible = False
 
+            LogonButton2.Visible = True
             TextBox3.Enabled = True
             TextBox3.UseSystemPasswordChar = True
 
@@ -180,10 +177,9 @@
             If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & TextBox1.Text) Then
                 If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles") Then
 
-
                     Dim Password As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles")
-                    If Password = """Password.swfiles"" can't be nothing." Then
-                        UI.ShowError("", ErrorMSGBox.Alerts.Critical)
+                    If Password = "" Then
+                        UI.ShowError("""Password.swfiles"" can't be nothing.", ErrorMSGBox.Alerts.Critical)
                     End If
                     Try
                         Dim b As Byte() = Convert.FromBase64String(Password)
@@ -203,35 +199,46 @@
                     If Password = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
                         Password = ""
                     ElseIf Password = "" Then
-                        UI.ShowError("The password is not supported.", ErrorMSGBox.Alerts.Critical)
+                        UI.ShowError("The password is not supported.", ErrorMSGBox.Alerts.Information)
                         Exit Sub
                     End If
 
-                    If Password = TextBox2.Text Then
+                    Dim UserMode As String = Nothing
+                    If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\UserMode.swfiles") Then
+                        UserMode = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\UserMode.swfiles")
+                    End If
 
-                        Dim LogonLoadingUser As New LoadingUser
-                        LogonLoadingUser.Show()
+                    If UserMode = "UserMode=Disabled" Then
+                        UI.ShowError("Can't find an user with that password.", ErrorMSGBox.Alerts.Information)
+                    Else
+                        If Password = TextBox2.Text Then
 
-                        If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
-                            Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
-                            If TextBox1.Text = ReadMyUserData Then
+                            Dim LogonLoadingUser As New LoadingUser
+                            LogonLoadingUser.Show()
+
+                            If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
+                                Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
+                                If TextBox1.Text = ReadMyUserData Then
+                                Else
+                                    My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                                End If
                             Else
                                 My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
                             End If
+
+                            LogonLoadingUser.Username = TextBox1.Text
+                            LogonLoadingUser.Password = TextBox2.Text
+
+                            LogonFormThings.CloseLogonForm()
+
                         Else
-                            My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                            UI.ShowError("Can't find an user with that password.")
                         End If
-
-                        LogonLoadingUser.Username = TextBox1.Text
-                        LogonLoadingUser.Password = TextBox2.Text
-
-                        LogonFormThings.CloseLogonForm()
-
-                    Else
-                        UI.ShowError("Can't find an user with that password.")
                     End If
+
+
                 Else
-                    If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & TextBox1.Text & "\Password.swfiles") Then
+                        If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & TextBox1.Text & "\Password.swfiles") Then
                         If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & TextBox1.Text & "\Settings") Then
                             My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Settings")
                         End If
@@ -239,7 +246,7 @@
                     End If
                 End If
             Else
-                UI.ShowError("Can't find an user with that username.")
+                UI.ShowError("Can't find an user with that username.", ErrorMSGBox.Alerts.Information)
             End If
         Catch ex As Exception
             UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)

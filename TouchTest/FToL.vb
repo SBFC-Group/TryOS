@@ -2,7 +2,10 @@
 
 Public Class FToL
     Private Sub FToL_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        If Environment.CommandLine.Contains("/DevMode") = True Then
+        Else
+            Close()
+        End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

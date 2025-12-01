@@ -3,7 +3,8 @@
 
     Private Sub Form48_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        If Environment.CommandLine.Contains("/UseNewLoader") = True Then
+        If Environment.CommandLine.Contains("/UseOldLoader") = True Then
+        Else
             UI.OpenFormByName("TouchTest.LogonForm")
             Close()
             Exit Sub

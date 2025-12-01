@@ -13,58 +13,68 @@
         Dim dirinfo As New System.IO.DirectoryInfo(dir1)
         files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
         For Each file In files
-            Label3.Text = Label3.Text & file.Name & Environment.NewLine
-            If User = 1 Then
-                UserButton1.Text = file.Name
-                UserButton1.Visible = True
-                User = 2
-            ElseIf User = 2 Then
-                UserButton2.Text = file.Name
-                UserButton2.Visible = True
-                User = 3
-            ElseIf User = 3 Then
-                UserButton3.Text = file.Name
-                UserButton3.Visible = True
-                User = 4
-            ElseIf User = 4 Then
-                UserButton4.Text = file.Name
-                UserButton4.Visible = True
-                User = 5
-            ElseIf User = 5 Then
-                UserButton5.Text = file.Name
-                UserButton5.Visible = True
-                User = 6
-            ElseIf User = 6 Then
-                UserButton6.Text = file.Name
-                UserButton6.Visible = True
-                User = 7
-            ElseIf User = 7 Then
-                UserButton7.Text = file.Name
-                UserButton7.Visible = True
-                User = 8
-            ElseIf User = 8 Then
-                UserButton8.Text = file.Name
-                UserButton8.Visible = True
-                User = 9
-            ElseIf User = 9 Then
-                UserButton9.Text = file.Name
-                UserButton9.Visible = True
-                User = 10
-            ElseIf User = 10 Then
-                UserButton10.Text = file.Name
-                UserButton10.Visible = True
-                User = 11
-            ElseIf User = 11 Then
-                UserButton11.Text = file.Name
-                UserButton11.Visible = True
-                User = 12
-            ElseIf User = 12 Then
-                UserButton12.Text = file.Name
-                UserButton12.Visible = True
-                User = 13
-            Else
-
+            Dim UserMode As String = Nothing
+            If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & file.Name & "\Settings\UserMode.swfiles") Then
+                UserMode = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & file.Name & "\Settings\UserMode.swfiles")
             End If
+
+            If UserMode = "UserMode=Disabled" Then
+            Else
+                Label3.Text = Label3.Text & file.Name & Environment.NewLine
+                If User = 1 Then
+                    UserButton1.Text = file.Name
+                    UserButton1.Visible = True
+                    User = 2
+                ElseIf User = 2 Then
+                    UserButton2.Text = file.Name
+                    UserButton2.Visible = True
+                    User = 3
+                ElseIf User = 3 Then
+                    UserButton3.Text = file.Name
+                    UserButton3.Visible = True
+                    User = 4
+                ElseIf User = 4 Then
+                    UserButton4.Text = file.Name
+                    UserButton4.Visible = True
+                    User = 5
+                ElseIf User = 5 Then
+                    UserButton5.Text = file.Name
+                    UserButton5.Visible = True
+                    User = 6
+                ElseIf User = 6 Then
+                    UserButton6.Text = file.Name
+                    UserButton6.Visible = True
+                    User = 7
+                ElseIf User = 7 Then
+                    UserButton7.Text = file.Name
+                    UserButton7.Visible = True
+                    User = 8
+                ElseIf User = 8 Then
+                    UserButton8.Text = file.Name
+                    UserButton8.Visible = True
+                    User = 9
+                ElseIf User = 9 Then
+                    UserButton9.Text = file.Name
+                    UserButton9.Visible = True
+                    User = 10
+                ElseIf User = 10 Then
+                    UserButton10.Text = file.Name
+                    UserButton10.Visible = True
+                    User = 11
+                ElseIf User = 11 Then
+                    UserButton11.Text = file.Name
+                    UserButton11.Visible = True
+                    User = 12
+                ElseIf User = 12 Then
+                    UserButton12.Text = file.Name
+                    UserButton12.Visible = True
+                    User = 13
+                Else
+
+                End If
+            End If
+
+
         Next
         If User = 1 Then
         ElseIf User = 2 Then
@@ -138,7 +148,7 @@
     End Sub
 
     Public Sub LoadUser(Text_ As String)
-        If Form1.Username = Text_ Then
+        If Form1.User.Username = Text_ Then
         Else
             Dim MyRole As TryController.Roles = Form1.GetRole()
             If MyRole = TryController.Roles.Guest Then

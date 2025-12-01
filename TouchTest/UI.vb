@@ -56,6 +56,7 @@ Public Class UI
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("Loadjpg ", "")
             UploadWallpaperToShell(Convert.ToInt64(Text1), "jpg")
+
         ElseIf Command.Contains("Loadpng ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")

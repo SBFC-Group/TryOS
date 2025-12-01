@@ -2,10 +2,12 @@
     Public Class FunnyCode
         Public Shared Function _1()
             'Form1.Panel1
+            Return Form1.Panel1
         End Function
 
         Public Shared Function _2()
             'Form1.Panel2
+            Return Form1.Panel2
         End Function
 
         Public Shared Function _3()

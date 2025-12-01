@@ -34,19 +34,22 @@
         End Try
 
         Dim settingstemp As String()
-        settingstemp = usedencode.Split(Environment.NewLine)
-        For Each setting As String In settingstemp
+        settingstemp = usedencode.Split(";"c)
+        For Each setting In settingstemp
+            MsgBox(setting)
             If setting.StartsWith("Wallpaper=") Then
                 setting = setting.Replace("Wallpaper=", "")
 
                 'This is copied code ;)
-                If setting.StartsWith("jpg=") Then
+                If setting.StartsWith("jpg=") = True Then
                     setting = setting.Replace("jpg=", "")
+                    MsgBox(setting)
                     UI.RunCommands("Loadjpg " & setting)
-                ElseIf setting.StartsWith("png=") Then
+
+                ElseIf setting.StartsWith("png=") = True Then
                     setting = setting.Replace("png=", "")
                     UI.RunCommands("Loadpng " & setting)
-                ElseIf setting.StartsWith("gif=") Then
+                ElseIf setting.StartsWith("gif=") = True Then
                     setting = setting.Replace("gif=", "")
                     UI.RunCommands("Loadgif " & setting)
                 End If

@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("TryOS")>
+<Assembly: AssemblyTitle("ImageViewer")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("SBFC Group")>
-<Assembly: AssemblyProduct("TryOS")>
-<Assembly: AssemblyCopyright("Copyright © SBFC Group 2025")>
+<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyProduct("ImageViewer")>
+<Assembly: AssemblyCopyright("Copyright ©  2025")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("d86ba7d3-bc3b-47e8-abc8-9e16c940e82f")>
+<Assembly: Guid("49813978-6617-4ac8-8985-cc3db30f1af8")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -27,6 +27,9 @@ Imports System.Runtime.InteropServices
 '      Build Number
 '      Revision
 '
+' You can specify all the values or you can default the Build and Revision Numbers
+' by using the '*' as shown below:
+' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("0.9.0.296")>
-<Assembly: AssemblyFileVersion("0.9.0.296")>
+<Assembly: AssemblyVersion("1.0.0.0")>
+<Assembly: AssemblyFileVersion("1.0.0.0")>

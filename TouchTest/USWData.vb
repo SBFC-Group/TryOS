@@ -52,7 +52,7 @@
                     Form1.currentForm.Close()
                     Form1.Close()
                     If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\ShellName.setting") Then
-                        My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\ShellName.setting", "TouchTest.Form48", False)
+                        My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\ShellName.setting", "TouchTest.LogonForm", False)
                     End If
                     RemoveUSWUser()
                     Application.Restart()

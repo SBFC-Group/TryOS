@@ -29,6 +29,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ModTheSystem", "ModTheSyste
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ProgramInfo", "ProgramInfo\ProgramInfo.vbproj", "{FB646AA6-BC80-4BFC-9D39-4DDCE88B0B36}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ImageViewer", "ImageViewer\ImageViewer.vbproj", "{55EF8322-6CF7-4D94-B765-C946BC1E7868}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{FB646AA6-BC80-4BFC-9D39-4DDCE88B0B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB646AA6-BC80-4BFC-9D39-4DDCE88B0B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB646AA6-BC80-4BFC-9D39-4DDCE88B0B36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55EF8322-6CF7-4D94-B765-C946BC1E7868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55EF8322-6CF7-4D94-B765-C946BC1E7868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55EF8322-6CF7-4D94-B765-C946BC1E7868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55EF8322-6CF7-4D94-B765-C946BC1E7868}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

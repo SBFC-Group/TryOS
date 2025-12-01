@@ -105,10 +105,8 @@ Public Class Form1
         'End If
 
         If UI.DisableOpenFramework = False Then
-            Dim regit As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group", "UseOpenFramework", Nothing)
-            If regit = "1" Then
-                OpenFramework_Data.LoadApps()
-            End If
+
+            OpenFramework_Data.LoadApps()
 
             UserManager.LoadTaskbarButtons()
 
@@ -128,7 +126,7 @@ Public Class Form1
 
             If AllowOnlyVerifyedShellCode = False Then
                 If Shit = 1 Then
-                    UI.ShowError("Your running in an unsafe mode. Close the program if you don't know what you're doing.", ErrorMSGBox.Alerts.Information)
+                    UI.ShowError("Your running in an unsafe mode. Close the program if you don't know what you're doing.", ErrorMSGBox.Alerts.Exclamation)
                 End If
             End If
         End If

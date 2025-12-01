@@ -38,7 +38,7 @@ Public Class OpenFramework_Handler
     End Function
 
     Public Function GetUsername() As String Implements OpenFramework_UI_Handler.GetUsername
-        Return Form1.Username
+        Return Form1.User.Username
     End Function
 
     Public Function GetUserFolder() As String Implements OpenFramework_UI_Handler.GetUserFolder
