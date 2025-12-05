@@ -26,6 +26,25 @@ copy ".\TouchTest\bin\Debug\Settings\Page\imgs\Wallpaper.jpg" ".\TouchTest\bin\D
 ::copy ".\TouchTest\bin\Debug\Users\Admin\Notes\quicknote_1.swnote" ".\TouchTest\bin\Debug\TryOS_Build\Users\Admin\Notes\"
 ::copy ".\TouchTest\bin\Debug\Users\Admin\Temp\temp.txt" ".\TouchTest\bin\Debug\TryOS_Build\Users\Admin\Temp\"
 
+:: Creates The Program User (Used on Logon Page)
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users"
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser"
+
+:: User Apps (Not Used with normal or program) Users 
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Apps"
+echo Nothing > ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Apps\temp.txt"
+
+:: Copys Settings (Program User will only use the older settings files as the newer system is disable for program users)
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Settings"
+copy ".\TouchTest\bin\Debug\Users\SuperSecretUser\Settings\Password.swfiles" ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Settings\"
+copy ".\TouchTest\bin\Debug\Users\SuperSecretUser\Settings\Role.swfiles" ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Settings\"
+copy ".\TouchTest\bin\Debug\Users\SuperSecretUser\Settings\Wallpaper.swfiles" ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Settings\"
+copy ".\TouchTest\bin\Debug\Users\SuperSecretUser\Settings\UserMode.swfiles" ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Settings\"
+
+:: yeah it creates a temp for later use.
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Temp"
+echo Nothing > ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Temp\temp.txt"
+
 :: Creates Folder for wallpapers
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers"
 copy ".\TouchTest\bin\Debug\Wallpapers\Wallpaper_1.jpg" ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers\"

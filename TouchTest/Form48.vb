@@ -121,17 +121,17 @@ Why is it getting faced out?
             Dim files() As System.IO.DirectoryInfo
             Dim dirinfo As New System.IO.DirectoryInfo(dir1)
             files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
-            For Each file In files
+            For Each File In files
                 'Creates a new button with the name of a user.
-                Dim btn As New Button()
-                btn.Text = file.Name
-                btn.FlatStyle = FlatStyle.Flat
-                btn.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-                btn.BackColor = Color.Gainsboro
-                btn.BackgroundImageLayout = ImageLayout.Stretch
-                btn.Size = New Size(209, 45)
-                AddHandler btn.Click, AddressOf OpenUserButton_Click
-                FlowLayoutPanel1.Controls.Add(btn)
+                Dim Btn As New Button
+                Btn.Text = File.Name
+                Btn.FlatStyle = FlatStyle.Flat
+                Btn.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+                Btn.BackColor = Color.Gainsboro
+                Btn.BackgroundImageLayout = ImageLayout.Stretch
+                Btn.Size = New Size(209, 45)
+                AddHandler Btn.Click, AddressOf OpenUserButton_Click
+                FlowLayoutPanel1.Controls.Add(Btn)
             Next
         Else
             FlowLayoutPanel1.Visible = False

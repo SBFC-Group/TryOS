@@ -13,14 +13,16 @@ Public Class UI
     Public UserFolder As String = My.Application.Info.DirectoryPath & "\Users\"
 
     Public DisableOpenFramework As Boolean = False
+    Public DisableCustomCode As Boolean = False
 
-    Public Sub RunCommands(Command As String, Optional TheForm As Object = Nothing)
+    Public Function RunCommands(Command As String, Optional TheForm As Object = Nothing)
         If Command.Contains("exit") = True Then
             Try
                 TheForm.Close()
             Catch ex As Exception
 
             End Try
+            Return Nothing
         ElseIf Command.Contains("end") = True Then
             Try
                 Form1.Close()
@@ -28,7 +30,7 @@ Public Class UI
             Catch ex As Exception
                 System.Threading.Thread.Sleep(1000)
             End Try
-
+            Return Nothing
         ElseIf Command.Contains("windowmode=mini") = True Then
             Try
                 TheForm.WindowState = FormWindowState.Minimized
@@ -36,50 +38,60 @@ Public Class UI
             Catch ex As Exception
 
             End Try
+            Return Nothing
         ElseIf Command.Contains("run ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("run ", "")
             RunShellPrograms(Text1)
+            Return Nothing
         ElseIf Command.Contains("start ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("start ", "")
             OpenFormByName("TouchTest." & Text1)
+            Return Nothing
         ElseIf Command.Contains("RunApp ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("RunApp ", "")
             Form1.OpenChildForm(GetForm("TouchTest." & Text1))
+            Return Nothing
         ElseIf Command.Contains("Loadjpg ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("Loadjpg ", "")
             UploadWallpaperToShell(Convert.ToInt64(Text1), "jpg")
-
+            Return Nothing
         ElseIf Command.Contains("Loadpng ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("Loadpng ", "")
             UploadWallpaperToShell(Convert.ToInt64(Text1), "png")
+            Return Nothing
         ElseIf Command.Contains("Loadgif ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("Loadgif ", "")
             UploadWallpaperToShell(Convert.ToInt64(Text1), "gif")
+            Return Nothing
         ElseIf Command.Contains("RunUserControl ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("RunUserControl ", "")
             RunUserControl(Text1)
+            Return Nothing
         ElseIf Command.Contains("RunTestSniper") = True Then
             Dim gg As New Sniper
             gg.ShowDialog()
+            Return Nothing
         ElseIf Command.Contains("RunTestFileExplorer") = True Then
             TestFileExplorer.Show()
+            Return Nothing
         ElseIf Command.Contains("RunUserTestFileExplorer") = True Then
             TestFileExplorer.rootPath = UserFolder
             TestFileExplorer.Show()
+            Return Nothing
         ElseIf Command.Contains("Restore-TryOS-Store") = True Then
             If My.Computer.FileSystem.DirectoryExists(AppsFolder & "\TryOS_Store") Then
                 My.Computer.FileSystem.DeleteDirectory(AppsFolder & "\TryOS_Store", FileIO.DeleteDirectoryOption.DeleteAllContents)
@@ -87,8 +99,11 @@ Public Class UI
             My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\Store.tryapp", My.Resources.TryOS_Store, False)
             TryOS_Store_Manager.Class1.InstallTryOSApp(My.Application.Info.DirectoryPath & "\Store.tryapp")
             My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\Store.tryapp", FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
+            Return Nothing
+        Else
+            Return Nothing
         End If
-    End Sub
+    End Function
     Public Sub StartCMD(Optional GG As String = "New")
         Form1.OpenChildForm(New Commander)
     End Sub

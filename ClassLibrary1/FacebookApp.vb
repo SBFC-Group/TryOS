@@ -28,6 +28,12 @@
                 WebView21.CoreWebView2.Settings.AreDefaultContextMenusEnabled = False
                 WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
             End If
+
+            If Class1._host.IsDarkMode() = True Then
+                WebView21.CoreWebView2.Profile.PreferredColorScheme = Microsoft.Web.WebView2.Core.CoreWebView2PreferredColorScheme.Dark
+            Else
+                WebView21.CoreWebView2.Profile.PreferredColorScheme = Microsoft.Web.WebView2.Core.CoreWebView2PreferredColorScheme.Light
+            End If
         End If
     End Sub
 

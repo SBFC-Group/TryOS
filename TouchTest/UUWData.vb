@@ -34,7 +34,9 @@
         End Sub
 
         Public Sub OpenUUW()
+            UI.DisableCustomCode = True
             UI.DisableOpenFramework = True
+            Form1.AllowNewerLoader = False
             UI.LoadShell("Program", "")
             Form1.HideTaskbar(True)
             Form1.OpenChildForm(New UUWApp)

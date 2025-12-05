@@ -40,6 +40,10 @@ Public Class TryController
             Console.Show()
             Console.WindowState = FormWindowState.Minimized
         End If
+
+        If args.Contains("/EnableSecureMode") = True Then
+            SecureModeTimer.Start()
+        End If
     End Sub
 
     Public Function GetVersion() As String
@@ -101,7 +105,7 @@ Public Class TryController
         Return True
     End Function
 
-    Public Function IsMySWFilesNew(Path As String)
+    Public Function IsMySWFilesNew(Path As String) As Boolean
         Dim IsNewer As Boolean = IsZipFile(Path)
 
         If IsNewer = False Then
@@ -111,8 +115,35 @@ Public Class TryController
             My.Computer.FileSystem.DeleteFile(Path, FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
             My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Temp\NoneS", "TryOS created file.", False)
             Writer.CreateSWFiles3File(Path, Reader, My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Temp")
+            Return False
         Else
             Return True
         End If
     End Function
+
+    Private Sub SecureModeTimer_Tick(sender As Object, e As EventArgs) Handles SecureModeTimer.Tick
+        Try
+            For Each form_ As Form In My.Application.OpenForms
+                If form_.Name = "TryController" Then
+                ElseIf form_.Name = "Form48" Then
+                ElseIf form_.Name = "LogonForm" Then
+                ElseIf form_.Name = "Form1" Then
+                ElseIf form_.Name = "LoadingUser" Then
+                ElseIf form_.Name = "StopWindow" Then
+                ElseIf form_.Name = "UI" Then
+                ElseIf form_.Name = "TryController" Then
+                ElseIf form_.Name = "USWApp" Then
+                ElseIf form_.Name = "ErrorMSGBox" Then
+                Else
+                    If Form1.currentForm.Name = form_.Name Then
+                    Else
+                        form_.Close()
+                    End If
+                End If
+            Next
+        Catch ex As Exception
+            Debug.WriteLine(ex.Message)
+        End Try
+
+    End Sub
 End Class

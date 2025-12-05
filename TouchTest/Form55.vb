@@ -16,7 +16,7 @@
         End If
     End Sub
 
-    Private Function DD(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2DownloadStartingEventArgs)
+    Private Sub DD(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2DownloadStartingEventArgs)
         If e.ResultFilePath.EndsWith(".tryapp") Then
             e.Handled = True
             Dim MyTimer As New Timer
@@ -25,18 +25,18 @@
             MyTimer.Tag = e.ResultFilePath
             AddHandler MyTimer.Tick, AddressOf MyTimer_Tick
         End If
-    End Function
+    End Sub
 
     Private Testing As String = ""
 
-    Private Function MyTimer_Tick(sender As Object, e As EventArgs)
+    Private Sub MyTimer_Tick(sender As Object, e As EventArgs)
         sender.Stop()
         My.Computer.FileSystem.MoveFile(sender.Tag, UI.UserFolder & "\Temp\App.tryapp")
         TryOS_Store_Manager.Class1.InstallTryOSApp(UI.UserFolder & "\Temp\App.tryapp")
         My.Computer.FileSystem.DeleteFile(UI.UserFolder & "\Temp\App.tryapp")
         OpenFramework_Data.RestoreButtonOrder()
         'sender.Stop()
-    End Function
+    End Sub
 
 
     Private Sub WebView21_NavigationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs) Handles WebView21.NavigationCompleted
