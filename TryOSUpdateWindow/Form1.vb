@@ -89,71 +89,156 @@ Public Class Form1
                 Try
                     My.Computer.FileSystem.RenameFile(My.Application.Info.DirectoryPath & "\AxInterop.WMPLib.dll", "AxInterop.WMPLib.bak")
                 Catch ex As Exception
-
+                    MsgBox("This Failed")
+                    Exit Sub
                 End Try
             ElseIf ProgressBar1.Value = 54 Then
                 Label2.Text = "Info: Renaming Interop.WMPLib.dll to Interop.WMPLib.bak"
                 Try
                     My.Computer.FileSystem.RenameFile(My.Application.Info.DirectoryPath & "\Interop.WMPLib.dll", "Interop.WMPLib.bak")
                 Catch ex As Exception
-
+                    MsgBox("This Failed")
+                    Exit Sub
                 End Try
             ElseIf ProgressBar1.Value = 56 Then
                 Label2.Text = "Info: Renaming Microsoft.Web.WebView2.Core.dll to Microsoft.Web.WebView2.Core.bak"
-                My.Computer.FileSystem.RenameFile(My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.Core.dll", "Microsoft.Web.WebView2.Core.bak")
+                Try
+                    My.Computer.FileSystem.RenameFile(My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.Core.dll", "Microsoft.Web.WebView2.Core.bak")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
+
             ElseIf ProgressBar1.Value = 58 Then
                 Label2.Text = "Info: Renaming Microsoft.Web.WebView2.WinForms.dll to Microsoft.Web.WebView2.WinForms.bak"
-                My.Computer.FileSystem.RenameFile(My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.WinForms.dll", "Microsoft.Web.WebView2.WinForms.bak")
+                Try
+                    My.Computer.FileSystem.RenameFile(My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.WinForms.dll", "Microsoft.Web.WebView2.WinForms.bak")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
             ElseIf ProgressBar1.Value = 60 Then
                 Label2.Text = "Info: Renaming Microsoft.Web.WebView2.Wpf.dll to Microsoft.Web.WebView2.Wpf.bak"
-                My.Computer.FileSystem.RenameFile(My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.Wpf.dll", "Microsoft.Web.WebView2.Wpf.bak")
+                Try
+                    My.Computer.FileSystem.RenameFile(My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.Wpf.dll", "Microsoft.Web.WebView2.Wpf.bak")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
             ElseIf ProgressBar1.Value = 70 Then
                 Label2.Text = "Info: Renaming ""Wallpapers"" folder to ""Wallpapers.bak"""
-                My.Computer.FileSystem.RenameDirectory(My.Application.Info.DirectoryPath & "\Wallpapers", "Wallpapers.bak")
+                Try
+                    My.Computer.FileSystem.RenameDirectory(My.Application.Info.DirectoryPath & "\Wallpapers", "Wallpapers.bak")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
             ElseIf ProgressBar1.Value = 72 Then
                 Label2.Text = "Info: Renaming ""runtimes"" folder to ""runtimes.bak"""
-                My.Computer.FileSystem.RenameDirectory(My.Application.Info.DirectoryPath & "\runtimes", "runtimes.bak")
+                Try
+                    My.Computer.FileSystem.RenameDirectory(My.Application.Info.DirectoryPath & "\runtimes", "runtimes.bak")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
             ElseIf ProgressBar1.Value = 76 Then
                 Label2.Text = "Info: Moving the new ""Wallpapers"" folder into main folder"
-                My.Computer.FileSystem.MoveDirectory(My.Application.Info.DirectoryPath & "\UpdateFiles\Wallpapers", My.Application.Info.DirectoryPath & "\Wallpapers")
+                Try
+                    My.Computer.FileSystem.MoveDirectory(My.Application.Info.DirectoryPath & "\UpdateFiles\Wallpapers", My.Application.Info.DirectoryPath & "\Wallpapers")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
             ElseIf ProgressBar1.Value = 78 Then
                 Label2.Text = "Info: Moving the new ""runtimes"" folder into main folder"
-                My.Computer.FileSystem.MoveDirectory(My.Application.Info.DirectoryPath & "\UpdateFiles\runtimes", My.Application.Info.DirectoryPath & "\runtimes")
+                Try
+                    My.Computer.FileSystem.MoveDirectory(My.Application.Info.DirectoryPath & "\UpdateFiles\runtimes", My.Application.Info.DirectoryPath & "\runtimes")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
+
             ElseIf ProgressBar1.Value = 82 Then
                 Label2.Text = "Info: Moving the new ""AxInterop.WMPLib.dll"" into main folder"
-                My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\UpdateFiles\AxInterop.WMPLib.dll", My.Application.Info.DirectoryPath & "\AxInterop.WMPLib.dll")
+                Try
+                    My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\UpdateFiles\AxInterop.WMPLib.dll", My.Application.Info.DirectoryPath & "\AxInterop.WMPLib.dll")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
+
             ElseIf ProgressBar1.Value = 84 Then
                 Label2.Text = "Info: Moving the new ""Interop.WMPLib.dll"" into main folder"
-                My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\UpdateFiles\Interop.WMPLib.dll", My.Application.Info.DirectoryPath & "\Interop.WMPLib.dll")
+                Try
+                    My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\UpdateFiles\Interop.WMPLib.dll", My.Application.Info.DirectoryPath & "\Interop.WMPLib.dll")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
+
             ElseIf ProgressBar1.Value = 86 Then
                 Label2.Text = "Info: Moving the new ""Microsoft.Web.WebView2.Core.dll"" into main folder"
-                My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\UpdateFiles\Microsoft.Web.WebView2.Core.dll", My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.Core.dll")
+                Try
+                    My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\UpdateFiles\Microsoft.Web.WebView2.Core.dll", My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.Core.dll")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
+
             ElseIf ProgressBar1.Value = 88 Then
                 Label2.Text = "Info: Moving the new ""Microsoft.Web.WebView2.WinForms.dll"" into main folder"
-                My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\UpdateFiles\Microsoft.Web.WebView2.WinForms.dll", My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.WinForms.dll")
+                Try
+                    My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\UpdateFiles\Microsoft.Web.WebView2.WinForms.dll", My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.WinForms.dll")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
+
             ElseIf ProgressBar1.Value = 90 Then
                 Label2.Text = "Info: Moving the new ""Microsoft.Web.WebView2.Wpf.dll"" into main folder"
-                My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\UpdateFiles\Microsoft.Web.WebView2.Wpf.dll", My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.Wpf.dll")
+                Try
+                    My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\UpdateFiles\Microsoft.Web.WebView2.Wpf.dll", My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.Wpf.dll")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
             ElseIf ProgressBar1.Value = 92 Then
                 Label2.Text = "Info: Moving the new ""TryOS.exe"" into main folder"
-                My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\UpdateFiles\TryOS.exe", My.Application.Info.DirectoryPath & "\TryOS.exe")
+                Try
+                    My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\UpdateFiles\TryOS.exe", My.Application.Info.DirectoryPath & "\TryOS.exe")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
+
             ElseIf ProgressBar1.Value = 94 Then
                 Label2.Text = "Info: Moving older files into UpdateFiles"
-                My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\TryOS.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\TryOS.exe")
-                My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\AxInterop.WMPLib.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\AxInterop.WMPLib.dll")
-                My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\Interop.WMPLib.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\Interop.WMPLib.dll")
-                My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.Core.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\Microsoft.Web.WebView2.Core.dll")
-                My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.WinForms.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\Microsoft.Web.WebView2.WinForms.dll")
-                My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.Wpf.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\Microsoft.Web.WebView2.Wpf.dll")
-                My.Computer.FileSystem.MoveDirectory(My.Application.Info.DirectoryPath & "\runtimes.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\runtimes")
-                My.Computer.FileSystem.MoveDirectory(My.Application.Info.DirectoryPath & "\Wallpapers.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\Wallpapers")
+                Try
+                    My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\TryOS.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\TryOS.exe")
+                    My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\AxInterop.WMPLib.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\AxInterop.WMPLib.dll")
+                    My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\Interop.WMPLib.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\Interop.WMPLib.dll")
+                    My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.Core.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\Microsoft.Web.WebView2.Core.dll")
+                    My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.WinForms.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\Microsoft.Web.WebView2.WinForms.dll")
+                    My.Computer.FileSystem.MoveFile(My.Application.Info.DirectoryPath & "\Microsoft.Web.WebView2.Wpf.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\Microsoft.Web.WebView2.Wpf.dll")
+                    My.Computer.FileSystem.MoveDirectory(My.Application.Info.DirectoryPath & "\runtimes.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\runtimes")
+                    My.Computer.FileSystem.MoveDirectory(My.Application.Info.DirectoryPath & "\Wallpapers.bak", My.Application.Info.DirectoryPath & "\UpdateFiles\Wallpapers")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
+
             ElseIf ProgressBar1.Value = 96 Then
                 Label2.Text = "Info: Updating ""ShellName.setting"" and deleting temp files."
-                My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\ShellName.setting", "TouchTest.UUWApp", False)
+                My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\ShellName.setting", "TouchTest.LogonForm", False)
                 My.Computer.FileSystem.DeleteDirectory(My.Application.Info.DirectoryPath & "\UpdateFiles\Settings", FileIO.DeleteDirectoryOption.DeleteAllContents, FileIO.RecycleOption.DeletePermanently)
             ElseIf ProgressBar1.Value = 98 Then
                 Label2.Text = "Info: Renaming ""UpdateFiles"" to ""TryOSBackup"""
-                My.Computer.FileSystem.RenameDirectory(My.Application.Info.DirectoryPath & "\UpdateFiles", "TryOSBackup")
+                Try
+                    My.Computer.FileSystem.RenameDirectory(My.Application.Info.DirectoryPath & "\UpdateFiles", "TryOSBackup")
+                Catch ex As Exception
+                    MsgBox("This Failed")
+                    Exit Sub
+                End Try
             End If
         End If
     End Sub

@@ -39,6 +39,7 @@
                 My.Computer.FileSystem.WriteAllBytes(UI.UsersFolder & "\Program\Temp\USW.mp4", My.Resources.TryOS_USW, False)
             End If
             Form1.AllowNewerLoader = False
+            UI.DisableCustomCode = True
             UI.DisableOpenFramework = True
             UI.LoadShell("Program", "")
             Form1.HideTaskbar(True)

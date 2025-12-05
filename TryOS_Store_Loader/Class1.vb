@@ -19,7 +19,7 @@ Public Class Class1
 
     Public ReadOnly Property MinorVersion As Long Implements OpenFramework_Interface.MinorVersion
         Get
-            Return 0
+            Return 1
         End Get
     End Property
 

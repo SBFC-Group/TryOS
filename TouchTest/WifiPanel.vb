@@ -87,7 +87,7 @@ Public Class WifiPanel
         Public ucSSID As Byte()
     End Structure
 
-    Private Sub btnScan_Click(sender As Object, e As EventArgs) Handles btnScan.Click
+    Private Sub BtnScan_Click(sender As Object, e As EventArgs) Handles btnScan.Click
         lstNetworks.Items.Clear()
         lblStatus.Text = "Status: Scanning..."
 
@@ -119,7 +119,7 @@ Public Class WifiPanel
         End If
     End Sub
 
-    Private Sub btnConnect_Click(sender As Object, e As EventArgs) Handles btnConnect.Click
+    Private Sub BtnConnect_Click(sender As Object, e As EventArgs) Handles btnConnect.Click
         If lstNetworks.SelectedItem Is Nothing Then
             MsgBox("Please select a Wi-Fi network.")
             Return

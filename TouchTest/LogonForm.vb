@@ -84,8 +84,8 @@
                 If UserMode = "UserMode=Disabled" Then
                 Else
                     'Creates a new button with the name of a user.
-                    Dim btn As New Button()
-                    btn.Text = file.Name
+                    Dim Btn As New Button
+                    Btn.Text = file.Name
                     btn.FlatStyle = FlatStyle.Flat
                     btn.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
                     btn.BackColor = Color.Gainsboro

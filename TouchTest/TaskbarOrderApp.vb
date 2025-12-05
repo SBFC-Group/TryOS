@@ -38,20 +38,20 @@
 
         For Each p In plugins
             Debug.WriteLine("Loaded " & p.Name)
-            Dim btn As New Button()
+            Dim Btn As New Button
             'btn.Text = p.Name
-            btn.BackgroundImage = p.Icon
+            Btn.BackgroundImage = p.Icon
             'btn.TextImageRelation = TextImageRelation.ImageAboveText
-            btn.FlatStyle = FlatStyle.Flat
-            btn.FlatAppearance.BorderSize = 0
-            btn.BackgroundImageLayout = ImageLayout.Stretch
-            btn.Tag = p
-            btn.Size = New Size(74, 70)
+            Btn.FlatStyle = FlatStyle.Flat
+            Btn.FlatAppearance.BorderSize = 0
+            Btn.BackgroundImageLayout = ImageLayout.Stretch
+            Btn.Tag = p
+            Btn.Size = New Size(74, 70)
             'btn.AutoSize = True
             'btn.AutoSizeMode = AutoSizeMode.GrowAndShrink
             'btn.Padding = New Padding(5)
-            AddHandler btn.Click, AddressOf PluginButton_Click
-            FlowLayoutPanel1.Controls.Add(btn)
+            AddHandler Btn.Click, AddressOf PluginButton_Click
+            FlowLayoutPanel1.Controls.Add(Btn)
         Next
 
         OpenFramework_Data.RestoreButtonOrder(True, FlowLayoutPanel1)

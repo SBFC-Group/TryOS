@@ -21,7 +21,7 @@
         ShowError(Text, Alerts.Information)
     End Sub
 
-    Public Function ShowError(Text As String, Alert As Alerts)
+    Public Function ShowError(Text As String, Alert As Alerts) As Task
         RichTextBox1.Text = Text
         Me.ShowDialog()
         If Alert = Alerts.Critical Then
@@ -29,6 +29,7 @@
         ElseIf Alert = Alerts.Information Then
         ElseIf Alert = Alerts.Question Then
         End If
+        Return Task.CompletedTask
     End Function
 
     'Public Enum MsgBoxStyle

@@ -24,10 +24,14 @@ Partial Class YoutubeApp
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(YoutubeApp))
-        Me.WebView21 = New Microsoft.Web.WebView2.WinForms.WebView2()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.WebView21 = New Microsoft.Web.WebView2.WinForms.WebView2()
         CType(Me.WebView21, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
         '
         'WebView21
         '
@@ -40,10 +44,6 @@ Partial Class YoutubeApp
         Me.WebView21.Size = New System.Drawing.Size(800, 450)
         Me.WebView21.TabIndex = 1
         Me.WebView21.ZoomFactor = 1.0R
-        '
-        'Timer1
-        '
-        Me.Timer1.Enabled = True
         '
         'YoutubeApp
         '
@@ -58,7 +58,6 @@ Partial Class YoutubeApp
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents WebView21 As Microsoft.Web.WebView2.WinForms.WebView2
     Friend WithEvents Timer1 As Windows.Forms.Timer
+    Friend WithEvents WebView21 As Microsoft.Web.WebView2.WinForms.WebView2
 End Class

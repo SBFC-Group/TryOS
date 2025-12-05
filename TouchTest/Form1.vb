@@ -109,7 +109,10 @@ Public Class Form1
             OpenFramework_Data.LoadApps()
 
             UserManager.LoadTaskbarButtons()
+        End If
 
+
+        If UI.DisableCustomCode = True Then
             Dim regit2 As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group", "LoadCustomPls", Nothing)
             If regit2 = "1" Then
                 Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")
@@ -137,7 +140,7 @@ Public Class Form1
 
     End Sub
 
-    Public Function funnything() As Panel
+    Public Function Funnything() As Panel
         Return Panel2
     End Function
 

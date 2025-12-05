@@ -160,7 +160,7 @@ Public Class Internetplusplus
         'FormBorderStyle = FormBorderStyle.None
     End Sub
 
-    Public Sub loadweb(ss As String)
+    Public Sub Loadweb(ss As String)
         If ss = "0" Then
         Else
 

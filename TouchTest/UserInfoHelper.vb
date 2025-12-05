@@ -8,6 +8,7 @@
         ElseIf UserData = UserDataTypes.Path Then
 
         End If
+        Return Nothing
     End Function
 
     Public Enum UserDataTypes
