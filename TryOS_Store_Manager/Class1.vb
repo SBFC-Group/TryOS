@@ -65,28 +65,13 @@ Public Class Class1
         Dim dirinfo As New System.IO.DirectoryInfo(dir1)
         files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
 
-        Dim fullpath As String = ""
-        Dim Folderandnumber As String = ""
-        Dim Foldernameonly As String = ""
-
         Dim exists As Boolean = False
 
         For Each file In files
-            'Dim jj As Int64 = 
-            Dim myfile As String = file.FullName
-            fullpath = myfile
-            'myfile = myfile.Replace(My.Application.Info.DirectoryPath & "\Apps\", "")
-            'Folderandnumber = myfile
-            'myfile = myfile.Remove(0, 2)
-            'Foldernameonly = myfile
 
-            If myfile = Reader Then
+            If file.FullName = Reader Then
                 exists = True
-                Debug.WriteLine("Name.swfiles = " & Reader & Environment.NewLine &
-               "Exists = " & exists.ToString & Environment.NewLine &
-               "fullpath = " & fullpath & Environment.NewLine &
-               "Folderandnumber = " & Folderandnumber & Environment.NewLine &
-               "Foldernameonly = " & Foldernameonly)
+
                 Exit For
             Else
                 exists = False
@@ -101,8 +86,6 @@ Public Class Class1
         ElseIf exists = False Then
         End If
 
-        'Dim Numberthing As Int64 = GetAppNumber()
-        'Numberthing = Numberthing + 1
 
         Dim AppFolderName As String = Reader
 

@@ -34,16 +34,12 @@ Public Class Form1
         End If
 
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\DisableConsole.setting") Then
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\DisableConsole.setting")
             Try
-                Dim reader2 As Boolean = Convert.ToBoolean(Reader)
-                DisableConsole = reader2
+                DisableConsole = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\DisableConsole.setting"))
             Catch ex As Exception
 
             End Try
         End If
-
-        User = New UserManager(Username)
 
         If AllowNewerLoader = True Then
             If Environment.CommandLine.Contains("/UseOldLoader") Then
@@ -72,47 +68,16 @@ Public Class Form1
             TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
         End If
 
-        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\Internet++.swfiles") Then
-
-        '    InternetPlusPlus.Visible = True
-        'Else
-        '    InternetPlusPlus.Visible = False
-        'End If
-        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\QuickNotes.swfiles") Then
-        '    QuickNotes.Visible = True
-        'Else
-        '    QuickNotes.Visible = False
-        'End If
-        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\YoutubeApp.swfiles") Then
-        '    YoutubeButton.Visible = True
-        'Else
-        '    YoutubeButton.Visible = False
-        'End If
-        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\InstagramApp.swfiles") Then
-        '    InstagramButton.Visible = True
-        'Else
-        '    InstagramButton.Visible = False
-        'End If
-        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\FacebookApp.swfiles") Then
-        '    FacebookButton.Visible = True
-        'Else
-        '    FacebookButton.Visible = False
-        'End If
-        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Apps\SpotifyApp.swfiles") Then
-        '    SpotifyButton.Visible = True
-        'Else
-        '    SpotifyButton.Visible = False
-        'End If
-
         If UI.DisableOpenFramework = False Then
-
             OpenFramework_Data.LoadApps()
 
             UserManager.LoadTaskbarButtons()
         End If
 
+        'Checks if DisableCustomCode is false
+        If UI.DisableCustomCode = False Then
 
-        If UI.DisableCustomCode = True Then
+            'This checks if the Registry value "LoadCustomPls" exists.
             Dim regit2 As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group", "LoadCustomPls", Nothing)
             If regit2 = "1" Then
                 Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")
@@ -137,6 +102,15 @@ Public Class Form1
 
 
 
+
+    End Sub
+
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
 
     End Sub
 

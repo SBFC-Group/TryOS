@@ -181,6 +181,12 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="AppManager.Designer.vb">
+      <DependentUpon>AppManager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AppManager.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="AppRunner.Designer.vb">
       <DependentUpon>AppRunner.vb</DependentUpon>
     </Compile>
@@ -566,6 +572,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminSettings.resx">
       <DependentUpon>AdminSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppManager.resx">
+      <DependentUpon>AppManager.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AppRunner.resx">
       <DependentUpon>AppRunner.vb</DependentUpon>

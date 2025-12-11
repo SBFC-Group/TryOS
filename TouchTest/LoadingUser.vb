@@ -31,8 +31,9 @@
                 Close()
             Else
                 UI.DisableOpenFramework = False
-                Form1.Username = Username
-                UI.UserFolder = UI.UsersFolder & "\" & Username
+
+                'Form1.Username = Username
+                'UI.UserFolder = UI.UsersFolder & "\" & Username
                 UI.LoadShell(Username, Password)
                 Close()
             End If
@@ -46,15 +47,15 @@
                     'This is converting settings files to text
                     If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Wallpaper.swfiles") Then
                         Dim Reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Wallpaper.swfiles")
-                        SettingsListy = SettingsListy & "Wallpaper=" & Reader & Environment.NewLine
+                        SettingsListy = SettingsListy & "Wallpaper=" & Reader & ";" & Environment.NewLine
                     End If
                     If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\DarkThemeForApps.swfiles") Then
                         Dim Reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\DarkThemeForApps.swfiles")
-                        SettingsListy = SettingsListy & "IsDarkModeForApps=" & Reader & Environment.NewLine
+                        SettingsListy = SettingsListy & "IsDarkModeForApps=" & Reader & ";" & Environment.NewLine
                     End If
                     If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\DarkThemeForPrograms.swfiles") Then
                         Dim Reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\DarkThemeForPrograms.swfiles")
-                        SettingsListy = SettingsListy & "IsDarkModeForProgram=" & Reader & Environment.NewLine
+                        SettingsListy = SettingsListy & "IsDarkModeForProgram=" & Reader & ";" & Environment.NewLine
                     End If
 
                     If SettingsListy IsNot Nothing Then
@@ -70,6 +71,8 @@
                     My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles", TryController.GetVersion(), False)
 
                 End If
+            ElseIf ProgressBar1.Value = 70 Then
+                Form1.User = New UserManager(Username)
             End If
 
                 ProgressBar1.Increment(1)

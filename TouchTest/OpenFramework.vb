@@ -5,7 +5,7 @@ Namespace OpenFramework_Data
     Module OpenFramework
 
         Public Function GetOpenFrameworkVersion()
-            Return "0.35.3"
+            Return "0.35.4"
         End Function
 
         Dim host As New OpenFramework_Handler()
@@ -16,22 +16,26 @@ Namespace OpenFramework_Data
                 Dim plugins = LoadPlugins_New()
 
                 For Each p In plugins
-                    Debug.WriteLine("Loaded " & p.Name)
-                    p.Initialize(host)
-                    Dim btn As New Button()
-                    btn.Name = p.Name
-                    btn.BackgroundImage = p.Icon
-                    'btn.TextImageRelation = TextImageRelation.ImageAboveText
-                    btn.FlatStyle = FlatStyle.Flat
-                    btn.FlatAppearance.BorderSize = 0
-                    btn.BackgroundImageLayout = ImageLayout.Stretch
-                    btn.Tag = p
-                    btn.Size = New Size(74, 70)
-                    'btn.AutoSize = True
-                    'btn.AutoSizeMode = AutoSizeMode.GrowAndShrink
-                    'btn.Padding = New Padding(5)
-                    AddHandler btn.Click, AddressOf PluginButton_Click
-                    Form1.FlowLayoutPanel1.Controls.Add(btn)
+                    Try
+                        Debug.WriteLine("Loaded " & p.Name)
+                        p.Initialize(host)
+                        Dim btn As New Button()
+                        btn.Name = p.Name
+                        btn.BackgroundImage = p.Icon
+                        'btn.TextImageRelation = TextImageRelation.ImageAboveText
+                        btn.FlatStyle = FlatStyle.Flat
+                        btn.FlatAppearance.BorderSize = 0
+                        btn.BackgroundImageLayout = ImageLayout.Stretch
+                        btn.Tag = p
+                        btn.Size = New Size(74, 70)
+                        'btn.AutoSize = True
+                        'btn.AutoSizeMode = AutoSizeMode.GrowAndShrink
+                        'btn.Padding = New Padding(5)
+                        AddHandler btn.Click, AddressOf PluginButton_Click
+                        Form1.FlowLayoutPanel1.Controls.Add(btn)
+                    Catch ex As Exception
+                        UI.ShowError("Error Loading App.")
+                    End Try
                 Next
             Catch ex As Exception
                 UI.ShowError("Did my OpenFramework fix not work?")

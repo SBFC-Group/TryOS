@@ -12,6 +12,7 @@
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\SuperSecretUser\Settings\Role.swfiles", "VkZod2NrMUZOVlZYVkVaUFVrVXdPUT09", False)
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\SuperSecretUser\Settings\Password.swfiles", "VG05UVlYTnpkMjl5WkE9PQ==", False)
             End If
+            Form1.User = New UserManager("SuperSecretUser")
             LogonUser = New UserManager("SuperSecretUser")
         End Sub
 

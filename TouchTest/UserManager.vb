@@ -1,12 +1,15 @@
 ﻿Public Class UserManager
     Public ReadOnly Username As String
+    Public ReadOnly UserFolderPath As String
     Public ReadOnly Role As TryController.Roles
 
     Public Sub New(Optional TheUserName As String = "")
         If TheUserName = "" Then
             Username = Form1.Username
+            UserFolderPath = UI.UsersFolder & "\" & Form1.Username
         Else
             Username = TheUserName
+            UserFolderPath = UI.UsersFolder & "\" & TheUserName
         End If
         Role = GetRole()
     End Sub

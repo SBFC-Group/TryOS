@@ -7,9 +7,9 @@ Public Class OpenFramework_Handler
         UI.EnableFullAppMode(IsEnabled)
     End Sub
 
-    Public Sub RunCommand(Command As String, Optional TheForm As Object = Nothing) Implements OpenFramework_UI_Handler.RunCommand
+    Public Function RunCommand(Command As String, Optional TheForm As Object = Nothing) Implements OpenFramework_UI_Handler.RunCommand
         UI.RunCommands(Command, TheForm)
-    End Sub
+    End Function
 
     Public Sub ShowError() Implements OpenFramework_UI_Handler.ShowError
         UI.ShowError()
@@ -42,11 +42,11 @@ Public Class OpenFramework_Handler
     End Function
 
     Public Function GetUserFolder() As String Implements OpenFramework_UI_Handler.GetUserFolder
-        Return UI.UserFolder
+        Return Form1.User.UserFolderPath
     End Function
 
     Public Function GetRole() As String Implements OpenFramework_UI_Handler.GetRole
-        Return Form1.GetRole()
+        Return Form1.User.Role
     End Function
 
     Public Function IsDarkMode() As Boolean Implements OpenFramework_UI_Handler.IsDarkMode
