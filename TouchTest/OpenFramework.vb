@@ -8,6 +8,12 @@ Namespace OpenFramework_Data
             Return "0.35.4"
         End Function
 
+        Public FlowLayoutPanelUse As FlowLayoutPanel = Form1.FlowLayoutPanel1
+
+        Public Sub SetNewFlowLayoutPanel(FlowLayoutPanelThing As FlowLayoutPanel)
+            FlowLayoutPanelUse = FlowLayoutPanelThing
+        End Sub
+
         Dim host As New OpenFramework_Handler()
 
         Public Sub LoadApps()
@@ -32,7 +38,7 @@ Namespace OpenFramework_Data
                         'btn.AutoSizeMode = AutoSizeMode.GrowAndShrink
                         'btn.Padding = New Padding(5)
                         AddHandler btn.Click, AddressOf PluginButton_Click
-                        Form1.FlowLayoutPanel1.Controls.Add(btn)
+                        FlowLayoutPanelUse.Controls.Add(btn)
                     Catch ex As Exception
                         UI.ShowError("Error Loading App.")
                     End Try

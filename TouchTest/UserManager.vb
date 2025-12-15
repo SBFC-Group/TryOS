@@ -116,7 +116,7 @@
         End Try
 
         'Finds out if the setting exists
-        If usedencode.Contains(SettingName) Then
+        If usedencode.Contains(SettingName) = True Then
             Return True
         Else
             Return False
@@ -124,36 +124,99 @@
     End Function
 
     Public Function AddSettingToUserSettings(SettingName As String) As HowWasTaskDone
-        'Gets Data
-        Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
+        If DoesSettingExist(SettingName) = False Then
+            'Gets Data
+            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
 
-        'Makes it readable
-        Try
-            Dim b As Byte() = Convert.FromBase64String(usedencode)
-            usedencode = System.Text.Encoding.UTF8.GetString(b)
-        Catch ex As Exception
+            'Makes it readable
+            Try
+                Dim b As Byte() = Convert.FromBase64String(usedencode)
+                usedencode = System.Text.Encoding.UTF8.GetString(b)
+            Catch ex As Exception
 
-        End Try
-        Try
-            Dim b2 As Byte() = Convert.FromBase64String(usedencode)
-            usedencode = System.Text.Encoding.UTF8.GetString(b2)
-        Catch ex As Exception
+            End Try
+            Try
+                Dim b2 As Byte() = Convert.FromBase64String(usedencode)
+                usedencode = System.Text.Encoding.UTF8.GetString(b2)
+            Catch ex As Exception
 
-        End Try
-        Dim settingslisttemp As New List(Of String)
-        Dim settingstemp As String()
-        settingstemp = usedencode.Split(Environment.NewLine)
-        For Each setting As String In settingstemp
-            settingslisttemp.Add(setting)
-        Next
+            End Try
+
+            usedencode = usedencode & "
+" & SettingName
+
+            SaveUserSettings(usedencode)
+
+            Return HowWasTaskDone.Completed
+        Else
+            Return HowWasTaskDone.Canceled
+        End If
     End Function
 
     Public Function RemoveSettingFromUserSettings(SettingName As String) As HowWasTaskDone
+        If DoesSettingExist(SettingName) = True Then
+            'Gets Data
+            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
 
+            'Makes it readable
+            Try
+                Dim b As Byte() = Convert.FromBase64String(usedencode)
+                usedencode = System.Text.Encoding.UTF8.GetString(b)
+            Catch ex As Exception
+
+            End Try
+            Try
+                Dim b2 As Byte() = Convert.FromBase64String(usedencode)
+                usedencode = System.Text.Encoding.UTF8.GetString(b2)
+            Catch ex As Exception
+
+            End Try
+
+            If SettingName.EndsWith(";") = True Then
+                usedencode = usedencode.Replace(SettingName, "")
+            Else
+                usedencode = usedencode.Replace(SettingName & ";", "")
+            End If
+
+            SaveUserSettings(usedencode)
+
+            Return HowWasTaskDone.Completed
+        Else
+            Return HowWasTaskDone.Canceled
+        End If
     End Function
 
     Public Function ReplaceSettingInUserSettings(SettingName As String, NewName As String) As HowWasTaskDone
+        If DoesSettingExist(SettingName) = True Then
+            'Gets Data
+            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
 
+            'Makes it readable
+            Try
+                Dim b As Byte() = Convert.FromBase64String(usedencode)
+                usedencode = System.Text.Encoding.UTF8.GetString(b)
+            Catch ex As Exception
+
+            End Try
+            Try
+                Dim b2 As Byte() = Convert.FromBase64String(usedencode)
+                usedencode = System.Text.Encoding.UTF8.GetString(b2)
+            Catch ex As Exception
+
+            End Try
+
+            If SettingName.EndsWith(";") = True Then
+                usedencode = usedencode.Replace(SettingName, NewName)
+            Else
+                usedencode = usedencode.Replace(SettingName & ";", NewName & ";")
+            End If
+
+            SaveUserSettings(usedencode)
+
+            Return HowWasTaskDone.Completed
+        Else
+            Return HowWasTaskDone.Canceled
+        End If
     End Function
 
     Private Function GetRole() As TryController.Roles
