@@ -5,9 +5,18 @@ Imports Newtonsoft.Json
 
 Public Class LanguageManager
     Private translations As Dictionary(Of String, String)
+    Public LanguageFolder As String = ""
+
+    Public Sub New(Optional LanguagePath As String = "")
+        If LanguagePath = "" Then
+            LanguageFolder = IO.Path.Combine(Application.StartupPath, "Languages")
+        Else
+            LanguageFolder = LanguagePath
+        End If
+    End Sub
 
     Public Sub LoadLanguage(langCode As String)
-        Dim path As String = IO.Path.Combine(Application.StartupPath, "Languages", langCode & ".json")
+        Dim path As String = IO.Path.Combine(LanguageFolder, langCode & ".json")
         If File.Exists(path) Then
             Dim json As String = File.ReadAllText(path)
             translations = JsonConvert.DeserializeObject(Of Dictionary(Of String, String))(json)

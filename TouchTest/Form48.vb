@@ -298,6 +298,7 @@ Why is it getting faced out?
 
                         UI.DisableOpenFramework = False
                         'MsgBox("Welcome " & TextBox1.Text)
+                        Form1.User = New UserManager(TextBox1.Text)
                         Form1.Username = TextBox1.Text
                         UI.UserFolder = UI.UsersFolder & "\" & TextBox1.Text
                         UI.LoadShell(TextBox1.Text, My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles"))

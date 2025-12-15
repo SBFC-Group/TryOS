@@ -143,12 +143,6 @@
             Button7.Visible = False
             Button7.Enabled = False
         End If
-
-        'If Environment.CommandLine.Contains("/DevMode") = True Then
-
-        'Else
-
-        'End If
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click

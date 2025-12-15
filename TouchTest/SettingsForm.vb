@@ -41,4 +41,20 @@ Public Class SettingsForm
             SendMessage(Me.Handle, &H112, &HF012, 0)
         End If
     End Sub
+
+    Public Sub PluginButton_Click(sender As Object, e As EventArgs)
+        Dim btn As Button = CType(sender, Button)
+        Dim plugin As OpenFramework_Interface = CType(btn.Tag, OpenFramework_Interface)
+
+        Dim frm As Form = New SettingsForm
+        If Form1.currentForm IsNot Nothing Then
+            If frm.Text = OpenFramework_Data.AppName Then
+                Exit Sub
+            End If
+        End If
+        OpenFramework_Data.AppName = frm.Text
+        frm.Text = "SettingsForm"
+        Form1.OpenChildForm(frm)
+
+    End Sub
 End Class
