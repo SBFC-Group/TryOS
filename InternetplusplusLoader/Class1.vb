@@ -20,13 +20,13 @@ Public Class Class1
 
     Public ReadOnly Property MajerVersion As Int64 Implements OpenFramework_Interface.MajerVersion
         Get
-            Return 4
+            Return 1
         End Get
     End Property
 
     Public ReadOnly Property MinorVersion As Int64 Implements OpenFramework_Interface.MinorVersion
         Get
-            Return 0
+            Return 1
         End Get
     End Property
 
