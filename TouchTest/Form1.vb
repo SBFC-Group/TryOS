@@ -33,6 +33,8 @@ Public Class Form1
             MenuStrip1.Visible = True
         End If
 
+        AddHandler Button3.Click, AddressOf SettingsForm.PluginButton_Click
+
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\DisableConsole.setting") Then
             Try
                 DisableConsole = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\DisableConsole.setting"))
@@ -186,7 +188,7 @@ Public Class Form1
 
     Public IsSettingOpen As Boolean = False
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
         UI.RunApp("Settings")
         'If IsSettingOpen = False Then
         '    OpenChildForm(New SettingsForm)

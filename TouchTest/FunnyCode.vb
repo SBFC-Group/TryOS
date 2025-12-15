@@ -12,10 +12,12 @@
 
         Public Shared Function _3()
             'Form1.Panel3
+            Return Form1.Panel3
         End Function
 
         Public Shared Function _4()
-            'Form1.
+            'Form1.FlowLayoutPanel1
+            Return Form1.FlowLayoutPanel1
         End Function
 
         Public Shared Function _5()

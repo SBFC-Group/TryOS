@@ -31,7 +31,7 @@
                 Close()
             Else
                 UI.DisableOpenFramework = False
-
+                UI.DisableCustomCode = False
                 'Form1.Username = Username
                 'UI.UserFolder = UI.UsersFolder & "\" & Username
                 UI.LoadShell(Username, Password)
