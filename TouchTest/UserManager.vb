@@ -40,7 +40,7 @@
         settingstemp = usedencode.Split(";"c)
         For Each setting In settingstemp
 
-            If setting.StartsWith("Wallpaper=") Then
+            If setting.StartsWith("Wallpaper=") = True Then
                 setting = setting.Replace("Wallpaper=", "")
 
                 'This is copied code ;)
@@ -55,18 +55,20 @@
                     UI.RunCommands("Loadgif " & setting)
                 End If
 
-            ElseIf setting.StartsWith("IsDarkModeForApps=") Then
+            ElseIf setting.StartsWith("IsDarkModeForApps=") = True Then
                 setting = setting.Replace("IsDarkModeForApps=", "")
                 Form1.IsUsingDarkThemeForApps = Convert.ToBoolean(setting)
-            ElseIf setting.StartsWith("IsDarkModeForProgram=") Then
+            ElseIf setting.StartsWith("IsDarkModeForProgram=") = True Then
                 setting = setting.Replace("IsDarkModeForProgram=", "")
                 Form1.IsUsingDarkThemeForPrograms = Convert.ToBoolean(setting)
-                'ElseIf setting.StartsWith("") Then
-                'ElseIf setting.StartsWith("") Then
-                'ElseIf setting.StartsWith("") Then
-                'ElseIf setting.StartsWith("") Then
-                'ElseIf setting.StartsWith("") Then
-                'ElseIf setting.StartsWith("") Then
+            ElseIf setting.StartsWith("DoesHasTimeBar=") = True Then
+                setting = setting.Replace("DoesHasTimeBar=", "")
+                Form1.TimebarPanel.Visible = Convert.ToBoolean(setting)
+                'ElseIf setting.StartsWith("") = True Then
+                'ElseIf setting.StartsWith("") = True Then
+                'ElseIf setting.StartsWith("") = True Then
+                'ElseIf setting.StartsWith("") = True Then
+                'ElseIf setting.StartsWith("") = True Then
             End If
         Next
         Return HowWasTaskDone.Completed
@@ -76,11 +78,13 @@
         Dim Reader As String = Nothing
 
         If SettingsList = "Null" Then
-            Reader = "Wallpaper=Load" & Form1.WallpaperFileFormat & "=" & Form1.LoadedWallpaper.ToString & Environment.NewLine
+            Reader = "Wallpaper=Load" & Form1.WallpaperFileFormat & "=" & Form1.LoadedWallpaper.ToString & ";" & Environment.NewLine
 
-            Reader = Reader & "IsDarkModeForApps=" & Form1.IsUsingDarkThemeForApps.ToString & Environment.NewLine
+            Reader = Reader & "IsDarkModeForApps=" & Form1.IsUsingDarkThemeForApps.ToString & ";" & Environment.NewLine
 
-            Reader = Reader & "IsDarkModeForProgram=" & Form1.IsUsingDarkThemeForPrograms.ToString & Environment.NewLine
+            Reader = Reader & "IsDarkModeForProgram=" & Form1.IsUsingDarkThemeForPrograms.ToString & ";" & Environment.NewLine
+
+            Reader = Reader & "DoesHasTimeBar=" & Form1.TimebarPanel.Visible.ToString & ";" & Environment.NewLine
         Else
             Reader = SettingsList
         End If
