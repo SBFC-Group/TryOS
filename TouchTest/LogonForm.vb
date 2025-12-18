@@ -95,6 +95,16 @@
                     FlowLayoutPanel1.Controls.Add(btn)
                 End If
             Next
+
+            If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\UserList.setting") = True Then
+                Try
+                    FlowLayoutPanel1.Visible = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\UserList.setting"))
+                    CheckBox1.Checked = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\UserList.setting"))
+                    CheckBox2.Checked = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\UserList.setting"))
+                Catch ex As Exception
+                    UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Exclamation)
+                End Try
+            End If
         End If
     End Sub
 
@@ -460,6 +470,15 @@
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             Login()
+        End If
+    End Sub
+
+    Private Sub CheckBox1Or2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged, CheckBox2.CheckedChanged
+        Dim TheCheckBox As CheckBox = CType(sender, CheckBox)
+        If TheCheckBox.CheckState = CheckState.Checked Then
+            FlowLayoutPanel1.Visible = True
+        ElseIf TheCheckBox.CheckState = CheckState.Unchecked Then
+            FlowLayoutPanel1.Visible = False
         End If
     End Sub
 End Class

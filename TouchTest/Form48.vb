@@ -532,4 +532,6 @@ Why is it getting faced out?
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Button2_Click()
     End Sub
+
+
 End Class

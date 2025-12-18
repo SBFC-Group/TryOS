@@ -21,12 +21,6 @@
 
         If e.ResultFilePath.EndsWith(".tryapp") Then
             e.Handled = True
-            If e.DownloadOperation.State = Microsoft.Web.WebView2.Core.CoreWebView2DownloadState.Completed Then
-                My.Computer.FileSystem.MoveFile(sender.Tag, UI.UserFolder & "\Temp\App.tryapp")
-                TryOS_Store_Manager.Class1.InstallTryOSApp(UI.UserFolder & "\Temp\App.tryapp")
-                My.Computer.FileSystem.DeleteFile(UI.UserFolder & "\Temp\App.tryapp")
-                OpenFramework_Data.RestoreButtonOrder()
-            End If
 
             Dim MyTimer As New Timer
             MyTimer.Interval = 5000
@@ -42,7 +36,10 @@
 
     Private Sub MyTimer_Tick(sender As Object, e As EventArgs)
         sender.Stop()
-
+        My.Computer.FileSystem.MoveFile(sender.Tag, UI.UserFolder & "\Temp\App.tryapp")
+        TryOS_Store_Manager.Class1.InstallTryOSApp(UI.UserFolder & "\Temp\App.tryapp")
+        My.Computer.FileSystem.DeleteFile(UI.UserFolder & "\Temp\App.tryapp")
+        OpenFramework_Data.RestoreButtonOrder()
         'sender.Stop()
     End Sub
 

@@ -20,9 +20,11 @@ RunUserControl <usercontrol> - Opens a form that will contain the UserControl"
             ElseIf RichTextBox1.Text.Contains("ShowProgramVersion") = True Then
                 RichTextBox2.Text = My.Application.Info.Version.ToString
             ElseIf RichTextBox1.Text.Contains("TestThis") = True Then
-                TryOS_Store_Manager.Class1.PackageCreator(My.Application.Info.DirectoryPath & "\Apps\2_YoutubeApp", My.Application.Info.DirectoryPath & "\YoutubeApp.tryapp", "Youtube", TryController.GetVersion, "YoutubeApp.dll")
+                TryOS_Store_Manager.Class1.PackageCreator(My.Application.Info.DirectoryPath & "\app", My.Application.Info.DirectoryPath & "\App.tryapp", "App", TryController.GetVersion)
             ElseIf RichTextBox1.Text.Contains("TestMe") = True Then
-                TryOS_Store_Manager.Class1.InstallTryOSApp(My.Application.Info.DirectoryPath & "\Internet++.tryapp")
+                TryOS_Store_Manager.Class1.InstallTryOSApp(My.Application.Info.DirectoryPath & "\App.tryapp")
+            ElseIf RichTextBox1.Text.Contains("Debug") = True Then
+                D_e_b_u_g_Window.Show()
             Else
                 UI.RunCommands(RichTextBox1.Text, Me)
             End If

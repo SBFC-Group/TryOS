@@ -48,13 +48,13 @@ Partial Class LogonForm
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.LogonButton2 = New System.Windows.Forms.Button()
         Me.NumberButton1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.LogonButton2 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -373,6 +373,21 @@ Partial Class LogonForm
         Me.Panel3.TabIndex = 6
         Me.Panel3.Visible = False
         '
+        'LogonButton2
+        '
+        Me.LogonButton2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LogonButton2.BackColor = System.Drawing.Color.Gainsboro
+        Me.LogonButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.LogonButton2.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LogonButton2.Location = New System.Drawing.Point(228, 157)
+        Me.LogonButton2.Name = "LogonButton2"
+        Me.LogonButton2.Size = New System.Drawing.Size(203, 45)
+        Me.LogonButton2.TabIndex = 78
+        Me.LogonButton2.Text = "Login"
+        Me.LogonButton2.UseVisualStyleBackColor = False
+        Me.LogonButton2.Visible = False
+        '
         'NumberButton1
         '
         Me.NumberButton1.BackColor = System.Drawing.Color.Gainsboro
@@ -452,20 +467,6 @@ Partial Class LogonForm
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
-        '
-        'LogonButton2
-        '
-        Me.LogonButton2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LogonButton2.BackColor = System.Drawing.Color.Gainsboro
-        Me.LogonButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.LogonButton2.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LogonButton2.Location = New System.Drawing.Point(228, 117)
-        Me.LogonButton2.Name = "LogonButton2"
-        Me.LogonButton2.Size = New System.Drawing.Size(203, 45)
-        Me.LogonButton2.TabIndex = 78
-        Me.LogonButton2.Text = "Login"
-        Me.LogonButton2.UseVisualStyleBackColor = False
-        Me.LogonButton2.Visible = False
         '
         'LogonForm
         '

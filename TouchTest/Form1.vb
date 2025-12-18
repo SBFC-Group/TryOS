@@ -240,6 +240,7 @@ Public Class Form1
             If DisableFullScreenConsole = True Then
                 CommanderWindowedToolStripMenuItem_Click(sender, e)
             Else
+                OpenFramework_Data.AppName = ""
                 UI.StartCMD()
                 If Panel2.Visible = False Then
                     HideTaskbar(False)

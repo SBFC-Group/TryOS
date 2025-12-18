@@ -47,16 +47,16 @@ Public Class Class1
 
         IO.Compression.ZipFile.ExtractToDirectory(FileName, TempFolder)
 
-        If TryOSVersion = "Null" Then
-            TryOSVersion = My.Application.Info.Version.ToString
-        End If
+        'If TryOSVersion = "Null" Then
+        '    TryOSVersion = My.Application.Info.Version.ToString
+        'End If
 
-        Dim ReaderVersion As String = My.Computer.FileSystem.ReadAllText(TempFolder & "\Version.swfiles")
+        'Dim ReaderVersion As String = My.Computer.FileSystem.ReadAllText(TempFolder & "\Version.swfiles")
 
-        If ReaderVersion.Contains(TryOSVersion) Then
-        Else
-            Exit Function
-        End If
+        'If ReaderVersion.Contains(TryOSVersion) Then
+        'Else
+        '    Exit Function
+        'End If
 
         Dim Reader As String = My.Computer.FileSystem.ReadAllText(TempFolder & "\Name.swfiles")
 

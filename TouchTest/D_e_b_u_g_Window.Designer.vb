@@ -30,31 +30,37 @@ Partial Class D_e_b_u_g_Window
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
         Me.SuspendLayout()
         '
         'PropertyGrid1
         '
-        Me.PropertyGrid1.Location = New System.Drawing.Point(191, 307)
+        Me.PropertyGrid1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.PropertyGrid1.Location = New System.Drawing.Point(3, 3)
         Me.PropertyGrid1.Name = "PropertyGrid1"
-        Me.PropertyGrid1.Size = New System.Drawing.Size(330, 299)
+        Me.PropertyGrid1.Size = New System.Drawing.Size(585, 576)
         Me.PropertyGrid1.TabIndex = 0
         '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(147, 120)
+        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(200, 100)
+        Me.TabControl1.Size = New System.Drawing.Size(828, 655)
         Me.TabControl1.TabIndex = 1
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Button1)
+        Me.TabPage1.Controls.Add(Me.PropertyGrid1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(192, 74)
+        Me.TabPage1.Size = New System.Drawing.Size(820, 629)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -64,7 +70,7 @@ Partial Class D_e_b_u_g_Window
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(192, 74)
+        Me.TabPage2.Size = New System.Drawing.Size(820, 629)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -76,10 +82,10 @@ Partial Class D_e_b_u_g_Window
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(13, 41)
+        Me.Button1.Location = New System.Drawing.Point(594, 6)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 2
+        Me.Button1.TabIndex = 3
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -88,14 +94,13 @@ Partial Class D_e_b_u_g_Window
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(828, 655)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.PropertyGrid1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "D_e_b_u_g_Window"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "D_e_b_u_g_Window"
         Me.TabControl1.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
