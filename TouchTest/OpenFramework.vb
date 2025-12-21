@@ -23,20 +23,16 @@ Namespace OpenFramework_Data
 
                 For Each p In plugins
                     Try
-                        Debug.WriteLine("Loaded " & p.Name)
+                        Debug.WriteLine("Loaded App: " & p.Name)
                         p.Initialize(host)
                         Dim btn As New Button()
                         btn.Name = p.Name
                         btn.BackgroundImage = p.Icon
-                        'btn.TextImageRelation = TextImageRelation.ImageAboveText
                         btn.FlatStyle = FlatStyle.Flat
                         btn.FlatAppearance.BorderSize = 0
                         btn.BackgroundImageLayout = ImageLayout.Stretch
                         btn.Tag = p
                         btn.Size = New Size(74, 70)
-                        'btn.AutoSize = True
-                        'btn.AutoSizeMode = AutoSizeMode.GrowAndShrink
-                        'btn.Padding = New Padding(5)
                         AddHandler btn.Click, AddressOf PluginButton_Click
                         FlowLayoutPanelUse.Controls.Add(btn)
                     Catch ex As Exception
@@ -44,7 +40,7 @@ Namespace OpenFramework_Data
                     End Try
                 Next
             Catch ex As Exception
-                UI.ShowError("Did my OpenFramework fix not work?")
+                UI.ShowError("Someting has changed to make your app not work. ()")
             End Try
 
         End Sub
@@ -78,7 +74,7 @@ Namespace OpenFramework_Data
                     order.Add(ctrl.Tag.ToString())
                 Next
             End If
-            IO.File.WriteAllText(UI.UserFolder & "\Settings\Taskbar_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
+            IO.File.WriteAllText(Form1.User.UserFolderPath & "\Settings\Taskbar_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
         End Sub
 
         Public Sub RestoreButtonOrder(Optional AllowCustom As Boolean = False, Optional ControlThing As Control = Nothing)
@@ -86,7 +82,7 @@ Namespace OpenFramework_Data
                 ControlThing = Form1.FlowLayoutPanel1
             End If
 
-            Dim path As String = UI.UserFolder & "\Settings\Taskbar_Order.json"
+            Dim path As String = Form1.User.UserFolderPath & "\Settings\Taskbar_Order.json"
             If IO.File.Exists(path) Then
                 Dim order = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of String))(IO.File.ReadAllText(path))
                 Dim sortedButtons As New List(Of Control)

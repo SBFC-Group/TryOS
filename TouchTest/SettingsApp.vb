@@ -143,6 +143,13 @@
             Button7.Visible = False
             Button7.Enabled = False
         End If
+
+        If Form1.User.Role = TryController.Roles.Administrator Then
+        ElseIf Form1.User.Role = TryController.Roles.Program Then
+        ElseIf Form1.User.Role = TryController.Roles.Developer Then
+        Else
+            Button5.Visible = False
+        End If
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click

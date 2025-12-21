@@ -651,7 +651,13 @@
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Try
-            My.Computer.FileSystem.WriteAllText(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles", "False", False)
+            If Form1.User.DoesSettingExist("IsDarkModeForApps=False") = True Then
+            ElseIf Form1.User.DoesSettingExist("IsDarkModeForApps=True") = True Then
+                Form1.User.ReplaceSettingInUserSettings("IsDarkModeForApps=True", "IsDarkModeForApps=False")
+            Else
+                Form1.User.AddSettingToUserSettings("IsDarkModeForApps=False")
+            End If
+            'My.Computer.FileSystem.WriteAllText(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles", "False", False)
         Catch ex As Exception
             UI.ShowError(ex.Message)
         End Try
@@ -660,7 +666,13 @@
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Try
-            My.Computer.FileSystem.WriteAllText(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles", "True", False)
+            If Form1.User.DoesSettingExist("IsDarkModeForApps=True") = True Then
+            ElseIf Form1.User.DoesSettingExist("IsDarkModeForApps=False") = True Then
+                Form1.User.ReplaceSettingInUserSettings("IsDarkModeForApps=False", "IsDarkModeForApps=True")
+            Else
+                Form1.User.AddSettingToUserSettings("IsDarkModeForApps=True")
+            End If
+            'My.Computer.FileSystem.WriteAllText(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles", "True", False)
         Catch ex As Exception
             UI.ShowError(ex.Message)
         End Try

@@ -18,7 +18,11 @@
 
         Public Sub OpenLogonForm()
             UI.DisableOpenFramework = True
-            UI.DisableCustomCode = True
+            If My.Computer.FileSystem.FileExists(LogonUser.UserFolderPath & "\Settings\AllowCustom.swfiles") Then
+                UI.DisableCustomCode = False
+            Else
+                UI.DisableCustomCode = True
+            End If
             Form1.AllowNewerLoader = False
             UI.UserFolder = UI.UsersFolder & "\SuperSecretUser"
             Form1.Username = "SuperSecretUser"
@@ -26,6 +30,7 @@
             Form1.HideTaskbar(True)
             Form1.OpenChildForm(New LogonForm)
             Form1.DisableConsole = True
+
         End Sub
 
         Public Sub CloseLogonForm()
@@ -33,6 +38,10 @@
                 If Form1.currentForm.Text = "LogonForm" Then
                     Form1.currentForm.Close()
                     Form1.Close()
+
+                    If Environment.CommandLine.Contains("/TurnOff_VerifyedShellOnly") = True Then
+                        Form1.AllowOnlyVerifyedShellCode = False
+                    End If
                 End If
             Catch ex As Exception
 
