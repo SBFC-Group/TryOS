@@ -407,9 +407,7 @@
         TextBox1.Enabled = True
         TextBox1.Text = ""
         TextBox2.Enabled = True
-        If Environment.CommandLine.Contains("/DevMode") Then
-            FlowLayoutPanel1.Visible = True
-        End If
+
     End Sub
 
     Private Sub CommanderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CommanderToolStripMenuItem.Click

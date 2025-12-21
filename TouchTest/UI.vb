@@ -2,7 +2,7 @@
 Imports TouchTest
 
 Public Class UI
-    Public ReadOnly ShellAppIDs As String() = {"825162", "936352"}
+    Public ReadOnly ShellAppIDs As String() = {"825162", "936352", "84364983"}
 
     Public AppsFolder As String = My.Application.Info.DirectoryPath & "\Apps"
     Public SettingsFolder As String = My.Application.Info.DirectoryPath & "\Settings"
@@ -80,6 +80,11 @@ Public Class UI
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("RunUserControl ", "")
             RunUserControl(Text1)
+            Return Nothing
+        ElseIf Command.Contains("installapp ") = True Then
+            Dim Text1 As String = Command
+            Text1 = Text1.Replace("Console>", "")
+            Text1 = Text1.Replace("installapp ", "")
             Return Nothing
         ElseIf Command.Contains("RunTestSniper") = True Then
             Dim gg As New Sniper

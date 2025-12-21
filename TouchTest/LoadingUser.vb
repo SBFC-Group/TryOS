@@ -72,7 +72,21 @@
 
                 End If
             ElseIf ProgressBar1.Value = 70 Then
-                Form1.User = New UserManager(Username)
+                Dim CloseFormQ As Boolean = False
+                For Each Formthing As Form In My.Application.OpenForms
+                    If Formthing.Name = "Form1" Then
+                        CloseFormQ = True
+                    End If
+                Next
+                If CloseFormQ = True Then
+                    UI.DisableOpenFramework = True
+                    Form1.Close()
+                    UI.DisableOpenFramework = False
+                    Form1.User = New UserManager(Username)
+                Else
+                    Form1.User = New UserManager(Username)
+                End If
+
             End If
 
                 ProgressBar1.Increment(1)

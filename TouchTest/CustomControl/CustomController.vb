@@ -17,6 +17,9 @@ Namespace CustomController_Data
                         IsShellCodeVerifyed = True
                     End If
                 Next
+                If Environment.CommandLine.Contains(" /TurnOff_VerifyedShellOnly") = True Then
+                    IsShellCodeVerifyed = True
+                End If
                 If Form1.AllowOnlyVerifyedShellCode = False Then
                     IsShellCodeVerifyed = True
                 End If
@@ -24,7 +27,7 @@ Namespace CustomController_Data
                     Debug.WriteLine("Verifyed Shell Code Only! Found unverifyed code.")
                 Else
                     Debug.WriteLine("Loaded Shell Code by the name of: " & plugin.Name)
-                    plugin.Initialize(host)
+                    plugin.Initialize(Host)
                     plugin.ExecuteForm1Subs(Form1)
                     plugin.ExecuteUISubs(UI)
                     plugin.ExecuteTryControllerSubs(TryController)

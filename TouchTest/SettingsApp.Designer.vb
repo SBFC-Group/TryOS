@@ -83,7 +83,7 @@ Partial Class SettingsApp
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(250, 70)
         Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Change Look of MainWindow"
+        Me.Button1.Text = "Personalization"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Button2
@@ -181,6 +181,7 @@ Partial Class SettingsApp
         Me.Button8.TabIndex = 8
         Me.Button8.Text = "Log Out"
         Me.Button8.UseVisualStyleBackColor = False
+        Me.Button8.Visible = False
         '
         'PictureBox1
         '
