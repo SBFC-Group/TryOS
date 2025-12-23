@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="TestThis"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShellGUI"
+             mc:Ignorable="d" Height="74" Width="1243" Loaded="UserControl_Loaded">
+    <Grid HorizontalAlignment="Left" Height="74" VerticalAlignment="Top" Width="1243">
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="74" OpacityMask="Black">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</UserControl>

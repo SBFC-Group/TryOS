@@ -40,7 +40,7 @@ Namespace OpenFramework_Data
                     End Try
                 Next
             Catch ex As Exception
-                UI.ShowError("Someting has changed to make your app not work. ()")
+                UI.ShowError("Someting has changed to make your app not work.")
             End Try
 
         End Sub

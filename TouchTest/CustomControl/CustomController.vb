@@ -17,7 +17,7 @@ Namespace CustomController_Data
                         IsShellCodeVerifyed = True
                     End If
                 Next
-                If Environment.CommandLine.Contains(" /TurnOff_VerifyedShellOnly") = True Then
+                If Environment.CommandLine.Contains("/TurnOff_VerifyedShellOnly") = True Then
                     IsShellCodeVerifyed = True
                 End If
                 If Form1.AllowOnlyVerifyedShellCode = False Then

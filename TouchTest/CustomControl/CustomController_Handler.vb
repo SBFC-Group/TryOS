@@ -10,6 +10,10 @@
             OpenFramework_Data.RestoreButtonOrder(AllowCustom, ControlThing)
         End Sub
 
+        Public Sub OpenFramework_SetNewFlowLayoutPanel(FlowLayoutPanelThing As FlowLayoutPanel) Implements CustomController_UI_Handler.OpenFramework_SetNewFlowLayoutPanel
+            OpenFramework_Data.SetNewFlowLayoutPanel(FlowLayoutPanelThing)
+        End Sub
+
         Public Function GetFormCollection() As FormCollection Implements CustomController_UI_Handler.GetFormCollection
             Return My.Application.OpenForms
         End Function
