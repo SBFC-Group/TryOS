@@ -14,6 +14,14 @@
             OpenFramework_Data.SetNewFlowLayoutPanel(FlowLayoutPanelThing)
         End Sub
 
+        Public Sub OpenFramework_LoadApps() Implements CustomController_UI_Handler.OpenFramework_LoadApps
+            OpenFramework_Data.LoadApps()
+        End Sub
+
+        Public Sub OpenFramework_SetAppNameValue(Text As String) Implements CustomController_UI_Handler.OpenFramework_SetAppNameValue
+            OpenFramework_Data.AppName = Text
+        End Sub
+
         Public Function GetFormCollection() As FormCollection Implements CustomController_UI_Handler.GetFormCollection
             Return My.Application.OpenForms
         End Function

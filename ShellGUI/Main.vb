@@ -40,7 +40,7 @@ Public Class Main
         UI = UI_Form
 
         Dim ThisForm As New MyControllerForm
-        ThisForm.Show()
+        ThisForm.LoadEverything()
     End Sub
 
     Public Sub ExecuteTryControllerSubs(TryController_Form As TryController) Implements CustomController_Interface.ExecuteTryControllerSubs

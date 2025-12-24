@@ -35,7 +35,7 @@ Partial Class PCContentMenu_NoneApp
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(204, 252)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(202, 250)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
         'Timer1
@@ -58,9 +58,10 @@ Partial Class PCContentMenu_NoneApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Name = "PCContentMenu_NoneApp"
-        Me.Size = New System.Drawing.Size(204, 252)
+        Me.Size = New System.Drawing.Size(202, 250)
         Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 

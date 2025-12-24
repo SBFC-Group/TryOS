@@ -6,7 +6,7 @@ Public Class MyControllerForm
     'This will won't ever open
 
     Public PCC As New PCContentMenu_NoneApp
-    Public P1 As Panel
+    Public P2 As Panel
     Public P3 As Panel
 
     Public Sub LoadEverything()
@@ -14,14 +14,17 @@ Public Class MyControllerForm
 
         AddHandlerToAll(Main.Form1)
 
-        'PCC = New PCContentMenu_NoneApp
-
-
         PCC.BringToFront()
+
+
+
+        Main.Form1.Funnything().BringToFront()
 
         PCC.BackColor = Color.FromArgb(55, Color.DarkGray)
 
         PCC.Visible = False
+
+        OpenTaskInteracter(Main.Form1.Funnything())
 
     End Sub
 
@@ -31,7 +34,7 @@ Public Class MyControllerForm
             Dim x1 = e.Location.X
             Dim y1 = e.Location.Y
 
-            y1 = y1 + 30
+            y1 = y1 + 35
 
             PCC.Location = New Drawing.Point(x1, y1)
             PCC.Visible = True
@@ -42,7 +45,7 @@ Public Class MyControllerForm
     End Sub
 
     Private Sub MyControllerForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadEverything()
+        'LoadEverything()
 
     End Sub
 
@@ -78,5 +81,24 @@ Public Class MyControllerForm
 
     Private Sub MyControllerForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         RemoveHandlerToAll(Main.Form1)
+    End Sub
+
+    Public currentForm As Form = Nothing
+    Public Sub OpenTaskInteracter(PanelElement As Panel)
+        Dim childForm As New TaskInteracter
+
+        If currentForm IsNot Nothing Then currentForm.Close()
+        currentForm = childForm
+        childForm.TopLevel = False
+        childForm.FormBorderStyle = FormBorderStyle.None
+        childForm.Dock = DockStyle.Fill
+        PanelElement.Controls.Add(childForm)
+        PanelElement.Tag = childForm
+        Try
+            childForm.Show()
+            childForm.BringToFront()
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class

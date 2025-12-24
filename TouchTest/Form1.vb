@@ -109,6 +109,7 @@ Public Class Form1
 
     Public Sub New()
 
+
         ' This call is required by the designer.
         InitializeComponent()
 
@@ -145,8 +146,6 @@ Public Class Form1
         SizeX = Panel3.Size.Width
         SizeY = Panel3.Size.Height ' - 57
     End Sub
-
-
 
     Public currentForm As Form = Nothing
     Public Sub OpenChildForm(ByVal childForm As Form, Optional arg1 As String = "Null=Nothing")
