@@ -40,7 +40,7 @@ Namespace OpenFramework_Data
                     End Try
                 Next
             Catch ex As Exception
-                UI.ShowError("Someting has changed to make your app not work. ()")
+                UI.ShowError("Someting has changed to make your app not work.")
             End Try
 
         End Sub
@@ -70,7 +70,7 @@ Namespace OpenFramework_Data
                     order.Add(ctrl.Tag.ToString())
                 Next
             Else
-                For Each ctrl As Control In Form1.FlowLayoutPanel1.Controls
+                For Each ctrl As Control In FlowLayoutPanelUse.Controls
                     order.Add(ctrl.Tag.ToString())
                 Next
             End If
@@ -79,7 +79,7 @@ Namespace OpenFramework_Data
 
         Public Sub RestoreButtonOrder(Optional AllowCustom As Boolean = False, Optional ControlThing As Control = Nothing)
             If AllowCustom = False Then
-                ControlThing = Form1.FlowLayoutPanel1
+                ControlThing = FlowLayoutPanelUse
             End If
 
             Dim path As String = Form1.User.UserFolderPath & "\Settings\Taskbar_Order.json"
