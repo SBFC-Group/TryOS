@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("SBFC Group")>
 <Assembly: AssemblyProduct("Internet++")>
-<Assembly: AssemblyCopyright("Copyright © SBFC Group 2025")>
+<Assembly: AssemblyCopyright("Copyright © SBFC Group 2026")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
