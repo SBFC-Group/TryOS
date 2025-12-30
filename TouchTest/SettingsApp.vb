@@ -9,7 +9,7 @@
     Public DeviceInfoPanel As New DeviceInto
     Public TaskbarOrderPanel As New TaskbarOrderApp
 
-    Public RoleLevel As TryController.Roles = Form1.GetRole()
+    Public RoleLevel As TryController.Roles = Form1.User.Role
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Panel2.Controls.Add(ThemePanel)

@@ -1,8 +1,8 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class PCContentMenu_NoneApp
-    Inherits System.Windows.Forms.UserControl
+Partial Class TaskInteracter_F
+    Inherits System.Windows.Forms.Form
 
-    'UserControl overrides dispose to clean up the component list.
+    'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -22,52 +22,48 @@ Partial Class PCContentMenu_NoneApp
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TaskInteracter_F))
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'FlowLayoutPanel1
         '
-        Me.FlowLayoutPanel1.Controls.Add(Me.Button1)
-        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(202, 47)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(1168, 74)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
         'Button1
         '
-        Me.Button1.BackColor = System.Drawing.Color.LightGray
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.BackColor = System.Drawing.Color.Transparent
+        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(3, 3)
+        Me.Button1.Location = New System.Drawing.Point(1169, 0)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(194, 40)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(76, 74)
+        Me.Button1.TabIndex = 1
         Me.Button1.UseVisualStyleBackColor = False
-        Me.Button1.Visible = False
         '
-        'Timer1
-        '
-        '
-        'PCContentMenu_NoneApp
+        'TaskInteracter_F
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.ClientSize = New System.Drawing.Size(1243, 74)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.FlowLayoutPanel1)
-        Me.Name = "PCContentMenu_NoneApp"
-        Me.Size = New System.Drawing.Size(202, 47)
-        Me.FlowLayoutPanel1.ResumeLayout(False)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Name = "TaskInteracter_F"
+        Me.Text = "TaskInteracter"
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents FlowLayoutPanel1 As Windows.Forms.FlowLayoutPanel
-    Friend WithEvents Timer1 As Windows.Forms.Timer
     Friend WithEvents Button1 As Windows.Forms.Button
 End Class

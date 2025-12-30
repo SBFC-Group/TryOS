@@ -589,6 +589,10 @@ Public Class UI
     End Sub
     'ChangeObjectPropertyByName(Me, "Button1", "Text", "Clicked!")
 
+    Public MyNewButtonName As String
+    Public MyNewButtonText As String
+    Public MyNewButtonAction As Action
+
     Public Sub ShowStopWindow(ex As Exception)
         Dim MyForm As New StopWindow
         MyForm.RichTextBox1.Text = ex.Message & "

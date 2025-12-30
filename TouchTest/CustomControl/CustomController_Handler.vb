@@ -25,5 +25,17 @@
         Public Function GetFormCollection() As FormCollection Implements CustomController_UI_Handler.GetFormCollection
             Return My.Application.OpenForms
         End Function
+
+        Public Function OpenFramework_LoadPlugins_New() As List(Of OpenFramework_Interface) Implements CustomController_UI_Handler.OpenFramework_LoadPlugins_New
+            Return OpenFramework_Data.LoadPlugins_New()
+        End Function
+
+        Public Function OpenFramework_LoadPlugins(folder As String) As List(Of OpenFramework_Interface) Implements CustomController_UI_Handler.OpenFramework_LoadPlugins
+            Return OpenFramework_Data.LoadPlugins(folder)
+        End Function
+
+        Public Function OpenFramework_GetOpenFrameworkVersion() As Object Implements CustomController_UI_Handler.OpenFramework_GetOpenFrameworkVersion
+            Return OpenFramework_Data.GetOpenFrameworkVersion()
+        End Function
     End Class
 End Namespace
