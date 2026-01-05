@@ -43,14 +43,22 @@ Public Class UI
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("run ", "")
-            RunShellPrograms(Text1)
-            Return Nothing
+            Try
+                RunShellPrograms(Text1)
+                Return "Started ShellProgram. " & Text1
+            Catch ex As Exception
+                Return "Failed to start ShellProgram. " & Text1
+            End Try
         ElseIf Command.Contains("start ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("start ", "")
-            OpenFormByName("TouchTest." & Text1)
-            Return Nothing
+            Try
+                OpenFormByName("TouchTest." & Text1)
+                Return "Started form. " & Text1
+            Catch ex As Exception
+                Return "Failed to start form. " & Text1
+            End Try
         ElseIf Command.Contains("RunApp ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
