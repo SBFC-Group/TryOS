@@ -42,6 +42,12 @@ Public Class Main
     End Sub
 
     Public Function GetForm() As Form Implements OpenFramework_Interface.GetForm
-        Return New TouchTest.SettingsForm
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\SettingsApp.SettingsForm.txt") Then
+            Return New SettingsForm
+        Else
+            Return New TouchTest.SettingsForm
+        End If
+
+
     End Function
 End Class
