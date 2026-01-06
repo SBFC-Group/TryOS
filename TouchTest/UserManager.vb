@@ -224,8 +224,8 @@
     End Function
 
     Private Function GetRole() As TryController.Roles
-        If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\Role.swfiles") Then
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\Role.swfiles")
+        If My.Computer.FileSystem.FileExists(UserFolderPath & "\Settings\Role.swfiles") Then
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Role.swfiles")
             Try
                 Dim b As Byte() = Convert.FromBase64String(Reader)
                 Reader = System.Text.Encoding.UTF8.GetString(b)
