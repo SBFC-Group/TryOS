@@ -62,11 +62,15 @@
     Private Sub PluginButton_Click(sender As Object, e As EventArgs)
         Dim btn As Button = CType(sender, Button)
         Dim plugin As OpenFramework_Interface = CType(btn.Tag, OpenFramework_Interface)
-        Try
-            ButtonPressed.Enabled = True
-        Catch ex As Exception
 
-        End Try
+        If ButtonPressed IsNot Nothing Then
+            Try
+                ButtonPressed.Enabled = True
+            Catch ex As Exception
+
+            End Try
+        End If
+
 
         btn.Enabled = False
         PictureBox1.Image = btn.BackgroundImage
