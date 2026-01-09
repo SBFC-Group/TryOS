@@ -1,4 +1,5 @@
 ﻿Imports System.Windows.Forms
+Imports QuickNotesLib
 
 Public Class OpenNoteDialog
 
@@ -15,16 +16,16 @@ Public Class OpenNoteDialog
     Private Number As Int64 = 1
 
     Private Sub LoadMe()
-        If My.Computer.FileSystem.FileExists(Class1._host.GetUserFolder() & "\Notes\quicknote_" & Number & ".swnote") Then
-            If My.Computer.FileSystem.DirectoryExists(Class1._host.GetUserFolder() & "\Temp\notesreader") Then
-                My.Computer.FileSystem.CreateDirectory(Class1._host.GetUserFolder() & "\Temp\notesreader")
+        If My.Computer.FileSystem.FileExists(Main._host.GetUserFolder() & "\Notes\quicknote_" & Number & ".swnote") Then
+            If My.Computer.FileSystem.DirectoryExists(Main._host.GetUserFolder() & "\Temp\notesreader") Then
+                My.Computer.FileSystem.CreateDirectory(Main._host.GetUserFolder() & "\Temp\notesreader")
             End If
 
-            IO.Compression.ZipFile.ExtractToDirectory(Class1._host.GetUserFolder() & "\Notes\quicknote_" & Number.ToString & ".swnote", Class1._host.GetUserFolder() & "\Temp\notesreader")
+            IO.Compression.ZipFile.ExtractToDirectory(Main._host.GetUserFolder() & "\Notes\quicknote_" & Number.ToString & ".swnote", Main._host.GetUserFolder() & "\Temp\notesreader")
 
             System.Threading.Thread.Sleep(100)
 
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(Class1._host.GetUserFolder() & "\Temp\notesreader\NoteName.swfiles")
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(Main._host.GetUserFolder() & "\Temp\notesreader\NoteName.swfiles")
 
             If Number = 1 Then
                 Button1.Visible = True
@@ -200,7 +201,7 @@ Public Class OpenNoteDialog
 
             System.Threading.Thread.Sleep(100)
 
-            My.Computer.FileSystem.DeleteDirectory(Class1._host.GetUserFolder() & "\Temp\notesreader", FileIO.DeleteDirectoryOption.DeleteAllContents)
+            My.Computer.FileSystem.DeleteDirectory(Main._host.GetUserFolder() & "\Temp\notesreader", FileIO.DeleteDirectoryOption.DeleteAllContents)
             Number = Number + 1
             LoadMe()
         End If
@@ -222,22 +223,36 @@ Public Class OpenNoteDialog
  Button16.Click, Button17.Click, Button18.Click, Button19.Click, Button20.Click, Button21.Click, Button22.Click, Button23.Click, Button24.Click, Button25.Click, Button26.Click, Button27.Click, Button28.Click, Button29.Click, Button30.Click, Button31.Click, Button32.Click, Button33.Click, Button34.Click, Button35.Click, Button36.Click, Button37.Click,
   Button38.Click, Button39.Click, Button40.Click, Button41.Click, Button42.Click, Button43.Click, Button44.Click, Button45.Click, Button46.Click, Button47.Click, Button48.Click, Button49.Click, Button50.Click, Button51.Click, Button52.Click, Button53.Click, Button54.Click, Button55.Click, Button56.Click
         '-------------------------------------------------------------------------------------------------------------------------------
+        Dim Isold As Boolean = True
+        If Isold = False Then
+
+            Dim WriteOINew As String = sender.Name
+
+            WriteOINew = WriteOINew.Replace("Button", "")
+
+            'This opens the note
+            ButtonWasPressed = Form15.QuickNotesLib.OpenNote(Main._host.GetUserFolder() & "\Notes", Main._host.GetUserFolder() & "\Temp", Main._host.GetUserFolder() & "\Notes\quicknote_" & WriteOINew & ".swnote")
+
+
+
+            Exit Sub
+        End If
 
         Dim WriteOI As String = sender.Name
 
         WriteOI = WriteOI.Replace("Button", "")
 
-        If My.Computer.FileSystem.DirectoryExists(Class1._host.GetUserFolder() & "\Temp\notesreader") Then
-            My.Computer.FileSystem.CreateDirectory(Class1._host.GetUserFolder() & "\Temp\notesreader")
+        If My.Computer.FileSystem.DirectoryExists(Main._host.GetUserFolder() & "\Temp\notesreader") Then
+            My.Computer.FileSystem.CreateDirectory(Main._host.GetUserFolder() & "\Temp\notesreader")
         End If
 
-        IO.Compression.ZipFile.ExtractToDirectory(Class1._host.GetUserFolder() & "\Notes\quicknote_" & WriteOI & ".swnote", Class1._host.GetUserFolder() & "\Temp\notesreader")
+        IO.Compression.ZipFile.ExtractToDirectory(Main._host.GetUserFolder() & "\Notes\quicknote_" & WriteOI & ".swnote", Main._host.GetUserFolder() & "\Temp\notesreader")
 
-        ButtonWasPressed = My.Computer.FileSystem.ReadAllText(Class1._host.GetUserFolder() & "\Temp\notesreader\NoteText.swfiles")
+        ButtonWasPressed = My.Computer.FileSystem.ReadAllText(Main._host.GetUserFolder() & "\Temp\notesreader\NoteText.swfiles")
 
         System.Threading.Thread.Sleep(100)
 
-        My.Computer.FileSystem.DeleteDirectory(Class1._host.GetUserFolder() & "\Temp\notesreader", FileIO.DeleteDirectoryOption.DeleteAllContents)
+        My.Computer.FileSystem.DeleteDirectory(Main._host.GetUserFolder() & "\Temp\notesreader", FileIO.DeleteDirectoryOption.DeleteAllContents)
 
         Close()
     End Sub

@@ -32,7 +32,7 @@ Namespace OpenFramework_Data
                         btn.FlatAppearance.BorderSize = 0
                         btn.BackgroundImageLayout = ImageLayout.Stretch
                         btn.Tag = p
-                        btn.Size = New Size(74, 70)
+                        btn.Size = Form1.Button3.Size
                         AddHandler btn.Click, AddressOf PluginButton_Click
                         FlowLayoutPanelUse.Controls.Add(btn)
                     Catch ex As Exception

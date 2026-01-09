@@ -12,8 +12,8 @@ Public Class NewNoteDialog
 
     Public Form15Text As String = ""
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If My.Computer.FileSystem.DirectoryExists(Class1._host.GetUserFolder() & "\Notes") Then
-            If My.Computer.FileSystem.FileExists(Class1._host.GetUserFolder() & "\Notes\quicknote_" & Number.ToString & ".swnote") Then
+        If My.Computer.FileSystem.DirectoryExists(Main._host.GetUserFolder() & "\Notes") Then
+            If My.Computer.FileSystem.FileExists(Main._host.GetUserFolder() & "\Notes\quicknote_" & Number.ToString & ".swnote") Then
                 Number = Number + 1
                 Button1_Click(Me, e)
             Else
@@ -21,7 +21,7 @@ Public Class NewNoteDialog
                 TextBox1.Enabled = False
                 Button1.Enabled = False
 
-                Dim TempFolder As String = Class1._host.GetUserFolder() & "\Temp"
+                Dim TempFolder As String = Main._host.GetUserFolder() & "\Temp"
                 My.Computer.FileSystem.CreateDirectory(TempFolder & "\tempfoldernote")
                 My.Computer.FileSystem.WriteAllText(TempFolder & "\tempfoldernote\NoteName.swfiles", TextBox1.Text, False)
                 My.Computer.FileSystem.WriteAllText(TempFolder & "\tempfoldernote\NoteText.swfiles", Form15Text, False)
@@ -32,14 +32,14 @@ Public Class NewNoteDialog
 
                 My.Computer.FileSystem.DeleteDirectory(TempFolder & "\tempfoldernote", FileIO.DeleteDirectoryOption.DeleteAllContents)
 
-                My.Computer.FileSystem.MoveFile(TempFolder & "\quicknote_" & Number.ToString & ".swnote", Class1._host.GetUserFolder() & "\Notes\quicknote_" & Number.ToString & ".swnote")
+                My.Computer.FileSystem.MoveFile(TempFolder & "\quicknote_" & Number.ToString & ".swnote", Main._host.GetUserFolder() & "\Notes\quicknote_" & Number.ToString & ".swnote")
 
                 Me.DialogResult = System.Windows.Forms.DialogResult.OK
                 Me.Close()
             End If
         Else
             Try
-                My.Computer.FileSystem.CreateDirectory(Class1._host.GetUserFolder() & "\Notes")
+                My.Computer.FileSystem.CreateDirectory(Main._host.GetUserFolder() & "\Notes")
                 Button1_Click(Me, e)
             Catch ex As UnauthorizedAccessException
                 MsgBox(ex.Message)

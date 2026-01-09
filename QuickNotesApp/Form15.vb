@@ -3,6 +3,8 @@ Imports System.Windows.Forms
 Imports System.Drawing
 
 Public Class Form15
+    Public Shared QuickNotesLib As New QuickNotesLib.Main
+
     Public opened As String = "0"
     Public FullScreen As Integer = 0
     Public S5478 As Panel
@@ -210,7 +212,7 @@ Public Class Form15
         'SettingsToolStripMenuItem.Enabled = False
         'End If
         'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath + "\Users\" & Form1.Username & "\Apps\QuickNotes.swfiles") Then
-        If Class1._host.IsDarkMode() = True Then
+        If Main._host.IsDarkMode() = True Then
             TextBox1.BackColor = Color.DarkGray
             Panel5.BackColor = Color.Silver
             Windowborder1.BackColor = Color.Gray
@@ -293,12 +295,12 @@ Public Class Form15
 
     Private Sub TextBox1_LinkClicked(sender As Object, e As LinkClickedEventArgs) Handles TextBox1.LinkClicked
         If TextBox1.Text = "http://fullconsole" Then
-            Class1._host.RunCommand("start Console")
+            Main._host.RunCommand("start Console")
             'Console.Show()
             'Form1.IsQuickNotesOpen = False
         Else
             If TextBox1.Text = "http://shellconsole" Then
-                Class1._host.StartCMD("NotNew")
+                Main._host.StartCMD("NotNew")
                 'Form1.IsQuickNotesOpen = False
             Else
                 'If Form_1pad.textedit = "New" Then

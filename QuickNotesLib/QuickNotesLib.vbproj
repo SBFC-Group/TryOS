@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8DE6CD8F-43C8-4BD9-9677-9FADA1662224}</ProjectGuid>
+    <ProjectGuid>{5AB31E25-A597-4770-B847-3CDFD50EE210}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>QuickNotesApp</RootNamespace>
-    <AssemblyName>QuickNotesApp</AssemblyName>
+    <RootNamespace>QuickNotesLib</RootNamespace>
+    <AssemblyName>QuickNotesLib</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -19,7 +19,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>QuickNotesApp.xml</DocumentationFile>
+    <DocumentationFile>QuickNotesLib.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -28,7 +28,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>QuickNotesApp.xml</DocumentationFile>
+    <DocumentationFile>QuickNotesLib.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -46,9 +46,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -68,12 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.vb" />
-    <Compile Include="Form15.Designer.vb">
-      <DependentUpon>Form15.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form15.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -89,34 +81,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="OpenNoteDialog.Designer.vb">
-      <DependentUpon>OpenNoteDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="OpenNoteDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewNoteDialog.Designer.vb">
-      <DependentUpon>NewNoteDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="NewNoteDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form15.resx">
-      <DependentUpon>Form15.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewNoteDialog.resx">
-      <DependentUpon>NewNoteDialog.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OpenNoteDialog.resx">
-      <DependentUpon>OpenNoteDialog.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -129,19 +100,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\QuickNotesLib\QuickNotesLib.vbproj">
-      <Project>{5ab31e25-a597-4770-b847-3cdfd50ee210}</Project>
-      <Name>QuickNotesLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TouchTest\TouchTest.vbproj">
-      <Project>{197b1b09-baa7-4125-aea3-441cf70675a9}</Project>
-      <Name>TouchTest</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\PictureBox1.Image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

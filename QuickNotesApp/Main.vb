@@ -1,7 +1,7 @@
 ﻿Imports TouchTest
 Imports System.Windows.Forms
 
-Public Class Class1
+Public Class Main
     Implements TouchTest.OpenFramework_Interface
 
     Public Shared _host As TouchTest.OpenFramework_Handler
