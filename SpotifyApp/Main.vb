@@ -1,7 +1,7 @@
 ﻿Imports TouchTest
 Imports System.Windows.Forms
 
-Public Class Class1
+Public Class Main
     Implements TouchTest.OpenFramework_Interface
 
     Public Shared _host As TouchTest.OpenFramework_Handler
@@ -26,7 +26,7 @@ Public Class Class1
 
     Public ReadOnly Property MinorVersion As Int64 Implements OpenFramework_Interface.MinorVersion
         Get
-            Return 0
+            Return 1
         End Get
     End Property
 

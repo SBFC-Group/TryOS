@@ -7,14 +7,14 @@
         If e.IsSuccess = True Then
 
 
-            Dim TheRole As TouchTest.TryController.Roles = Class1._host.GetRole()
+            Dim TheRole As TouchTest.TryController.Roles = Main._host.GetRole()
             If TheRole = TouchTest.TryController.Roles.Developer Then
             Else
                 WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
                 WebView21.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = False
             End If
 
-            If Class1._host.IsDarkMode() = True Then
+            If Main._host.IsDarkMode() = True Then
                 WebView21.CoreWebView2.Profile.PreferredColorScheme = Microsoft.Web.WebView2.Core.CoreWebView2PreferredColorScheme.Dark
             Else
                 WebView21.CoreWebView2.Profile.PreferredColorScheme = Microsoft.Web.WebView2.Core.CoreWebView2PreferredColorScheme.Light
@@ -23,7 +23,7 @@
             Dim jj = WebView21.CoreWebView2.Environment.CreateContextMenuItem("J", Nothing, Microsoft.Web.WebView2.Core.CoreWebView2ContextMenuItemKind.Command)
 
             AddHandler jj.CustomItemSelected, Sub()
-                                                  Class1._host.RunCommand("RunApp Form2")
+                                                  Main._host.RunCommand("RunApp Form2")
                                               End Sub
         End If
     End Sub
@@ -33,12 +33,12 @@
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Try
             If WebView21.CoreWebView2.ContainsFullScreenElement = True Then
-                Class1._host.EnableFullscreen(True)
+                Main._host.EnableFullscreen(True)
                 IsWebView2FullScreen = True
             ElseIf WebView21.CoreWebView2.ContainsFullScreenElement = False Then
                 If IsWebView2FullScreen = True Then
                     IsWebView2FullScreen = False
-                    Class1._host.EnableFullscreen(False)
+                    Main._host.EnableFullscreen(False)
 
                 End If
             End If

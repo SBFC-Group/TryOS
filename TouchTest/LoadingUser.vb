@@ -35,6 +35,7 @@
                 'Form1.Username = Username
                 'UI.UserFolder = UI.UsersFolder & "\" & Username
                 UI.LoadShell(Username, Password)
+                System.Threading.Thread.Sleep(500)
                 Close()
             End If
 

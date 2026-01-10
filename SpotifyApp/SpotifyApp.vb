@@ -6,11 +6,17 @@
     Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
 
         If e.IsSuccess = True Then
-            Dim TheRole As TouchTest.TryController.Roles = Class1._host.GetRole()
+            Dim TheRole As TouchTest.TryController.Roles = Main._host.GetRole()
             If TheRole = TouchTest.TryController.Roles.Developer Then
             Else
                 WebView21.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = False
                 WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
+            End If
+
+            If Main._host.IsDarkMode() = True Then
+                WebView21.CoreWebView2.Profile.PreferredColorScheme = Microsoft.Web.WebView2.Core.CoreWebView2PreferredColorScheme.Dark
+            ElseIf Main._host.IsDarkMode() = False Then
+                WebView21.CoreWebView2.Profile.PreferredColorScheme = Microsoft.Web.WebView2.Core.CoreWebView2PreferredColorScheme.Light
             End If
         End If
     End Sub
