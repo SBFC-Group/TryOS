@@ -153,14 +153,11 @@ Public Class Form1
         If currentForm IsNot Nothing Then currentForm.Close()
         currentForm = childForm
         childForm.TopLevel = False
-        'childForm.WindowState = FormWindowState.Maximized
         childForm.FormBorderStyle = FormBorderStyle.None
         childForm.Dock = DockStyle.Fill
         Panel3.Controls.Add(childForm)
         Panel3.Tag = childForm
-        'childForm.Location = New Point(1, 1)
         childForm.Size = New Size(Me.Size.Width, Me.Size.Height - 57)
-        'childForm.BringToFront()
         If arg1 = "Null=Nothing" Then
         Else
             ArgData = arg1

@@ -58,4 +58,13 @@ Public Class OpenFramework_Handler
             Return False
         End If
     End Function
+
+    Public Function SetOrGetArguments(Optional Arguments As String = Nothing) As String Implements OpenFramework_UI_Handler.SetOrGetArguments
+        If Arguments IsNot Nothing Then
+            Form1.ArgData = Arguments
+            Return Arguments
+        Else
+            Return Form1.ArgData
+        End If
+    End Function
 End Class
