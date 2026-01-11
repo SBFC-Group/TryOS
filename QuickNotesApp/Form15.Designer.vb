@@ -611,9 +611,6 @@ Partial Class Form15
         Me.Button3.TabIndex = 10
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'Timer1
-        '
-        '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.Silver

@@ -6,7 +6,7 @@ Public Class Form15
     Public opened As String = "0"
     Public FullScreen As Integer = 0
     Public S5478 As Panel
-    Public Versionofapp As String = "3.2.0"
+    Public Versionofapp As String = "1.1.0"
     Public PanelTing As Panel
 
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
@@ -23,28 +23,6 @@ Public Class Form15
         If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
             TextBox1.Text = My.Computer.FileSystem.ReadAllText(OpenFileDialog1.FileName)
         End If
-    End Sub
-
-    Private Sub AboutToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem1.Click
-        'Form_1pad.About__ = "1"
-        'About2.Show()
-        'About2.LabelProductName.Text = "Product Quick Edit"
-        'If Form_1pad.textedit = "New" Then
-        'About2.LabelVersion.Text = "Version " & Versionofapp
-        'Else
-        'About2.LabelVersion.Text = "Version 3.0.0"
-        'End If
-
-        'About2.Icon = Me.Icon
-        'About2.PictureBox1.Image = PictureBox1.Image
-        'About2.PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-        'About2.Text = "About Quick Edit"
-        'Form_1pad.About__ = "0"
-
-    End Sub
-
-    Private Sub TheWebToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        'Form19.Show()
     End Sub
 
     Private Sub CopyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CopyToolStripMenuItem.Click
@@ -68,11 +46,6 @@ Public Class Form15
         text.Show()
     End Sub
 
-    Private Sub FontDialog1_Apply(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FontDialog1.Apply
-        TextBox1.Font = FontDialog1.Font
-        TextBox1.ForeColor = FontDialog1.Color
-    End Sub
-
     Private Sub FontToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FontToolStripMenuItem.Click
         FontDialog1.Font = TextBox1.Font
         FontDialog1.Color = TextBox1.ForeColor
@@ -84,31 +57,6 @@ Public Class Form15
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Close()
-    End Sub
-
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        'If WindowState = FormWindowState.Normal Then
-        'WindowState = FormWindowState.Maximized
-        'Else
-        'WindowState = FormWindowState.Normal
-        'End If
-    End Sub
-
-    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
-        'If UI.Panel1.Visible = True Then
-        'Else
-        'Form37.Show()
-        'Form37.TextBox1.Text = TextBox1.Text
-        'Close()
-        'End If
-    End Sub
-
-    Private Sub OpToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        'Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub StatasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StatasToolStripMenuItem.Click
@@ -128,7 +76,7 @@ Public Class Form15
     End Sub
 
     'New Move Form code
-    Dim CanIMoveWindow As Boolean = False
+    Public CanIMoveWindow As Boolean = False
     Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
         If CanIMoveWindow = True Then
             ReleaseCapture()
@@ -145,71 +93,15 @@ Public Class Form15
         TextBox1.ReadOnly = False
     End Sub
 
-    Private Sub PictureBox1_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDown ', Label1.MouseDown
-
-    End Sub
-
-    Private Sub LinkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel3.LinkClicked
-        Close()
-    End Sub
-
-    Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
-        WindowState = FormWindowState.Minimized
-    End Sub
-
-    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
-        If WindowState = FormWindowState.Normal Then
-            WindowState = FormWindowState.Maximized
-        Else
-            WindowState = FormWindowState.Normal
-        End If
-    End Sub
-
     Public Sub RemoveUnusedParts()
         ToolStripSeparator4.Visible = False
         AboutQuickEditToolStripMenuItem.Visible = False
         TToolStripMenuItem.Visible = False
     End Sub
 
-    'If Dark = True Then
-    '    ColorMode = "Dark"
-    '    Panel1.BackColor = Color.DimGray
-    '    Panel2.BackColor = Color.Gray
-    '    Button1.BackColor = Color.DarkGray
-    '    Button2.BackColor = Color.DarkGray
-    '    Button3.BackColor = Color.DarkGray
-    '    Button4.BackColor = Color.DarkGray
-    '    Button5.BackColor = Color.DarkGray
-    '    Button6.BackColor = Color.DarkGray
-    '    Button7.BackColor = Color.DarkGray
-    '    Button8.BackColor = Color.DarkGray
-    'ElseIf Dark = False Then
-    '    ColorMode = "Normal"
-    '    Panel1.BackColor = Color.Silver
-    '    Panel2.BackColor = Color.DarkGray
-    '    Button1.BackColor = Color.Gainsboro
-    '    Button2.BackColor = Color.Gainsboro
-    '    Button3.BackColor = Color.Gainsboro
-    '    Button4.BackColor = Color.Gainsboro
-    '    Button5.BackColor = Color.Gainsboro
-    '    Button6.BackColor = Color.Gainsboro
-    '    Button7.BackColor = Color.Gainsboro
-    '    Button8.BackColor = Color.Gainsboro
-    'End If
-
     Public Path As String
     Private Sub Form15_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'UI.SecureAppCheck("{C8CAFE9B-DB4C-4BDB-BECF-7A6FF4378C21}", Me, Versionofapp)
-        Timer1.Start()
-        'If Form_1pad.BlockSebsModren = True Then
-        'Close()
-        'End If
-
-        'If Form_1pad.BlockUsercontrolModren = True Then
-        'Button4.Enabled = False
-        'SettingsToolStripMenuItem.Enabled = False
-        'End If
-        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath + "\Users\" & Form1.Username & "\Apps\QuickNotes.swfiles") Then
+        'Checks if Dark Mode is True
         If Class1._host.IsDarkMode() = True Then
             TextBox1.BackColor = Color.DarkGray
             Panel5.BackColor = Color.Silver
@@ -222,52 +114,8 @@ Public Class Form15
             OpenNoteButton.BackColor = Color.LightGray
         End If
 
+        'Removes parts of the old Quick Edit GUI from view
         RemoveUnusedParts()
-        'Else
-        'Close()
-        'End If
-
-        ToolStripStatusLabel1.Text = "Quick Edit " & Versionofapp
-        'FormatToolStripMenuItem.Visible = False
-        'ViewToolStripMenuItem.Visible = False
-        'ToolStripSeparator2.Visible = True
-        'FontToolStripMenuItem1.Visible = True
-        'StatusBarToolStripMenuItem.Visible = True
-
-        'If Form_1pad.textedit = "New" Then
-        'Button4.Visible = True
-        'ToolStripSeparator4.Visible = True
-        'SettingsToolStripMenuItem.Visible = True
-        'End If
-
-        'If Form_1pad.TaskbarPanel.Visible = True Then
-        'Panel1.BackColor = Form_1pad.TaskbarColor
-        'Panel3.BackColor = Form_1pad.TaskbarColor
-        'ElseIf Form_1pad.Panel1.Visible = True Then
-        'Panel1.BackColor = Form_1pad.Panel1.BackColor
-        'Panel3.BackColor = Form_1pad.Panel1.BackColor
-        'End If
-
-        'If Panel1.BackColor = Color.Black Then
-        'Button1.BackgroundImage = My.Resources._2920659_White
-        'Button2.BackgroundImage = My.Resources._1266721_White
-        'Button3.BackgroundImage = My.Resources.minimize2_White
-        'Label1.ForeColor = Color.White
-        'MenuStrip1.ForeColor = Color.White
-        'End If
-
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath + "\ext\readonly.swfiles") Then
-            Dim reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath + "\ext\readonly.swfiles")
-            If reader = "3.0.0" Then
-                ReadOnlyToolStripMenuItem.Visible = True
-            End If
-        End If
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath + "\ext\endecode.swfiles") Then
-            Dim reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath + "\ext\endecode.swfiles")
-            If reader = "3.0.0" Then
-                EnDecodeToolStripMenuItem.Visible = True
-            End If
-        End If
     End Sub
 
     Private Sub ClearTextBoxToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearTextBoxToolStripMenuItem.Click
