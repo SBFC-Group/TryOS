@@ -63,6 +63,11 @@ Partial Class Form1
         Me.VolumeList = New System.Windows.Forms.ImageList(Me.components)
         Me.InternetList = New System.Windows.Forms.ImageList(Me.components)
         Me.PowerList = New System.Windows.Forms.ImageList(Me.components)
+        Me.ToolStripTextBox3 = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoadAppsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveButtonOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RestoreButtonOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.TimebarPanel.SuspendLayout()
@@ -363,19 +368,19 @@ Partial Class Form1
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DebugMenuToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DebugMenuToolStripMenuItem, Me.ToolStripTextBox3})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1243, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1243, 27)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         Me.MenuStrip1.Visible = False
         '
         'DebugMenuToolStripMenuItem
         '
-        Me.DebugMenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CommanderToolStripMenuItem, Me.CommanderWindowedToolStripMenuItem, Me.LoadConsoleToolStripMenuItem, Me.UserNameToolStripMenuItem, Me.PasswordToolStripMenuItem})
+        Me.DebugMenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CommanderToolStripMenuItem, Me.CommanderWindowedToolStripMenuItem, Me.LoadConsoleToolStripMenuItem, Me.UserNameToolStripMenuItem, Me.PasswordToolStripMenuItem, Me.ToolStripMenuItem1})
         Me.DebugMenuToolStripMenuItem.Name = "DebugMenuToolStripMenuItem"
-        Me.DebugMenuToolStripMenuItem.Size = New System.Drawing.Size(88, 20)
+        Me.DebugMenuToolStripMenuItem.Size = New System.Drawing.Size(88, 23)
         Me.DebugMenuToolStripMenuItem.Text = "Debug Menu"
         '
         'CommanderToolStripMenuItem
@@ -481,6 +486,37 @@ Partial Class Form1
         Me.PowerList.Images.SetKeyName(4, "gui_battery_empty.png")
         Me.PowerList.Images.SetKeyName(5, "battery_charging.png")
         '
+        'ToolStripTextBox3
+        '
+        Me.ToolStripTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.ToolStripTextBox3.Name = "ToolStripTextBox3"
+        Me.ToolStripTextBox3.Size = New System.Drawing.Size(300, 23)
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadAppsToolStripMenuItem, Me.SaveButtonOrderToolStripMenuItem, Me.RestoreButtonOrderToolStripMenuItem})
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(285, 22)
+        Me.ToolStripMenuItem1.Text = "OpenFramework"
+        '
+        'LoadAppsToolStripMenuItem
+        '
+        Me.LoadAppsToolStripMenuItem.Name = "LoadAppsToolStripMenuItem"
+        Me.LoadAppsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.LoadAppsToolStripMenuItem.Text = "LoadApps"
+        '
+        'SaveButtonOrderToolStripMenuItem
+        '
+        Me.SaveButtonOrderToolStripMenuItem.Name = "SaveButtonOrderToolStripMenuItem"
+        Me.SaveButtonOrderToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SaveButtonOrderToolStripMenuItem.Text = "SaveButtonOrder"
+        '
+        'RestoreButtonOrderToolStripMenuItem
+        '
+        Me.RestoreButtonOrderToolStripMenuItem.Name = "RestoreButtonOrderToolStripMenuItem"
+        Me.RestoreButtonOrderToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RestoreButtonOrderToolStripMenuItem.Text = "RestoreButtonOrder"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -545,4 +581,9 @@ Partial Class Form1
     Friend WithEvents FacebookButton As Button
     Friend WithEvents SpotifyButton As Button
     Friend WithEvents CommanderWindowedToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripTextBox3 As ToolStripTextBox
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents LoadAppsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaveButtonOrderToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RestoreButtonOrderToolStripMenuItem As ToolStripMenuItem
 End Class

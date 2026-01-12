@@ -152,14 +152,11 @@ Public Class Form1
         If currentForm IsNot Nothing Then currentForm.Close()
         currentForm = childForm
         childForm.TopLevel = False
-        'childForm.WindowState = FormWindowState.Maximized
         childForm.FormBorderStyle = FormBorderStyle.None
         childForm.Dock = DockStyle.Fill
         Panel3.Controls.Add(childForm)
         Panel3.Tag = childForm
-        'childForm.Location = New Point(1, 1)
         childForm.Size = New Size(Me.Size.Width, Me.Size.Height - 57)
-        'childForm.BringToFront()
         If arg1 = "Null=Nothing" Then
         Else
             ArgData = arg1
@@ -403,49 +400,50 @@ Public Class Form1
     End Sub
 
     Public Function GetRole() As TryController.Roles
-        If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\Role.swfiles") Then
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\Role.swfiles")
-            Try
-                Dim b As Byte() = Convert.FromBase64String(Reader)
-                Reader = System.Text.Encoding.UTF8.GetString(b)
-            Catch ex As Exception
+        Return User.Role
+        'If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\Role.swfiles") Then
+        '    Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\Role.swfiles")
+        '    Try
+        '        Dim b As Byte() = Convert.FromBase64String(Reader)
+        '        Reader = System.Text.Encoding.UTF8.GetString(b)
+        '    Catch ex As Exception
 
-            End Try
-            Try
-                Dim b2 As Byte() = Convert.FromBase64String(Reader)
-                Reader = System.Text.Encoding.UTF8.GetString(b2)
-            Catch ex As Exception
+        '    End Try
+        '    Try
+        '        Dim b2 As Byte() = Convert.FromBase64String(Reader)
+        '        Reader = System.Text.Encoding.UTF8.GetString(b2)
+        '    Catch ex As Exception
 
-            End Try
-            Try
-                Dim b3 As Byte() = Convert.FromBase64String(Reader)
-                Reader = System.Text.Encoding.UTF8.GetString(b3)
-            Catch ex As Exception
+        '    End Try
+        '    Try
+        '        Dim b3 As Byte() = Convert.FromBase64String(Reader)
+        '        Reader = System.Text.Encoding.UTF8.GetString(b3)
+        '    Catch ex As Exception
 
-            End Try
-            Try
-                Dim b4 As Byte() = Convert.FromBase64String(Reader)
-                Reader = System.Text.Encoding.UTF8.GetString(b4)
-            Catch ex As Exception
+        '    End Try
+        '    Try
+        '        Dim b4 As Byte() = Convert.FromBase64String(Reader)
+        '        Reader = System.Text.Encoding.UTF8.GetString(b4)
+        '    Catch ex As Exception
 
-            End Try
+        '    End Try
 
-            If Reader = "73593736" Then
-                Return TryController.Roles.Guest
-            ElseIf Reader = "83835392" Then
-                Return TryController.Roles.Standard
-            ElseIf Reader = "43638462" Then
-                Return TryController.Roles.Administrator
-            ElseIf Reader = "39456543" Then
-                Return TryController.Roles.Program
-            ElseIf Reader = "19563469" Then
-                Return TryController.Roles.Developer
-            Else
-                Return Nothing
-            End If
-        Else
-            Return Nothing
-        End If
+        '    If Reader = "73593736" Then
+        '        Return TryController.Roles.Guest
+        '    ElseIf Reader = "83835392" Then
+        '        Return TryController.Roles.Standard
+        '    ElseIf Reader = "43638462" Then
+        '        Return TryController.Roles.Administrator
+        '    ElseIf Reader = "39456543" Then
+        '        Return TryController.Roles.Program
+        '    ElseIf Reader = "19563469" Then
+        '        Return TryController.Roles.Developer
+        '    Else
+        '        Return Nothing
+        '    End If
+        'Else
+        '    Return Nothing
+        'End If
     End Function
 
     Private Sub YoutubeButton_Click(sender As Object, e As EventArgs) Handles YoutubeButton.Click
@@ -1024,5 +1022,21 @@ Public Class Form1
         If UI.DisableOpenFramework = False Then
             OpenFramework_Data.SaveButtonOrder()
         End If
+    End Sub
+
+    Private Sub ToolStripTextBox3_MouseDown(sender As Object, e As MouseEventArgs) Handles ToolStripTextBox3.MouseDown
+        UI.RunCommands(ToolStripTextBox3.Text)
+    End Sub
+
+    Private Sub LoadAppsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadAppsToolStripMenuItem.Click
+        OpenFramework_Data.LoadApps()
+    End Sub
+
+    Private Sub SaveButtonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveButtonOrderToolStripMenuItem.Click
+        OpenFramework_Data.SaveButtonOrder()
+    End Sub
+
+    Private Sub RestoreButtonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreButtonOrderToolStripMenuItem.Click
+        OpenFramework_Data.RestoreButtonOrder()
     End Sub
 End Class

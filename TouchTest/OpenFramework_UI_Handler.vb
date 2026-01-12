@@ -5,10 +5,12 @@
     Sub ShowError(Text As String)
     Sub ShowError(Text As String, Alert As ErrorMSGBox.Alerts)
     Function GetProgramVersion() As String
+    Function GetOpenFrameworkVersion() As String
     Function GetOSVersion(Optional GetVersionNumber As Boolean = False) As String
     Function GetUsername() As String
     Function GetUserFolder() As String
     Function GetRole() As String
     Function IsDarkMode() As Boolean
+    Function SetOrGetArguments(Optional Arg As String = Nothing) As String
     Sub StartCMD(Optional GG As String = "New")
 End Interface

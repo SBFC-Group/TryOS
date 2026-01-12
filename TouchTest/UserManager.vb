@@ -40,28 +40,28 @@
         settingstemp = usedencode.Split(";"c)
         For Each setting In settingstemp
 
-            If setting.StartsWith("Wallpaper=") = True Then
+            If setting.Contains("Wallpaper=") = True Then
                 setting = setting.Replace("Wallpaper=", "")
 
                 'This is copied code ;)
-                If setting.StartsWith("jpg=") = True Then
+                If setting.Contains("jpg=") = True Then
                     setting = setting.Replace("jpg=", "")
                     UI.RunCommands("Loadjpg " & setting)
-                ElseIf setting.StartsWith("png=") = True Then
+                ElseIf setting.Contains("png=") = True Then
                     setting = setting.Replace("png=", "")
                     UI.RunCommands("Loadpng " & setting)
-                ElseIf setting.StartsWith("gif=") = True Then
+                ElseIf setting.Contains("gif=") = True Then
                     setting = setting.Replace("gif=", "")
                     UI.RunCommands("Loadgif " & setting)
                 End If
 
-            ElseIf setting.StartsWith("IsDarkModeForApps=") = True Then
+            ElseIf setting.Contains("IsDarkModeForApps=") = True Then
                 setting = setting.Replace("IsDarkModeForApps=", "")
                 Form1.IsUsingDarkThemeForApps = Convert.ToBoolean(setting)
-            ElseIf setting.StartsWith("IsDarkModeForProgram=") = True Then
+            ElseIf setting.Contains("IsDarkModeForProgram=") = True Then
                 setting = setting.Replace("IsDarkModeForProgram=", "")
                 Form1.IsUsingDarkThemeForPrograms = Convert.ToBoolean(setting)
-            ElseIf setting.StartsWith("DoesHasTimeBar=") = True Then
+            ElseIf setting.Contains("DoesHasTimeBar=") = True Then
                 setting = setting.Replace("DoesHasTimeBar=", "")
                 Form1.TimebarPanel.Visible = Convert.ToBoolean(setting)
                 'ElseIf setting.StartsWith("") = True Then
@@ -78,7 +78,7 @@
         Dim Reader As String = Nothing
 
         If SettingsList = "Null" Then
-            Reader = "Wallpaper=Load" & Form1.WallpaperFileFormat & "=" & Form1.LoadedWallpaper.ToString & ";" & Environment.NewLine
+            Reader = "Wallpaper=" & Form1.WallpaperFileFormat & "=" & Form1.LoadedWallpaper.ToString & ";" & Environment.NewLine
 
             Reader = Reader & "IsDarkModeForApps=" & Form1.IsUsingDarkThemeForApps.ToString & ";" & Environment.NewLine
 
@@ -224,8 +224,8 @@
     End Function
 
     Private Function GetRole() As TryController.Roles
-        If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\Role.swfiles") Then
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\Role.swfiles")
+        If My.Computer.FileSystem.FileExists(UserFolderPath & "\Settings\Role.swfiles") Then
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Role.swfiles")
             Try
                 Dim b As Byte() = Convert.FromBase64String(Reader)
                 Reader = System.Text.Encoding.UTF8.GetString(b)

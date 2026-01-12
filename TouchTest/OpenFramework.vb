@@ -17,32 +17,34 @@ Namespace OpenFramework_Data
         Dim host As New OpenFramework_Handler()
 
         Public Sub LoadApps()
+            If My.Computer.FileSystem.DirectoryExists(My.Application.Info.DirectoryPath & "\Apps") Then
+                Try
+                    Dim plugins = LoadPlugins_New()
 
-            Try
-                Dim plugins = LoadPlugins_New()
-
-                For Each p In plugins
-                    Try
-                        Debug.WriteLine("Loaded App: " & p.Name)
-                        p.Initialize(host)
-                        Dim btn As New Button()
-                        btn.Name = p.Name
-                        btn.BackgroundImage = p.Icon
-                        btn.FlatStyle = FlatStyle.Flat
-                        btn.FlatAppearance.BorderSize = 0
-                        btn.BackgroundImageLayout = ImageLayout.Stretch
-                        btn.Tag = p
-                        btn.Size = Form1.Button3.Size
-                        AddHandler btn.Click, AddressOf PluginButton_Click
-                        FlowLayoutPanelUse.Controls.Add(btn)
-                    Catch ex As Exception
-                        UI.ShowError("Error Loading App.")
-                    End Try
-                Next
-            Catch ex As Exception
-                UI.ShowError("Someting has changed to make your app not work.")
-            End Try
-
+                    For Each p In plugins
+                        Try
+                            Debug.WriteLine("Loaded App: " & p.Name)
+                            p.Initialize(host)
+                            Dim btn As New Button()
+                            btn.Name = p.Name
+                            btn.BackgroundImage = p.Icon
+                            btn.FlatStyle = FlatStyle.Flat
+                            btn.FlatAppearance.BorderSize = 0
+                            btn.BackgroundImageLayout = ImageLayout.Stretch
+                            btn.Tag = p
+                            btn.Size = Form1.Button3.Size
+                            AddHandler btn.Click, AddressOf PluginButton_Click
+                            FlowLayoutPanelUse.Controls.Add(btn)
+                        Catch ex As Exception
+                            UI.ShowError("Error Loading App.")
+                        End Try
+                    Next
+                Catch ex As Exception
+                    UI.ShowError("Someting has changed to make your app not work.")
+                End Try
+            Else
+                UI.ShowError("Apps Folder does not exist.")
+            End If
         End Sub
 
         Public AppName As String

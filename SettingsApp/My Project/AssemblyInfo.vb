@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("SettingsApp")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyCompany("SBFC Group")>
 <Assembly: AssemblyProduct("SettingsApp")>
-<Assembly: AssemblyCopyright("Copyright ©  2026")>
+<Assembly: AssemblyCopyright("Copyright © SBFC Group 2026")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

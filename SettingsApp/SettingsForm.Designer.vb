@@ -25,7 +25,7 @@ Partial Class SettingsForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SettingsForm))
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.SettingsPanel = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -51,14 +51,14 @@ Partial Class SettingsForm
         Me.Button1.TabIndex = 0
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'Panel1
+        'SettingsPanel
         '
-        Me.Panel1.BackColor = System.Drawing.Color.DarkGray
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(108, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1006, 659)
-        Me.Panel1.TabIndex = 1
+        Me.SettingsPanel.BackColor = System.Drawing.Color.DarkGray
+        Me.SettingsPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SettingsPanel.Location = New System.Drawing.Point(108, 0)
+        Me.SettingsPanel.Name = "SettingsPanel"
+        Me.SettingsPanel.Size = New System.Drawing.Size(1006, 659)
+        Me.SettingsPanel.TabIndex = 1
         '
         'SettingsForm
         '
@@ -66,7 +66,7 @@ Partial Class SettingsForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightGray
         Me.ClientSize = New System.Drawing.Size(1114, 659)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.SettingsPanel)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "SettingsForm"
@@ -78,5 +78,5 @@ Partial Class SettingsForm
 
     Friend WithEvents FlowLayoutPanel1 As Windows.Forms.FlowLayoutPanel
     Friend WithEvents Button1 As Windows.Forms.Button
-    Friend WithEvents Panel1 As Windows.Forms.Panel
+    Friend WithEvents SettingsPanel As Windows.Forms.Panel
 End Class

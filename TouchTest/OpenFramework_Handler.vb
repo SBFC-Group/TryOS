@@ -8,7 +8,7 @@ Public Class OpenFramework_Handler
     End Sub
 
     Public Function RunCommand(Command As String, Optional TheForm As Object = Nothing) Implements OpenFramework_UI_Handler.RunCommand
-        UI.RunCommands(Command, TheForm)
+        Return UI.RunCommands(Command, TheForm)
     End Function
 
     Public Sub ShowError() Implements OpenFramework_UI_Handler.ShowError
@@ -31,6 +31,10 @@ Public Class OpenFramework_Handler
 
     Public Function GetProgramVersion() As String Implements OpenFramework_UI_Handler.GetProgramVersion
         Return TryController.GetVersion
+    End Function
+
+    Public Function GetOpenFrameworkVersion() As String Implements OpenFramework_UI_Handler.GetOpenFrameworkVersion
+        Return OpenFramework_Data.GetOpenFrameworkVersion()
     End Function
 
     Public Function GetOSVersion(Optional GetVersionNumber As Boolean = False) As String Implements OpenFramework_UI_Handler.GetOSVersion
@@ -56,6 +60,15 @@ Public Class OpenFramework_Handler
             Return False
         Else
             Return False
+        End If
+    End Function
+
+    Public Function SetOrGetArguments(Optional Arguments As String = Nothing) As String Implements OpenFramework_UI_Handler.SetOrGetArguments
+        If Arguments IsNot Nothing Then
+            Form1.ArgData = Arguments
+            Return Arguments
+        Else
+            Return Form1.ArgData
         End If
     End Function
 End Class
