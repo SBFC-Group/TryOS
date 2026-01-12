@@ -2,7 +2,8 @@
     Private UserControlName As String = Nothing
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If SettingsPanel.Tag = Nothing Then
+        If SettingsPanel.Tag IsNot Nothing Then
+
             If UserControlName = SettingsPanel.Tag.Name Then
                 Return
             Else
@@ -12,6 +13,7 @@
         End If
 
         SettingsPanel.Tag = New ThemeApp
+        UserControlName = SettingsPanel.Tag.Name
         SettingsPanel.Controls.Add(SettingsPanel.Tag)
     End Sub
 End Class

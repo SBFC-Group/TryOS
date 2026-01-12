@@ -98,6 +98,14 @@ Public Class UI
             Dim gg As New Sniper
             gg.ShowDialog()
             Return Nothing
+        ElseIf Command.Contains("SetWallpaper ") = True Then
+            Dim Text1 As String = Command
+            Text1 = Text1.Replace("Console>", "")
+            Text1 = Text1.Replace("SetWallpaper ", "")
+            Form1.Panel1.BackgroundImage = Bitmap.FromFile(Text1)
+            Return $"Loaded Wallpaper from {Text1}"
+        ElseIf Command.Contains("GetWallpaper") = True Then
+            Return Form1.Panel1.BackgroundImage
         ElseIf Command.Contains("RunTestFileExplorer") = True Then
             TestFileExplorer.Show()
             Return Nothing

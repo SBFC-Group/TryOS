@@ -39,7 +39,7 @@ Partial Class ThemeApp
         Me.WallpaperMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.WallpaperMenu.Location = New System.Drawing.Point(3, 3)
         Me.WallpaperMenu.Name = "WallpaperMenu"
-        Me.WallpaperMenu.Size = New System.Drawing.Size(257, 612)
+        Me.WallpaperMenu.Size = New System.Drawing.Size(257, 28)
         Me.WallpaperMenu.TabIndex = 0
         '
         'Button1
@@ -118,6 +118,7 @@ Partial Class ThemeApp
         Me.Button5.TabIndex = 16
         Me.Button5.Text = "Don't Delete. Need Custom Wallpaper Buttons"
         Me.Button5.UseVisualStyleBackColor = False
+        Me.Button5.Visible = False
         '
         'ThemeApp
         '

@@ -9,6 +9,7 @@ Public Class MyControllerForm
     Public Shared TaskInteracter_Panel As New TaskInteracter
     Public Bo1 As Boolean 'If true then PCC loads
     Public Bo2 As Boolean 'If true then TaskInteracter loads
+    Public Bo3 As Boolean 'If true then use newer Wallpaper loader
 
     Public Sub LoadEverything()
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.PCC.txt") Then
@@ -21,6 +22,13 @@ Public Class MyControllerForm
             Bo2 = True
         Else
             Bo2 = False
+        End If
+
+
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI=TouchTest.Form1.txt") Then
+            Bo3 = True
+        Else
+            Bo3 = False
         End If
 
         'Trys to load elements inside Form1 (Main Window)
@@ -40,6 +48,12 @@ Public Class MyControllerForm
 
         If Bo2 = True Then
             LoadTaskInteracter()
+        End If
+
+        If Bo3 = True Then
+            If Main.Form1.User.DoesSettingExist("IsUsingNewerWallpaperLoader=True") = True Then
+
+            End If
         End If
 
         'OpenTaskInteracter(Main.Form1.Funnything())
