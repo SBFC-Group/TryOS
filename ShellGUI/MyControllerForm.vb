@@ -35,7 +35,7 @@ Public Class MyControllerForm
         AddHandlerToAll(Main.Form1)
 
         If Bo1 = True Then
-            PCC.BringToFront()
+            'PCC.BringToFront()
 
             'Main.Form1.Funnything().BringToFront()
 
@@ -52,7 +52,23 @@ Public Class MyControllerForm
 
         If Bo3 = True Then
             If Main.Form1.User.DoesSettingExist("IsUsingNewerWallpaperLoader=True") = True Then
+                If My.Computer.FileSystem.FileExists(Main.Form1.User.UserFolderPath & "\Settings\WallpaperImage.swfiles") Then
+                    Dim WallpaperImagePath As String = My.Computer.FileSystem.ReadAllText(Main.Form1.User.UserFolderPath & "\Settings\WallpaperImage.swfiles")
+                    Try
+                        Dim b As Byte() = Convert.FromBase64String(WallpaperImagePath)
+                        WallpaperImagePath = System.Text.Encoding.UTF8.GetString(b)
+                        Dim b2 As Byte() = Convert.FromBase64String(WallpaperImagePath)
+                        WallpaperImagePath = System.Text.Encoding.UTF8.GetString(b)
+                    Catch ex As Exception
+                        Main.UI.ShowError(ex.Message)
+                    End Try
+                    For Each c As Control In Main.Form1.Controls
+                        If c.Name = "Panel1" Then
+                            c.BackgroundImage = Bitmap.FromFile(WallpaperImagePath)
+                        End If
+                    Next
 
+                End If
             End If
         End If
 
