@@ -208,4 +208,12 @@ Public Class MyControllerForm
 
 
     End Sub
+
+    Public Overloads Sub Show()
+        Debug.WriteLine("This would open this form")
+    End Sub
+
+    Public Overloads Sub Close()
+        Debug.WriteLine("This would close this form")
+    End Sub
 End Class

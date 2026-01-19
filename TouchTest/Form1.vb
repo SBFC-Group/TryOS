@@ -147,16 +147,19 @@ Public Class Form1
         SizeY = Panel3.Size.Height ' - 57
     End Sub
 
+    Public LocalFormBorderStyle As FormBorderStyle = FormBorderStyle.None
+    Public LocalDockStyle As DockStyle = DockStyle.Fill
+
     Public currentForm As Form = Nothing
     Public Sub OpenChildForm(ByVal childForm As Form, Optional arg1 As String = "Null=Nothing")
         If currentForm IsNot Nothing Then currentForm.Close()
         currentForm = childForm
         childForm.TopLevel = False
-        childForm.FormBorderStyle = FormBorderStyle.None
-        childForm.Dock = DockStyle.Fill
+        childForm.FormBorderStyle = LocalFormBorderStyle
+        childForm.Dock = LocalDockStyle
         Panel3.Controls.Add(childForm)
         Panel3.Tag = childForm
-        childForm.Size = New Size(Me.Size.Width, Me.Size.Height - 57)
+        'childForm.Size = New Size(Me.Size.Width, Me.Size.Height - 57)
         If arg1 = "Null=Nothing" Then
         Else
             ArgData = arg1
