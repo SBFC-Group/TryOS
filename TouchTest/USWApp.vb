@@ -7,7 +7,7 @@
             Close()
         ElseIf USWThings.HasBeenOpened = True Then
             Panel3.Visible = False
-            UI.RunCommands("Loadjpg 1")
+            UI.RunCommands("Loadjpg 1", Form1.User)
             AxWindowsMediaPlayer1.Dock = DockStyle.Fill
             AxWindowsMediaPlayer1.uiMode = "none"
             AxWindowsMediaPlayer1.URL = UI.UsersFolder & "\Program\Temp\USW.mp4"
@@ -27,7 +27,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        UI.RunCommands("end")
+        UI.RunCommands("end", Form1.User)
     End Sub
 
     Private Sub MainTimer_Tick(sender As Object, e As EventArgs) Handles MainTimer.Tick

@@ -6,6 +6,8 @@ Public Class Form1
     Public Password As String = ""
     Public ShutdownConsole As Boolean = True
 
+    Public IsSandboxingEnabled As Boolean = True
+
     Public IsGuestUser As Boolean = False
 
     Public IsUsingDarkThemeForApps As Boolean = False
@@ -24,9 +26,18 @@ Public Class Form1
     Public AllowNewerLoader As Boolean = True
 
     Public User As UserManager
+
+    Public SandboxedUser As UserManager
+
     Private lang As New LanguageManager()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If IsSandboxingEnabled = True Then
+            SandboxedUser = New UserManager(User.Username, True)
+        Else
+            SandboxedUser = New UserManager(User.Username, False)
+        End If
 
         Timer1.Start()
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LoadDebugMenu.setting") Then
@@ -71,7 +82,7 @@ Public Class Form1
         End If
 
         If UI.DisableOpenFramework = False Then
-            OpenFramework_Data.LoadApps()
+            OpenFramework_Data.LoadApps(SandboxedUser)
 
             UserManager.LoadTaskbarButtons()
         End If
@@ -996,7 +1007,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        UI.RunCommands("RunApp Form55")
+        UI.RunCommands("RunApp Form55", User)
         'FToL.Show()
     End Sub
 
@@ -1028,11 +1039,11 @@ Public Class Form1
     End Sub
 
     Private Sub ToolStripTextBox3_MouseDown(sender As Object, e As MouseEventArgs) Handles ToolStripTextBox3.MouseDown
-        UI.RunCommands(ToolStripTextBox3.Text)
+        UI.RunCommands(ToolStripTextBox3.Text, User)
     End Sub
 
     Private Sub LoadAppsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadAppsToolStripMenuItem.Click
-        OpenFramework_Data.LoadApps()
+        OpenFramework_Data.LoadAppsDlls(User)
     End Sub
 
     Private Sub SaveButtonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveButtonOrderToolStripMenuItem.Click

@@ -8,7 +8,7 @@ Public Class OpenFramework_Handler
     End Sub
 
     Public Function RunCommand(Command As String, Optional TheForm As Object = Nothing) Implements OpenFramework_UI_Handler.RunCommand
-        Return UI.RunCommands(Command, TheForm)
+        Return UI.RunCommands(Command, Form1.SandboxedUser, TheForm)
     End Function
 
     Public Sub ShowError() Implements OpenFramework_UI_Handler.ShowError

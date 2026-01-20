@@ -15,7 +15,12 @@ Public Class UI
     Public DisableOpenFramework As Boolean = False
     Public DisableCustomCode As Boolean = False
 
-    Public Function RunCommands(Command As String, Optional TheForm As Object = Nothing)
+    Public Function RunCommands(Command As String, User As UserManager, Optional TheForm As Object = Nothing)
+        Dim IsUserNothing As Boolean = False
+        If User IsNot Nothing Then
+            IsUserNothing = True
+        End If
+
         If Command.Contains("exit") = True Then
             Try
                 TheForm.Close()
@@ -24,12 +29,14 @@ Public Class UI
             End Try
             Return Nothing
         ElseIf Command.Contains("end") = True Then
-            Try
-                Form1.Close()
-                End
-            Catch ex As Exception
-                System.Threading.Thread.Sleep(1000)
-            End Try
+            If IsUserNothing = False Then
+                Try
+                    Form1.Close()
+                    End
+                Catch ex As Exception
+                    System.Threading.Thread.Sleep(1000)
+                End Try
+            End If
             Return Nothing
         ElseIf Command.Contains("windowmode=mini") = True Then
             Try

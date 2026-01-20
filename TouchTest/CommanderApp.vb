@@ -16,7 +16,7 @@
                     If Not String.IsNullOrEmpty(lastCommand) Then
                         commandHistory.Add(lastCommand)
                         historyIndex = commandHistory.Count
-                        UI.RunCommands(lastCommand)
+                        UI.RunCommands(lastCommand, Form1.User, Me)
                     End If
                 End If
         End Select

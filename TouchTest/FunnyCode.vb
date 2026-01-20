@@ -30,16 +30,21 @@
             Return My.Application.OpenForms
         End Function
 
-        Public Shared Sub _7()
-            OpenFramework_Data.LoadApps()
+        Public Shared Sub _7(Optional User As UserManager = Nothing)
+            If User IsNot Nothing Then
+                OpenFramework_Data.LoadApps(User)
+            Else
+                OpenFramework_Data.LoadApps(Form1.SandboxedUser)
+            End If
+
         End Sub
 
         Public Shared Sub _8(folderpath As String)
-            OpenFramework_Data.LoadPlugins(folderpath)
+
         End Sub
 
         Public Shared Sub _9()
-            OpenFramework_Data.LoadPlugins_New()
+            OpenFramework_Data.LoadAppsDlls(Form1.SandboxedUser)
         End Sub
 
         Public Shared Function _10()

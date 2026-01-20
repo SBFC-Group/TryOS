@@ -207,256 +207,256 @@
 
     Private Sub Wallpaper1ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper1ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 1")
+            UI.RunCommands("Loadjpg 1", Form1.User)
             SaveWallpaper(1, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 1")
+            UI.RunCommands("Loadpng 1", Form1.User)
             SaveWallpaper(1, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 1")
+            UI.RunCommands("Loadgif 1", Form1.User)
             SaveWallpaper(1, PictureFormat.gif)
         End If
 
     End Sub
     Private Sub Wallpaper2ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper2ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 2")
+            UI.RunCommands("Loadjpg 2", Form1.User)
             SaveWallpaper(2, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 2")
+            UI.RunCommands("Loadpng 2", Form1.User)
             SaveWallpaper(2, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 2")
+            UI.RunCommands("Loadgif 2", Form1.User)
             SaveWallpaper(2, PictureFormat.gif)
         End If
     End Sub
     Private Sub Wallpaper3ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper3ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 3")
+            UI.RunCommands("Loadjpg 3", Form1.User)
             SaveWallpaper(3, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 3")
+            UI.RunCommands("Loadpng 3", Form1.User)
             SaveWallpaper(3, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 3")
+            UI.RunCommands("Loadgif 3", Form1.User)
             SaveWallpaper(3, PictureFormat.gif)
         End If
     End Sub
     Private Sub Wallpaper4ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper4ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 4")
+            UI.RunCommands("Loadjpg 4", Form1.User)
             SaveWallpaper(4, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 4")
+            UI.RunCommands("Loadpng 4", Form1.User)
             SaveWallpaper(4, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 4")
+            UI.RunCommands("Loadgif 4", Form1.User)
             SaveWallpaper(4, PictureFormat.gif)
         End If
     End Sub
     Private Sub Wallpaper5ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper5ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 5")
+            UI.RunCommands("Loadjpg 5", Form1.User)
             SaveWallpaper(5, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 5")
+            UI.RunCommands("Loadpng 5", Form1.User)
             SaveWallpaper(5, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 5")
+            UI.RunCommands("Loadgif 5", Form1.User)
             SaveWallpaper(5, PictureFormat.gif)
         End If
     End Sub
     Private Sub Wallpaper6ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper6ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 6")
+            UI.RunCommands("Loadjpg 6", Form1.User)
             SaveWallpaper(6, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 6")
+            UI.RunCommands("Loadpng 6", Form1.User)
             SaveWallpaper(6, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 6")
+            UI.RunCommands("Loadgif 6", Form1.User)
             SaveWallpaper(6, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper7ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper7ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 7")
+            UI.RunCommands("Loadjpg 7", Form1.User)
             SaveWallpaper(7, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 7")
+            UI.RunCommands("Loadpng 7", Form1.User)
             SaveWallpaper(7, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 7")
+            UI.RunCommands("Loadgif 7", Form1.User)
             SaveWallpaper(7, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper8ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper8ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 8")
+            UI.RunCommands("Loadjpg 8", Form1.User)
             SaveWallpaper(8, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 8")
+            UI.RunCommands("Loadpng 8", Form1.User)
             SaveWallpaper(8, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 8")
+            UI.RunCommands("Loadgif 8", Form1.User)
             SaveWallpaper(8, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper9ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper9ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 9")
+            UI.RunCommands("Loadjpg 9", Form1.User)
             SaveWallpaper(9, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 9")
+            UI.RunCommands("Loadpng 9", Form1.User)
             SaveWallpaper(9, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 9")
+            UI.RunCommands("Loadgif 9", Form1.User)
             SaveWallpaper(9, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper10ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper10ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 10")
+            UI.RunCommands("Loadjpg 10", Form1.User)
             SaveWallpaper(10, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 10")
+            UI.RunCommands("Loadpng 10", Form1.User)
             SaveWallpaper(10, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 10")
+            UI.RunCommands("Loadgif 10", Form1.User)
             SaveWallpaper(10, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper11ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper11ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 11")
+            UI.RunCommands("Loadjpg 11", Form1.User)
             SaveWallpaper(11, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 11")
+            UI.RunCommands("Loadpng 11", Form1.User)
             SaveWallpaper(11, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 11")
+            UI.RunCommands("Loadgif 11", Form1.User)
             SaveWallpaper(11, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper12ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper12ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 12")
+            UI.RunCommands("Loadjpg 12", Form1.User)
             SaveWallpaper(12, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 12")
+            UI.RunCommands("Loadpng 12", Form1.User)
             SaveWallpaper(12, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 12")
+            UI.RunCommands("Loadgif 12", Form1.User)
             SaveWallpaper(12, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper13ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper13ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 13")
+            UI.RunCommands("Loadjpg 13", Form1.User)
             SaveWallpaper(13, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 13")
+            UI.RunCommands("Loadpng 13", Form1.User)
             SaveWallpaper(13, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 13")
+            UI.RunCommands("Loadgif 13", Form1.User)
             SaveWallpaper(13, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper14ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper14ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 14")
+            UI.RunCommands("Loadjpg 14", Form1.User)
             SaveWallpaper(14, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 14")
+            UI.RunCommands("Loadpng 14", Form1.User)
             SaveWallpaper(14, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 14")
+            UI.RunCommands("Loadgif 14", Form1.User)
             SaveWallpaper(14, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper15ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper15ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 15")
+            UI.RunCommands("Loadjpg 15", Form1.User)
             SaveWallpaper(15, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 15")
+            UI.RunCommands("Loadpng 15", Form1.User)
             SaveWallpaper(15, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 15")
+            UI.RunCommands("Loadgif 15", Form1.User)
             SaveWallpaper(15, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper16ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper16ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 16")
+            UI.RunCommands("Loadjpg 16", Form1.User)
             SaveWallpaper(16, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 16")
+            UI.RunCommands("Loadpng 16", Form1.User)
             SaveWallpaper(16, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 16")
+            UI.RunCommands("Loadgif 16", Form1.User)
             SaveWallpaper(16, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper17ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper17ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 17")
+            UI.RunCommands("Loadjpg 17", Form1.User)
             SaveWallpaper(17, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 17")
+            UI.RunCommands("Loadpng 17", Form1.User)
             SaveWallpaper(17, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 17")
+            UI.RunCommands("Loadgif 17", Form1.User)
             SaveWallpaper(17, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper18ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper18ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 18")
+            UI.RunCommands("Loadjpg 18", Form1.User)
             SaveWallpaper(18, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 18")
+            UI.RunCommands("Loadpng 18", Form1.User)
             SaveWallpaper(18, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 18")
+            UI.RunCommands("Loadgif 18", Form1.User)
             SaveWallpaper(18, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper19ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper19ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 19")
+            UI.RunCommands("Loadjpg 19", Form1.User)
             SaveWallpaper(19, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 19")
+            UI.RunCommands("Loadpng 19", Form1.User)
             SaveWallpaper(19, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 19")
+            UI.RunCommands("Loadgif 19", Form1.User)
             SaveWallpaper(19, PictureFormat.gif)
         End If
     End Sub
 
     Private Sub Wallpaper20ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Wallpaper20ToolStripMenuItem.Click
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg 20")
+            UI.RunCommands("Loadjpg 20", Form1.User)
             SaveWallpaper(20, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng 20")
+            UI.RunCommands("Loadpng 20", Form1.User)
             SaveWallpaper(20, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif 20")
+            UI.RunCommands("Loadgif 20", Form1.User)
             SaveWallpaper(20, PictureFormat.gif)
         End If
     End Sub
@@ -638,13 +638,13 @@
 
         'Sets the wallpaper and saves it
         If FileFormat = "jpg" Then
-            UI.RunCommands("Loadjpg " & WallpaperText)
+            UI.RunCommands("Loadjpg " & WallpaperText, Form1.User)
             SaveWallpaper(IntTest, PictureFormat.jpg)
         ElseIf FileFormat = "png" Then
-            UI.RunCommands("Loadpng " & WallpaperText)
+            UI.RunCommands("Loadpng " & WallpaperText, Form1.User)
             SaveWallpaper(IntTest, PictureFormat.png)
         ElseIf FileFormat = "gif" Then
-            UI.RunCommands("Loadgif " & WallpaperText)
+            UI.RunCommands("Loadgif " & WallpaperText, Form1.User)
             SaveWallpaper(IntTest, PictureFormat.gif)
         End If
     End Sub

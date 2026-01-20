@@ -6,7 +6,7 @@
             LogonFormThings.OpenLogonForm()
             Close()
         Else
-            UI.RunCommands("Loadjpg 1")
+            UI.RunCommands("Loadjpg 1", Form1.User)
 
             'Loads the Logon Wallpaper
             If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LogonWallpaper.setting") Then

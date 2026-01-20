@@ -26,7 +26,7 @@ RunUserControl <usercontrol> - Opens a form that will contain the UserControl"
             ElseIf RichTextBox1.Text.Contains("Debug") = True Then
                 D_e_b_u_g_Window.Show()
             Else
-                UI.RunCommands(RichTextBox1.Text, Me)
+                UI.RunCommands(RichTextBox1.Text, Form1.User, Me)
             End If
         End If
     End Sub

@@ -6,7 +6,7 @@
             UUWThings.OpenUUW()
             Close()
         ElseIf UUWThings.HasBeenOpened = True Then
-            UI.RunCommands("Loadjpg 1")
+            UI.RunCommands("Loadjpg 1", Form1.User)
             Panel3.Visible = True
             Panel3.BackgroundImage = Form1.Panel1.BackgroundImage
             SetupPanel.BackColor = Color.FromArgb(55, Color.DarkGray)
