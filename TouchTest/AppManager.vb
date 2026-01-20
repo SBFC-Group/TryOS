@@ -1,6 +1,6 @@
 ﻿Public Class AppManager
     Private Sub AppManager_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim plugins = OpenFramework_Data.LoadPlugins_New()
+        Dim plugins = OpenFramework_Data.LoadAppsDlls(Form1.SandboxedUser)
 
         For Each p In plugins
             Debug.WriteLine("Loaded " & p.Name)

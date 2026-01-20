@@ -8,7 +8,7 @@ Public Class OpenFramework_Handler
     End Sub
 
     Public Function RunCommand(Command As String, Optional TheForm As Object = Nothing) Implements OpenFramework_UI_Handler.RunCommand
-        Return UI.RunCommands(Command, TheForm)
+        Return UI.RunCommands(Command, Form1.SandboxedUser, TheForm)
     End Function
 
     Public Sub ShowError() Implements OpenFramework_UI_Handler.ShowError
@@ -42,15 +42,15 @@ Public Class OpenFramework_Handler
     End Function
 
     Public Function GetUsername() As String Implements OpenFramework_UI_Handler.GetUsername
-        Return Form1.User.Username
+        Return Form1.SandboxedUser.Username
     End Function
 
     Public Function GetUserFolder() As String Implements OpenFramework_UI_Handler.GetUserFolder
-        Return Form1.User.UserFolderPath
+        Return Form1.SandboxedUser.UserFolderPath
     End Function
 
     Public Function GetRole() As String Implements OpenFramework_UI_Handler.GetRole
-        Return Form1.User.Role
+        Return Form1.SandboxedUser.Role
     End Function
 
     Public Function IsDarkMode() As Boolean Implements OpenFramework_UI_Handler.IsDarkMode

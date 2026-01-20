@@ -15,14 +15,16 @@ Public Class UI
     Public DisableOpenFramework As Boolean = False
     Public DisableCustomCode As Boolean = False
 
-    Public Function RunCommands(Command As String, Optional TheForm As Object = Nothing)
+    Public Function RunCommands(Command As String, User As UserManager, Optional TheForm As Object = Nothing)
+        Dim IsUserNothing As Boolean
+        IsUserNothing = User.SandboxedUser
         If Command.Contains("exit") = True Then
             Try
                 TheForm.Close()
+                Return "Closed myself."
             Catch ex As Exception
-
+                Return "Failed to close myself"
             End Try
-            Return Nothing
         ElseIf Command.Contains("end") = True Then
             Try
                 Form1.Close()
@@ -30,7 +32,7 @@ Public Class UI
             Catch ex As Exception
                 System.Threading.Thread.Sleep(1000)
             End Try
-            Return Nothing
+            Return "Program tried to close itself."
         ElseIf Command.Contains("windowmode=mini") = True Then
             Try
                 TheForm.WindowState = FormWindowState.Minimized
@@ -40,15 +42,20 @@ Public Class UI
             End Try
             Return Nothing
         ElseIf Command.Contains("run ") = True Then
-            Dim Text1 As String = Command
-            Text1 = Text1.Replace("Console>", "")
-            Text1 = Text1.Replace("run ", "")
-            Try
-                RunShellPrograms(Text1)
-                Return "Started ShellProgram. " & Text1
-            Catch ex As Exception
-                Return "Failed to start ShellProgram. " & Text1
-            End Try
+            If IsUserNothing = False Then
+                Dim Text1 As String = Command
+                Text1 = Text1.Replace("Console>", "")
+                Text1 = Text1.Replace("run ", "")
+                Try
+                    RunShellPrograms(Text1)
+                    Return "Started ShellProgram. " & Text1
+                Catch ex As Exception
+                    Return "Failed to start ShellProgram. " & Text1
+                End Try
+            Else
+                Return Nothing
+            End If
+
         ElseIf Command.Contains("start ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
@@ -63,8 +70,12 @@ Public Class UI
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("RunApp ", "")
-            Form1.OpenChildForm(GetForm("TouchTest." & Text1))
-            Return Nothing
+            Try
+                Form1.OpenChildForm(GetForm("TouchTest." & Text1))
+                Return "Opened a form as a child inside Form1."
+            Catch ex As Exception
+                Return "Failed to find or open a form as a child"
+            End Try
         ElseIf Command.Contains("Loadjpg ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
@@ -90,39 +101,65 @@ Public Class UI
             RunUserControl(Text1)
             Return Nothing
         ElseIf Command.Contains("installapp ") = True Then
-            Dim Text1 As String = Command
-            Text1 = Text1.Replace("Console>", "")
-            Text1 = Text1.Replace("installapp ", "")
-            Return Nothing
-        ElseIf Command.Contains("RunTestSniper") = True Then
-            Dim gg As New Sniper
-            gg.ShowDialog()
-            Return Nothing
-        ElseIf Command.Contains("SetWallpaper ") = True Then
-            Dim Text1 As String = Command
-            Text1 = Text1.Replace("Console>", "")
-            Text1 = Text1.Replace("SetWallpaper ", "")
-            Form1.Panel1.BackgroundImage = Bitmap.FromFile(Text1)
-            Return $"Loaded Wallpaper from {Text1}"
-        ElseIf Command.Contains("GetWallpaper") = True Then
-            Return Form1.Panel1.BackgroundImage
-        ElseIf Command.Contains("RunTestFileExplorer") = True Then
-            TestFileExplorer.Show()
-            Return Nothing
-        ElseIf Command.Contains("RunUserTestFileExplorer") = True Then
-            TestFileExplorer.rootPath = UserFolder
-            TestFileExplorer.Show()
-            Return Nothing
-        ElseIf Command.Contains("Restore-TryOS-Store") = True Then
-            If My.Computer.FileSystem.DirectoryExists(AppsFolder & "\TryOS_Store") Then
-                My.Computer.FileSystem.DeleteDirectory(AppsFolder & "\TryOS_Store", FileIO.DeleteDirectoryOption.DeleteAllContents)
-            End If
-            My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\Store.tryapp", My.Resources.TryOS_Store, False)
-            TryOS_Store_Manager.Class1.InstallTryOSApp(My.Application.Info.DirectoryPath & "\Store.tryapp")
-            My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\Store.tryapp", FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
-            Return Nothing
-        Else
-            Return Nothing
+                Dim Text1 As String = Command
+                Text1 = Text1.Replace("Console>", "")
+                Text1 = Text1.Replace("installapp ", "")
+                Return Nothing
+            ElseIf Command.Contains("RunTestSniper") = True Then
+                Dim gg As New Sniper
+                gg.ShowDialog()
+                Return Nothing
+            ElseIf Command.Contains("SetWallpaper ") = True Then
+                Dim Text1 As String = Command
+                Text1 = Text1.Replace("Console>", "")
+                Text1 = Text1.Replace("SetWallpaper ", "")
+                Form1.Panel1.BackgroundImage = Bitmap.FromFile(Text1)
+                Return $"Loaded Wallpaper from {Text1}"
+            ElseIf Command.Contains("GetWallpaper") = True Then
+                Return Form1.Panel1.BackgroundImage
+            ElseIf Command.Contains("whoami") = True Then
+                If Command.Contains("/nogui") = True Then
+                    Return Form1.User.Role
+                Else
+                    Dim TheRole As TryController.Roles = Form1.User.Role
+                    Dim StringRole As String
+
+                    If TheRole = TouchTest.TryController.Roles.StandardSandbox Then
+                        StringRole = "StandardSandbox"
+                    ElseIf TheRole = TouchTest.TryController.Roles.Guest Then
+                        StringRole = "Guest"
+                    ElseIf TheRole = TouchTest.TryController.Roles.Standard Then
+                        StringRole = "Standard"
+                    ElseIf TheRole = TouchTest.TryController.Roles.Administrator Then
+                        StringRole = "Administrator"
+                    ElseIf TheRole = TouchTest.TryController.Roles.Program Then
+                        StringRole = "Program"
+                    ElseIf TheRole = TouchTest.TryController.Roles.Developer Then
+                        StringRole = "Developer"
+                    Else
+                        StringRole = "Unknown"
+                    End If
+                    ShowError(StringRole, ErrorMSGBox.Alerts.Information)
+                    Return Nothing
+                End If
+
+            ElseIf Command.Contains("RunTestFileExplorer") = True Then
+                TestFileExplorer.Show()
+                Return Nothing
+            ElseIf Command.Contains("RunUserTestFileExplorer") = True Then
+                TestFileExplorer.rootPath = UserFolder
+                TestFileExplorer.Show()
+                Return Nothing
+            ElseIf Command.Contains("Restore-TryOS-Store") = True Then
+                If My.Computer.FileSystem.DirectoryExists(AppsFolder & "\TryOS_Store") Then
+                    My.Computer.FileSystem.DeleteDirectory(AppsFolder & "\TryOS_Store", FileIO.DeleteDirectoryOption.DeleteAllContents)
+                End If
+                My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\Store.tryapp", My.Resources.TryOS_Store, False)
+                TryOS_Store_Manager.Class1.InstallTryOSApp(My.Application.Info.DirectoryPath & "\Store.tryapp")
+                My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\Store.tryapp", FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
+                Return Nothing
+            Else
+                Return Nothing
         End If
     End Function
     Public Sub StartCMD(Optional GG As String = "New")

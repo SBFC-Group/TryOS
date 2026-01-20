@@ -15,7 +15,7 @@
         End Sub
 
         Public Sub OpenFramework_LoadApps() Implements CustomController_UI_Handler.OpenFramework_LoadApps
-            OpenFramework_Data.LoadApps()
+            OpenFramework_Data.LoadAppsDlls(Form1.SandboxedUser)
         End Sub
 
         Public Sub OpenFramework_SetAppNameValue(Text As String) Implements CustomController_UI_Handler.OpenFramework_SetAppNameValue
@@ -26,12 +26,16 @@
             Return My.Application.OpenForms
         End Function
 
+        Public Function OpenFramework_LoadAppsDlls(User As UserManager) As List(Of OpenFramework_Interface) Implements CustomController_UI_Handler.OpenFramework_LoadAppsDlls
+            Return OpenFramework_Data.LoadAppsDlls(User)
+        End Function
+
         Public Function OpenFramework_LoadPlugins_New() As List(Of OpenFramework_Interface) Implements CustomController_UI_Handler.OpenFramework_LoadPlugins_New
-            Return OpenFramework_Data.LoadPlugins_New()
+            Return OpenFramework_Data.LoadAppsDlls(Form1.SandboxedUser)
         End Function
 
         Public Function OpenFramework_LoadPlugins(folder As String) As List(Of OpenFramework_Interface) Implements CustomController_UI_Handler.OpenFramework_LoadPlugins
-            Return OpenFramework_Data.LoadPlugins(folder)
+            Return Nothing
         End Function
 
         Public Function OpenFramework_GetOpenFrameworkVersion() As Object Implements CustomController_UI_Handler.OpenFramework_GetOpenFrameworkVersion

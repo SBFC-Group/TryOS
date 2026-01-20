@@ -16,10 +16,12 @@ Namespace OpenFramework_Data
 
         Dim host As New OpenFramework_Handler()
 
-        Public Sub LoadApps()
-            If My.Computer.FileSystem.DirectoryExists(My.Application.Info.DirectoryPath & "\Apps") Then
+        Public Sub LoadApps(User As UserManager)
+            If My.Computer.FileSystem.DirectoryExists(User.UserFolderPath & "\Apps") Then
+
+
                 Try
-                    Dim plugins = LoadPlugins_New()
+                    Dim plugins = LoadAppsDlls(User)
 
                     For Each p In plugins
                         Try
@@ -108,7 +110,7 @@ Namespace OpenFramework_Data
             End If
         End Sub
 
-        Public Function LoadPlugins_New() As List(Of OpenFramework_Interface)
+        Public Function LoadAppsDlls(User As UserManager) As List(Of OpenFramework_Interface)
 
             Dim plugins As New List(Of OpenFramework_Interface)()
 
@@ -161,30 +163,6 @@ Namespace OpenFramework_Data
                     End If
                 End If
 
-            Next
-
-            Return plugins
-
-            'Next
-
-
-        End Function
-
-        Public Function LoadPlugins(folder As String) As List(Of OpenFramework_Interface)
-            Dim plugins As New List(Of OpenFramework_Interface)()
-
-            If Not IO.Directory.Exists(folder) Then Return plugins
-
-            For Each dll In IO.Directory.GetFiles(folder, "*.dll")
-                Dim asm As Assembly = Assembly.LoadFrom(dll)
-
-                ' Find all types that implement IPluginForm
-                For Each t In asm.GetTypes()
-                    If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
-                        Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)
-                        plugins.Add(plugin)
-                    End If
-                Next
             Next
 
             Return plugins

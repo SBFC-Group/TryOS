@@ -10,7 +10,7 @@
             Dim lines() As String = RichTextBox1.Lines
             Dim jj As String = lines.GetValue(0)
             RichTextBox1.Text = RichTextBox1.Text & "
-" & UI.RunCommands(jj, Me)
+" & UI.RunCommands(jj, Form1.User, Me)
 
         End If
     End Sub

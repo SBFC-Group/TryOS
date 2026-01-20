@@ -2,8 +2,9 @@
     Public ReadOnly Username As String
     Public ReadOnly UserFolderPath As String
     Public ReadOnly Role As TryController.Roles
+    Public ReadOnly SandboxedUser As Boolean
 
-    Public Sub New(Optional TheUserName As String = "")
+    Public Sub New(Optional TheUserName As String = "", Optional IsSandboxed As Boolean = False)
         If TheUserName = "" Then
             Username = Form1.Username
             UserFolderPath = UI.UsersFolder & "\" & Form1.Username
@@ -11,7 +12,13 @@
             Username = TheUserName
             UserFolderPath = UI.UsersFolder & "\" & TheUserName
         End If
-        Role = GetRole()
+        SandboxedUser = IsSandboxed
+        If IsSandboxed = True Then
+            Role = TryController.Roles.StandardSandbox
+        Else
+            Role = GetRole()
+        End If
+
     End Sub
 
     Public Enum HowWasTaskDone
@@ -22,83 +29,91 @@
     End Enum
 
     Public Function LoadUserSettings() As HowWasTaskDone
-        Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
-        Try
-            Dim b As Byte() = Convert.FromBase64String(usedencode)
-            usedencode = System.Text.Encoding.UTF8.GetString(b)
-        Catch ex As Exception
+        If Role = TryController.Roles.StandardSandbox Then
+            Return HowWasTaskDone.Canceled
+        Else
+            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
+            Try
+                Dim b As Byte() = Convert.FromBase64String(usedencode)
+                usedencode = System.Text.Encoding.UTF8.GetString(b)
+            Catch ex As Exception
 
-        End Try
-        Try
-            Dim b2 As Byte() = Convert.FromBase64String(usedencode)
-            usedencode = System.Text.Encoding.UTF8.GetString(b2)
-        Catch ex As Exception
+            End Try
+            Try
+                Dim b2 As Byte() = Convert.FromBase64String(usedencode)
+                usedencode = System.Text.Encoding.UTF8.GetString(b2)
+            Catch ex As Exception
 
-        End Try
+            End Try
 
-        Dim settingstemp As String()
-        settingstemp = usedencode.Split(";"c)
-        For Each setting In settingstemp
+            Dim settingstemp As String()
+            settingstemp = usedencode.Split(";"c)
+            For Each setting In settingstemp
 
-            If setting.Contains("Wallpaper=") = True Then
-                setting = setting.Replace("Wallpaper=", "")
+                If setting.Contains("Wallpaper=") = True Then
+                    setting = setting.Replace("Wallpaper=", "")
 
-                'This is copied code ;)
-                If setting.Contains("jpg=") = True Then
-                    setting = setting.Replace("jpg=", "")
-                    UI.RunCommands("Loadjpg " & setting)
-                ElseIf setting.Contains("png=") = True Then
-                    setting = setting.Replace("png=", "")
-                    UI.RunCommands("Loadpng " & setting)
-                ElseIf setting.Contains("gif=") = True Then
-                    setting = setting.Replace("gif=", "")
-                    UI.RunCommands("Loadgif " & setting)
+                    'This is copied code ;)
+                    If setting.Contains("jpg=") = True Then
+                        setting = setting.Replace("jpg=", "")
+                        UI.RunCommands("Loadjpg " & setting, Me)
+                    ElseIf setting.Contains("png=") = True Then
+                        setting = setting.Replace("png=", "")
+                        UI.RunCommands("Loadpng " & setting, Me)
+                    ElseIf setting.Contains("gif=") = True Then
+                        setting = setting.Replace("gif=", "")
+                        UI.RunCommands("Loadgif " & setting, Me)
+                    End If
+
+                ElseIf setting.Contains("IsDarkModeForApps=") = True Then
+                    setting = setting.Replace("IsDarkModeForApps=", "")
+                    Form1.IsUsingDarkThemeForApps = Convert.ToBoolean(setting)
+                ElseIf setting.Contains("IsDarkModeForProgram=") = True Then
+                    setting = setting.Replace("IsDarkModeForProgram=", "")
+                    Form1.IsUsingDarkThemeForPrograms = Convert.ToBoolean(setting)
+                ElseIf setting.Contains("DoesHasTimeBar=") = True Then
+                    setting = setting.Replace("DoesHasTimeBar=", "")
+                    Form1.TimebarPanel.Visible = Convert.ToBoolean(setting)
+                    'ElseIf setting.StartsWith("") = True Then
+                    'ElseIf setting.StartsWith("") = True Then
+                    'ElseIf setting.StartsWith("") = True Then
+                    'ElseIf setting.StartsWith("") = True Then
+                    'ElseIf setting.StartsWith("") = True Then
                 End If
-
-            ElseIf setting.Contains("IsDarkModeForApps=") = True Then
-                setting = setting.Replace("IsDarkModeForApps=", "")
-                Form1.IsUsingDarkThemeForApps = Convert.ToBoolean(setting)
-            ElseIf setting.Contains("IsDarkModeForProgram=") = True Then
-                setting = setting.Replace("IsDarkModeForProgram=", "")
-                Form1.IsUsingDarkThemeForPrograms = Convert.ToBoolean(setting)
-            ElseIf setting.Contains("DoesHasTimeBar=") = True Then
-                setting = setting.Replace("DoesHasTimeBar=", "")
-                Form1.TimebarPanel.Visible = Convert.ToBoolean(setting)
-                'ElseIf setting.StartsWith("") = True Then
-                'ElseIf setting.StartsWith("") = True Then
-                'ElseIf setting.StartsWith("") = True Then
-                'ElseIf setting.StartsWith("") = True Then
-                'ElseIf setting.StartsWith("") = True Then
-            End If
-        Next
-        Return HowWasTaskDone.Completed
+            Next
+            Return HowWasTaskDone.Completed
+        End If
     End Function
 
     Public Function SaveUserSettings(Optional SettingsList As String = "Null") As HowWasTaskDone
-        Dim Reader As String = Nothing
-
-        If SettingsList = "Null" Then
-            Reader = "Wallpaper=" & Form1.WallpaperFileFormat & "=" & Form1.LoadedWallpaper.ToString & ";" & Environment.NewLine
-
-            Reader = Reader & "IsDarkModeForApps=" & Form1.IsUsingDarkThemeForApps.ToString & ";" & Environment.NewLine
-
-            Reader = Reader & "IsDarkModeForProgram=" & Form1.IsUsingDarkThemeForPrograms.ToString & ";" & Environment.NewLine
-
-            Reader = Reader & "DoesHasTimeBar=" & Form1.TimebarPanel.Visible.ToString & ";" & Environment.NewLine
+        If Role = TryController.Roles.StandardSandbox Then
+            Return HowWasTaskDone.Canceled
         Else
-            Reader = SettingsList
+            Dim Reader As String = Nothing
+
+            If SettingsList = "Null" Then
+                Reader = "Wallpaper=" & Form1.WallpaperFileFormat & "=" & Form1.LoadedWallpaper.ToString & ";" & Environment.NewLine
+
+                Reader = Reader & "IsDarkModeForApps=" & Form1.IsUsingDarkThemeForApps.ToString & ";" & Environment.NewLine
+
+                Reader = Reader & "IsDarkModeForProgram=" & Form1.IsUsingDarkThemeForPrograms.ToString & ";" & Environment.NewLine
+
+                Reader = Reader & "DoesHasTimeBar=" & Form1.TimebarPanel.Visible.ToString & ";" & Environment.NewLine
+            Else
+                Reader = SettingsList
+            End If
+            Try
+                Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(Reader)
+                Reader = Convert.ToBase64String(byt)
+                Dim byt2 As Byte() = System.Text.Encoding.UTF8.GetBytes(Reader)
+                Reader = Convert.ToBase64String(byt2)
+            Catch ex As Exception
+            End Try
+
+            My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Software.swfiles", Reader, False)
+
+            Return HowWasTaskDone.Completed
         End If
-        Try
-            Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(Reader)
-            Reader = Convert.ToBase64String(byt)
-            Dim byt2 As Byte() = System.Text.Encoding.UTF8.GetBytes(Reader)
-            Reader = Convert.ToBase64String(byt2)
-        Catch ex As Exception
-        End Try
-
-        My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Software.swfiles", Reader, False)
-
-        Return HowWasTaskDone.Completed
     End Function
 
     Public Function DoesSettingExist(SettingName As String) As Boolean
@@ -270,24 +285,24 @@
     End Function
 
     Public Shared Sub LoadWallpaperFromUserSettings()
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Settings\Wallpaper.swfiles") Then
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Settings\Wallpaper.swfiles")
+        If My.Computer.FileSystem.FileExists(Form1.User.UserFolderPath & "\Settings\Wallpaper.swfiles") Then
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\Wallpaper.swfiles")
             If Reader.StartsWith("jpg=") Then
                 Reader = Reader.Replace("jpg=", "")
-                UI.RunCommands("Loadjpg " & Reader)
+                UI.RunCommands("Loadjpg " & Reader, Form1.User)
             ElseIf Reader.StartsWith("png=") Then
                 Reader = Reader.Replace("png=", "")
-                UI.RunCommands("Loadpng " & Reader)
+                UI.RunCommands("Loadpng " & Reader, Form1.User)
             ElseIf Reader.StartsWith("gif=") Then
                 Reader = Reader.Replace("gif=", "")
-                UI.RunCommands("Loadgif " & Reader)
+                UI.RunCommands("Loadgif " & Reader, Form1.User)
             End If
         End If
     End Sub
 
     Public Shared Sub CheckForDarkThemeFile()
-        If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles") Then
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles")
+        If My.Computer.FileSystem.FileExists(Form1.User.UserFolderPath & "\Settings\DarkThemeForApps.swfiles") Then
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\DarkThemeForApps.swfiles")
             If Reader = "True" Then
                 Form1.IsUsingDarkThemeForApps = True
             ElseIf Reader = "False" Then
@@ -301,8 +316,8 @@
     End Sub
 
     Public Shared Sub LoadShellColors()
-        If My.Computer.FileSystem.FileExists(UI.UserFolder & "\Settings\DarkThemeForPrograms.swfiles") Then
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.UserFolder & "\Settings\DarkThemeForApps.swfiles")
+        If My.Computer.FileSystem.FileExists(Form1.User.UserFolderPath & "\Settings\DarkThemeForPrograms.swfiles") Then
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\DarkThemeForApps.swfiles")
             If Reader = "True" Then
                 Form1.IsUsingDarkThemeForPrograms = True
             ElseIf Reader = "False" Then

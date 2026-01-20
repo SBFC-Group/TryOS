@@ -66,6 +66,7 @@ Public Class TryController
     Public Dev As Boolean = False
 
     Public Enum Roles
+        StandardSandbox = 0
         Guest = 1
         Standard = 2
         Administrator = 3
@@ -113,8 +114,8 @@ Public Class TryController
             Dim Reader As String = Writer.ReadOlderSWFilesFile(Path)
 
             My.Computer.FileSystem.DeleteFile(Path, FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
-            My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Temp\NoneS", "TryOS created file.", False)
-            Writer.CreateSWFiles3File(Path, Reader, My.Application.Info.DirectoryPath & "\Users\" & Form1.Username & "\Temp")
+            My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Form1.User.Username & "\Temp\NoneS", "TryOS created file.", False)
+            Writer.CreateSWFiles3File(Path, Reader, My.Application.Info.DirectoryPath & "\Users\" & Form1.User.Username & "\Temp")
             Return False
         Else
             Return True
