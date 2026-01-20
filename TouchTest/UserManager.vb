@@ -12,7 +12,8 @@
             Username = TheUserName
             UserFolderPath = UI.UsersFolder & "\" & TheUserName
         End If
-        If SandboxedUser = True Then
+        SandboxedUser = IsSandboxed
+        If IsSandboxed = True Then
             Role = TryController.Roles.StandardSandbox
         Else
             Role = GetRole()
