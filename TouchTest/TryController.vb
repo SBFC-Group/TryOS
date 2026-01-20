@@ -1,6 +1,8 @@
 ﻿Imports System.IO
 
 Public Class TryController
+    Private IsShellNameUsed As Boolean = False
+
     Private Sub TryController_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim args As String = Environment.CommandLine
 
@@ -24,8 +26,16 @@ Public Class TryController
             Me.WindowState = FormWindowState.Minimized
 
             Me.ShowInTaskbar = False
+
+            IsShellNameUsed = True
         Else
             Console.Show()
+
+            Me.WindowState = FormWindowState.Minimized
+
+            Me.ShowInTaskbar = False
+
+            IsShellNameUsed = False
         End If
 
         If args.Contains("/DevMode") = True Then
@@ -37,11 +47,13 @@ Public Class TryController
         End If
 
         If args.Contains("/ShowConsole") = True Then
-            Console.Show()
-            Console.WindowState = FormWindowState.Minimized
+            If IsShellNameUsed = True Then
+                Console.Show()
+                Console.WindowState = FormWindowState.Minimized
+            End If
         End If
 
-        If args.Contains("/EnableSecureMode") = True Then
+            If args.Contains("/EnableSecureMode") = True Then
             SecureModeTimer.Start()
         End If
     End Sub

@@ -12,4 +12,5 @@
     Function IsDarkMode() As Boolean
     Function SetOrGetArguments(Optional Arg As String = Nothing) As String
     Sub StartCMD(Optional GG As String = "New")
+    Sub CloseApp(form As Form)
 End Interface
