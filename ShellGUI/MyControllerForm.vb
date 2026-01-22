@@ -129,7 +129,7 @@ Public Class MyControllerForm
         For Each c As Control In parent.Controls
 
             If c.Name = "Panel3" Then
-                Debug.WriteLine("Adding Handler")
+                Debug.WriteLine("Adding PCC Handler ")
                 AddHandler c.MouseDown, AddressOf MouseDown_Menu
             ElseIf c.Name = "Panel1" Then
                 c.Controls.Add(PCC)

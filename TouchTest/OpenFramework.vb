@@ -112,6 +112,12 @@ Namespace OpenFramework_Data
 
         Public Function LoadAppsDlls(User As UserManager) As List(Of OpenFramework_Interface)
 
+            Dim InDevMode As Boolean = False
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                InDevMode = True
+                Debug.WriteLine("Function Name: LoadAppsDlls()")
+            End If
+
             Dim plugins As New List(Of OpenFramework_Interface)()
 
             Dim dir1 = My.Application.Info.DirectoryPath & "\Apps"
@@ -119,14 +125,18 @@ Namespace OpenFramework_Data
             Dim dirinfo As New System.IO.DirectoryInfo(dir1)
             files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
             For Each file In files
+                If InDevMode = True Then
+                    Debug.WriteLine($"Apps Folder Name: {file.Name}")
+                End If
 
                 Dim Path As String = ""
 
                 Path = file.FullName
 
                 If Not IO.Directory.Exists(Path) Then
+                    Debug.WriteLine(Path & " Does not exist or you don't own the folder.")
                 Else
-                    Dim DllPath As String = ""
+                        Dim DllPath As String = ""
                     Dim ContinueThis As Boolean = False
 
                     If My.Computer.FileSystem.FileExists(Path & "\DllPath.txt") = True Then
@@ -151,15 +161,28 @@ Namespace OpenFramework_Data
 
                     If ContinueThis = True Then
                         'For Each dll In IO.Directory.GetFiles(folder, "*.dll")
-                        Dim asm As Assembly = Assembly.LoadFrom(DllPath)
 
-                        ' Find all types that implement OpenFramework_Interface
-                        For Each t In asm.GetTypes()
-                            If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
-                                Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)
-                                plugins.Add(plugin)
-                            End If
-                        Next
+
+                        Try
+                            Dim asm As Assembly = Assembly.LoadFrom(DllPath)
+
+                            ' Find all types that implement OpenFramework_Interface
+                            For Each t In asm.GetTypes()
+                                If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
+                                    Try
+                                        Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)
+                                        plugins.Add(plugin)
+                                    Catch ex As Exception
+                                        UI.ShowError(ex.Message)
+                                        Debug.WriteLine(ex.Message)
+                                    End Try
+                                End If
+                            Next
+                        Catch Exceptionthing As Exception
+                            UI.ShowError(Exceptionthing.Message)
+                            Debug.WriteLine(Exceptionthing.Message)
+                        End Try
+
                     End If
                 End If
 
