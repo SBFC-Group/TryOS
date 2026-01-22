@@ -5,7 +5,7 @@ Namespace OpenFramework_Data
     Module OpenFramework
 
         Public Function GetOpenFrameworkVersion()
-            Return "0.35.4"
+            Return "0.36.0"
         End Function
 
         Public FlowLayoutPanelUse As FlowLayoutPanel = Form1.FlowLayoutPanel1

@@ -15,7 +15,7 @@
         End Sub
 
         Public Sub OpenFramework_LoadApps() Implements CustomController_UI_Handler.OpenFramework_LoadApps
-            OpenFramework_Data.LoadAppsDlls(Form1.SandboxedUser)
+            OpenFramework_Data.LoadApps(Form1.SandboxedUser)
         End Sub
 
         Public Sub OpenFramework_SetAppNameValue(Text As String) Implements CustomController_UI_Handler.OpenFramework_SetAppNameValue
