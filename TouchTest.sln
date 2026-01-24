@@ -37,6 +37,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SettingsApp", "SettingsApp\
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickNotesLib", "QuickNotesLib\QuickNotesLib.vbproj", "{5AB31E25-A597-4770-B847-3CDFD50EE210}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TryOS_Store", "TryOS_Store\TryOS_Store.vbproj", "{F5B65E7D-3C02-4938-86BD-02B4E27CFC58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{5AB31E25-A597-4770-B847-3CDFD50EE210}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AB31E25-A597-4770-B847-3CDFD50EE210}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AB31E25-A597-4770-B847-3CDFD50EE210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B65E7D-3C02-4938-86BD-02B4E27CFC58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B65E7D-3C02-4938-86BD-02B4E27CFC58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B65E7D-3C02-4938-86BD-02B4E27CFC58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B65E7D-3C02-4938-86BD-02B4E27CFC58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
