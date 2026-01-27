@@ -714,219 +714,223 @@ Public Class Form1
         'WifiButton.BackgroundImage = InternetList.Images.Item(0)
         'PowerButton.BackgroundImage = PowerList.Images.Item(0)
 
+        'Current ---
+
         UpdateBatteryStatus()
 
-        If BatteryPower = 100 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 99 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 98 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 97 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 96 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 95 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 94 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 93 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 92 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 91 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 90 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 89 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 88 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 87 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 86 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 85 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 84 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 83 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 82 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 81 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 80 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        ElseIf BatteryPower = 79 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 78 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 77 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 76 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 75 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 74 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 73 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 72 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 71 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 70 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 69 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 68 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 67 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 66 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 65 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 64 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 63 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 62 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 61 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 60 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(1)
-        ElseIf BatteryPower = 59 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 58 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 57 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 56 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 55 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 54 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 53 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 52 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 51 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 50 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 49 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 48 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 47 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 46 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 45 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 44 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 43 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 42 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 41 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 40 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(2)
-        ElseIf BatteryPower = 39 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 38 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 37 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 36 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 35 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 34 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 33 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 32 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 31 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 30 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 29 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 28 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 27 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 26 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 25 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 24 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 23 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 22 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 21 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 20 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 19 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 18 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 17 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(3)
-        ElseIf BatteryPower = 16 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 15 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 14 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 13 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 12 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 11 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 10 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 9 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 8 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 7 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 6 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 5 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 4 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 3 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 2 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 1 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        ElseIf BatteryPower = 0 Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(4)
-        End If
-        Dim batteryStatus As PowerStatus = SystemInformation.PowerStatus
-        If batteryStatus.BatteryChargeStatus = BatteryChargeStatus.Charging Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(5)
-        End If
-        If HasBattery = False Then
-            PowerButton.BackgroundImage = PowerList.Images.Item(0)
-        End If
+        'If BatteryPower = 100 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 99 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 98 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 97 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 96 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 95 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 94 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 93 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 92 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 91 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 90 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 89 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 88 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 87 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 86 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 85 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 84 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 83 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 82 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 81 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 80 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'ElseIf BatteryPower = 79 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 78 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 77 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 76 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 75 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 74 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 73 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 72 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 71 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 70 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 69 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 68 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 67 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 66 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 65 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 64 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 63 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 62 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 61 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 60 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(1)
+        'ElseIf BatteryPower = 59 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 58 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 57 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 56 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 55 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 54 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 53 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 52 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 51 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 50 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 49 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 48 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 47 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 46 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 45 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 44 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 43 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 42 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 41 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 40 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(2)
+        'ElseIf BatteryPower = 39 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 38 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 37 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 36 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 35 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 34 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 33 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 32 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 31 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 30 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 29 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 28 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 27 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 26 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 25 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 24 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 23 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 22 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 21 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 20 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 19 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 18 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 17 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(3)
+        'ElseIf BatteryPower = 16 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 15 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 14 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 13 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 12 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 11 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 10 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 9 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 8 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 7 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 6 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 5 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 4 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 3 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 2 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 1 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'ElseIf BatteryPower = 0 Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(4)
+        'End If
+        'Dim batteryStatus As PowerStatus = SystemInformation.PowerStatus
+        'If batteryStatus.BatteryChargeStatus = BatteryChargeStatus.Charging Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(5)
+        'End If
+        'If HasBattery = False Then
+        '    PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        'End If
     End Sub
+
+
 
     Private Sub PowerButton_Click(sender As Object, e As EventArgs) Handles PowerButton.Click
         If IsControlCenterOpen = True Then
@@ -992,6 +996,8 @@ Public Class Form1
     Public BatteryPower As Int64 = 100
     Public HasBattery As Boolean = False
 
+
+
     Private Sub UpdateBatteryStatus()
         Dim batteryStatus As PowerStatus = SystemInformation.PowerStatus
         Dim batteryPercent As Integer = CInt(batteryStatus.BatteryLifePercent * 100)
@@ -1053,4 +1059,51 @@ Public Class Form1
     Private Sub RestoreButtonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreButtonOrderToolStripMenuItem.Click
         OpenFramework_Data.RestoreButtonOrder()
     End Sub
+
+
+
+    Private Sub PowerTimer_Tick(sender As Object, e As EventArgs) Handles PowerTimer.Tick
+
+        BatteryPower = CInt(SystemInformation.PowerStatus.BatteryLifePercent * 100)
+
+
+        If SystemInformation.PowerStatus.BatteryChargeStatus = BatteryChargeStatus.Charging Then
+            'Checks if Battery is Charging
+            PowerButton.BackgroundImage = PowerList.Images.Item(5)
+        ElseIf SystemInformation.PowerStatus.BatteryChargeStatus = BatteryChargeStatus.NoSystemBattery Then
+            'Checks if No Battery is found
+            PowerButton.BackgroundImage = PowerList.Images.Item(0)
+        Else
+
+            If GetBatteryIcon(BatteryPower) = 0 Then
+                PowerButton.BackgroundImage = PowerList.Images.Item(0)
+            ElseIf GetBatteryIcon(BatteryPower) = 1 Then
+                PowerButton.BackgroundImage = PowerList.Images.Item(1)
+            ElseIf GetBatteryIcon(BatteryPower) = 2 Then
+                PowerButton.BackgroundImage = PowerList.Images.Item(2)
+            ElseIf GetBatteryIcon(BatteryPower) = 3 Then
+                PowerButton.BackgroundImage = PowerList.Images.Item(3)
+            Else
+                PowerButton.BackgroundImage = PowerList.Images.Item(4)
+            End If
+
+        End If
+
+
+    End Sub
+
+    Private Function GetBatteryIcon(percent As Integer) As Int64
+        Select Case percent
+            Case Is >= 80
+                Return 0
+            Case Is >= 60
+                Return 1
+            Case Is >= 40
+                Return 2
+            Case Is >= 20
+                Return 3
+            Case Else
+                Return 4
+        End Select
+    End Function
 End Class
