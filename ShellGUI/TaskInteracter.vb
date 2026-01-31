@@ -39,4 +39,8 @@ Public Class TaskInteracter
 
         ResetHandlersOrAddHandlers()
     End Sub
+
+    Private Sub UpdateAppList_Tick(sender As Object, e As EventArgs) Handles UpdateAppList.Tick
+
+    End Sub
 End Class

@@ -33,14 +33,29 @@ Public Class UI
                 System.Threading.Thread.Sleep(1000)
             End Try
             Return "Program tried to close itself."
-        ElseIf Command.Contains("windowmode=mini") = True Then
-            Try
-                TheForm.WindowState = FormWindowState.Minimized
-                TheForm.ShowInTaskbar = False
-            Catch ex As Exception
-
-            End Try
-            Return Nothing
+        ElseIf Command.Contains("windowmode=") = True Then
+            If Command.Contains("normal") = True Then
+                Try
+                    TheForm.WindowState = FormWindowState.Normal
+                Catch ex As Exception
+                End Try
+                Return "Tried to set WindowState to Normal"
+            ElseIf Command.Contains("maxi") = True Then
+                Try
+                    TheForm.WindowState = FormWindowState.Maximized
+                Catch ex As Exception
+                End Try
+                Return "Tried to set WindowState to Maximized"
+            ElseIf Command.Contains("mini") = True Then
+                Try
+                    TheForm.WindowState = FormWindowState.Minimized
+                    TheForm.ShowInTaskbar = False
+                Catch ex As Exception
+                End Try
+                Return "Tried to set WindowState to Minimized"
+            Else
+                Return Nothing
+            End If
         ElseIf Command.Contains("run ") = True Then
             If IsUserNothing = False Then
                 Dim Text1 As String = Command
@@ -55,102 +70,171 @@ Public Class UI
             Else
                 Return Nothing
             End If
-
         ElseIf Command.Contains("start ") = True Then
-            Dim Text1 As String = Command
-            Text1 = Text1.Replace("Console>", "")
-            Text1 = Text1.Replace("start ", "")
-            Try
-                OpenFormByName("TouchTest." & Text1)
-                Return "Started form. " & Text1
-            Catch ex As Exception
-                Return "Failed to start form. " & Text1
-            End Try
+            If IsUserNothing = False Then
+                Dim Text1 As String = Command
+                Text1 = Text1.Replace("Console>", "")
+                Text1 = Text1.Replace("start ", "")
+                Try
+                    OpenFormByName("TouchTest." & Text1)
+                    Return "Started form. " & Text1
+                Catch ex As Exception
+                    Return "Failed to start form. " & Text1
+                End Try
+            Else
+                Return Nothing
+            End If
         ElseIf Command.Contains("RunApp ") = True Then
-            Dim Text1 As String = Command
-            Text1 = Text1.Replace("Console>", "")
-            Text1 = Text1.Replace("RunApp ", "")
-            Try
-                Form1.OpenChildForm(GetForm("TouchTest." & Text1))
-                Return "Opened a form as a child inside Form1."
-            Catch ex As Exception
-                Return "Failed to find or open a form as a child"
-            End Try
+            If IsUserNothing = False Then
+                Dim Text1 As String = Command
+                Text1 = Text1.Replace("Console>", "")
+                Text1 = Text1.Replace("RunApp ", "")
+                Try
+                    Form1.OpenChildForm(GetForm("TouchTest." & Text1))
+                    Return "Opened a form as a child inside Form1."
+                Catch ex As Exception
+                    Return "Failed to find or open a form as a child"
+                End Try
+            Else
+                Return Nothing
+            End If
         ElseIf Command.Contains("Loadjpg ") = True Then
-            Dim Text1 As String = Command
-            Text1 = Text1.Replace("Console>", "")
-            Text1 = Text1.Replace("Loadjpg ", "")
-            UploadWallpaperToShell(Convert.ToInt64(Text1), "jpg")
-            Return Nothing
+            If IsUserNothing = False Then
+                Dim Text1 As String = Command
+                Text1 = Text1.Replace("Console>", "")
+                Text1 = Text1.Replace("Loadjpg ", "")
+                UploadWallpaperToShell(Convert.ToInt64(Text1), "jpg")
+                Return "Tried to load an Wallpaper using the jpg format."
+            Else
+                Return Nothing
+            End If
         ElseIf Command.Contains("Loadpng ") = True Then
-            Dim Text1 As String = Command
-            Text1 = Text1.Replace("Console>", "")
-            Text1 = Text1.Replace("Loadpng ", "")
-            UploadWallpaperToShell(Convert.ToInt64(Text1), "png")
-            Return Nothing
+            If IsUserNothing = False Then
+                Dim Text1 As String = Command
+                Text1 = Text1.Replace("Console>", "")
+                Text1 = Text1.Replace("Loadpng ", "")
+                UploadWallpaperToShell(Convert.ToInt64(Text1), "png")
+                Return "Tried to load an Wallpaper using the png format."
+            Else
+                Return Nothing
+            End If
         ElseIf Command.Contains("Loadgif ") = True Then
-            Dim Text1 As String = Command
-            Text1 = Text1.Replace("Console>", "")
-            Text1 = Text1.Replace("Loadgif ", "")
-            UploadWallpaperToShell(Convert.ToInt64(Text1), "gif")
-            Return Nothing
+            If IsUserNothing = False Then
+                Dim Text1 As String = Command
+                Text1 = Text1.Replace("Console>", "")
+                Text1 = Text1.Replace("Loadgif ", "")
+                UploadWallpaperToShell(Convert.ToInt64(Text1), "gif")
+                Return "Tried to load an Wallpaper using the gif format."
+            Else
+                Return Nothing
+            End If
         ElseIf Command.Contains("RunUserControl ") = True Then
-            Dim Text1 As String = Command
-            Text1 = Text1.Replace("Console>", "")
-            Text1 = Text1.Replace("RunUserControl ", "")
-            RunUserControl(Text1)
-            Return Nothing
+            If IsUserNothing = False Then
+                Dim Text1 As String = Command
+                Text1 = Text1.Replace("Console>", "")
+                Text1 = Text1.Replace("RunUserControl ", "")
+                RunUserControl(Text1)
+                Return "Started an Usercontrol. (Inside a form)"
+            Else
+                Return Nothing
+            End If
         ElseIf Command.Contains("installapp ") = True Then
+            If IsUserNothing = False Then
                 Dim Text1 As String = Command
                 Text1 = Text1.Replace("Console>", "")
                 Text1 = Text1.Replace("installapp ", "")
+                TryOS_Store_Manager.Class1.InstallTryOSApp(Text1)
+                Return "Trying to install: " & Text1
+            Else
                 Return Nothing
-            ElseIf Command.Contains("RunTestSniper") = True Then
+            End If
+        ElseIf Command.Contains("RunTestSniper") = True Then
+            If IsUserNothing = False Then
                 Dim gg As New Sniper
                 gg.ShowDialog()
-                Return Nothing
-            ElseIf Command.Contains("SetWallpaper ") = True Then
-                Dim Text1 As String = Command
-                Text1 = Text1.Replace("Console>", "")
-                Text1 = Text1.Replace("SetWallpaper ", "")
-                Form1.Panel1.BackgroundImage = Bitmap.FromFile(Text1)
-                Return $"Loaded Wallpaper from {Text1}"
-            ElseIf Command.Contains("GetWallpaper") = True Then
-                Return Form1.Panel1.BackgroundImage
-            ElseIf Command.Contains("whoami") = True Then
-                If Command.Contains("/nogui") = True Then
-                    Return Form1.User.Role
-                Else
-                    Dim TheRole As TryController.Roles = Form1.User.Role
-                    Dim StringRole As String
+            End If
+            Return Nothing
+        ElseIf Command.Contains("SetWallpaper ") = True Then
+            Dim Text1 As String = Command
+            Text1 = Text1.Replace("Console>", "")
+            Text1 = Text1.Replace("SetWallpaper ", "")
+            Form1.Panel1.BackgroundImage = Bitmap.FromFile(Text1)
+            Return $"Loaded Wallpaper from {Text1}"
+        ElseIf Command.Contains("GetWallpaper") = True Then
+            Return Form1.Panel1.BackgroundImage
+        ElseIf Command.Contains("whoami") = True Then
+            If Command.Contains("/nogui") = True Then
+                Return Form1.User.Role
+            Else
+                Dim TheRole As TryController.Roles = Form1.User.Role
+                Dim StringRole As String
 
-                    If TheRole = TouchTest.TryController.Roles.StandardSandbox Then
-                        StringRole = "StandardSandbox"
-                    ElseIf TheRole = TouchTest.TryController.Roles.Guest Then
-                        StringRole = "Guest"
-                    ElseIf TheRole = TouchTest.TryController.Roles.Standard Then
-                        StringRole = "Standard"
-                    ElseIf TheRole = TouchTest.TryController.Roles.Administrator Then
-                        StringRole = "Administrator"
-                    ElseIf TheRole = TouchTest.TryController.Roles.Program Then
-                        StringRole = "Program"
-                    ElseIf TheRole = TouchTest.TryController.Roles.Developer Then
-                        StringRole = "Developer"
-                    Else
-                        StringRole = "Unknown"
-                    End If
-                    ShowError(StringRole, ErrorMSGBox.Alerts.Information)
+                If TheRole = TouchTest.TryController.Roles.StandardSandbox Then
+                    StringRole = "StandardSandbox"
+                ElseIf TheRole = TouchTest.TryController.Roles.Guest Then
+                    StringRole = "Guest"
+                ElseIf TheRole = TouchTest.TryController.Roles.Standard Then
+                    StringRole = "Standard"
+                ElseIf TheRole = TouchTest.TryController.Roles.Administrator Then
+                    StringRole = "Administrator"
+                ElseIf TheRole = TouchTest.TryController.Roles.Program Then
+                    StringRole = "Program"
+                ElseIf TheRole = TouchTest.TryController.Roles.Developer Then
+                    StringRole = "Developer"
+                Else
+                    StringRole = "Unknown"
+                End If
+                ShowError(StringRole, ErrorMSGBox.Alerts.Information)
+                Return StringRole
+            End If
+        ElseIf Command.Contains("ThemeManager") = True Then
+            If Command.Contains("/GetResource") = True Then
+                If Command.Contains(" DarkModeForApps") = True Then
+                    Return Form1.IsUsingDarkThemeForApps
+                ElseIf Command.Contains(" DarkModeForPrograms") = True Then
+                    Return Form1.IsUsingDarkThemeForPrograms
+                Else
                     Return Nothing
                 End If
+            ElseIf Command.Contains("/SetResource") = True Then
+                If Command.Contains(" DarkModeForApps") = True Then
+                    Command = Command.Replace("ThemeManager /SetResource DarkModeForApps=", "")
+                    Try
+                        Form1.IsUsingDarkThemeForApps = Convert.ToBoolean(Command)
+                    Catch ex As Exception
+                    End Try
+                    Return Command
+                ElseIf Command.Contains(" DarkModeForPrograms") = True Then
+                    Command = Command.Replace("ThemeManager /SetResource DarkModeForPrograms=", "")
+                    Try
+                        Form1.IsUsingDarkThemeForPrograms = Convert.ToBoolean(Command)
+                    Catch ex As Exception
+                    End Try
+                    Return Command
 
-            ElseIf Command.Contains("RunTestFileExplorer") = True Then
+                Else
+                    Return Nothing
+                End If
+            Else
+                Return Nothing
+            End If
+        ElseIf Command.Contains("RunTestFileExplorer") = True Then
+            If IsUserNothing = False Then
                 TestFileExplorer.Show()
                 Return Nothing
-            ElseIf Command.Contains("RunUserTestFileExplorer") = True Then
+            Else
+                Return Nothing
+            End If
+        ElseIf Command.Contains("RunUserTestFileExplorer") = True Then
+            If IsUserNothing = False Then
                 TestFileExplorer.rootPath = UserFolder
                 TestFileExplorer.Show()
                 Return Nothing
-            ElseIf Command.Contains("Restore-TryOS-Store") = True Then
+            Else
+                Return Nothing
+            End If
+        ElseIf Command.Contains("Restore-TryOS-Store") = True Then
+            If IsUserNothing = False Then
                 If My.Computer.FileSystem.DirectoryExists(AppsFolder & "\TryOS_Store") Then
                     My.Computer.FileSystem.DeleteDirectory(AppsFolder & "\TryOS_Store", FileIO.DeleteDirectoryOption.DeleteAllContents)
                 End If
@@ -160,6 +244,10 @@ Public Class UI
                 Return Nothing
             Else
                 Return Nothing
+            End If
+
+        Else
+            Return Nothing
         End If
     End Function
     Public Sub StartCMD(Optional GG As String = "New")

@@ -78,6 +78,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DownloadingApp.Designer.vb">
+      <DependentUpon>DownloadingApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DownloadingApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form55.Designer.vb">
       <DependentUpon>Form55.vb</DependentUpon>
     </Compile>
@@ -102,6 +108,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DownloadingApp.resx">
+      <DependentUpon>DownloadingApp.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form55.resx">
       <DependentUpon>Form55.vb</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +137,10 @@
     <ProjectReference Include="..\TouchTest\TouchTest.vbproj">
       <Project>{197b1b09-baa7-4125-aea3-441cf70675a9}</Project>
       <Name>TouchTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TryOS_Store_Manager\TryOS_Store_Manager.vbproj">
+      <Project>{e8b0a93f-e583-4238-b6e0-28cc96c423a2}</Project>
+      <Name>TryOS_Store_Manager</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

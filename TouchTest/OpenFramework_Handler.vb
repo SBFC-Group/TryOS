@@ -50,7 +50,7 @@ Public Class OpenFramework_Handler
     End Function
 
     Public Function GetRole() As String Implements OpenFramework_UI_Handler.GetRole
-        Return Form1.SandboxedUser.Role
+        Return Form1.User.Role
     End Function
 
     Public Function IsDarkMode() As Boolean Implements OpenFramework_UI_Handler.IsDarkMode

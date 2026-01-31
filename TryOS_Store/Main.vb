@@ -21,7 +21,7 @@ Public Class Main
 
     Public ReadOnly Property MinorVersion As Long Implements OpenFramework_Interface.MinorVersion
         Get
-            Return 0
+            Return 1
         End Get
     End Property
 
@@ -42,6 +42,13 @@ Public Class Main
     End Sub
 
     Public Function GetForm() As Form Implements OpenFramework_Interface.GetForm
+        SetValueToVersion()
         Return New Form55
     End Function
+
+    Public Shared VersionThing As Version
+
+    Public Sub SetValueToVersion()
+        VersionThing = New Version(MajerVersion, MinorVersion, PatchVersion, 0)
+    End Sub
 End Class

@@ -482,7 +482,6 @@ Partial Class Form1
         '
         'Timer2
         '
-        Me.Timer2.Enabled = True
         Me.Timer2.Interval = 5000
         '
         'TimeAndDate
