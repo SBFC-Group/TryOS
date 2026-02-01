@@ -46,7 +46,7 @@ Public Class PCContentMenu_NoneApp
 
     Public Sub LoadProgramButtons()
         AddItemToMenu("SettingsButton", "Settings", Sub()
-                                                        Main.UI.RunApp("Settings")
+                                                        Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\Settings\Main.dll"))
                                                     End Sub)
 
         AddItemToMenu("Test1", "1", Sub()

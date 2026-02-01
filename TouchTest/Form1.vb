@@ -414,7 +414,7 @@ Public Class Form1
     Public HasBattery As Boolean = False
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        UI.RunCommands("RunApp Form55", User)
+        UI.RunCommands("end", User)
         'FToL.Show()
     End Sub
 

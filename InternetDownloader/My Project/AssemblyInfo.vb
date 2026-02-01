@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("TryOS Store")>
-<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyTitle("Internet Downloader")>
+<Assembly: AssemblyDescription("This tool downloads .tryapp files for TryOS Store.")>
 <Assembly: AssemblyCompany("SBFC Group")>
-<Assembly: AssemblyProduct("TryOS Store")>
+<Assembly: AssemblyProduct("Internet Downloader")>
 <Assembly: AssemblyCopyright("Copyright © SBFC Group 2026")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("a4175560-6cea-492c-949d-0303987bc827")>
+<Assembly: Guid("1ad08f0d-153d-48ce-ba9b-88009c8f010a")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.1.0.0")>
-<Assembly: AssemblyFileVersion("1.1.0.0")>
+<Assembly: AssemblyVersion("1.0.0.0")>
+<Assembly: AssemblyFileVersion("1.0.0.0")>

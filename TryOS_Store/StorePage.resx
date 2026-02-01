@@ -117,26 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="app_folder_filled_icon_200042" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\app_folder_filled_icon_200042.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="app_folder_filled_icon_2000421" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\app_folder_filled_icon_200042.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_local_grocery_store_128_28460" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_local_grocery_store_128_28460.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_local_grocery_store_128_284601" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_local_grocery_store_128_28460.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="InternetDownloader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\InternetDownloader.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="shopping_icon_237773" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shopping_icon_237773.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shopping_icon_2377731" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shopping_icon_237773.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

@@ -58,15 +58,11 @@ Public Class MyControllerForm
                         Dim b As Byte() = Convert.FromBase64String(WallpaperImagePath)
                         WallpaperImagePath = System.Text.Encoding.UTF8.GetString(b)
                         Dim b2 As Byte() = Convert.FromBase64String(WallpaperImagePath)
-                        WallpaperImagePath = System.Text.Encoding.UTF8.GetString(b)
+                        WallpaperImagePath = System.Text.Encoding.UTF8.GetString(b2)
                     Catch ex As Exception
                         Main.UI.ShowError(ex.Message)
                     End Try
-                    For Each c As Control In Main.Form1.Controls
-                        If c.Name = "Panel1" Then
-                            c.BackgroundImage = Bitmap.FromFile(WallpaperImagePath)
-                        End If
-                    Next
+                    Main.UI.RunCommands("SetWallpaper " & WallpaperImagePath, Main.Form1.User)
 
                 End If
             End If
@@ -133,6 +129,7 @@ Public Class MyControllerForm
                 AddHandler c.MouseDown, AddressOf MouseDown_Menu
             ElseIf c.Name = "Panel1" Then
                 c.Controls.Add(PCC)
+                PCC.BringToFront()
             ElseIf c.Name = "FlowLayoutPanel1" Then
                 AddHandlerToAppButtons(c)
             ElseIf c.Name = "Button3" Then

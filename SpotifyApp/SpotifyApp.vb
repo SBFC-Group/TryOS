@@ -6,7 +6,16 @@
     Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
 
         If e.IsSuccess = True Then
-            Dim TheRole As TouchTest.TryController.Roles = Class1._host.GetRole()
+
+            If Main._host.IsDarkMode() = True Then
+                WebView21.CoreWebView2.Profile.PreferredColorScheme = Microsoft.Web.WebView2.Core.CoreWebView2PreferredColorScheme.Dark
+            ElseIf Main._host.IsDarkMode() = False Then
+                WebView21.CoreWebView2.Profile.PreferredColorScheme = Microsoft.Web.WebView2.Core.CoreWebView2PreferredColorScheme.Light
+            Else
+                WebView21.CoreWebView2.Profile.PreferredColorScheme = Microsoft.Web.WebView2.Core.CoreWebView2PreferredColorScheme.Auto
+            End If
+
+            Dim TheRole As TouchTest.TryController.Roles = Main._host.RunCommand("whoami /nogui")
             If TheRole = TouchTest.TryController.Roles.Developer Then
             Else
                 WebView21.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = False

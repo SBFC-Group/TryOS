@@ -89,9 +89,21 @@ Public Class ThemeApp
         LoadWallpapers(ImageFormats.jpg)
     End Sub
 
+    Private WallpaperEncoder As String = Nothing
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If WallpaperPath IsNot Nothing Then
             Main.Controller.RunCommand("SetWallpaper " & WallpaperPath)
+
+            WallpaperEncoder = WallpaperPath
+
+            Dim byt1 As Byte() = System.Text.Encoding.UTF8.GetBytes(WallpaperEncoder)
+            WallpaperEncoder = Convert.ToBase64String(byt1)
+
+            Dim byt2 As Byte() = System.Text.Encoding.UTF8.GetBytes(WallpaperEncoder)
+            WallpaperEncoder = Convert.ToBase64String(byt2)
+
+            My.Computer.FileSystem.WriteAllText(Main.Controller.GetUserFolder & "\Settings\WallpaperImage.swfiles", WallpaperEncoder, False)
         End If
     End Sub
 End Class

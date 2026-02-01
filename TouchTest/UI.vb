@@ -98,6 +98,15 @@ Public Class UI
             Else
                 Return Nothing
             End If
+        ElseIf Command.Contains("RunOpenFrameworkApp ") = True Then
+            If IsUserNothing = False Then
+                Command = Command.Replace("Console>", "")
+                Command = Command.Replace("RunOpenFrameworkApp ", "")
+                Form1.OpenChildForm(GetFormFromAppDll(Command))
+                Return Nothing
+            Else
+                Return Nothing
+            End If
         ElseIf Command.Contains("Loadjpg ") = True Then
             If IsUserNothing = False Then
                 Dim Text1 As String = Command
@@ -198,6 +207,7 @@ Public Class UI
                 End If
             ElseIf Command.Contains("/SetResource") = True Then
                 If Command.Contains(" DarkModeForApps") = True Then
+                    Command = Command.Replace("Console>", "")
                     Command = Command.Replace("ThemeManager /SetResource DarkModeForApps=", "")
                     Try
                         Form1.IsUsingDarkThemeForApps = Convert.ToBoolean(Command)
@@ -205,6 +215,7 @@ Public Class UI
                     End Try
                     Return Command
                 ElseIf Command.Contains(" DarkModeForPrograms") = True Then
+                    Command = Command.Replace("Console>", "")
                     Command = Command.Replace("ThemeManager /SetResource DarkModeForPrograms=", "")
                     Try
                         Form1.IsUsingDarkThemeForPrograms = Convert.ToBoolean(Command)
@@ -253,6 +264,14 @@ Public Class UI
     Public Sub StartCMD(Optional GG As String = "New")
         Form1.OpenChildForm(New Commander)
     End Sub
+
+    Public Function Q_F(kk As String) As FormCollection
+        If kk = "4321" Then
+            Return My.Application.OpenForms
+        Else
+            Return Nothing
+        End If
+    End Function
 
     Public LogonBool As Boolean = False
 
@@ -707,6 +726,31 @@ Public Class UI
             MsgBox("Form '" & formName & "' not found or is not a valid Form.")
             Return Nothing
         End If
+    End Function
+
+    Public Function GetFormFromAppDll(DllPath As String) As Object
+        Try
+            Dim asm As Assembly = Assembly.LoadFrom(DllPath)
+
+            ' Find all types that implement OpenFramework_Interface
+            For Each t In asm.GetTypes()
+                If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
+                    Try
+                        Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)
+                        Return plugin.GetForm()
+                    Catch ex As Exception
+                        ShowError(ex.Message)
+                        Debug.WriteLine(ex.Message)
+
+                    End Try
+                End If
+            Next
+            Return Nothing
+        Catch Exceptionthing As Exception
+            ShowError(Exceptionthing.Message)
+            Debug.WriteLine(Exceptionthing.Message)
+            Return Nothing
+        End Try
     End Function
 
     Public Sub ChangeObjectPropertyByName(container As Object, objectName As String, propertyName As String, value As Object)

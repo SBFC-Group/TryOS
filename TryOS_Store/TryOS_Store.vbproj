@@ -78,6 +78,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppList.Designer.vb">
+      <DependentUpon>AppList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AppList.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="DownloadingApp.Designer.vb">
       <DependentUpon>DownloadingApp.vb</DependentUpon>
     </Compile>
@@ -106,6 +112,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="StorePage.Designer.vb">
+      <DependentUpon>StorePage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StorePage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DownloadingApp.resx">
@@ -119,6 +131,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StorePage.resx">
+      <DependentUpon>StorePage.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +163,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ic_local_grocery_store_128_28460.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping_icon_237773.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping_icon_237773.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app_folder_filled_icon_200042.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app_folder_filled_icon_200042.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InternetDownloader.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.3650.58\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.3650.58\build\Microsoft.Web.WebView2.targets')" />

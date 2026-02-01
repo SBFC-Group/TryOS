@@ -224,9 +224,8 @@ Partial Class Form1
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(115, 23)
         Me.Button5.TabIndex = 5
-        Me.Button5.Text = "Start TryOS Store"
+        Me.Button5.Text = "Close Program"
         Me.Button5.UseVisualStyleBackColor = True
-        Me.Button5.Visible = False
         '
         'Label1
         '
