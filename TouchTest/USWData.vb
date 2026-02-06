@@ -41,8 +41,9 @@
             Form1.AllowNewerLoader = False
             UI.DisableCustomCode = True
             UI.DisableOpenFramework = True
+            Form1.User = New UserManager
             UI.LoadShell("Program", "")
-            Form1.HideTaskbar(True)
+            Form1.EnableFullAppMode(True)
             Form1.OpenChildForm(New USWApp)
             Form1.DisableConsole = True
         End Sub

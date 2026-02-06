@@ -63,6 +63,7 @@ Partial Class Form1
         Me.VolumeList = New System.Windows.Forms.ImageList(Me.components)
         Me.InternetList = New System.Windows.Forms.ImageList(Me.components)
         Me.PowerList = New System.Windows.Forms.ImageList(Me.components)
+        Me.PowerTimer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.TimebarPanel.SuspendLayout()
@@ -93,9 +94,9 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.TimebarPanel)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 24)
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1243, 827)
+        Me.Panel1.Size = New System.Drawing.Size(1243, 851)
         Me.Panel1.TabIndex = 1
         '
         'Panel3
@@ -110,7 +111,7 @@ Partial Class Form1
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 36)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1243, 717)
+        Me.Panel3.Size = New System.Drawing.Size(1243, 741)
         Me.Panel3.TabIndex = 2
         '
         'InternetPlusPlus
@@ -294,7 +295,7 @@ Partial Class Form1
         Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel2.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.Panel2.Location = New System.Drawing.Point(0, 753)
+        Me.Panel2.Location = New System.Drawing.Point(0, 777)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1243, 74)
         Me.Panel2.TabIndex = 1
@@ -481,6 +482,10 @@ Partial Class Form1
         Me.PowerList.Images.SetKeyName(4, "gui_battery_empty.png")
         Me.PowerList.Images.SetKeyName(5, "battery_charging.png")
         '
+        'PowerTimer
+        '
+        Me.PowerTimer.Interval = 3000
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -544,4 +549,5 @@ Partial Class Form1
     Friend WithEvents FacebookButton As Button
     Friend WithEvents SpotifyButton As Button
     Friend WithEvents CommanderWindowedToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PowerTimer As Timer
 End Class
