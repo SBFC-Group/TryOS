@@ -78,6 +78,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppInfo.vb" />
     <Compile Include="AppList.Designer.vb">
       <DependentUpon>AppList.vb</DependentUpon>
     </Compile>
@@ -120,6 +121,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AppList.resx">
+      <DependentUpon>AppList.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DownloadingApp.resx">
       <DependentUpon>DownloadingApp.vb</DependentUpon>
     </EmbeddedResource>

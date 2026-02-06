@@ -202,7 +202,15 @@ Public Class Form1
     Public IsSettingOpen As Boolean = False
 
     Private Sub Button3_Click(sender As Object, e As EventArgs)
-        UI.RunApp("Settings")
+        If My.Computer.FileSystem.DirectoryExists(UI.AppsFolder & "\Settings") = True Then
+            If My.Computer.FileSystem.FileExists(UI.AppsFolder & "\Settings\Main.dll") Then
+                OpenChildForm(UI.GetFormFromAppDll(UI.AppsFolder & "\Settings\Main.dll"))
+            Else
+                UI.RunApp("Settings")
+            End If
+        Else
+            UI.RunApp("Settings")
+        End If
     End Sub
 
     Private Sub ApplyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ApplyToolStripMenuItem.Click
@@ -459,5 +467,17 @@ Public Class Form1
 
     Private Sub RestoreButtonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreButtonOrderToolStripMenuItem.Click
         OpenFramework_Data.RestoreButtonOrder()
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        OpenChildForm(New USWApp)
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Try
+            UI.ShowError(User.Username)
+        Catch ex As Exception
+            UI.ShowError(ex.Message)
+        End Try
     End Sub
 End Class

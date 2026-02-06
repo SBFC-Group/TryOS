@@ -6,6 +6,11 @@ mkdir ".\TouchTest\bin\Debug\TryOS_Build\Settings"
 copy ".\TouchTest\bin\Debug\Settings\ShellName USW.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\ShellName.setting"
 copy ".\TouchTest\bin\Debug\Settings\LogonWallpaper.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\"
 
+:: Creates new ShellApps Folder to load newer ui elements and for newer Settings to load the new gui
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\ShellApps"
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI"
+echo txt_file_does_not_contain_anything_that_you_need > ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI\SettingsApp.SettingsForm.txt"
+
 :: Copys new Logon page
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Settings\Page"
 copy ".\TouchTest\bin\Debug\Settings\Page\index.html" ".\TouchTest\bin\Debug\TryOS_Build\Settings\Page"
@@ -68,5 +73,9 @@ copy ".\TryOSUpdateWindow\bin\Debug\TryOSUpdateWindow.exe" ".\TouchTest\bin\Debu
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps"
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store"
 copy ".\TryOS_Store_Loader\bin\Debug\TryOS_Store_Loader.dll" ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store\Main.dll"
+
+:: Creates Settings App
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps\Settings"
+copy ".\SettingsApp\bin\Debug\SettingsApp.dll" ".\TouchTest\bin\Debug\TryOS_Build\Apps\Settings\Main.dll"
 
 pause

@@ -1,7 +1,7 @@
 ﻿Public Class StorePage
     Private Sub StorePage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        WebView21.Source = New Uri("http://127.0.0.1:5500/TryOS_Store/index.html")
-        'WebView21.Source = New Uri("https://app-web-cv.netlify.app/tryos_store/")
+        'WebView21.Source = New Uri("http://127.0.0.1:5500/TryOS_Store/index.html")
+        WebView21.Source = New Uri("https://app-web-cv.netlify.app/tryos_store/")
 
         'WebView21Control.PostWebMessageAsString("")
     End Sub
@@ -60,19 +60,19 @@
             End If
 
             Dim psi As New ProcessStartInfo(My.Application.Info.DirectoryPath & "\InternetDownloader.exe", "/Address:" & Command & " /fileName:" & WebView21Control.Profile.DefaultDownloadFolderPath & "\App.tryapp")
-                psi.RedirectStandardOutput = True
-                psi.UseShellExecute = False
-                psi.CreateNoWindow = True
+            psi.RedirectStandardOutput = True
+            psi.UseShellExecute = False
+            psi.CreateNoWindow = True
 
 
-                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\InternetDownloader.exe") = False Then
-                    My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\InternetDownloader.exe", My.Resources.InternetDownloader, False)
-                End If
+            If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\InternetDownloader.exe") = False Then
+                My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\InternetDownloader.exe", My.Resources.InternetDownloader, False)
+            End If
 
-                Dim process As Process = Process.Start(psi)
+            Dim process As Process = Process.Start(psi)
 
-                Dim output As String = process.StandardOutput.ReadToEnd()
-                process.WaitForExit()
+            Dim output As String = process.StandardOutput.ReadToEnd()
+            process.WaitForExit()
 
             If output.Contains("1") Then
             Else
@@ -80,24 +80,9 @@
                 TryOS_Store_Manager.Class1.InstallTryOSApp(WebView21Control.Profile.DefaultDownloadFolderPath & "\App.tryapp", Main.Controller.GetProgramVersion())
             End If
 
-                DownloadApp.Close()
-            Else
-                Main.Controller.ShowError(Message, TouchTest.ErrorMSGBox.Alerts.Information)
+            DownloadApp.Close()
+        Else
+            Main.Controller.ShowError(Message, TouchTest.ErrorMSGBox.Alerts.Information)
         End If
-
     End Sub
-
-    Public Sub DownloadTryOSAppPackage(Package As String, DownloadForm As DownloadingApp)
-        Debug.WriteLine("Debug: Should be running inside a Thread now.")
-
-        Dim DonePath As String = Main.Controller.GetUserFolder & "\Downloads\App.try"
-
-
-
-        DownloadForm.Close()
-
-        Return
-    End Sub
-
-
 End Class

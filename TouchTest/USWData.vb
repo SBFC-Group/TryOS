@@ -19,7 +19,7 @@
                 My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program\Pictures")
                 My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program\Temp")
 
-                Dim ReaderForPassword As String = ""
+                Dim ReaderForPassword As String = "VkY5b1gybGZjMTlWWDNOZlpWOXlYMGhmWVY5elgwNWZiMTkwWDJoZmFWOXVYMmM9"
 
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Password.swfiles", ReaderForPassword, False)
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Role.swfiles", "VkRCU1RrNUZNVFpXV0hCUVZrVnJPUT09", False)
@@ -41,8 +41,9 @@
             Form1.AllowNewerLoader = False
             UI.DisableCustomCode = True
             UI.DisableOpenFramework = True
+            Form1.User = New UserManager("Program")
             UI.LoadShell("Program", "")
-            Form1.HideTaskbar(True)
+            Form1.EnableFullAppMode(True)
             Form1.OpenChildForm(New USWApp)
             Form1.DisableConsole = True
         End Sub

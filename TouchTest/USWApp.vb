@@ -1,21 +1,22 @@
 ﻿Public Class USWApp
     Private Sub USWApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If USWThings.HasBeenOpened = False Then
-            USWThings.HasBeenOpened = True
-            USWThings.SetupUSWUser()
-            USWThings.OpenUSW()
-            Close()
-        ElseIf USWThings.HasBeenOpened = True Then
+        If USWThings.HasBeenOpened = True Then
             Panel3.Visible = False
             UI.RunCommands("Loadjpg 1", Form1.User)
             AxWindowsMediaPlayer1.Dock = DockStyle.Fill
             AxWindowsMediaPlayer1.uiMode = "none"
             AxWindowsMediaPlayer1.URL = UI.UsersFolder & "\Program\Temp\USW.mp4"
             StartMainTimer.Start()
+        Else
+            USWThings.HasBeenOpened = True
+            USWThings.SetupUSWUser()
+            USWThings.OpenUSW()
+            Close()
         End If
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles StartMainTimer.Tick
+        StartMainTimer.Stop()
         'Hides "AxWindowsMediaPlayer1".
         AxWindowsMediaPlayer1.Visible = False
 

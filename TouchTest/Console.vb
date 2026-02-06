@@ -1,8 +1,10 @@
 ﻿Public Class Console
+    Private User As New UserManager("SuperSecretUser", False)
+
     Private Sub RichTextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles RichTextBox2.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            UI.RunCommands(sender.Text, Form1.User, Me)
+            UI.RunCommands(sender.Text, User, Me)
         End If
     End Sub
 

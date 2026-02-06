@@ -49,17 +49,28 @@ Public Class PCContentMenu_NoneApp
                                                         Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\Settings\Main.dll"))
                                                     End Sub)
 
-        AddItemToMenu("Test1", "1", Sub()
-                                        MsgBox("1")
-                                    End Sub)
+        AddItemToMenu("TryOS_StoreButton", "TryOS Store", Sub()
+                                                              If My.Computer.FileSystem.DirectoryExists(Main.UI.AppsFolder & "\TryOS_Store_New") = True Then
+                                                                  Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\TryOS_Store_New\TryOS_Store.dll"))
+                                                              Else
+                                                                  If My.Computer.FileSystem.FileExists(Main.UI.AppsFolder & "\TryOS_Store_New\TryOS_Store.dll") = True Then
+                                                                      Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\TryOS_Store\TryOS_Store.dll"))
+                                                                  Else
+                                                                      Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\TryOS_Store\Main.dll"))
+                                                                  End If
+                                                              End If
+                                                          End Sub)
+        If My.Computer.FileSystem.DirectoryExists(Main.UI.AppsFolder & "\Internet++") = True Then
+            AddItemToMenu("InternetPlusPlusButton", "Internet++", Sub()
+                                                                      Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\Internet++\Main.dll"))
+                                                                  End Sub)
+        End If
+        If Environment.CommandLine.Contains("/ShowCommanderOnContextMenu") = True Then
+            AddItemToMenu("CommanderButton", "Commander", Sub()
+                                                              Main.UI.StartCMD()
+                                                          End Sub)
+        End If
 
-        AddItemToMenu("Test2", "2", Sub()
-                                        MsgBox("2")
-                                    End Sub)
-
-        AddItemToMenu("Test3", "3", Sub()
-                                        MsgBox("3")
-                                    End Sub)
     End Sub
 
     Private Sub PCContentMenu_NoneApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
