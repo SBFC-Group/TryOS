@@ -23,12 +23,14 @@ Partial Class TryExplorer
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TryExplorer))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.NewTabButton = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.Panel1.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -91,6 +93,12 @@ Partial Class TryExplorer
         'Timer1
         '
         '
+        'ImageList1
+        '
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "file_text_icon_250524.ico")
+        '
         'TryExplorer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -113,4 +121,5 @@ Partial Class TryExplorer
     Friend WithEvents Panel2 As Windows.Forms.Panel
     Friend WithEvents Panel3 As Windows.Forms.Panel
     Friend WithEvents Timer1 As Windows.Forms.Timer
+    Friend WithEvents ImageList1 As Windows.Forms.ImageList
 End Class

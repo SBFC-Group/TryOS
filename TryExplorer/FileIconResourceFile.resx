@@ -117,30 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="ImageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>106, 17</value>
-  </metadata>
-  <data name="ImageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADY
-        AgAAAk1TRnQBSQFMAwEBAAEIAQABCAEAARABAAEQAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABQAMA
-        ARADAAEBAQABIAYAARAeAAMkAcUDAQH8AwEB/AMBAfwDAQH8AwEB/AMBAfwDAQH8AwEB/AMCAfsDJAE5
-        0AADBAEFAwAB/wMNAe4DDQHuAw0B7gMNAe4DDQHuAw0B7gMNAe4DDQHuAwkB8wMAAf/QAAMNAe4DAQH8
-        JwAB/wMMARDMAAMNAe4DAQH8BAADAgH7AwEB/AMBAfwDAQH8AwEB/AMBAfwDAAH/BwAB/wMNARHMAAMN
-        Ae4DAQH8BAADKAG7Aw0B7gMNAe4DDQHuAw0B7gMNAe4DKwFLBwAB/wMNARHMAAMNAe4DAQH8JwAB/wMN
-        ARHMAAMNAe4DAQH8BwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wcAAf8DDQERzAADDQHuAwEB/AQA
-        AwEEAgEDAwIBAwMCAQMDAgEDAwIBAwsAAf8DDQERzAADDQHuAwEB/AgAAw0BEQMNAREDDQERAwABAQ8A
-        Af8DDQERzAADDQHuAwEB/AcAAf4DAAH/AwAB/wMAAf8DAQH8DwAB/wMLAQ/MAAMNAe4DAQH8IwAB/wMA
-        Af/QAAMNAe4DAQH8HAADIAHPAwAB/wMAAQHQAAMNAe4DAQH8GAADNAFzAwAB/9gAAygBQgMAAf8DDAEQ
-        Aw0BEQMNAREDDQERAw0BEQM0AYIDAAH/4wAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMNARL/ANUA
-        AUIBTQE+BwABPgMAASgDAAFAAwABEAMAAQEBAAEBBQABgBcAA/8BAAHgAQMGAAHAAQMGAAHPAfkGAAHI
-        AQkGAAHIAQkGAAHPAfkGAAHIAQkGAAHIARkGAAHMATkGAAHIATkGAAHPAfMGAAHPAeMGAALPBgABwAEf
-        BgAB4AEfBgAC/wYACw==
-</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="file_text_icon_250524" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\file_text_icon_250524.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="file_text_icon_2505241" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\file_text_icon_250524.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="file_unknown_icon_237563" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\file_unknown_icon_237563.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="file_unknown_icon_2375631" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\file_unknown_icon_237563.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="image_file_icon_215023" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\image_file_icon_215023.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="image_file_icon_2150231" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\image_file_icon_215023.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="install_line_icon_236048" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\install_line_icon_236048.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="install_line_icon_2360481" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\install_line_icon_236048.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

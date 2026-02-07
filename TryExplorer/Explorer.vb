@@ -2,17 +2,30 @@
 Imports System.Windows.Forms
 
 Public Class Explorer
+    Public imagelist As New ImageList
+
     Public PathHistory As New List(Of String)
     Public CurrentPlaceInHistory As Int64 = 0
 
     Public CurrentPath As String = My.Application.Info.DirectoryPath
 
     Private hiddenFolders As New List(Of String) From {
-        "runtimes", "Settings", "Languages", "TouchTest.exe.WebView2"
+        "runtimes", "Settings", "Languages", "TouchTest.exe.WebView2", "TryOS.exe.WebView2"
     }
 
     Private Sub Explorer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadConfig()
+
+        imagelist.ColorDepth = ColorDepth.Depth32Bit
+        imagelist.ImageSize = New Drawing.Size(32, 32)
+
+        imagelist.Images.Add("Images", My.Resources.FileIconResourceFile.image_file_icon_2150231)
+        imagelist.Images.Add("QuickNotes", My.Resources.FileIconResourceFile.file_text_icon_2505241)
+        imagelist.Images.Add("Installer", My.Resources.FileIconResourceFile.install_line_icon_2360481)
+        imagelist.Images.Add("Unknown", My.Resources.FileIconResourceFile.file_unknown_icon_2375631)
+
+        ListView1.LargeImageList = imagelist
+        ListView1.SmallImageList = imagelist
     End Sub
 
     'Private DoesTryExplorerConfigFolderExist As Boolean = False
@@ -200,11 +213,26 @@ Public Class Explorer
         Dim dirinfo As New System.IO.DirectoryInfo(dir1)
         files = dirinfo.GetFiles("*", IO.SearchOption.TopDirectoryOnly)
         For Each file In files
-            Dim lvi As New ListViewItem(file.Name)
+            Dim lvi As ListViewItem
+            If file.Extension = ".swnote" Then
+                lvi = New ListViewItem(file.Name, "QuickNotes")
+            ElseIf file.Extension = ".jpg" Then
+                lvi = New ListViewItem(file.Name, "Images")
+            ElseIf file.Extension = ".png" Then
+                lvi = New ListViewItem(file.Name, "Images")
+            ElseIf file.Extension = ".gif" Then
+                lvi = New ListViewItem(file.Name, "Images")
+            ElseIf file.Extension = ".tryapp" Then
+                lvi = New ListViewItem(file.Name, "Installer")
+            Else
+                lvi = New ListViewItem(file.Name, "Unknown")
+            End If
             lvi.SubItems.Add("File")
             lvi.SubItems.Add(file.Length.ToString())
+
             lvi.Tag = file.FullName ' store full path
             ListView1.Items.Add(lvi)
+
         Next
     End Sub
 
@@ -223,5 +251,37 @@ Public Class Explorer
         Catch ex As Exception
             ' Ignore access errors
         End Try
+    End Sub
+
+    Private Sub ListView1_ItemActivate(sender As Object, e As EventArgs) Handles ListView1.ItemActivate
+        ' When double-click or Enter is pressed
+        If ListView1.SelectedItems.Count > 0 Then
+            Dim file As New IO.FileInfo(ListView1.SelectedItems(0).Tag.ToString())
+            'Dim filePath As String = ListView1.SelectedItems(0).Tag.ToString()
+            If file.Extension = "swnote" Then
+
+            ElseIf file.Extension = ".jpg" Then
+                Main.Controller.SetOrGetArguments(file.FullName)
+                Main.Controller.RunCommand("RunOpenFrameworkApp " & My.Application.Info.DirectoryPath & "\Apps\ImageViewer\ImageViewer.dll")
+                Main.Controller.SetOrGetArguments(" ")
+            ElseIf file.Extension = ".png" Then
+                Main.Controller.SetOrGetArguments(file.FullName)
+                Main.Controller.RunCommand("RunOpenFrameworkApp " & My.Application.Info.DirectoryPath & "\Apps\ImageViewer\ImageViewer.dll")
+                Main.Controller.SetOrGetArguments(" ")
+            ElseIf file.Extension = ".gif" Then
+                Main.Controller.SetOrGetArguments(file.FullName)
+                Main.Controller.RunCommand("RunOpenFrameworkApp " & My.Application.Info.DirectoryPath & "\Apps\ImageViewer\ImageViewer.dll")
+                Main.Controller.SetOrGetArguments(" ")
+            ElseIf file.Extension = ".tryapp" Then
+                Dim InstallerWindow As New InstallTryOSApp(file.FullName)
+                InstallerWindow.ShowDialog()
+            Else
+                'Try
+                '    Process.Start(New ProcessStartInfo(filePath) With {.UseShellExecute = True})
+                'Catch ex As Exception
+                '    MessageBox.Show("Cannot open file: " & ex.Message)
+                'End Try
+            End If
+        End If
     End Sub
 End Class

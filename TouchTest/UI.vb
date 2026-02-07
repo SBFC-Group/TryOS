@@ -57,6 +57,75 @@ Public Class UI
             Text1 = Text1.Replace("RunApp ", "")
             Form1.OpenChildForm(GetForm("TouchTest." & Text1))
             Return Nothing
+        ElseIf Command.Contains("RunOpenFrameworkApp ") = True Then
+            Command = Command.Replace("Console>", "")
+            Command = Command.Replace("RunOpenFrameworkApp ", "")
+            Form1.OpenChildForm(GetFormFromAppDll(Command))
+            Return Nothing
+        ElseIf Command.Contains("SetWallpaper ") = True Then
+            Dim Text1 As String = Command
+            Text1 = Text1.Replace("Console>", "")
+            Text1 = Text1.Replace("SetWallpaper ", "")
+            Form1.Panel1.BackgroundImage = Bitmap.FromFile(Text1)
+            Return $"Loaded Wallpaper from {Text1}"
+        ElseIf Command.Contains("GetWallpaper") = True Then
+            Return Form1.Panel1.BackgroundImage
+        ElseIf Command.Contains("whoami") = True Then
+            If Command.Contains("/nogui") = True Then
+                Return Form1.User.Role
+            Else
+                Dim TheRole As TryController.Roles = Form1.User.Role
+                Dim StringRole As String
+
+                If TheRole = TryController.Roles.Guest Then
+                    StringRole = "Guest"
+                ElseIf TheRole = TryController.Roles.Standard Then
+                    StringRole = "Standard"
+                ElseIf TheRole = TryController.Roles.Administrator Then
+                    StringRole = "Administrator"
+                ElseIf TheRole = TryController.Roles.Program Then
+                    StringRole = "Program"
+                ElseIf TheRole = TryController.Roles.Developer Then
+                    StringRole = "Developer"
+                Else
+                    StringRole = "Unknown"
+                End If
+                ShowError(StringRole, ErrorMSGBox.Alerts.Information)
+                Return StringRole
+            End If
+        ElseIf Command.Contains("ThemeManager") = True Then
+            If Command.Contains("/GetResource") = True Then
+                If Command.Contains(" DarkModeForApps") = True Then
+                    Return Form1.IsUsingDarkThemeForApps
+                ElseIf Command.Contains(" DarkModeForPrograms") = True Then
+                    Return Form1.IsUsingDarkThemeForPrograms
+                Else
+                    Return Nothing
+                End If
+            ElseIf Command.Contains("/SetResource") = True Then
+                If Command.Contains(" DarkModeForApps") = True Then
+                    Command = Command.Replace("Console>", "")
+                    Command = Command.Replace("ThemeManager /SetResource DarkModeForApps=", "")
+                    Try
+                        Form1.IsUsingDarkThemeForApps = Convert.ToBoolean(Command)
+                    Catch ex As Exception
+                    End Try
+                    Return Command
+                ElseIf Command.Contains(" DarkModeForPrograms") = True Then
+                    Command = Command.Replace("Console>", "")
+                    Command = Command.Replace("ThemeManager /SetResource DarkModeForPrograms=", "")
+                    Try
+                        Form1.IsUsingDarkThemeForPrograms = Convert.ToBoolean(Command)
+                    Catch ex As Exception
+                    End Try
+                    Return Command
+
+                Else
+                    Return Nothing
+                End If
+            Else
+                Return Nothing
+            End If
         ElseIf Command.Contains("Loadjpg ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
@@ -85,6 +154,7 @@ Public Class UI
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("installapp ", "")
+            TryOS_Store_Manager.Class1.InstallTryOSApp(Text1)
             Return Nothing
         ElseIf Command.Contains("RunTestSniper") = True Then
             Dim gg As New Sniper
@@ -566,6 +636,31 @@ Public Class UI
             MsgBox("Form '" & formName & "' not found or is not a valid Form.")
             Return Nothing
         End If
+    End Function
+
+    Public Function GetFormFromAppDll(DllPath As String) As Object
+        Try
+            Dim asm As Assembly = Assembly.LoadFrom(DllPath)
+
+            ' Find all types that implement OpenFramework_Interface
+            For Each t In asm.GetTypes()
+                If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
+                    Try
+                        Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)
+                        Return plugin.GetForm()
+                    Catch ex As Exception
+                        ShowError(ex.Message)
+                        Debug.WriteLine(ex.Message)
+
+                    End Try
+                End If
+            Next
+            Return Nothing
+        Catch Exceptionthing As Exception
+            ShowError(Exceptionthing.Message)
+            Debug.WriteLine(Exceptionthing.Message)
+            Return Nothing
+        End Try
     End Function
 
     Public Sub ChangeObjectPropertyByName(container As Object, objectName As String, propertyName As String, value As Object)

@@ -74,6 +74,17 @@
     <Compile Include="Explorer.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="FileIconResourceFile.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FileIconResourceFile.resx</DependentUpon>
+    </Compile>
+    <Compile Include="InstallTryOSApp.Designer.vb">
+      <DependentUpon>InstallTryOSApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InstallTryOSApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -106,6 +117,14 @@
   <ItemGroup>
     <EmbeddedResource Include="Explorer.resx">
       <DependentUpon>Explorer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileIconResourceFile.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FileIconResourceFile.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstallTryOSApp.resx">
+      <DependentUpon>InstallTryOSApp.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -145,6 +164,30 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_text_icon_250524.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_text_icon_250524.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image_file_icon_215023.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image_file_icon_215023.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_unknown_icon_237563.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_unknown_icon_237563.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\install_line_icon_236048.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\install_line_icon_236048.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
