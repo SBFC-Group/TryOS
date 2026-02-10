@@ -14,6 +14,8 @@ Public Class Explorer
     }
 
     Private Sub Explorer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LocalUserManager = New TouchTest.UserManager(Main.Controller.GetUsername)
+
         LoadConfig()
 
         imagelist.ColorDepth = ColorDepth.Depth32Bit
@@ -87,9 +89,9 @@ Public Class Explorer
             Else
                 Try
 
-                    My.Computer.FileSystem.WriteAllText(ConfigFolder & "\ListedFolders.swfiles", $"0={Main.Controller.GetUserFolder()};
-1={Main.Controller.GetUserFolder()}\Downloads;
-2={Main.Controller.GetUserFolder()}\Pictures;", False)
+                    My.Computer.FileSystem.WriteAllText(ConfigFolder & "\ListedFolders.swfiles", "0=user:;
+1=user:\Downloads;
+2=user:\Pictures;", False)
                     LoadListedFolders(ConfigFolder & "\ListedFolders.swfiles")
                 Catch ex As System.IO.PathTooLongException
                     Main.Controller.ShowError("The current path is too long for TryOS/Windows [IO.PathTooLongException]", TouchTest.ErrorMSGBox.Alerts.Exclamation)
@@ -148,8 +150,15 @@ Public Class Explorer
 
         For Each s In TempTextBox.Lines
             Dim NewText As String = s
+
             NewText = NewText.Remove(0, 2)
             NewText = NewText.Remove(NewText.Length - 1, 1)
+
+            If NewText.StartsWith("root:") = True Then
+                NewText = NewText.Replace("root:", My.Application.Info.DirectoryPath)
+            ElseIf NewText.StartsWith("user:") = True Then
+                NewText = NewText.Replace("user:", Main.Controller.GetUserFolder)
+            End If
             'Debug.WriteLine(s)
             CreateButton(NewText)
 
@@ -158,6 +167,7 @@ Public Class Explorer
     End Sub
 
     Private Sub CreateButton(Path As String)
+        MsgBox(Path)
         Dim folderinfo As New IO.DirectoryInfo(Path)
         Dim NewButton As New Button
         NewButton.Name = folderinfo.Name
@@ -175,6 +185,7 @@ Public Class Explorer
     Private Sub ClickSubForListedFolders(sender As Object, e As EventArgs)
         PathHistory.Add(CurrentPath)
         Dim btn As Button = CType(sender, Button)
+
         TextBox1.Text = btn.Tag
         CurrentPath = btn.Tag
         LoadFiles()
@@ -209,6 +220,13 @@ Public Class Explorer
     Public Sub LoadFiles()
         ListView1.Items.Clear()
         Dim dir1 = CurrentPath
+
+        If dir1.StartsWith("root:") = True Then
+            dir1 = dir1.Replace("root:", My.Application.Info.DirectoryPath)
+        ElseIf dir1.StartsWith("user:") = True Then
+            dir1 = dir1.Replace("user:", Main.Controller.GetUserFolder)
+        End If
+
         Dim files() As System.IO.FileInfo
         Dim dirinfo As New System.IO.DirectoryInfo(dir1)
         files = dirinfo.GetFiles("*", IO.SearchOption.TopDirectoryOnly)
@@ -275,6 +293,7 @@ Public Class Explorer
             ElseIf file.Extension = ".tryapp" Then
                 Dim InstallerWindow As New InstallTryOSApp(file.FullName)
                 InstallerWindow.ShowDialog()
+
             Else
                 'Try
                 '    Process.Start(New ProcessStartInfo(filePath) With {.UseShellExecute = True})
@@ -283,5 +302,51 @@ Public Class Explorer
                 'End Try
             End If
         End If
+    End Sub
+
+    Public LocalUserManager As TouchTest.UserManager
+
+    Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If TextBox1.Text.StartsWith(My.Application.Info.DirectoryPath) = True Then
+                Main.Controller.ShowError("Access to the application's files via its full path is not allowed. Access denied.")
+                Return
+
+            ElseIf TextBox1.Text.StartsWith("root:") = True Then
+                Dim TheRole As TouchTest.TryController.Roles
+                If My.Application.Info.Version.Revision > 350 Then
+                    TheRole = Main.Controller.RunCommand("whoami /nogui")
+                Else
+                    TheRole = Main.Controller.GetRole()
+                End If
+
+                If TheRole = TouchTest.TryController.Roles.Developer Then
+                ElseIf TheRole = TouchTest.TryController.Roles.Program Then
+                ElseIf TheRole = TouchTest.TryController.Roles.Administrator Then
+                    If LocalUserManager.DoesSettingExist("AllowToRoot=True") = True Then
+
+                    Else
+                        Return
+                    End If
+                Else
+                    Return
+                End If
+            ElseIf TextBox1.Text.StartsWith("user:") = True Then
+            ElseIf TextBox1.Text.Contains(":\") = True Then
+                Main.Controller.ShowError("Access to other files on this device is not allowed. Access denied.")
+                Return
+            End If
+
+            CurrentPath = TextBox1.Text
+            Try
+                LoadFiles()
+            Catch ex As Exception
+                Debug.WriteLine(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub TextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox2.KeyDown
+
     End Sub
 End Class
