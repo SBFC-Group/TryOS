@@ -65,7 +65,6 @@
                     End If
 
                 End If
-
             ElseIf ProgressBar1.Value = 50 Then
                 If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles") Then
                 Else

@@ -2,10 +2,10 @@
 Imports System.Windows.Forms
 Imports TouchTest
 
-Public Class MainCode
+Public Class Main
     Implements TouchTest.OpenFramework_Interface
 
-    Public Shared TheManager As New OpenFramework_Handler
+    Public Shared Controller As New OpenFramework_Handler
 
     Public ReadOnly Property Name As String Implements OpenFramework_Interface.Name
         Get
@@ -38,7 +38,7 @@ Public Class MainCode
     End Property
 
     Public Sub Initialize(host As OpenFramework_UI_Handler) Implements OpenFramework_Interface.Initialize
-        TheManager = host
+        Controller = host
     End Sub
 
     Public Function GetForm() As Form Implements OpenFramework_Interface.GetForm

@@ -9,13 +9,14 @@
         If fileName = "Null" Then
             Show()
         Else
-
+            stringlist.Add(fileName)
+            PictureBox1.Image = Drawing.Bitmap.FromFile(fileName)
         End If
     End Sub
 
-    Public Sub LoadMediaViewer(fileName As String, FileFormat As MediaFormats)
+    'Public Sub LoadMediaViewer(fileName As String, FileFormat As MediaFormats)
 
-    End Sub
+    'End Sub
 
     Public Enum MediaFormats
         png = 1
@@ -42,12 +43,25 @@
     Public Sub LoadImages()
 
 
-        Dim dir1 = MainCode.TheManager.GetUserFolder & "\Pictures"
+        Dim dir1 = Main.Controller.GetUserFolder & "\Pictures"
         Dim files() As System.IO.FileInfo
         Dim dirinfo As New System.IO.DirectoryInfo(dir1)
         files = dirinfo.GetFiles("*", IO.SearchOption.TopDirectoryOnly)
         For Each file In files
             stringlist.Add(file.FullName)
         Next
+    End Sub
+
+    Private Sub Form40_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim Argument As String = Main.Controller.SetOrGetArguments()
+        If Argument = "" Then
+        ElseIf Argument = " " Then
+        Else
+            If My.Computer.FileSystem.FileExists(Argument) Then
+                LoadMediaViewer(Argument)
+            Else
+                Return
+            End If
+        End If
     End Sub
 End Class

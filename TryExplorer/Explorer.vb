@@ -7,7 +7,7 @@ Public Class Explorer
     Public PathHistory As New List(Of String)
     Public CurrentPlaceInHistory As Int64 = 0
 
-    Public CurrentPath As String = My.Application.Info.DirectoryPath
+    Public CurrentPath As String = "user:"
 
     Private hiddenFolders As New List(Of String) From {
         "runtimes", "Settings", "Languages", "TouchTest.exe.WebView2", "TryOS.exe.WebView2"
@@ -23,11 +23,14 @@ Public Class Explorer
 
         imagelist.Images.Add("Images", My.Resources.FileIconResourceFile.image_file_icon_2150231)
         imagelist.Images.Add("QuickNotes", My.Resources.FileIconResourceFile.file_text_icon_2505241)
-        imagelist.Images.Add("Installer", My.Resources.FileIconResourceFile.install_line_icon_2360481)
+        imagelist.Images.Add("Installer", My.Resources.FileIconResourceFile.image_file_icon_2150231)
+        imagelist.Images.Add("Folder", My.Resources.FileIconResourceFile.foldercustom_932061)
         imagelist.Images.Add("Unknown", My.Resources.FileIconResourceFile.file_unknown_icon_2375631)
 
         ListView1.LargeImageList = imagelist
         ListView1.SmallImageList = imagelist
+
+
     End Sub
 
     'Private DoesTryExplorerConfigFolderExist As Boolean = False
@@ -104,6 +107,11 @@ Public Class Explorer
                     Debug.WriteLine(ex.Message & " <-> Happen in TryExplorer -> Explorer -> LoadConfig")
                 End Try
             End If
+
+            If My.Computer.FileSystem.FileExists(ConfigFolder & "\DefaultFolder.swfiles") Then
+
+            End If
+
             'Will make settings file for them soon. 16-01-2026
             ListView1.Columns.Add("Name", 250)
             ListView1.Columns.Add("Type", 100)
@@ -182,43 +190,44 @@ Public Class Explorer
         AddHandler NewButton.Click, AddressOf ClickSubForListedFolders
     End Sub
 
+
+
     Private Sub ClickSubForListedFolders(sender As Object, e As EventArgs)
         PathHistory.Add(CurrentPath)
+
+        CurrentPlaceInHistory = CurrentPlaceInHistory + 1
         Dim btn As Button = CType(sender, Button)
 
         TextBox1.Text = btn.Tag
         CurrentPath = btn.Tag
+        LoadAllDirectories()
+    End Sub
+
+    Private Sub LoadAllDirectories()
+        ListView1.Items.Clear()
+        Dim dir1 = CurrentPath
+
+        If dir1.StartsWith("root:") = True Then
+            dir1 = dir1.Replace("root:", My.Application.Info.DirectoryPath)
+        ElseIf dir1.StartsWith("user:") = True Then
+            dir1 = dir1.Replace("user:", Main.Controller.GetUserFolder)
+        End If
+
+        Dim files() As System.IO.DirectoryInfo
+        Dim dirinfo As New System.IO.DirectoryInfo(dir1)
+        files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
+        For Each file In files
+            Dim lvi As New ListViewItem(file.Name, "Folder")
+            lvi.SubItems.Add("File")
+            'lvi.SubItems.Add(file.)
+
+            lvi.Tag = file.FullName ' store full path
+            ListView1.Items.Add(lvi)
+        Next
         LoadFiles()
     End Sub
 
-    Private Sub LoadAllDirectories(parentNode As TreeNode)
-        Dim folderPath As String = parentNode.Tag.ToString()
-
-
-
-        Try
-            For Each dir As String In IO.Directory.GetDirectories(folderPath)
-                Dim folderName As String = IO.Path.GetFileName(dir)
-
-                ' Skip hidden folders
-                'If hiddenFolders.Any(Function(h) h.Equals(folderName, StringComparison.OrdinalIgnoreCase)) Then
-                '    Continue For
-                'End If
-
-                Dim dirNode As New TreeNode(folderName)
-                dirNode.Tag = dir
-                'TreeView1.Nodes.Add(dirNode)
-
-                ' Recursively load subfolders
-                'LoadAllDirectories(dirNode)
-            Next
-        Catch ex As Exception
-            ' Ignore folders we can't access
-        End Try
-    End Sub
-
     Public Sub LoadFiles()
-        ListView1.Items.Clear()
         Dim dir1 = CurrentPath
 
         If dir1.StartsWith("root:") = True Then
@@ -276,7 +285,14 @@ Public Class Explorer
         If ListView1.SelectedItems.Count > 0 Then
             Dim file As New IO.FileInfo(ListView1.SelectedItems(0).Tag.ToString())
             'Dim filePath As String = ListView1.SelectedItems(0).Tag.ToString()
-            If file.Extension = "swnote" Then
+            If ListView1.SelectedItems(0).ImageKey = "Folder" Then
+                PathHistory.Add(CurrentPath)
+                Dim lvi As ListViewItem = ListView1.SelectedItems(0)
+
+                TextBox1.Text = lvi.Tag
+                CurrentPath = lvi.Tag
+                LoadAllDirectories()
+            ElseIf file.Extension = "swnote" Then
 
             ElseIf file.Extension = ".jpg" Then
                 Main.Controller.SetOrGetArguments(file.FullName)
@@ -293,7 +309,6 @@ Public Class Explorer
             ElseIf file.Extension = ".tryapp" Then
                 Dim InstallerWindow As New InstallTryOSApp(file.FullName)
                 InstallerWindow.ShowDialog()
-
             Else
                 'Try
                 '    Process.Start(New ProcessStartInfo(filePath) With {.UseShellExecute = True})
@@ -338,8 +353,9 @@ Public Class Explorer
             End If
 
             CurrentPath = TextBox1.Text
+
             Try
-                LoadFiles()
+                LoadAllDirectories()
             Catch ex As Exception
                 Debug.WriteLine(ex.Message)
             End Try
@@ -347,6 +363,18 @@ Public Class Explorer
     End Sub
 
     Private Sub TextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox2.KeyDown
+
+    End Sub
+
+    Private Sub BackButton_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If CurrentPath = PathHistory.Item(PathHistory.Count) Then
+
+        End If
+        CurrentPath = PathHistory.Item(PathHistory.Count)
+
+    End Sub
+
+    Private Sub ForwardButton_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
     End Sub
 End Class
