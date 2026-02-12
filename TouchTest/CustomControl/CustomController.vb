@@ -46,12 +46,20 @@ Namespace CustomController_Data
                 Dim dllFiles = Directory.GetFiles(folderPath, "*.dll")
 
                 For Each dll In dllFiles
+                    Dim DontReturn As Boolean = False
+                    If My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\SBFC Group\CustomController", "DisableShellGUI", Nothing) = "true" Then
+                        If dll.Contains("ShellGUI.dll") = True Then
+                            DontReturn = True
+                        End If
+                    End If
                     Dim asm = Assembly.LoadFrom(dll)
 
                     For Each type In asm.GetTypes()
                         If GetType(CustomController_Interface).IsAssignableFrom(type) AndAlso Not type.IsInterface AndAlso Not type.IsAbstract Then
-                            Dim pluginInstance = CType(Activator.CreateInstance(type), CustomController_Interface)
-                            plugins.Add(pluginInstance)
+                            If DontReturn = False Then
+                                Dim pluginInstance = CType(Activator.CreateInstance(type), CustomController_Interface)
+                                plugins.Add(pluginInstance)
+                            End If
                         End If
                     Next
                 Next

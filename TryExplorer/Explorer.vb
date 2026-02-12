@@ -5,7 +5,7 @@ Public Class Explorer
     Public imagelist As New ImageList
 
     Public PathHistory As New List(Of String)
-    Public CurrentPlaceInHistory As Int64 = 0
+    Public CurrentPlaceInHistory As Int64 = -1
 
     Public CurrentPath As String = "user:"
 
@@ -15,8 +15,6 @@ Public Class Explorer
 
     Private Sub Explorer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LocalUserManager = New TouchTest.UserManager(Main.Controller.GetUsername)
-
-        LoadConfig()
 
         imagelist.ColorDepth = ColorDepth.Depth32Bit
         imagelist.ImageSize = New Drawing.Size(32, 32)
@@ -29,6 +27,10 @@ Public Class Explorer
 
         ListView1.LargeImageList = imagelist
         ListView1.SmallImageList = imagelist
+
+        LoadConfig()
+
+
 
 
     End Sub
@@ -109,7 +111,27 @@ Public Class Explorer
             End If
 
             If My.Computer.FileSystem.FileExists(ConfigFolder & "\DefaultFolder.swfiles") Then
+                CurrentPath = My.Computer.FileSystem.ReadAllText(ConfigFolder & "\DefaultFolder.swfiles")
+                Try
+                    LoadAllDirectories()
+                Catch ex As Exception
+                    Debug.WriteLine(ex.Message)
+                End Try
 
+            Else
+                Try
+                    My.Computer.FileSystem.WriteAllText(ConfigFolder & "\DefaultFolder.swfiles", "user:", False)
+                Catch ex As System.IO.PathTooLongException
+                    Main.Controller.ShowError("The current path is too long for TryOS/Windows [IO.PathTooLongException]", TouchTest.ErrorMSGBox.Alerts.Exclamation)
+                    Debug.WriteLine(ex.Message & " <-> Happen in TryExplorer -> Explorer -> LoadConfig")
+                Catch ex As UnauthorizedAccessException
+                    Main.Controller.ShowError("Do you own root folder? [UnauthorizedAccessException]")
+                    Debug.WriteLine(ex.Message & " <-> Happen in TryExplorer -> Explorer -> LoadConfig")
+                Catch ex As Exception
+                    Main.Controller.ShowError(ex.Message)
+                    Debug.WriteLine(ex.Message & " <-> Happen in TryExplorer -> Explorer -> LoadConfig")
+                End Try
+                LoadAllDirectories()
             End If
 
             'Will make settings file for them soon. 16-01-2026
@@ -145,8 +167,6 @@ Public Class Explorer
             ' Load everything but hide restricted folders
             'LoadAllDirectories(rootNode)
         End If
-
-
     End Sub
 
     Public Sub LoadListedFolders(ConfigPath As String)
@@ -162,12 +182,6 @@ Public Class Explorer
             NewText = NewText.Remove(0, 2)
             NewText = NewText.Remove(NewText.Length - 1, 1)
 
-            If NewText.StartsWith("root:") = True Then
-                NewText = NewText.Replace("root:", My.Application.Info.DirectoryPath)
-            ElseIf NewText.StartsWith("user:") = True Then
-                NewText = NewText.Replace("user:", Main.Controller.GetUserFolder)
-            End If
-            'Debug.WriteLine(s)
             CreateButton(NewText)
 
         Next
@@ -175,7 +189,14 @@ Public Class Explorer
     End Sub
 
     Private Sub CreateButton(Path As String)
-        MsgBox(Path)
+        Dim tempstring As String = Path
+
+        If tempstring.StartsWith(Main.Controller.GetUserFolder) = True Then
+            tempstring = tempstring.Replace(Main.Controller.GetUserFolder, "user")
+        ElseIf tempstring.StartsWith(My.Application.Info.DirectoryPath) = True Then
+            tempstring = tempstring.Replace(My.Application.Info.DirectoryPath, "root:")
+        End If
+
         Dim folderinfo As New IO.DirectoryInfo(Path)
         Dim NewButton As New Button
         NewButton.Name = folderinfo.Name
@@ -193,17 +214,22 @@ Public Class Explorer
 
 
     Private Sub ClickSubForListedFolders(sender As Object, e As EventArgs)
-        PathHistory.Add(CurrentPath)
 
-        CurrentPlaceInHistory = CurrentPlaceInHistory + 1
         Dim btn As Button = CType(sender, Button)
 
         TextBox1.Text = btn.Tag
+
         CurrentPath = btn.Tag
         LoadAllDirectories()
     End Sub
 
     Private Sub LoadAllDirectories()
+        Dim btnpanel As TabButton = CType(Me.Tag, TabButton)
+
+        PathHistory.Add(CurrentPath)
+
+        CurrentPlaceInHistory = CurrentPlaceInHistory + 1
+
         ListView1.Items.Clear()
         Dim dir1 = CurrentPath
 
@@ -215,6 +241,9 @@ Public Class Explorer
 
         Dim files() As System.IO.DirectoryInfo
         Dim dirinfo As New System.IO.DirectoryInfo(dir1)
+
+        btnpanel.Button2.Text = dirinfo.Name
+
         files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
         For Each file In files
             Dim lvi As New ListViewItem(file.Name, "Folder")
@@ -367,14 +396,23 @@ Public Class Explorer
     End Sub
 
     Private Sub BackButton_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If CurrentPath = PathHistory.Item(PathHistory.Count) Then
-
+        If PathHistory.Count = 1 Then
+            Button1.Enabled = False
+        Else
+            Button1.Enabled = True
         End If
-        CurrentPath = PathHistory.Item(PathHistory.Count)
 
+        CurrentPath = PathHistory.Item(PathHistory.Count - 1)
+        LoadAllDirectories()
     End Sub
 
     Private Sub ForwardButton_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
+        If PathHistory.Count = CurrentPlaceInHistory + 1 Then
+            Button2.Enabled = False
+        Else
+            Button2.Enabled = True
+            CurrentPath = PathHistory.Item(PathHistory.Count - 1)
+            LoadAllDirectories()
+        End If
     End Sub
 End Class

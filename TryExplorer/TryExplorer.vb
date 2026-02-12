@@ -12,6 +12,7 @@ Public Class TryExplorer
         End If
         NewExplorer.CurrentPath = Path
         ANewTabButton.Tag = NewExplorer
+        NewExplorer.Tag = ANewTabButton
 
         FlowLayoutPanel1.Controls.Add(ANewTabButton)
 

@@ -28,25 +28,29 @@ Partial Class TabButton
         '
         'Button1
         '
+        Me.Button1.BackColor = System.Drawing.Color.Gainsboro
         Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(142, 0)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(47, 60)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "X"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'Button2
         '
+        Me.Button2.BackColor = System.Drawing.Color.Gainsboro
         Me.Button2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Location = New System.Drawing.Point(0, 0)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(142, 60)
         Me.Button2.TabIndex = 1
         Me.Button2.Text = "Text Here"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'TabButton
         '
