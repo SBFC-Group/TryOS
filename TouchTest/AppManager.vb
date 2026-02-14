@@ -1,6 +1,6 @@
 ﻿Public Class AppManager
     Private Sub AppManager_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim plugins = OpenFramework_Data.LoadAppsDlls(Form1.SandboxedUser)
+        Dim plugins = OpenFramework_Data.OpenFramework.LoadAppsDlls(Form1.SandboxedUser)
 
         For Each p In plugins
             Debug.WriteLine("Loaded " & p.Name)
@@ -20,7 +20,7 @@
             FlowLayoutPanel1.Controls.Add(Btn)
         Next
 
-        OpenFramework_Data.RestoreButtonOrder(True, FlowLayoutPanel1)
+        OpenFramework_Data.OpenFramework.RestoreButtonOrder(True, FlowLayoutPanel1)
     End Sub
 
     Private ButtonPressed As Button
