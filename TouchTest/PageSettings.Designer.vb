@@ -91,7 +91,6 @@ Partial Class PageSettings
         '
         'Timer1
         '
-        Me.Timer1.Enabled = True
         '
         'Timer2
         '

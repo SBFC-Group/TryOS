@@ -109,12 +109,16 @@ Public Class MyControllerForm
         For Each c As Control In parent.Controls
 
             If c.Name = "Panel3" Then
-                If PCC.Visible = True Then
-                    PCC.Visible = False
+                If Bo1 = True Then
+                    If PCC.Visible = True Then
+                        PCC.Visible = False
+                    End If
+                    RemoveHandler c.MouseDown, AddressOf MouseDown_Menu
                 End If
-                RemoveHandler c.MouseDown, AddressOf MouseDown_Menu
             ElseIf c.Name = "Panel1" Then
-                c.Controls.Remove(PCC)
+                If Bo1 = True Then
+                    c.Controls.Remove(PCC)
+                End If
             End If
 
             If c.HasChildren Then AddHandlerToAll(c)
@@ -125,23 +129,34 @@ Public Class MyControllerForm
         For Each c As Control In parent.Controls
 
             If c.Name = "Panel3" Then
-                Debug.WriteLine("Adding PCC Handler ")
-                AddHandler c.MouseDown, AddressOf MouseDown_Menu
+                If Bo1 = True Then
+                    Debug.WriteLine("Adding PCC Handler ")
+                    AddHandler c.MouseDown, AddressOf MouseDown_Menu
+                End If
             ElseIf c.Name = "Panel1" Then
-                c.Controls.Add(PCC)
-                PCC.BringToFront()
+                If Bo1 = True Then
+                    c.Controls.Add(PCC)
+                    PCC.BringToFront()
+                End If
             ElseIf c.Name = "FlowLayoutPanel1" Then
-                AddHandlerToAppButtons(c)
+                If Bo1 = True Then
+                    AddHandlerToAppButtons(c)
+                End If
             ElseIf c.Name = "Button3" Then
-                AddHandler c.Click, Sub(sender As Object, e As EventArgs)
-                                        PCC.Visible = False
-                                    End Sub
+                If Bo1 = True Then
+                    AddHandler c.Click, Sub(sender As Object, e As EventArgs)
+                                            PCC.Visible = False
+                                        End Sub
+                End If
             ElseIf c.Name = "Button4" Then
-                AddHandler c.Click, Sub(sender As Object, e As EventArgs)
-                                        If IsPCCHere = True Then
-                                            PCC.Visible = True
-                                        End If
-                                    End Sub
+                If Bo1 = True Then
+                    AddHandler c.Click, Sub(sender As Object, e As EventArgs)
+                                            If IsPCCHere = True Then
+                                                PCC.Visible = True
+                                            End If
+                                        End Sub
+                End If
+
             End If
 
             If c.HasChildren Then AddHandlerToAll(c)

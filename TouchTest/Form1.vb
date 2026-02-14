@@ -82,7 +82,7 @@ Public Class Form1
         End If
 
         If UI.DisableOpenFramework = False Then
-            OpenFramework_Data.LoadApps(SandboxedUser)
+            OpenFramework_Data.OpenFramework.LoadApps(SandboxedUser)
 
             UserManager.LoadTaskbarButtons()
         End If
@@ -248,7 +248,7 @@ Public Class Form1
             If DisableFullScreenConsole = True Then
                 CommanderWindowedToolStripMenuItem_Click(sender, e)
             Else
-                OpenFramework_Data.AppName = ""
+                OpenFramework_Data.OpenFramework.AppName = ""
                 UI.StartCMD()
                 If Panel2.Visible = False Then
                     HideTaskbar(False)
@@ -269,7 +269,7 @@ Public Class Form1
 
         End Try
 
-        OpenFramework_Data.AppName = ""
+        OpenFramework_Data.OpenFramework.AppName = ""
 
         If IsSettingOpen = True Then
             IsSettingOpen = False
@@ -357,30 +357,43 @@ Public Class Form1
 
     End Sub
 
+    Public UseNewerAppViewer As Boolean = False
+
     Private Sub PowerButton_Click(sender As Object, e As EventArgs) Handles PowerButton.Click
-        If IsControlCenterOpen = True Then
-            CloseControlCenter()
-        ElseIf IsControlCenterOpen = False Then
-            ShowControlCenter()
+        If UseNewerAppViewer = True Then
+            Form2.Show()
+        Else
+            If IsControlCenterOpen = True Then
+                CloseControlCenter()
+            ElseIf IsControlCenterOpen = False Then
+                ShowControlCenter()
+            End If
         End If
+
 
     End Sub
 
     Private Sub WifiButton_Click(sender As Object, e As EventArgs) Handles WifiButton.Click
-        If IsControlCenterOpen = True Then
-            CloseControlCenter()
-        ElseIf IsControlCenterOpen = False Then
-            ShowControlCenter()
+        If UseNewerAppViewer = False Then
+            If IsControlCenterOpen = True Then
+                CloseControlCenter()
+            ElseIf IsControlCenterOpen = False Then
+                ShowControlCenter()
+            End If
         End If
+
 
     End Sub
 
     Private Sub VolumeButton_Click(sender As Object, e As EventArgs) Handles VolumeButton.Click
-        If IsControlCenterOpen = True Then
-            CloseControlCenter()
-        ElseIf IsControlCenterOpen = False Then
-            ShowControlCenter()
+        If UseNewerAppViewer = False Then
+            If IsControlCenterOpen = True Then
+                CloseControlCenter()
+            ElseIf IsControlCenterOpen = False Then
+                ShowControlCenter()
+            End If
         End If
+
 
     End Sub
 
@@ -449,7 +462,7 @@ Public Class Form1
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If UI.DisableOpenFramework = False Then
-            OpenFramework_Data.SaveButtonOrder()
+            OpenFramework_Data.OpenFramework.SaveButtonOrder()
         End If
     End Sub
 
@@ -458,26 +471,14 @@ Public Class Form1
     End Sub
 
     Private Sub LoadAppsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadAppsToolStripMenuItem.Click
-        OpenFramework_Data.LoadAppsDlls(User)
+        OpenFramework_Data.OpenFramework.LoadAppsDlls(User)
     End Sub
 
     Private Sub SaveButtonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveButtonOrderToolStripMenuItem.Click
-        OpenFramework_Data.SaveButtonOrder()
+        OpenFramework_Data.OpenFramework.SaveButtonOrder()
     End Sub
 
     Private Sub RestoreButtonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreButtonOrderToolStripMenuItem.Click
-        OpenFramework_Data.RestoreButtonOrder()
-    End Sub
-
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        OpenChildForm(New USWApp)
-    End Sub
-
-    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        Try
-            UI.ShowError(User.Username)
-        Catch ex As Exception
-            UI.ShowError(ex.Message)
-        End Try
+        OpenFramework_Data.OpenFramework.RestoreButtonOrder()
     End Sub
 End Class

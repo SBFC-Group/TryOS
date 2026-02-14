@@ -69,8 +69,6 @@ Partial Class Form1
         Me.InternetList = New System.Windows.Forms.ImageList(Me.components)
         Me.PowerList = New System.Windows.Forms.ImageList(Me.components)
         Me.PowerTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.TimebarPanel.SuspendLayout()
@@ -208,8 +206,6 @@ Partial Class Form1
         'TimebarPanel
         '
         Me.TimebarPanel.BackColor = System.Drawing.Color.Silver
-        Me.TimebarPanel.Controls.Add(Me.Button7)
-        Me.TimebarPanel.Controls.Add(Me.Button6)
         Me.TimebarPanel.Controls.Add(Me.Button5)
         Me.TimebarPanel.Controls.Add(Me.Label1)
         Me.TimebarPanel.Controls.Add(Me.VolumeButton)
@@ -524,24 +520,6 @@ Partial Class Form1
         '
         Me.PowerTimer.Interval = 5000
         '
-        'Button6
-        '
-        Me.Button6.Location = New System.Drawing.Point(243, 11)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(115, 23)
-        Me.Button6.TabIndex = 6
-        Me.Button6.Text = "Close Program"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'Button7
-        '
-        Me.Button7.Location = New System.Drawing.Point(376, 11)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(115, 23)
-        Me.Button7.TabIndex = 7
-        Me.Button7.Text = "Close Program"
-        Me.Button7.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -612,6 +590,4 @@ Partial Class Form1
     Friend WithEvents SaveButtonOrderToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RestoreButtonOrderToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PowerTimer As Timer
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
 End Class

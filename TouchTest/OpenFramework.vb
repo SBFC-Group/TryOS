@@ -2,21 +2,21 @@
 Imports System.Reflection
 
 Namespace OpenFramework_Data
-    Module OpenFramework
+    Public Class OpenFramework
 
-        Public Function GetOpenFrameworkVersion()
+        Public Shared Function GetOpenFrameworkVersion()
             Return "0.36.0"
         End Function
 
-        Public FlowLayoutPanelUse As FlowLayoutPanel = Form1.FlowLayoutPanel1
+        Public Shared FlowLayoutPanelUse As FlowLayoutPanel = Form1.FlowLayoutPanel1
 
-        Public Sub SetNewFlowLayoutPanel(FlowLayoutPanelThing As FlowLayoutPanel)
+        Public Shared Sub SetNewFlowLayoutPanel(FlowLayoutPanelThing As FlowLayoutPanel)
             FlowLayoutPanelUse = FlowLayoutPanelThing
         End Sub
 
-        Dim host As New OpenFramework_Handler()
+        Private Shared host As New OpenFramework_Handler()
 
-        Public Sub LoadApps(User As UserManager)
+        Public Shared Sub LoadApps(User As UserManager)
             If My.Computer.FileSystem.DirectoryExists(User.UserFolderPath & "\Apps") Then
 
 
@@ -49,9 +49,9 @@ Namespace OpenFramework_Data
             End If
         End Sub
 
-        Public AppName As String
+        Public Shared AppName As String
 
-        Private Sub PluginButton_Click(sender As Object, e As EventArgs)
+        Private Shared Sub PluginButton_Click(sender As Object, e As EventArgs)
             Dim btn As Button = CType(sender, Button)
             Dim plugin As OpenFramework_Interface = CType(btn.Tag, OpenFramework_Interface)
 
@@ -67,7 +67,7 @@ Namespace OpenFramework_Data
 
         End Sub
 
-        Public Sub SaveButtonOrder(Optional AllowCustom As Boolean = False, Optional ControlThing As Control = Nothing)
+        Public Shared Sub SaveButtonOrder(Optional AllowCustom As Boolean = False, Optional ControlThing As Control = Nothing)
             Dim order As New List(Of String)
             If AllowCustom = True Then
                 For Each ctrl As Control In ControlThing.Controls
@@ -81,7 +81,7 @@ Namespace OpenFramework_Data
             IO.File.WriteAllText(Form1.User.UserFolderPath & "\Settings\Taskbar_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
         End Sub
 
-        Public Sub RestoreButtonOrder(Optional AllowCustom As Boolean = False, Optional ControlThing As Control = Nothing)
+        Public Shared Sub RestoreButtonOrder(Optional AllowCustom As Boolean = False, Optional ControlThing As Control = Nothing)
             If AllowCustom = False Then
                 ControlThing = Form1.FlowLayoutPanel1
             End If
@@ -110,7 +110,7 @@ Namespace OpenFramework_Data
             End If
         End Sub
 
-        Public Function LoadAppsDlls(User As UserManager) As List(Of OpenFramework_Interface)
+        Public Shared Function LoadAppsDlls(User As UserManager) As List(Of OpenFramework_Interface)
 
             Dim InDevMode As Boolean = False
             If Environment.CommandLine.Contains("/DevMode") = True Then
@@ -136,7 +136,7 @@ Namespace OpenFramework_Data
                 If Not IO.Directory.Exists(Path) Then
                     Debug.WriteLine(Path & " Does not exist or you don't own the folder.")
                 Else
-                        Dim DllPath As String = ""
+                    Dim DllPath As String = ""
                     Dim ContinueThis As Boolean = False
 
                     If My.Computer.FileSystem.FileExists(Path & "\DllPath.txt") = True Then
@@ -190,5 +190,5 @@ Namespace OpenFramework_Data
 
             Return plugins
         End Function
-    End Module
+    End Class
 End Namespace
