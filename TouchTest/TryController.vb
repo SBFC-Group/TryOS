@@ -74,8 +74,10 @@ Public Class TryController
         Developer = 5
     End Enum
 
-    Public Function ShowStopWindow()
-
+    Public Function ShowStopWindow(message As String)
+        Dim exception As New Exception(message)
+        UI.ShowStopWindow(exception)
+        Return "Started Stop Window"
     End Function
 
     Public Function IsZipFile(filePath As String) As Boolean

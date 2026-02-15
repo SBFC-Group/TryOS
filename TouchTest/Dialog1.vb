@@ -8,10 +8,12 @@ Public Class Dialog1
 
         If My.Computer.FileSystem.FileExists(Path & "\" & FileName & Number.ToString) Then
             WallpaperNumber = Number
+            Return Number.ToString
         Else
             Dim Number2 As Integer = Number
             Number2 = Number2 - 1
             UploadFileToProgram(Number2, Path, FileName, FileFormat)
+            Return Number2.ToString
         End If
     End Function
 

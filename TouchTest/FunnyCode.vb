@@ -32,9 +32,9 @@
 
         Public Shared Sub _7(Optional User As UserManager = Nothing)
             If User IsNot Nothing Then
-                OpenFramework_Data.LoadApps(User)
+                OpenFramework_Data.OpenFramework.LoadApps(User)
             Else
-                OpenFramework_Data.LoadApps(Form1.SandboxedUser)
+                OpenFramework_Data.OpenFramework.LoadApps(Form1.SandboxedUser)
             End If
 
         End Sub
@@ -44,7 +44,7 @@
         End Sub
 
         Public Shared Sub _9()
-            OpenFramework_Data.LoadAppsDlls(Form1.SandboxedUser)
+            OpenFramework_Data.OpenFramework.LoadAppsDlls(Form1.SandboxedUser)
         End Sub
 
         Public Shared Function _10()

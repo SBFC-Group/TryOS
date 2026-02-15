@@ -34,7 +34,7 @@ Public Class OpenFramework_Handler
     End Function
 
     Public Function GetOpenFrameworkVersion() As String Implements OpenFramework_UI_Handler.GetOpenFrameworkVersion
-        Return OpenFramework_Data.GetOpenFrameworkVersion()
+        Return OpenFramework_Data.OpenFramework.GetOpenFrameworkVersion()
     End Function
 
     Public Function GetOSVersion(Optional GetVersionNumber As Boolean = False) As String Implements OpenFramework_UI_Handler.GetOSVersion

@@ -34,7 +34,7 @@ Public Class SettingsForm
     Private Shared Sub SendMessage(ByVal hWnd As System.IntPtr, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer)
     End Sub
 
-    Dim hh As Boolean = False
+    Public hh As Boolean = False
     Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
         If hh = True Then
             ReleaseCapture()
@@ -48,11 +48,11 @@ Public Class SettingsForm
 
         Dim frm As Form = New SettingsForm
         If Form1.currentForm IsNot Nothing Then
-            If frm.Text = OpenFramework_Data.AppName Then
+            If frm.Text = OpenFramework_Data.OpenFramework.AppName Then
                 Exit Sub
             End If
         End If
-        OpenFramework_Data.AppName = frm.Text
+        OpenFramework_Data.OpenFramework.AppName = frm.Text
         frm.Text = "SettingsForm"
         Form1.OpenChildForm(frm)
 

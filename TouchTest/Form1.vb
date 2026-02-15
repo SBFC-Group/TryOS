@@ -112,8 +112,17 @@ Public Class Form1
             End If
         End If
 
+        'This enables the new AppViewer
+        If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\UseAppViewer.setting") Then
+            Try
+                UseNewerAppViewer = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\UseAppViewer.setting"))
+            Catch ex As Exception
+                Debug.WriteLine(ex.Message)
+                UI.ShowError("Couldn't get an boolean from the file.")
+            End Try
 
-
+            Form2.Show()
+        End If
 
 
     End Sub
@@ -361,7 +370,18 @@ Public Class Form1
 
     Private Sub PowerButton_Click(sender As Object, e As EventArgs) Handles PowerButton.Click
         If UseNewerAppViewer = True Then
-            Form2.Show()
+            Form2.IsFocusOnButton = True
+            If Form2.HasLostFocus = True Then
+                Form2.Show()
+                Form2.HasLostFocus = False
+                Form2.IsFocusOnButton = False
+                Form2.LoadEverything()
+            Else
+                Form2.Show()
+                Form2.HasLostFocus = False
+                Form2.IsFocusOnButton = False
+                Form2.LoadEverything()
+            End If
         Else
             If IsControlCenterOpen = True Then
                 CloseControlCenter()

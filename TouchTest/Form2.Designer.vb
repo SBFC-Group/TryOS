@@ -22,8 +22,10 @@ Partial Class Form2
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -43,10 +45,15 @@ Partial Class Form2
         Me.FlowLayoutPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.FlowLayoutPanel1.AutoScroll = True
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 3)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(777, 492)
         Me.FlowLayoutPanel1.TabIndex = 0
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 800
         '
         'Form2
         '
@@ -60,6 +67,7 @@ Partial Class Form2
         Me.Padding = New System.Windows.Forms.Padding(40)
         Me.Text = "Form2"
         Me.TransparencyKey = System.Drawing.Color.Orchid
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -67,4 +75,5 @@ Partial Class Form2
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents Timer1 As Timer
 End Class

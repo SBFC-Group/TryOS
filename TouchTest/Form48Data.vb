@@ -3,8 +3,7 @@
         Public LogonUser As UserManager
 
         Public Sub SetupProgramUser()
-            If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\SuperSecretUser") Then
-            Else
+            If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\SuperSecretUser") = False Then
                 UserInfoHelper.CreateNewUser("SuperSecretUser", "", "")
                 System.Threading.Thread.Sleep(500)
                 My.Computer.FileSystem.DeleteFile(UI.UsersFolder & "\SuperSecretUser\Settings\Role.swfiles")
@@ -24,8 +23,6 @@
                 UI.DisableCustomCode = True
             End If
             Form1.AllowNewerLoader = False
-            UI.UserFolder = UI.UsersFolder & "\SuperSecretUser"
-            Form1.Username = "SuperSecretUser"
             UI.LoadShell("SuperSecretUser", "")
             Form1.HideTaskbar(True)
             Form1.OpenChildForm(New LogonForm)

@@ -26,7 +26,7 @@
     End Enum
 
     Public Function LoadPicture(FilePath As String)
-
+        Return Nothing
     End Function
 
 End Class
