@@ -30,6 +30,7 @@ Partial Class AppButton
         '
         'Button1
         '
+        Me.Button1.BackColor = System.Drawing.Color.Gainsboro
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(0, 0)
@@ -37,10 +38,11 @@ Partial Class AppButton
         Me.Button1.Size = New System.Drawing.Size(152, 52)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Hello World"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'Button2
         '
+        Me.Button2.BackColor = System.Drawing.Color.Gainsboro
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Location = New System.Drawing.Point(152, 0)
@@ -48,7 +50,7 @@ Partial Class AppButton
         Me.Button2.Size = New System.Drawing.Size(40, 52)
         Me.Button2.TabIndex = 1
         Me.Button2.Text = "X"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'AppButton
         '

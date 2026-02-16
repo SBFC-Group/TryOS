@@ -37,7 +37,7 @@ Partial Class Form2
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(40, 40)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(785, 500)
+        Me.Panel1.Size = New System.Drawing.Size(785, 462)
         Me.Panel1.TabIndex = 0
         '
         'FlowLayoutPanel1
@@ -48,7 +48,7 @@ Partial Class Form2
         Me.FlowLayoutPanel1.AutoScroll = True
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 3)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(777, 492)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(777, 454)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
         'Timer1
@@ -64,7 +64,7 @@ Partial Class Form2
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form2"
-        Me.Padding = New System.Windows.Forms.Padding(40)
+        Me.Padding = New System.Windows.Forms.Padding(40, 40, 40, 78)
         Me.Text = "Form2"
         Me.TransparencyKey = System.Drawing.Color.Orchid
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

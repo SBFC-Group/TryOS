@@ -22,8 +22,8 @@
 
     Public Sub LoadEverything()
         FlowLayoutPanel1.Controls.Clear()
-        Dim List As FormCollection = My.Application.OpenForms
-        For Each f As Form In List
+
+        For Each f As Form In Form1.AppList
             Dim NewButton As New AppButton
             NewButton.Name = f.Name
             NewButton.TheForm = f

@@ -29,6 +29,8 @@ Public Class Form1
 
     Public SandboxedUser As UserManager
 
+    Public AppList As New List(Of Form)
+
     Private lang As New LanguageManager()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -112,16 +114,20 @@ Public Class Form1
             End If
         End If
 
-        'This enables the new AppViewer
-        If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\UseAppViewer.setting") Then
-            Try
-                UseNewerAppViewer = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\UseAppViewer.setting"))
-            Catch ex As Exception
-                Debug.WriteLine(ex.Message)
-                UI.ShowError("Couldn't get an boolean from the file.")
-            End Try
 
-            Form2.Show()
+        If AllowNewerLoader = True Then
+
+            'This enables the new AppViewer
+            If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\UseAppViewer.setting") Then
+                Try
+                    UseNewerAppViewer = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\UseAppViewer.setting"))
+                Catch ex As Exception
+                    Debug.WriteLine(ex.Message)
+                    UI.ShowError("Couldn't get an boolean from the file.")
+                End Try
+
+                Form2.Show()
+            End If
         End If
 
 
@@ -176,8 +182,9 @@ Public Class Form1
 
     Public currentForm As Form = Nothing
     Public Sub OpenChildForm(ByVal childForm As Form, Optional arg1 As String = "Null=Nothing")
-        If currentForm IsNot Nothing Then currentForm.Close()
+        If currentForm IsNot Nothing Then Panel3.Controls.Remove(Panel3.Tag)
         currentForm = childForm
+        AppList.Add(childForm)
         childForm.TopLevel = False
         childForm.FormBorderStyle = LocalFormBorderStyle
         childForm.Dock = LocalDockStyle
@@ -189,6 +196,20 @@ Public Class Form1
         End If
         Try
             childForm.Show()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Public Sub OpenAppAgain(App As Form)
+        If Panel3.Tag IsNot Nothing Then
+            Panel3.Controls.Remove(Panel3.Tag)
+        End If
+        currentForm = App
+        Panel3.Controls.Add(App)
+        Panel3.Tag = App
+        Try
+            App.Show()
         Catch ex As Exception
 
         End Try
@@ -370,18 +391,31 @@ Public Class Form1
 
     Private Sub PowerButton_Click(sender As Object, e As EventArgs) Handles PowerButton.Click
         If UseNewerAppViewer = True Then
-            Form2.IsFocusOnButton = True
-            If Form2.HasLostFocus = True Then
+
+            If Form2.IsOpen = False Then
                 Form2.Show()
-                Form2.HasLostFocus = False
-                Form2.IsFocusOnButton = False
                 Form2.LoadEverything()
-            Else
-                Form2.Show()
-                Form2.HasLostFocus = False
-                Form2.IsFocusOnButton = False
-                Form2.LoadEverything()
+                Form2.IsOpen = True
+                Form2.TopMost = True
+            ElseIf Form2.IsOpen = True Then
+                Form2.Hide()
+                Form2.IsOpen = False
+                Form2.TopMost = False
             End If
+
+
+            'Form2.IsFocusOnButton = True
+            'If Form2.HasLostFocus = True Then
+            '    Form2.Show()
+            '    Form2.HasLostFocus = False
+            '    Form2.IsFocusOnButton = False
+            '    Form2.LoadEverything()
+            'Else
+            '    Form2.Show()
+            '    Form2.HasLostFocus = False
+            '    Form2.IsFocusOnButton = False
+            '    Form2.LoadEverything()
+            'End If
         Else
             If IsControlCenterOpen = True Then
                 CloseControlCenter()
@@ -406,7 +440,7 @@ Public Class Form1
     End Sub
 
     Private Sub VolumeButton_Click(sender As Object, e As EventArgs) Handles VolumeButton.Click
-        If UseNewerAppViewer = False Then
+        If UseNewerAppViewer = True Then
             If IsControlCenterOpen = True Then
                 CloseControlCenter()
             ElseIf IsControlCenterOpen = False Then
@@ -422,7 +456,9 @@ Public Class Form1
     Public ControlCenter As PageSettings
 
     ''' <summary>This opens the Control Center</summary>
-    Public Sub ShowControlCenter()
+    Public Sub ShowControlCenter(Optional NewControlCenter As Boolean = False)
+
+
         IsControlCenterOpen = True
         Try
             currentForm.Hide()
@@ -439,7 +475,7 @@ Public Class Form1
     End Sub
 
     ''' <summary>This closes the Control Center</summary>
-    Public Sub CloseControlCenter()
+    Public Sub CloseControlCenter(Optional NewControlCenter As Boolean = False)
         IsControlCenterOpen = False
         HideTaskbar(False)
         Panel3.Controls.Remove(ControlCenter)
