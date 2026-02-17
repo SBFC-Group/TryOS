@@ -131,6 +131,7 @@ Public Class TryController
                 ElseIf form_.Name = "Form48" Then
                 ElseIf form_.Name = "LogonForm" Then
                 ElseIf form_.Name = "Form1" Then
+                ElseIf form_.Name = "Form2" Then
                 ElseIf form_.Name = "LoadingUser" Then
                 ElseIf form_.Name = "StopWindow" Then
                 ElseIf form_.Name = "UI" Then

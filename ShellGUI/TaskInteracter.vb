@@ -2,18 +2,23 @@
 
 Public Class TaskInteracter
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Try
-            Main.Form1.currentForm.Close()
-        Catch ex As Exception
+        If Main.Form1.UseNewerAppViewer = True Then
+            Main.UI.ShowError("Currently this is disabled when the AppViewer is enabled.", TouchTest.ErrorMSGBox.Alerts.Information)
+        Else
+            Try
+                Main.Form1.currentForm.Close()
+            Catch ex As Exception
 
-        End Try
-        If MyControllerForm.IsPCCHere = True Then
-            MyControllerForm.PCC.Visible = True
+            End Try
+            If MyControllerForm.IsPCCHere = True Then
+                MyControllerForm.PCC.Visible = True
+            End If
+            If Main.Form1.IsSettingOpen = True Then
+                Main.Form1.IsSettingOpen = False
+            End If
+            Main.Controller.OpenFramework_SetAppNameValue("")
         End If
-        If Main.Form1.IsSettingOpen = True Then
-            Main.Form1.IsSettingOpen = False
-        End If
-        Main.Controller.OpenFramework_SetAppNameValue("")
+
     End Sub
 
     Private Sub ResetHandlersOrAddHandlers()

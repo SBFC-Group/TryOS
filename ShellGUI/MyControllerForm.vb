@@ -12,6 +12,10 @@ Public Class MyControllerForm
     Public Bo3 As Boolean 'If true then use newer Wallpaper loader
 
     Public Sub LoadEverything()
+        If Main.UI.LogonBool = True Then
+            Return
+        End If
+
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.PCC.txt") Then
             Bo1 = True
         Else

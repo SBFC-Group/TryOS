@@ -226,6 +226,7 @@ Partial Class Form1
         Me.Button5.TabIndex = 5
         Me.Button5.Text = "Close Program"
         Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.Visible = False
         '
         'Label1
         '
@@ -241,6 +242,7 @@ Partial Class Form1
         '
         Me.VolumeButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.VolumeButton.BackColor = System.Drawing.Color.Transparent
+        Me.VolumeButton.BackgroundImage = CType(resources.GetObject("VolumeButton.BackgroundImage"), System.Drawing.Image)
         Me.VolumeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.VolumeButton.FlatAppearance.BorderSize = 0
         Me.VolumeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -269,6 +271,7 @@ Partial Class Form1
         '
         Me.PowerButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PowerButton.BackColor = System.Drawing.Color.Transparent
+        Me.PowerButton.BackgroundImage = CType(resources.GetObject("PowerButton.BackgroundImage"), System.Drawing.Image)
         Me.PowerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PowerButton.FlatAppearance.BorderSize = 0
         Me.PowerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat

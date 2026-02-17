@@ -24,11 +24,16 @@
         FlowLayoutPanel1.Controls.Clear()
 
         For Each f As Form In Form1.AppList
-            Dim NewButton As New AppButton
-            NewButton.Name = f.Name
-            NewButton.TheForm = f
-            NewButton.Button1.Text = f.Text
-            FlowLayoutPanel1.Controls.Add(NewButton)
+            Try
+                Dim NewButton As New AppButton
+                NewButton.Name = f.Name
+                NewButton.TheForm = f
+                NewButton.Button1.Text = f.Text
+                FlowLayoutPanel1.Controls.Add(NewButton)
+            Catch ex As Exception
+                Debug.WriteLine(ex.Message)
+            End Try
+
         Next
     End Sub
 End Class

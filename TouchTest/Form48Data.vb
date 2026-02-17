@@ -39,6 +39,8 @@
                     If Environment.CommandLine.Contains("/TurnOff_VerifyedShellOnly") = True Then
                         Form1.AllowOnlyVerifyedShellCode = False
                     End If
+
+                    UI.LogonBool = False
                 End If
             Catch ex As Exception
 

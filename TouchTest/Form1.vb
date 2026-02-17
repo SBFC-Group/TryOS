@@ -128,6 +128,7 @@ Public Class Form1
                 If UseNewerAppViewer = True Then
                     Form2.Show()
                     VolumeButton.Visible = True
+
                 End If
 
             End If
@@ -303,16 +304,20 @@ Public Class Form1
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Try
-            currentForm.Close()
-        Catch ex As Exception
+        If UseNewerAppViewer = True Then
+            UI.ShowError("Currentlly this is disabled when the AppViewer is enabled.", ErrorMSGBox.Alerts.Information)
+        Else
+            Try
+                currentForm.Close()
+            Catch ex As Exception
 
-        End Try
+            End Try
 
-        OpenFramework_Data.OpenFramework.AppName = ""
+            OpenFramework_Data.OpenFramework.AppName = ""
 
-        If IsSettingOpen = True Then
-            IsSettingOpen = False
+            If IsSettingOpen = True Then
+                IsSettingOpen = False
+            End If
         End If
     End Sub
 
@@ -518,7 +523,6 @@ Public Class Form1
             Try
                 currentForm.Show()
             Catch ex As Exception
-
             End Try
         Else
             IsControlCenterOpen = False
