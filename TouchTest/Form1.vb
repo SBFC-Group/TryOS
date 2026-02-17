@@ -125,8 +125,11 @@ Public Class Form1
                     Debug.WriteLine(ex.Message)
                     UI.ShowError("Couldn't get an boolean from the file.")
                 End Try
+                If UseNewerAppViewer = True Then
+                    Form2.Show()
+                    VolumeButton.Visible = True
+                End If
 
-                Form2.Show()
             End If
         End If
 
@@ -182,9 +185,16 @@ Public Class Form1
 
     Public currentForm As Form = Nothing
     Public Sub OpenChildForm(ByVal childForm As Form, Optional arg1 As String = "Null=Nothing")
-        If currentForm IsNot Nothing Then Panel3.Controls.Remove(Panel3.Tag)
-        currentForm = childForm
-        AppList.Add(childForm)
+        If UseNewerAppViewer = True Then
+            If currentForm IsNot Nothing Then Panel3.Controls.Remove(Panel3.Tag)
+            currentForm = childForm
+            AppList.Add(childForm)
+        Else
+            If currentForm IsNot Nothing Then currentForm.Close()
+            currentForm = childForm
+        End If
+        'currentForm = childForm
+        'AppList.Add(childForm)
         childForm.TopLevel = False
         childForm.FormBorderStyle = LocalFormBorderStyle
         childForm.Dock = LocalDockStyle
@@ -441,6 +451,12 @@ Public Class Form1
 
     Private Sub VolumeButton_Click(sender As Object, e As EventArgs) Handles VolumeButton.Click
         If UseNewerAppViewer = True Then
+            If IsModernControlCenterOpen = True Then
+                CloseControlCenter(True)
+            ElseIf IsModernControlCenterOpen = False Then
+                ShowControlCenter(True)
+            End If
+        Else
             If IsControlCenterOpen = True Then
                 CloseControlCenter()
             ElseIf IsControlCenterOpen = False Then
@@ -451,40 +467,70 @@ Public Class Form1
 
     End Sub
 
+    'Modern Values
+    Public ModernControlCenter As ControlCenter
+    Public IsModernControlCenterOpen As Boolean = False
+    Public ModernControlCenterHasBeenOpened As Boolean = False
+
+    'Older Values (Will be removed at some point)
     Public IsControlCenterOpen As Boolean = False
     Public ControlCenterHasBeenOpened As Boolean = False
     Public ControlCenter As PageSettings
 
     ''' <summary>This opens the Control Center</summary>
     Public Sub ShowControlCenter(Optional NewControlCenter As Boolean = False)
+        If NewControlCenter = True Then
+            IsModernControlCenterOpen = True
+            Try
+                currentForm.Hide()
+            Catch ex As Exception
+            End Try
+            HideTaskbar(True, True)
+            If ModernControlCenterHasBeenOpened = False Then
+                ModernControlCenter = New ControlCenter
+                ModernControlCenterHasBeenOpened = True
+            End If
+            Panel3.Controls.Add(ModernControlCenter)
+            ModernControlCenter.Dock = DockStyle.Fill
+        Else
+            IsControlCenterOpen = True
+            Try
+                currentForm.Hide()
+            Catch ex As Exception
 
-
-        IsControlCenterOpen = True
-        Try
-            currentForm.Hide()
-        Catch ex As Exception
-
-        End Try
-        HideTaskbar(True, True)
-        If ControlCenterHasBeenOpened = False Then
-            ControlCenter = New PageSettings
-            ControlCenterHasBeenOpened = True
+            End Try
+            HideTaskbar(True, True)
+            If ControlCenterHasBeenOpened = False Then
+                ControlCenter = New PageSettings
+                ControlCenterHasBeenOpened = True
+            End If
+            Panel3.Controls.Add(ControlCenter)
+            ControlCenter.Dock = DockStyle.Fill
         End If
-        Panel3.Controls.Add(ControlCenter)
-        ControlCenter.Dock = DockStyle.Fill
     End Sub
 
     ''' <summary>This closes the Control Center</summary>
     Public Sub CloseControlCenter(Optional NewControlCenter As Boolean = False)
-        IsControlCenterOpen = False
-        HideTaskbar(False)
-        Panel3.Controls.Remove(ControlCenter)
-        Try
-            currentForm.Show()
-        Catch ex As Exception
+        If NewControlCenter = True Then
+            IsModernControlCenterOpen = False
+            EnableFullAppMode(False)
+            Panel3.Controls.Remove(ModernControlCenter)
+            Try
+                currentForm.Show()
+            Catch ex As Exception
 
-        End Try
-        'Form1.ControlCenter.Dock = DockStyle.Fill
+            End Try
+        Else
+            IsControlCenterOpen = False
+            HideTaskbar(False)
+            Panel3.Controls.Remove(ControlCenter)
+            Try
+                currentForm.Show()
+            Catch ex As Exception
+
+            End Try
+            'Form1.ControlCenter.Dock = DockStyle.Fill
+        End If
     End Sub
 
     Public BatteryPower As Int64 = 100
@@ -527,7 +573,7 @@ Public Class Form1
     End Sub
 
     Private Sub LoadAppsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadAppsToolStripMenuItem.Click
-        OpenFramework_Data.OpenFramework.LoadAppsDlls(User)
+        OpenFramework_Data.OpenFramework.LoadApps(User)
     End Sub
 
     Private Sub SaveButtonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveButtonOrderToolStripMenuItem.Click

@@ -202,6 +202,12 @@
     <Compile Include="AppRunner.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ControlCenter.Designer.vb">
+      <DependentUpon>ControlCenter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlCenter.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="CustomControl\CustomController.vb" />
     <Compile Include="CustomControl\CustomController_Handler.vb" />
     <Compile Include="CustomControl\CustomController_Interface.vb" />
@@ -591,6 +597,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AppRunner.resx">
       <DependentUpon>AppRunner.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlCenter.resx">
+      <DependentUpon>ControlCenter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoadingUser.resx">
       <DependentUpon>LoadingUser.vb</DependentUpon>
