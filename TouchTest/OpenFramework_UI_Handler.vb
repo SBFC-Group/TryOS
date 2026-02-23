@@ -11,6 +11,8 @@
     Function GetUserFolder() As String
     Function GetRole() As String
     Function IsDarkMode() As Boolean
-    Function SetOrGetArguments(Optional Arg As String = Nothing) As String
+    Sub ClearArguments()
+    Function SetOrGetArguments() As String
+    Function SetOrGetArguments(Arg As String) As String
     Sub StartCMD(Optional GG As String = "New")
 End Interface

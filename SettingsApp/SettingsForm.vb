@@ -1,19 +1,40 @@
-﻿Public Class SettingsForm
-    Private UserControlName As String = Nothing
+﻿Imports System.Windows.Forms
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If SettingsPanel.Tag IsNot Nothing Then
+Public Class SettingsForm
+    Public ThemeApp As ThemeApp
+    Public InfoApp As InfoApp
 
-            If UserControlName = SettingsPanel.Tag.Name Then
-                Return
-            Else
-                SettingsPanel.Tag = Nothing
-                SettingsPanel.Controls.Clear()
-            End If
+    Public DisabledButton As Button
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ThemeButton.Click
+        'theme
+        If DisabledButton IsNot Nothing Then
+            DisabledButton.Enabled = True
         End If
+        DisabledButton = ThemeButton
+        ThemeButton.Enabled = False
+        SettingsPanel.Controls.Clear()
+        If ThemeApp IsNot Nothing Then
+        Else
+            ThemeApp = New ThemeApp
+        End If
+        SettingsPanel.Controls.Add(ThemeApp)
+        ThemeApp.Dock = Windows.Forms.DockStyle.Fill
+    End Sub
 
-        SettingsPanel.Tag = New ThemeApp
-        UserControlName = SettingsPanel.Tag.Name
-        SettingsPanel.Controls.Add(SettingsPanel.Tag)
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles InfoButton.Click
+        'info
+        If DisabledButton IsNot Nothing Then
+            DisabledButton.Enabled = True
+        End If
+        DisabledButton = InfoButton
+        InfoButton.Enabled = False
+        SettingsPanel.Controls.Clear()
+        If InfoApp IsNot Nothing Then
+        Else
+            InfoApp = New InfoApp
+        End If
+        SettingsPanel.Controls.Add(InfoApp)
+        InfoApp.Dock = Windows.Forms.DockStyle.Fill
     End Sub
 End Class
