@@ -12,6 +12,7 @@ Public Class Form1
 
     Public IsUsingDarkThemeForApps As Boolean = False
     Public IsUsingDarkThemeForPrograms As Boolean = False
+    Public IsTransparentEnabled As Boolean = True
 
     Public SizeX As Integer = 0
     Public SizeY As Integer = 0
@@ -42,12 +43,19 @@ Public Class Form1
         End If
 
         Timer1.Start()
+
+        'Old MenuStrip For Testing
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LoadDebugMenu.setting") Then
             MenuStrip1.Visible = True
         End If
 
-        AddHandler Button3.Click, AddressOf SettingsForm.PluginButton_Click
+        'This checks if the newer TaskInteracter is disabled. If it is then Adds a Handler to the Settings Button
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.TaskInteracter.txt") = False Then
+            AddHandler Button3.Click, AddressOf SettingsForm.PluginButton_Click
+        End If
 
+
+        'Checks if "DisableConsole.setting" exists.
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\DisableConsole.setting") Then
             Try
                 DisableConsole = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\DisableConsole.setting"))
@@ -56,6 +64,7 @@ Public Class Form1
             End Try
         End If
 
+        'This loads the user settings
         If AllowNewerLoader = True Then
             If Environment.CommandLine.Contains("/UseOldLoader") Then
                 UserManager.LoadShellColors()
@@ -74,25 +83,42 @@ Public Class Form1
             UserManager.LoadWallpaperFromUserSettings()
         End If
 
-
+        'This checks if Dark Mode is enabled.
         If IsUsingDarkThemeForPrograms = True Then
-            Panel2.BackColor = Color.FromArgb(55, Color.Gray)
-            TimebarPanel.BackColor = Color.FromArgb(55, Color.Gray)
+            If IsTransparentEnabled = True Then
+                Panel2.BackColor = Color.FromArgb(55, Color.Gray)
+                TimebarPanel.BackColor = Color.FromArgb(55, Color.Gray)
+            Else
+                Panel2.BackColor = Color.Gray
+                TimebarPanel.BackColor = Color.Gray
+            End If
+
         ElseIf IsUsingDarkThemeForPrograms = False Then
-            Panel2.BackColor = Color.FromArgb(55, Color.Silver)
-            TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
+            If IsTransparentEnabled = True Then
+                Panel2.BackColor = Color.FromArgb(55, Color.Silver)
+                TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
+            Else
+                Panel2.BackColor = Color.Silver
+                TimebarPanel.BackColor = Color.Silver
+            End If
         End If
 
-        If UI.DisableOpenFramework = False Then
-            OpenFramework_Data.OpenFramework.LoadApps(SandboxedUser)
+        'This checks if the newer TaskInteracter is enabled.
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.TaskInteracter.txt") = False Then
 
-            UserManager.LoadTaskbarButtons()
+            'This checks if OpenFramework is enabled.
+            If UI.DisableOpenFramework = False Then
+                OpenFramework_Data.OpenFramework.LoadApps(SandboxedUser)
+
+                UserManager.LoadTaskbarButtons()
+            End If
         End If
+
 
         'Checks if DisableCustomCode is false
         If UI.DisableCustomCode = False Then
 
-            'This checks if the Registry value "LoadCustomPls" exists.
+            'This checks if the Registry value "LoadCustomPls" exists. (This part loads plugins)
             Dim regit2 As String = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group", "LoadCustomPls", Nothing)
             If regit2 = "1" Then
                 Dim pluginPath As String = Path.Combine(Application.StartupPath, "Plugins")

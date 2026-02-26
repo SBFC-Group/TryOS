@@ -34,6 +34,9 @@ Public Class TaskInteracter
     End Sub
 
     Private Sub TaskInteracter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Main.UI.DisableOpenFramework = False Then
+
+        End If
         Main.Controller.OpenFramework_SetNewFlowLayoutPanel(FlowLayoutPanel1)
 
         Main.Controller.OpenFramework_SetAppNameValue("")

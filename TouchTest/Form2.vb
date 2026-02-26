@@ -11,7 +11,7 @@
     End Sub
 
     Private Sub Form2_LostFocus(sender As Object, e As EventArgs) Handles Me.LostFocus
-        Timer1.Start()
+        'Timer1.Start()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick

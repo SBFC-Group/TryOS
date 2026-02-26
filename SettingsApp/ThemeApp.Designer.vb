@@ -31,6 +31,7 @@ Partial Class ThemeApp
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Wallpaper = New System.Windows.Forms.Timer(Me.components)
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.TransparencyCheckBox = New System.Windows.Forms.CheckBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -120,11 +121,23 @@ Partial Class ThemeApp
         Me.Button5.UseVisualStyleBackColor = False
         Me.Button5.Visible = False
         '
+        'TransparencyCheckBox
+        '
+        Me.TransparencyCheckBox.AutoSize = True
+        Me.TransparencyCheckBox.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TransparencyCheckBox.Location = New System.Drawing.Point(266, 333)
+        Me.TransparencyCheckBox.Name = "TransparencyCheckBox"
+        Me.TransparencyCheckBox.Size = New System.Drawing.Size(175, 28)
+        Me.TransparencyCheckBox.TabIndex = 17
+        Me.TransparencyCheckBox.Text = "Use Transparency"
+        Me.TransparencyCheckBox.UseVisualStyleBackColor = True
+        '
         'ThemeApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkGray
+        Me.Controls.Add(Me.TransparencyCheckBox)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button4)
@@ -136,6 +149,7 @@ Partial Class ThemeApp
         Me.Size = New System.Drawing.Size(1012, 618)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -147,4 +161,5 @@ Partial Class ThemeApp
     Friend WithEvents PictureBox1 As Windows.Forms.PictureBox
     Friend WithEvents Wallpaper As Windows.Forms.Timer
     Friend WithEvents Button5 As Windows.Forms.Button
+    Friend WithEvents TransparencyCheckBox As Windows.Forms.CheckBox
 End Class

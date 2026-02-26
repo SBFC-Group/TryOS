@@ -64,7 +64,12 @@
                         setting = setting.Replace("gif=", "")
                         UI.RunCommands("Loadgif " & setting, Me)
                     End If
-
+                ElseIf setting.Contains("IsTransparentEnabled=") = True Then
+                    setting = setting.Replace("IsTransparentEnabled=", "")
+                    Form1.IsTransparentEnabled = Convert.ToBoolean(setting)
+                ElseIf setting.Contains("AllowOpenFrameworkToLoadApps=") = True Then
+                    setting = setting.Replace("AllowOpenFrameworkToLoadApps=", "")
+                    UI.DisableOpenFramework = Convert.ToBoolean(setting)
                 ElseIf setting.Contains("IsDarkModeForApps=") = True Then
                     setting = setting.Replace("IsDarkModeForApps=", "")
                     Form1.IsUsingDarkThemeForApps = Convert.ToBoolean(setting)
@@ -161,8 +166,13 @@
 
             End Try
 
-            usedencode = usedencode & "
+            If SettingName.EndsWith(";") = True Then
+                usedencode = usedencode & "
 " & SettingName
+            Else
+                usedencode = usedencode & "
+" & SettingName & ";"
+            End If
 
             SaveUserSettings(usedencode)
 

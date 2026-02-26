@@ -1,6 +1,8 @@
 ﻿Imports System.Windows.Forms
 
 Public Class ThemeApp
+    Public User As TouchTest.UserManager
+
     Public FileFormat As ImageFormats
 
     Public NormalHeightWallpaperMenu As Int64 = 0
@@ -81,6 +83,19 @@ Public Class ThemeApp
     End Sub
 
     Private Sub ThemeApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        User = New TouchTest.UserManager(Main.Controller.GetUsername)
+
+        If User.DoesSettingExist("IsTransparentEnabled=True") = True Then
+            TransparencyCheckBox.Checked = True
+        ElseIf User.DoesSettingExist("IsTransparentEnabled=False") = True Then
+            TransparencyCheckBox.Checked = False
+        Else
+            TransparencyCheckBox.Checked = True
+            User.AddSettingToUserSettings("IsTransparentEnabled=True")
+        End If
+
+        AddHandler TransparencyCheckBox.CheckedChanged, AddressOf TransparencyCheckBox_CheckedChanged
+
         'NormalHeightWallpaperMenu = WallpaperMenu.Size.Height
         Dim bitmap1 As Drawing.Bitmap = Main.Controller.RunCommand("GetWallpaper")
 
@@ -104,6 +119,14 @@ Public Class ThemeApp
             WallpaperEncoder = Convert.ToBase64String(byt2)
 
             My.Computer.FileSystem.WriteAllText(Main.Controller.GetUserFolder & "\Settings\WallpaperImage.swfiles", WallpaperEncoder, False)
+        End If
+    End Sub
+
+    Private Sub TransparencyCheckBox_CheckedChanged(sender As Object, e As EventArgs)
+        If TransparencyCheckBox.Checked = True Then
+            User.ReplaceSettingInUserSettings("IsTransparentEnabled=False", "IsTransparentEnabled=True")
+        Else
+            User.ReplaceSettingInUserSettings("IsTransparentEnabled=True", "IsTransparentEnabled=False")
         End If
     End Sub
 End Class
