@@ -3,6 +3,7 @@
 Public Class SettingsForm
     Public ThemeApp As ThemeApp
     Public InfoApp As InfoApp
+    Public UserSettingsApp As UserSettings
 
     Public DisabledButton As Button
 
@@ -36,5 +37,21 @@ Public Class SettingsForm
         End If
         SettingsPanel.Controls.Add(InfoApp)
         InfoApp.Dock = Windows.Forms.DockStyle.Fill
+    End Sub
+
+    Private Sub UserSettingsButton_Click(sender As Object, e As EventArgs) Handles UserSettingsButton.Click
+        'user settings
+        If DisabledButton IsNot Nothing Then
+            DisabledButton.Enabled = True
+        End If
+        DisabledButton = InfoButton
+        InfoButton.Enabled = False
+        SettingsPanel.Controls.Clear()
+        If UserSettingsApp IsNot Nothing Then
+        Else
+            UserSettingsApp = New UserSettings
+        End If
+        SettingsPanel.Controls.Add(UserSettingsApp)
+        UserSettingsApp.Dock = Windows.Forms.DockStyle.Fill
     End Sub
 End Class

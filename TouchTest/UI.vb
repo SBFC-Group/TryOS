@@ -163,6 +163,27 @@ Public Class UI
                 gg.ShowDialog()
             End If
             Return Nothing
+        ElseIf Command.Contains("SetAppIndex ") Then
+            If User.Role = TryController.Roles.Developer Then
+            ElseIf User.Role = TryController.Roles.Program Then
+            Else
+                Return Nothing
+            End If
+            Command = Command.Replace("Console>", "")
+            Command = Command.Replace("SetAppIndex ", "")
+            Try
+                Form1.CurrentOpenAppIndex = Convert.ToInt64(Command)
+                Return Form1.CurrentOpenAppIndex
+            Catch ex As Exception
+                Return Nothing
+            End Try
+        ElseIf Command.Contains("GetAppIndex") Then
+            If User.Role = TryController.Roles.Developer Then
+            ElseIf User.Role = TryController.Roles.Program Then
+            Else
+                Return Nothing
+            End If
+            Return Form1.CurrentOpenAppIndex
         ElseIf Command.Contains("SetWallpaper ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")

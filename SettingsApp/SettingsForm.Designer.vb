@@ -26,11 +26,11 @@ Partial Class SettingsForm
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.ThemeButton = New System.Windows.Forms.Button()
         Me.InfoButton = New System.Windows.Forms.Button()
-        Me.SettingsPanel = New System.Windows.Forms.Panel()
-        Me.UsreSettingsButton = New System.Windows.Forms.Button()
+        Me.UserSettingsButton = New System.Windows.Forms.Button()
         Me.UpdateButton = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.SettingsPanel = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -39,7 +39,7 @@ Partial Class SettingsForm
         Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.Silver
         Me.FlowLayoutPanel1.Controls.Add(Me.ThemeButton)
         Me.FlowLayoutPanel1.Controls.Add(Me.InfoButton)
-        Me.FlowLayoutPanel1.Controls.Add(Me.UsreSettingsButton)
+        Me.FlowLayoutPanel1.Controls.Add(Me.UserSettingsButton)
         Me.FlowLayoutPanel1.Controls.Add(Me.UpdateButton)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button1)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button2)
@@ -73,26 +73,17 @@ Partial Class SettingsForm
         Me.InfoButton.TabIndex = 1
         Me.InfoButton.UseVisualStyleBackColor = True
         '
-        'SettingsPanel
+        'UserSettingsButton
         '
-        Me.SettingsPanel.BackColor = System.Drawing.Color.DarkGray
-        Me.SettingsPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SettingsPanel.Location = New System.Drawing.Point(108, 0)
-        Me.SettingsPanel.Name = "SettingsPanel"
-        Me.SettingsPanel.Size = New System.Drawing.Size(1006, 659)
-        Me.SettingsPanel.TabIndex = 1
-        '
-        'UsreSettingsButton
-        '
-        Me.UsreSettingsButton.BackgroundImage = CType(resources.GetObject("UsreSettingsButton.BackgroundImage"), System.Drawing.Image)
-        Me.UsreSettingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.UsreSettingsButton.FlatAppearance.BorderSize = 0
-        Me.UsreSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.UsreSettingsButton.Location = New System.Drawing.Point(3, 209)
-        Me.UsreSettingsButton.Name = "UsreSettingsButton"
-        Me.UsreSettingsButton.Size = New System.Drawing.Size(102, 97)
-        Me.UsreSettingsButton.TabIndex = 2
-        Me.UsreSettingsButton.UseVisualStyleBackColor = True
+        Me.UserSettingsButton.BackgroundImage = CType(resources.GetObject("UserSettingsButton.BackgroundImage"), System.Drawing.Image)
+        Me.UserSettingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.UserSettingsButton.FlatAppearance.BorderSize = 0
+        Me.UserSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.UserSettingsButton.Location = New System.Drawing.Point(3, 209)
+        Me.UserSettingsButton.Name = "UserSettingsButton"
+        Me.UserSettingsButton.Size = New System.Drawing.Size(102, 97)
+        Me.UserSettingsButton.TabIndex = 2
+        Me.UserSettingsButton.UseVisualStyleBackColor = True
         '
         'UpdateButton
         '
@@ -130,6 +121,15 @@ Partial Class SettingsForm
         Me.Button2.TabIndex = 5
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'SettingsPanel
+        '
+        Me.SettingsPanel.BackColor = System.Drawing.Color.DarkGray
+        Me.SettingsPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SettingsPanel.Location = New System.Drawing.Point(108, 0)
+        Me.SettingsPanel.Name = "SettingsPanel"
+        Me.SettingsPanel.Size = New System.Drawing.Size(1006, 659)
+        Me.SettingsPanel.TabIndex = 1
+        '
         'SettingsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -150,7 +150,7 @@ Partial Class SettingsForm
     Friend WithEvents ThemeButton As Windows.Forms.Button
     Friend WithEvents SettingsPanel As Windows.Forms.Panel
     Friend WithEvents InfoButton As Windows.Forms.Button
-    Friend WithEvents UsreSettingsButton As Windows.Forms.Button
+    Friend WithEvents UserSettingsButton As Windows.Forms.Button
     Friend WithEvents UpdateButton As Windows.Forms.Button
     Friend WithEvents Button1 As Windows.Forms.Button
     Friend WithEvents Button2 As Windows.Forms.Button

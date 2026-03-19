@@ -63,6 +63,12 @@ Public Class TryController
 
     End Function
 
+    Private erehresuteg As New UserManager("SuperSecretUser")
+
+    Public Function Resuteg()
+        Return erehresuteg
+    End Function
+
     Public Dev As Boolean = False
 
     Public Enum Roles

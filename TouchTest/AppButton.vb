@@ -2,7 +2,8 @@
     Public TheForm As Form
 
     Private Sub ReOpenApp_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Form1.OpenAppAgain(TheForm)
+        Form1.OpenAppAgain(TheForm, Form1.AppList.IndexOf(TheForm))
+
     End Sub
 
     Private Sub CloseApp_Click(sender As Object, e As EventArgs) Handles Button2.Click

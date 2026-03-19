@@ -11,10 +11,10 @@
             Dim jj As String = lines.GetValue(0)
             If Environment.CommandLine.Contains("/DisableSandboxingForCommander") = True Then
                 RichTextBox1.Text = RichTextBox1.Text & "
-" & UI.RunCommands(jj, Form1.User, Me)
+            " & UI.RunCommands(jj, Form1.User, Me)
             Else
                 RichTextBox1.Text = RichTextBox1.Text & "
-" & UI.RunCommands(jj, Form1.SandboxedUser, Me)
+            " & UI.RunCommands(jj, Form1.SandboxedUser, Me)
             End If
 
 

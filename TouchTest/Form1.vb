@@ -216,6 +216,7 @@ Public Class Form1
             If currentForm IsNot Nothing Then Panel3.Controls.Remove(Panel3.Tag)
             currentForm = childForm
             AppList.Add(childForm)
+            CurrentOpenAppIndex = AppList.IndexOf(childForm)
         Else
             If currentForm IsNot Nothing Then currentForm.Close()
             currentForm = childForm
@@ -238,10 +239,11 @@ Public Class Form1
         End Try
     End Sub
 
-    Public Sub OpenAppAgain(App As Form)
+    Public Sub OpenAppAgain(App As Form, CurrentAppIndex As Int64)
         If Panel3.Tag IsNot Nothing Then
             Panel3.Controls.Remove(Panel3.Tag)
         End If
+        CurrentOpenAppIndex = CurrentAppIndex
         currentForm = App
         Panel3.Controls.Add(App)
         Panel3.Tag = App
@@ -329,9 +331,24 @@ Public Class Form1
 
     End Sub
 
+    Public CurrentOpenAppIndex As Int64 = 0
+
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         If UseNewerAppViewer = True Then
-            UI.ShowError("Currentlly this is disabled when the AppViewer is enabled.", ErrorMSGBox.Alerts.Information)
+
+            'This code sadly didn't work. So no closing current app
+
+            Dim AppInt As Int64 = UI.RunCommands("GetAppIndex", TryController.Resuteg())
+
+            Debug.WriteLine("Closing App Index: " & AppInt)
+
+            Dim tempform As Form = AppList.Item(AppInt)
+
+            AppList.RemoveAt(AppInt)
+
+            tempform.Close()
+
+            'UI.ShowError("Currentlly this is disabled when the AppViewer is enabled. (Will work again soon)", ErrorMSGBox.Alerts.Information)
         Else
             Try
                 currentForm.Close()
