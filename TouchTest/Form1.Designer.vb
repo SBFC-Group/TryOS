@@ -69,6 +69,8 @@ Partial Class Form1
         Me.InternetList = New System.Windows.Forms.ImageList(Me.components)
         Me.PowerList = New System.Windows.Forms.ImageList(Me.components)
         Me.PowerTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.HiddwedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AllAppsButtonToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.TimebarPanel.SuspendLayout()
@@ -381,7 +383,7 @@ Partial Class Form1
         '
         'DebugMenuToolStripMenuItem
         '
-        Me.DebugMenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CommanderToolStripMenuItem, Me.CommanderWindowedToolStripMenuItem, Me.LoadConsoleToolStripMenuItem, Me.UserNameToolStripMenuItem, Me.PasswordToolStripMenuItem, Me.ToolStripMenuItem1})
+        Me.DebugMenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CommanderToolStripMenuItem, Me.CommanderWindowedToolStripMenuItem, Me.LoadConsoleToolStripMenuItem, Me.UserNameToolStripMenuItem, Me.PasswordToolStripMenuItem, Me.ToolStripMenuItem1, Me.HiddwedToolStripMenuItem})
         Me.DebugMenuToolStripMenuItem.Name = "DebugMenuToolStripMenuItem"
         Me.DebugMenuToolStripMenuItem.Size = New System.Drawing.Size(88, 23)
         Me.DebugMenuToolStripMenuItem.Text = "Debug Menu"
@@ -457,19 +459,19 @@ Partial Class Form1
         'LoadAppsToolStripMenuItem
         '
         Me.LoadAppsToolStripMenuItem.Name = "LoadAppsToolStripMenuItem"
-        Me.LoadAppsToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.LoadAppsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.LoadAppsToolStripMenuItem.Text = "LoadApps"
         '
         'SaveButtonOrderToolStripMenuItem
         '
         Me.SaveButtonOrderToolStripMenuItem.Name = "SaveButtonOrderToolStripMenuItem"
-        Me.SaveButtonOrderToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.SaveButtonOrderToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SaveButtonOrderToolStripMenuItem.Text = "SaveButtonOrder"
         '
         'RestoreButtonOrderToolStripMenuItem
         '
         Me.RestoreButtonOrderToolStripMenuItem.Name = "RestoreButtonOrderToolStripMenuItem"
-        Me.RestoreButtonOrderToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.RestoreButtonOrderToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.RestoreButtonOrderToolStripMenuItem.Text = "RestoreButtonOrder"
         '
         'ToolStripTextBox3
@@ -522,6 +524,21 @@ Partial Class Form1
         'PowerTimer
         '
         Me.PowerTimer.Interval = 5000
+        '
+        'HiddwedToolStripMenuItem
+        '
+        Me.HiddwedToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AllAppsButtonToolStripMenuItem})
+        Me.HiddwedToolStripMenuItem.Name = "HiddwedToolStripMenuItem"
+        Me.HiddwedToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.HiddwedToolStripMenuItem.Text = "Hidden Items"
+        Me.HiddwedToolStripMenuItem.Visible = False
+        '
+        'AllAppsButtonToolStripMenuItem
+        '
+        Me.AllAppsButtonToolStripMenuItem.Name = "AllAppsButtonToolStripMenuItem"
+        Me.AllAppsButtonToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Tab), System.Windows.Forms.Keys)
+        Me.AllAppsButtonToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.AllAppsButtonToolStripMenuItem.Text = "All Apps Button"
         '
         'Form1
         '
@@ -593,4 +610,6 @@ Partial Class Form1
     Friend WithEvents SaveButtonOrderToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RestoreButtonOrderToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PowerTimer As Timer
+    Friend WithEvents HiddwedToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AllAppsButtonToolStripMenuItem As ToolStripMenuItem
 End Class

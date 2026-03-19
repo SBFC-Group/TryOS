@@ -630,4 +630,8 @@ Public Class Form1
     Private Sub RestoreButtonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreButtonOrderToolStripMenuItem.Click
         OpenFramework_Data.OpenFramework.RestoreButtonOrder()
     End Sub
+
+    Private Sub AllAppsButtonToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AllAppsButtonToolStripMenuItem.Click
+        PowerButton_Click(sender, e)
+    End Sub
 End Class
