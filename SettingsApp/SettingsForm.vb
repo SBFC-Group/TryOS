@@ -44,8 +44,8 @@ Public Class SettingsForm
         If DisabledButton IsNot Nothing Then
             DisabledButton.Enabled = True
         End If
-        DisabledButton = InfoButton
-        InfoButton.Enabled = False
+        DisabledButton = UserSettingsButton
+        UserSettingsButton.Enabled = False
         SettingsPanel.Controls.Clear()
         If UserSettingsApp IsNot Nothing Then
         Else

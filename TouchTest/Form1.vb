@@ -13,6 +13,7 @@ Public Class Form1
     Public IsUsingDarkThemeForApps As Boolean = False
     Public IsUsingDarkThemeForPrograms As Boolean = False
     Public IsTransparentEnabled As Boolean = True
+    Public OpenNewstAppAfterClosingAnApp As Boolean = False
 
     Public SizeX As Integer = 0
     Public SizeY As Integer = 0
@@ -342,11 +343,17 @@ Public Class Form1
 
             Debug.WriteLine("Closing App Index: " & AppInt)
 
-            Dim tempform As Form = AppList.Item(AppInt)
+            Dim tempapplist As List(Of Form) = UI.RunCommands("GetAppList", TryController.Resuteg())
 
-            AppList.RemoveAt(AppInt)
+            Dim tempform As Form = tempapplist.Item(AppInt)
+
+            tempapplist.RemoveAt(AppInt)
 
             tempform.Close()
+
+            If OpenNewstAppAfterClosingAnApp = True Then
+                OpenAppAgain(tempapplist.Item(tempapplist.Count), tempapplist.Count)
+            End If
 
             'UI.ShowError("Currentlly this is disabled when the AppViewer is enabled. (Will work again soon)", ErrorMSGBox.Alerts.Information)
         Else
@@ -451,10 +458,13 @@ Public Class Form1
         If UseNewerAppViewer = True Then
 
             If Form2.IsOpen = False Then
-                Form2.Show()
-                Form2.LoadEverything()
-                Form2.IsOpen = True
-                Form2.TopMost = True
+                If AppList.Count = 0 Then
+                Else
+                    Form2.Show()
+                    Form2.LoadEverything()
+                    Form2.IsOpen = True
+                    Form2.TopMost = True
+                End If
             ElseIf Form2.IsOpen = True Then
                 Form2.Hide()
                 Form2.IsOpen = False

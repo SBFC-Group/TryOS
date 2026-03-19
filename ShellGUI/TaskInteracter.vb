@@ -3,7 +3,31 @@
 Public Class TaskInteracter
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If Main.Form1.UseNewerAppViewer = True Then
-            Main.UI.ShowError("Currently this is disabled when the AppViewer is enabled.", TouchTest.ErrorMSGBox.Alerts.Information)
+            Dim AppInt As Int64 = Main.UI.RunCommands("GetAppIndex", Main.TryController.Resuteg())
+
+            Debug.WriteLine("Closing App Index: " & AppInt)
+
+            Dim tempapplist As List(Of Form) = Main.UI.RunCommands("GetAppList", Main.TryController.Resuteg())
+
+            Dim tempform As Form = tempapplist.Item(AppInt)
+
+            tempapplist.RemoveAt(AppInt)
+
+            tempform.Close()
+
+            If Main.Form1.OpenNewstAppAfterClosingAnApp = True Then
+                Main.Form1.OpenAppAgain(tempapplist.Item(tempapplist.Count), tempapplist.Count)
+            End If
+
+            If MyControllerForm.IsPCCHere = True Then
+                MyControllerForm.PCC.Visible = True
+            End If
+            If Main.Form1.IsSettingOpen = True Then
+                Main.Form1.IsSettingOpen = False
+            End If
+            Main.Controller.OpenFramework_SetAppNameValue("")
+
+            'Main.UI.ShowError("Currently this is disabled when the AppViewer is enabled.", TouchTest.ErrorMSGBox.Alerts.Information)
         Else
             Try
                 Main.Form1.currentForm.Close()

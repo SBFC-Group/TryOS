@@ -184,6 +184,13 @@ Public Class UI
                 Return Nothing
             End If
             Return Form1.CurrentOpenAppIndex
+        ElseIf Command.Contains("GetAppList") Then
+            If User.Role = TryController.Roles.Developer Then
+            ElseIf User.Role = TryController.Roles.Program Then
+            Else
+                Return Nothing
+            End If
+            Return Form1.AppList
         ElseIf Command.Contains("SetWallpaper ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")

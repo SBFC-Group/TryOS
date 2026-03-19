@@ -5,11 +5,17 @@ copy ".\TouchTest\bin\Debug\*.dll" ".\TouchTest\bin\Debug\TryOS_Build\"
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Settings"
 copy ".\TouchTest\bin\Debug\Settings\ShellName USW.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\ShellName.setting"
 copy ".\TouchTest\bin\Debug\Settings\LogonWallpaper.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\"
+echo True > ".\TouchTest\bin\Debug\Settings\UseAppViewer.setting"
 
-:: Creates new ShellApps Folder to load newer ui elements and for newer Settings to load the new gui
+:: Creates new ShellApps Folder to load newer ui elements and for newer Settings to load the new gui (20-03-2026 now haves the new ShellApp dll)
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\ShellApps"
+copy ".\TouchTest\bin\Debug\ShellApps\ShellGUI.dll" ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\"
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI"
+:: The Text files enables parts of ShellGUI
 echo txt_file_does_not_contain_anything_that_you_need > ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI\SettingsApp.SettingsForm.txt"
+echo txt_file_does_not_contain_anything_that_you_need > ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI\ShellGUI.PCC.txt"
+echo txt_file_does_not_contain_anything_that_you_need > ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI\ShellGUI.TaskInteracter.txt"
+echo txt_file_does_not_contain_anything_that_you_need > ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI\ShellGUI=TouchTest.Form1.txt"
 
 :: Copys new Logon page
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Settings\Page"
