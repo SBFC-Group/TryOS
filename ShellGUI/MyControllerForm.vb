@@ -6,10 +6,12 @@ Public Class MyControllerForm
     'This will won't ever open
 
     Public Shared PCC As New PCContentMenu_NoneApp
+    Public Shared PCC_TaskInteracter As New PCContentMenu_NoneApp
     Public Shared TaskInteracter_Panel As New TaskInteracter
     Public Bo1 As Boolean 'If true then PCC loads
     Public Bo2 As Boolean 'If true then TaskInteracter loads
     Public Bo3 As Boolean 'If true then use newer Wallpaper loader
+    Public Bo4 As Boolean 'if true then PCC For TaskInteracter loads
 
     Public Sub LoadEverything()
         If Main.UI.LogonBool = True Then
@@ -35,6 +37,12 @@ Public Class MyControllerForm
             Bo3 = False
         End If
 
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.PCC=TaskInteracter.txt") Then
+            Bo4 = True
+        Else
+            Bo4 = False
+        End If
+
         'Trys to load elements inside Form1 (Main Window)
         AddHandlerToAll(Main.Form1)
 
@@ -48,6 +56,16 @@ Public Class MyControllerForm
             PCC.BackColor = Color.FromArgb(55, Color.DarkGray)
 
             PCC.Visible = False
+        End If
+
+        If Bo4 = True Then
+            For Each c As Control In TaskInteracter_Panel.FlowLayoutPanel1.Controls
+                AddHandler c.MouseDown, AddressOf MouseDown_Menu_TaskInteracter
+            Next
+
+            PCC_TaskInteracter.BackColor = Color.FromArgb(55, Color.DarkGray)
+
+            PCC_TaskInteracter.Visible = False
         End If
 
         If Bo2 = True Then
@@ -93,6 +111,14 @@ Public Class MyControllerForm
             IsPCCHere = False
             'MsgBox("2")
             PCC.Visible = False
+        End If
+    End Sub
+
+    Private Sub MouseDown_Menu_TaskInteracter(sender As Object, e As MouseEventArgs)
+        If e.Button = MouseButtons.Right Then
+            Debug.WriteLine("Right")
+        ElseIf e.Button = MouseButtons.Left Then
+            Debug.Write("Left")
         End If
     End Sub
 
@@ -143,7 +169,7 @@ Public Class MyControllerForm
                     PCC.BringToFront()
                 End If
             ElseIf c.Name = "FlowLayoutPanel1" Then
-                If Bo1 = True Then
+                If Bo1 Then
                     AddHandlerToAppButtons(c)
                 End If
             ElseIf c.Name = "Button3" Then
@@ -171,9 +197,14 @@ Public Class MyControllerForm
 
     Private Sub AddHandlerToAppButtons(parent As Control)
         For Each c As Control In parent.Controls
-            AddHandler c.Click, Sub(sender As Object, e As EventArgs)
-                                    PCC.Visible = False
-                                End Sub
+            If Bo1 = True Then
+                AddHandler c.Click, Sub(sender As Object, e As EventArgs)
+                                        PCC.Visible = False
+                                    End Sub
+            End If
+            'If Bo4 = True Then
+            '    AddHandler c.MouseDown, AddressOf MouseDown_Menu_TaskInteracter
+            'End If
             If c.HasChildren Then AddHandlerToAll(c)
         Next
     End Sub

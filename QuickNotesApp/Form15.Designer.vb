@@ -102,6 +102,8 @@ Partial Class Form15
         Me.PanelTing2 = New System.Windows.Forms.Panel()
         Me.TextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.NewNoteButton = New System.Windows.Forms.Button()
         Me.OpenNoteButton = New System.Windows.Forms.Button()
         Me.Panel6 = New System.Windows.Forms.Panel()
@@ -404,14 +406,14 @@ Partial Class Form15
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(135, 22)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(180, 22)
         Me.ToolStripMenuItem2.Text = "1"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
         Me.ToolStripMenuItem3.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Tab), System.Windows.Forms.Keys)
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(135, 22)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(180, 22)
         Me.ToolStripMenuItem3.Text = "2"
         '
         'TextBox1old
@@ -716,6 +718,8 @@ Partial Class Form15
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.Color.DarkGray
+        Me.Panel5.Controls.Add(Me.Button6)
+        Me.Panel5.Controls.Add(Me.Button5)
         Me.Panel5.Controls.Add(Me.NewNoteButton)
         Me.Panel5.Controls.Add(Me.OpenNoteButton)
         Me.Panel5.Controls.Add(Me.Panel6)
@@ -724,6 +728,27 @@ Partial Class Form15
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(1260, 61)
         Me.Panel5.TabIndex = 12
+        '
+        'Button6
+        '
+        Me.Button6.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button6.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.Location = New System.Drawing.Point(267, 3)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(124, 45)
+        Me.Button6.TabIndex = 14
+        Me.Button6.Text = "Save Note"
+        Me.Button6.UseVisualStyleBackColor = False
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(535, 6)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 13
+        Me.Button5.Text = "Button5"
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'NewNoteButton
         '
@@ -886,4 +911,6 @@ Partial Class Form15
     Friend WithEvents OpenNoteButton As Button
     Friend WithEvents NewNoteButton As Button
     Friend WithEvents Panel7 As Panel
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button6 As Button
 End Class

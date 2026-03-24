@@ -41,6 +41,8 @@ Public Class TaskInteracter
                 Main.Form1.IsSettingOpen = False
             End If
             Main.Controller.OpenFramework_SetAppNameValue("")
+
+
         End If
 
     End Sub

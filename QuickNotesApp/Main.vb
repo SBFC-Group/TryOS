@@ -41,6 +41,9 @@ Public Class Main
     End Sub
 
     Public Function GetForm() As Windows.Forms.Form Implements OpenFramework_Interface.GetForm
-        Return New Form15
+        Main.Version = New Version(MajerVersion, MinorVersion, PatchVersion)
+        Return New QuickNotesApp.Form15
     End Function
+
+    Public Shared Version As Version
 End Class

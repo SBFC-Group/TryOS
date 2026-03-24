@@ -5,26 +5,30 @@ Imports System.Drawing
 Public Class Form15
     Public Shared QuickNotesLib As New QuickNotesLib.Main
 
+    Public AppVersion As Version = Main.Version
+
     Public opened As String = "0"
     Public FullScreen As Integer = 0
     Public S5478 As Panel
     Public Versionofapp As String = "3.2.0"
     Public PanelTing As Panel
 
+    Public FullFilePath As String
+
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
         Me.Close()
     End Sub
 
     Private Sub SaveAsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveAsToolStripMenuItem.Click
-        If SaveFileDialog1.ShowDialog() = DialogResult.OK Then
-            My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, TextBox1.Text, False)
-        End If
+        'If SaveFileDialog1.ShowDialog() = DialogResult.OK Then
+        '    My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, TextBox1.Text, False)
+        'End If
     End Sub
 
     Private Sub OpenFileToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenFileToolStripMenuItem.Click
-        If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
-            TextBox1.Text = My.Computer.FileSystem.ReadAllText(OpenFileDialog1.FileName)
-        End If
+        'If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
+        '    TextBox1.Text = My.Computer.FileSystem.ReadAllText(OpenFileDialog1.FileName)
+        'End If
     End Sub
 
     Private Sub AboutToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem1.Click
@@ -66,22 +70,21 @@ Public Class Form15
     End Sub
 
     Private Sub NewToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewToolStripMenuItem.Click
-        Dim text As New Form15
-        text.Show()
+
     End Sub
 
     Private Sub FontDialog1_Apply(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FontDialog1.Apply
-        TextBox1.Font = FontDialog1.Font
-        TextBox1.ForeColor = FontDialog1.Color
+        'TextBox1.Font = FontDialog1.Font
+        'TextBox1.ForeColor = FontDialog1.Color
     End Sub
 
     Private Sub FontToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FontToolStripMenuItem.Click
-        FontDialog1.Font = TextBox1.Font
-        FontDialog1.Color = TextBox1.ForeColor
-        If FontDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
-            TextBox1.Font = FontDialog1.Font
-            TextBox1.ForeColor = FontDialog1.Color
-        End If
+        'FontDialog1.Font = TextBox1.Font
+        'FontDialog1.Color = TextBox1.ForeColor
+        'If FontDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+        '    TextBox1.Font = FontDialog1.Font
+        '    TextBox1.ForeColor = FontDialog1.Color
+        'End If
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
@@ -171,47 +174,18 @@ Public Class Form15
         ToolStripSeparator4.Visible = False
         AboutQuickEditToolStripMenuItem.Visible = False
         TToolStripMenuItem.Visible = False
+        ToolStripStatusLabel1.Visible = False
     End Sub
-
-    'If Dark = True Then
-    '    ColorMode = "Dark"
-    '    Panel1.BackColor = Color.DimGray
-    '    Panel2.BackColor = Color.Gray
-    '    Button1.BackColor = Color.DarkGray
-    '    Button2.BackColor = Color.DarkGray
-    '    Button3.BackColor = Color.DarkGray
-    '    Button4.BackColor = Color.DarkGray
-    '    Button5.BackColor = Color.DarkGray
-    '    Button6.BackColor = Color.DarkGray
-    '    Button7.BackColor = Color.DarkGray
-    '    Button8.BackColor = Color.DarkGray
-    'ElseIf Dark = False Then
-    '    ColorMode = "Normal"
-    '    Panel1.BackColor = Color.Silver
-    '    Panel2.BackColor = Color.DarkGray
-    '    Button1.BackColor = Color.Gainsboro
-    '    Button2.BackColor = Color.Gainsboro
-    '    Button3.BackColor = Color.Gainsboro
-    '    Button4.BackColor = Color.Gainsboro
-    '    Button5.BackColor = Color.Gainsboro
-    '    Button6.BackColor = Color.Gainsboro
-    '    Button7.BackColor = Color.Gainsboro
-    '    Button8.BackColor = Color.Gainsboro
-    'End If
 
     Public Path As String
     Private Sub Form15_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'UI.SecureAppCheck("{C8CAFE9B-DB4C-4BDB-BECF-7A6FF4378C21}", Me, Versionofapp)
-        Timer1.Start()
-        'If Form_1pad.BlockSebsModren = True Then
-        'Close()
-        'End If
 
-        'If Form_1pad.BlockUsercontrolModren = True Then
-        'Button4.Enabled = False
-        'SettingsToolStripMenuItem.Enabled = False
-        'End If
-        'If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath + "\Users\" & Form1.Username & "\Apps\QuickNotes.swfiles") Then
+        Timer1.Start()
+
+        'Text = "TEsting"
+
+        Button5.Visible = True
+
         If Main._host.IsDarkMode() = True Then
             TextBox1.BackColor = Color.DarkGray
             Panel5.BackColor = Color.Silver
@@ -225,38 +199,6 @@ Public Class Form15
         End If
 
         RemoveUnusedParts()
-        'Else
-        'Close()
-        'End If
-
-        ToolStripStatusLabel1.Text = "Quick Edit " & Versionofapp
-        'FormatToolStripMenuItem.Visible = False
-        'ViewToolStripMenuItem.Visible = False
-        'ToolStripSeparator2.Visible = True
-        'FontToolStripMenuItem1.Visible = True
-        'StatusBarToolStripMenuItem.Visible = True
-
-        'If Form_1pad.textedit = "New" Then
-        'Button4.Visible = True
-        'ToolStripSeparator4.Visible = True
-        'SettingsToolStripMenuItem.Visible = True
-        'End If
-
-        'If Form_1pad.TaskbarPanel.Visible = True Then
-        'Panel1.BackColor = Form_1pad.TaskbarColor
-        'Panel3.BackColor = Form_1pad.TaskbarColor
-        'ElseIf Form_1pad.Panel1.Visible = True Then
-        'Panel1.BackColor = Form_1pad.Panel1.BackColor
-        'Panel3.BackColor = Form_1pad.Panel1.BackColor
-        'End If
-
-        'If Panel1.BackColor = Color.Black Then
-        'Button1.BackgroundImage = My.Resources._2920659_White
-        'Button2.BackgroundImage = My.Resources._1266721_White
-        'Button3.BackgroundImage = My.Resources.minimize2_White
-        'Label1.ForeColor = Color.White
-        'MenuStrip1.ForeColor = Color.White
-        'End If
 
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath + "\ext\readonly.swfiles") Then
             Dim reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath + "\ext\readonly.swfiles")
@@ -274,20 +216,13 @@ Public Class Form15
 
     Private Sub ClearTextBoxToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearTextBoxToolStripMenuItem.Click
         If MsgBox("Clear TextBox", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-            TextBox1.Text = ""
+            TextBox1.ResetText()
         End If
     End Sub
 
     Private Sub FontToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles FontToolStripMenuItem1.Click
         FontToolStripMenuItem_Click(Me, e)
     End Sub
-
-
-    '1. Anna Edit
-    '2. CVEdit
-    '3. The Editor
-    '4. Lion Edit
-    '5. Quick Edit
 
     Private Sub StatusBarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StatusBarToolStripMenuItem.Click
         StatasToolStripMenuItem_Click(Me, e)
@@ -296,22 +231,9 @@ Public Class Form15
     Private Sub TextBox1_LinkClicked(sender As Object, e As LinkClickedEventArgs) Handles TextBox1.LinkClicked
         If TextBox1.Text = "http://fullconsole" Then
             Main._host.RunCommand("start Console")
-            'Console.Show()
-            'Form1.IsQuickNotesOpen = False
         Else
             If TextBox1.Text = "http://shellconsole" Then
                 Main._host.StartCMD("NotNew")
-                'Form1.IsQuickNotesOpen = False
-            Else
-                'If Form_1pad.textedit = "New" Then
-                'Try
-                'Internetplusplus.Show()
-                'Internetplusplus.WebView21.Source = New Uri(TextBox1.Text)
-
-                'Catch ex As Exception
-                'MsgBox(ex.Message)
-                'End Try
-                'End If
             End If
         End If
     End Sub
@@ -368,8 +290,12 @@ Public Class Form15
     End Sub
 
     Private Sub EncodeTextToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EncodeToolStripMenuItem.Click
-        Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(TextBox1.Text)
-        TextBox1.Text = Convert.ToBase64String(byt)
+        Try
+            Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(TextBox1.Text)
+            TextBox1.Text = Convert.ToBase64String(byt)
+        Catch ex As Exception
+            Main._host.ShowError(ex.Message, TouchTest.ErrorMSGBox.Alerts.Critical)
+        End Try
     End Sub
 
     Private Sub DecodeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DecodeToolStripMenuItem.Click
@@ -377,7 +303,7 @@ Public Class Form15
             Dim b As Byte() = Convert.FromBase64String(TextBox1.Text)
             TextBox1.Text = System.Text.Encoding.UTF8.GetString(b)
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit " & Versionofapp)
+            Main._host.ShowError(ex.Message, TouchTest.ErrorMSGBox.Alerts.Critical)
         End Try
 
     End Sub
@@ -417,13 +343,49 @@ Public Class Form15
         NewNoteDialog1.ShowDialog()
     End Sub
 
-    Private Sub OpenNoteButton_Click() Handles OpenNoteButton.Click
-        Dim OpenNoteDialog1 As New OpenNoteDialog
-        Dim Checker As String
-        Checker = OpenNoteDialog1.GetValueNow()
-        If Checker = "" Then
-        Else
-            TextBox1.Text = Checker
+    Private Sub OpenNoteButton_Click(sender As Object, e As EventArgs) Handles OpenNoteButton.Click
+        Dim OpenNoteDialog2 As New OpenNoteDialog2
+        OpenNoteDialog2.LoadMe(Me)
+        'Dim OpenNoteDialog1 As New OpenNoteDialog
+        'Dim Checker As String
+        'Checker = OpenNoteDialog1.GetValueNow()
+        'If Checker = "" Then
+        'Else
+        '    TextBox1.Text = Checker
+        'End If
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Try
+            Dim stringlist As List(Of String) = QuickNotesLib.OpenNote(Main._host.GetUserFolder(), Main._host.GetUserFolder() & "\Temp", "Test", AppVersion, False)
+            MsgBox("Name: " & stringlist.Item(0) & "
+Text: " & stringlist.Item(1))
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
+    End Sub
+
+    'Private IsNoteSaved As Boolean = False
+    Public HasANoteBeenLoaded As Boolean = False
+
+    Private Sub Form15_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If HasANoteBeenLoaded = True Then
+            If TextBox1.Text = TextBox1old.Text Then
+            Else
+                e.Cancel = True
+
+
+            End If
         End If
+    End Sub
+
+    Private Sub SaveNoteButton_Click(sender As Object, e As EventArgs) Handles Button6.Click
+
+    End Sub
+
+    Public Sub SaveNote()
+
     End Sub
 End Class

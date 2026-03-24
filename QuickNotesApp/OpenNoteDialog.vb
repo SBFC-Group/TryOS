@@ -231,7 +231,7 @@ Public Class OpenNoteDialog
             WriteOINew = WriteOINew.Replace("Button", "")
 
             'This opens the note
-            ButtonWasPressed = Form15.QuickNotesLib.OpenNote(Main._host.GetUserFolder() & "\Notes", Main._host.GetUserFolder() & "\Temp", Main._host.GetUserFolder() & "\Notes\quicknote_" & WriteOINew & ".swnote")
+            'ButtonWasPressed = Form15.QuickNotesLib.OpenNote(Main._host.GetUserFolder() & "\Notes", Main._host.GetUserFolder() & "\Temp", Main._host.GetUserFolder() & "\Notes\quicknote_" & WriteOINew & ".swnote")
 
 
 
