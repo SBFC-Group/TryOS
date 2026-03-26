@@ -13,6 +13,7 @@ Public Class Form15
     Public Versionofapp As String = "3.2.0"
     Public PanelTing As Panel
 
+    Public NoteName As String
     Public FullFilePath As String
 
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
@@ -340,6 +341,7 @@ Public Class Form15
         Dim NewNoteDialog1 As New NewNoteDialog
 
         NewNoteDialog1.Form15Text = TextBox1.Text
+        NewNoteDialog1.Form15 = Me
         NewNoteDialog1.ShowDialog()
     End Sub
 
@@ -376,7 +378,9 @@ Text: " & stringlist.Item(1))
             Else
                 e.Cancel = True
 
+                SaveNote(True)
 
+                Close()
             End If
         End If
     End Sub
@@ -385,7 +389,16 @@ Text: " & stringlist.Item(1))
 
     End Sub
 
-    Public Sub SaveNote()
+    Public Sub SaveNote(Optional TryClose As Boolean = False)
+        If TextBox1.Text = TextBox1old.Text Then
+        Else
+            Dim file As New IO.FileInfo(FullFilePath)
+            QuickNotesLib.ChangeNote(file.DirectoryName, Main._host.GetUserFolder(), file.Name.Replace(".swnote", ""), AppVersion, TextBox1.Text)
+            TextBox1old.Text = TextBox1.Text
+            If TryClose = True Then
+                Close()
+            End If
 
+        End If
     End Sub
 End Class

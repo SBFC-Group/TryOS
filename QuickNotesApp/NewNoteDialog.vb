@@ -2,6 +2,7 @@
 Imports System.IO.Compression
 
 Public Class NewNoteDialog
+    Public Form15 As Form15
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
@@ -9,6 +10,9 @@ Public Class NewNoteDialog
     End Sub
 
     Private Number As Int64 = 1
+
+    Public UseOldFormat As Boolean = False
+
 
     Public Form15Text As String = ""
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -21,18 +25,22 @@ Public Class NewNoteDialog
                 TextBox1.Enabled = False
                 Button1.Enabled = False
 
-                Dim TempFolder As String = Main._host.GetUserFolder() & "\Temp"
-                My.Computer.FileSystem.CreateDirectory(TempFolder & "\tempfoldernote")
-                My.Computer.FileSystem.WriteAllText(TempFolder & "\tempfoldernote\NoteName.swfiles", TextBox1.Text, False)
-                My.Computer.FileSystem.WriteAllText(TempFolder & "\tempfoldernote\NoteText.swfiles", Form15Text, False)
+                If UseOldFormat = True Then
+                    Dim TempFolder As String = Main._host.GetUserFolder() & "\Temp"
+                    My.Computer.FileSystem.CreateDirectory(TempFolder & "\tempfoldernote")
+                    My.Computer.FileSystem.WriteAllText(TempFolder & "\tempfoldernote\NoteName.swfiles", TextBox1.Text, False)
+                    My.Computer.FileSystem.WriteAllText(TempFolder & "\tempfoldernote\NoteText.swfiles", Form15Text, False)
 
-                IO.Compression.ZipFile.CreateFromDirectory(TempFolder & "\tempfoldernote", TempFolder & "\quicknote_" & Number.ToString & ".swnote")
+                    IO.Compression.ZipFile.CreateFromDirectory(TempFolder & "\tempfoldernote", TempFolder & "\quicknote_" & Number.ToString & ".swnote")
 
-                System.Threading.Thread.Sleep(200)
+                    System.Threading.Thread.Sleep(200)
 
-                My.Computer.FileSystem.DeleteDirectory(TempFolder & "\tempfoldernote", FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    My.Computer.FileSystem.DeleteDirectory(TempFolder & "\tempfoldernote", FileIO.DeleteDirectoryOption.DeleteAllContents)
 
-                My.Computer.FileSystem.MoveFile(TempFolder & "\quicknote_" & Number.ToString & ".swnote", Main._host.GetUserFolder() & "\Notes\quicknote_" & Number.ToString & ".swnote")
+                    My.Computer.FileSystem.MoveFile(TempFolder & "\quicknote_" & Number.ToString & ".swnote", Main._host.GetUserFolder() & "\Notes\quicknote_" & Number.ToString & ".swnote")
+                Else
+                    Form15.QuickNotesLib.NewNote(Main._host.GetUserFolder() & "\Notes", Main._host.GetUserFolder() & "\Temp", TextBox1.Text, Form15.TextBox1.Text, Form15.AppVersion, True)
+                End If
 
                 Me.DialogResult = System.Windows.Forms.DialogResult.OK
                 Me.Close()

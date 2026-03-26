@@ -23,8 +23,6 @@
     Public Sub LoadEverything()
         FlowLayoutPanel1.Controls.Clear()
 
-        Debug.WriteLine(Form1.AppList.Count)
-
         For Each f As Form In Form1.AppList
             Try
                 Dim NewButton As New AppButton

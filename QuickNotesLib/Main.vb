@@ -193,19 +193,40 @@
             End If
             My.Computer.FileSystem.WriteAllText(TempFolderPath & "\tempfoldernote\Version.swfiles", $"{Version.Major}.{Version.Major}.{Version.Build}.{Version.Revision}", False)
         End If
-
-        If Name = "!!??Null=Null+Null=Null??!!" Then
+        '!!??Null=Null+Null=Null??!!
+        If Name = "" Then
         Else
             If My.Computer.FileSystem.FileExists(TempFolderPath & "\tempfoldernote\Name.swfiles") Then
                 My.Computer.FileSystem.WriteAllText(TempFolderPath & "\tempfoldernote\Name.swfiles", Name, False)
             End If
         End If
 
-        If Text = "!!??Null=Null+Null=Null??!!" Then
+        If Text = "" Then
         Else
             If My.Computer.FileSystem.FileExists(TempFolderPath & "\tempfoldernote\Text.swfiles") Then
                 My.Computer.FileSystem.WriteAllText(TempFolderPath & "\tempfoldernote\Text.swfiles", Text, False)
             End If
         End If
+
+        Try
+            My.Computer.FileSystem.DeleteFile(NotesFolderPath & "\" & FileNameWithoutExtension & ".swnote")
+
+            System.IO.Compression.ZipFile.CreateFromDirectory(TempFolderPath & "\tempfoldernote", NotesFolderPath & "\" & FileNameWithoutExtension & ".swnote")
+        Catch ex As Exception
+        End Try
+
+        'Creates a timer that will check if the temp folder still exists. if it does then deletes it and timer will stop after doing that.
+        Dim NewTimerCleaner As New System.Windows.Forms.Timer
+        NewTimerCleaner.Interval = 500
+        AddHandler NewTimerCleaner.Tick, Sub()
+                                             If My.Computer.FileSystem.FileExists(NotesFolderPath & "\" & FileNameWithoutExtension & ".swnote") Then
+                                                 If My.Computer.FileSystem.DirectoryExists(TempFolderPath & "\tempfoldernote") Then
+                                                     NewTimerCleaner.Stop()
+                                                     My.Computer.FileSystem.DeleteDirectory(TempFolderPath & "\tempfoldernote", FileIO.DeleteDirectoryOption.DeleteAllContents)
+                                                 End If
+                                             End If
+                                         End Sub
+        NewTimerCleaner.Start()
+
     End Sub
 End Class

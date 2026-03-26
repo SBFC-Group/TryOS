@@ -3,6 +3,8 @@ Imports System.Drawing
 
 Public Class PCContentMenu_NoneApp
 
+
+
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
     End Sub
@@ -16,7 +18,7 @@ Public Class PCContentMenu_NoneApp
 
         If FlowLayoutPanel1.Controls.Count = 1 Then
         Else
-            MyControllerForm.PCC.Size = New Size(MyControllerForm.PCC.Size.Width, MyControllerForm.PCC.Size.Height + 47)
+            Me.Size = New Size(Me.Size.Width, Me.Size.Height + 47)
         End If
 
         FlowLayoutPanel1.Controls.Add(NewButton)
@@ -36,8 +38,10 @@ Public Class PCContentMenu_NoneApp
         Dim action As Action = CType(btn.Tag, Action)
         Try
             action?.Invoke()
-            MyControllerForm.PCC.Visible = False
-            MyControllerForm.IsPCCHere = False
+            Me.Visible = False
+            If IsContextMenuBase = True Then
+                MyControllerForm.IsPCCHere = False
+            End If
         Catch ex As Exception
 
         End Try
@@ -73,8 +77,9 @@ Public Class PCContentMenu_NoneApp
 
     End Sub
 
+    Public IsContextMenuBase As Boolean = False
+
     Private Sub PCContentMenu_NoneApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadProgramButtons()
 
     End Sub
 

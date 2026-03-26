@@ -9,7 +9,20 @@ Public Class TaskInteracter
 
             Dim tempapplist As List(Of Form) = Main.UI.RunCommands("GetAppList", Main.TryController.Resuteg())
 
-            Dim tempform As Form = tempapplist.Item(AppInt)
+            Dim tempform As Form
+
+            Try
+                tempform = tempapplist.Item(AppInt)
+            Catch ex As Exception
+                If Environment.CommandLine.Contains("/DevMode") = True Then
+                    Debug.WriteLine(ex.Message)
+                End If
+                Return
+            End Try
+
+            If tempform.Equals(Main.Form1.currentForm) = False Then
+                Return
+            End If
 
             tempapplist.RemoveAt(AppInt)
 
@@ -25,6 +38,8 @@ Public Class TaskInteracter
             If Main.Form1.IsSettingOpen = True Then
                 Main.Form1.IsSettingOpen = False
             End If
+
+
             Main.Controller.OpenFramework_SetAppNameValue("")
 
             'Main.UI.ShowError("Currently this is disabled when the AppViewer is enabled.", TouchTest.ErrorMSGBox.Alerts.Information)

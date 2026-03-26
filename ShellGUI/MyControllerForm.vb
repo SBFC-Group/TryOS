@@ -47,6 +47,9 @@ Public Class MyControllerForm
         AddHandlerToAll(Main.Form1)
 
         If Bo1 = True Then
+
+            PCC.IsContextMenuBase = True
+            PCC.LoadProgramButtons()
             'PCC.BringToFront()
 
             'Main.Form1.Funnything().BringToFront()
@@ -56,16 +59,6 @@ Public Class MyControllerForm
             PCC.BackColor = Color.FromArgb(55, Color.DarkGray)
 
             PCC.Visible = False
-        End If
-
-        If Bo4 = True Then
-            For Each c As Control In TaskInteracter_Panel.FlowLayoutPanel1.Controls
-                AddHandler c.MouseDown, AddressOf MouseDown_Menu_TaskInteracter
-            Next
-
-            PCC_TaskInteracter.BackColor = Color.FromArgb(55, Color.DarkGray)
-
-            PCC_TaskInteracter.Visible = False
         End If
 
         If Bo2 = True Then
@@ -90,9 +83,29 @@ Public Class MyControllerForm
             End If
         End If
 
+
+        If Bo4 = True Then
+
+            PCC_TaskInteracter.IsContextMenuBase = False
+
+            PCC_TaskInteracter.AddItemToMenu("CloseThisAppItem", "Close", Sub()
+
+                                                                          End Sub)
+
+            For Each c As Control In TaskInteracter_Panel.FlowLayoutPanel1.Controls
+                AddHandler c.MouseDown, AddressOf MouseDown_Menu_TaskInteracter
+            Next
+
+            PCC_TaskInteracter.BackColor = Color.FromArgb(55, Color.DarkGray)
+
+            PCC_TaskInteracter.Visible = False
+        End If
         'OpenTaskInteracter(Main.Form1.Funnything())
 
     End Sub
+
+    Public Form1_Panel2_Y As Int64 = 0
+    Public Form1_Panel2_X As Int64 = 0
 
     Private Sub MouseDown_Menu(sender As Object, e As MouseEventArgs)
         If e.Button = MouseButtons.Right Then
@@ -106,28 +119,46 @@ Public Class MyControllerForm
             PCC.Location = New Drawing.Point(x1, y1)
             PCC.Visible = True
 
-
+            If PCC_TaskInteracter.Visible = True Then
+                PCC_TaskInteracter.Visible = False
+            End If
         ElseIf e.Button = MouseButtons.Left Then
             IsPCCHere = False
             'MsgBox("2")
             PCC.Visible = False
+
+            If PCC_TaskInteracter.Visible = True Then
+                PCC_TaskInteracter.Visible = False
+            End If
         End If
     End Sub
 
     Private Sub MouseDown_Menu_TaskInteracter(sender As Object, e As MouseEventArgs)
         If e.Button = MouseButtons.Right Then
-            Debug.WriteLine("Right")
-        ElseIf e.Button = MouseButtons.Left Then
-            Debug.Write("Left")
-        End If
-    End Sub
+            IsPCC_TaskInteracterHere = True
 
-    Private Sub BringToFront_Panel3(parent As Control)
-        For Each c As Control In parent.Controls
-            If c.Name = "Panel3" Then
-                c.BringToFront()
-            End If
-        Next
+            'MsgBox("1")
+            Dim x1 = sender.Location.X
+            Dim y1 = Form1_Panel2_Y - PCC_TaskInteracter.Size.Height
+
+            Debug.WriteLine("(Pre +35) x: " & x1 & " y: " & y1)
+
+            'y1 = y1 + Form1_Panel2_Y
+
+            'x1 = x1 + Form1_Panel2_X
+
+            'y1 = y1 - e.Location.Y
+
+
+            Debug.WriteLine("(Post +35) x: " & x1 & " y: " & y1)
+
+            PCC_TaskInteracter.Location = New Drawing.Point(x1, y1)
+            PCC_TaskInteracter.Visible = True
+        ElseIf e.Button = MouseButtons.Left Then
+            IsPCC_TaskInteracterHere = False
+
+            PCC_TaskInteracter.Visible = False
+        End If
     End Sub
 
     Private Sub MyControllerForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -167,7 +198,14 @@ Public Class MyControllerForm
                 If Bo1 = True Then
                     c.Controls.Add(PCC)
                     PCC.BringToFront()
+
+                    c.Controls.Add(PCC_TaskInteracter)
+                    PCC_TaskInteracter.BringToFront()
                 End If
+            ElseIf c.Name = "Panel2" Then
+                Form1_Panel2_Y = c.Location.Y
+                Form1_Panel2_X = c.Location.X
+
             ElseIf c.Name = "FlowLayoutPanel1" Then
                 If Bo1 Then
                     AddHandlerToAppButtons(c)
@@ -176,6 +214,7 @@ Public Class MyControllerForm
                 If Bo1 = True Then
                     AddHandler c.Click, Sub(sender As Object, e As EventArgs)
                                             PCC.Visible = False
+                                            PCC_TaskInteracter.Visible = False
                                         End Sub
                 End If
             ElseIf c.Name = "Button4" Then
@@ -184,6 +223,8 @@ Public Class MyControllerForm
                                             If IsPCCHere = True Then
                                                 PCC.Visible = True
                                             End If
+
+                                            PCC_TaskInteracter.Visible = False
                                         End Sub
                 End If
 
@@ -194,6 +235,7 @@ Public Class MyControllerForm
     End Sub
 
     Public Shared IsPCCHere As Boolean = False
+    Public Shared IsPCC_TaskInteracterHere As Boolean = False
 
     Private Sub AddHandlerToAppButtons(parent As Control)
         For Each c As Control In parent.Controls
@@ -202,10 +244,10 @@ Public Class MyControllerForm
                                         PCC.Visible = False
                                     End Sub
             End If
-            'If Bo4 = True Then
-            '    AddHandler c.MouseDown, AddressOf MouseDown_Menu_TaskInteracter
-            'End If
-            If c.HasChildren Then AddHandlerToAll(c)
+            If Bo4 = True Then
+                AddHandler c.MouseDown, AddressOf MouseDown_Menu_TaskInteracter
+            End If
+            'If c.HasChildren Then AddHandlerToAll(c)
         Next
     End Sub
 

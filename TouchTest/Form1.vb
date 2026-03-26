@@ -132,6 +132,7 @@ Public Class Form1
                 Next
             End If
 
+            'This loads CustomController (Loads ShellGUI)
             CustomController_Data.LoadCodeParts()
 
             If AllowOnlyVerifyedShellCode = False Then
@@ -337,7 +338,7 @@ Public Class Form1
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         If UseNewerAppViewer = True Then
 
-            'This code sadly didn't work. So no closing current app
+            'This code sadly didn't work. So no closing current app (you're wrong. It works now!!)
 
             Dim AppInt As Int64 = UI.RunCommands("GetAppIndex", TryController.Resuteg())
 
@@ -345,7 +346,16 @@ Public Class Form1
 
             Dim tempapplist As List(Of Form) = UI.RunCommands("GetAppList", TryController.Resuteg())
 
-            Dim tempform As Form = tempapplist.Item(AppInt)
+            Dim tempform As Form
+
+            Try
+                tempform = tempapplist.Item(AppInt)
+            Catch ex As Exception
+                If Environment.CommandLine.Contains("/DevMode") = True Then
+                    Debug.WriteLine(ex.Message)
+                End If
+                Return
+            End Try
 
             tempapplist.RemoveAt(AppInt)
 
@@ -354,6 +364,12 @@ Public Class Form1
             If OpenNewstAppAfterClosingAnApp = True Then
                 OpenAppAgain(tempapplist.Item(tempapplist.Count), tempapplist.Count)
             End If
+
+            If IsSettingOpen = True Then
+                IsSettingOpen = False
+            End If
+
+            OpenFramework_Data.OpenFramework.AppName = ""
 
             'UI.ShowError("Currentlly this is disabled when the AppViewer is enabled. (Will work again soon)", ErrorMSGBox.Alerts.Information)
         Else

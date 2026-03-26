@@ -25,8 +25,6 @@ Public Class OpenNoteDialog2
         ShowDialog()
     End Sub
 
-
-
     Public Sub LoadNoteButtons()
         Dim number As Int64 = 1
         Dim UserNotesFolder = Main._host.GetUserFolder() & "\Notes"
@@ -44,6 +42,7 @@ Public Class OpenNoteDialog2
 
                 Dim NewButton As New Button
                 NewButton.Name = "NoteButton" & number.ToString
+                NewButton.BackColor = Cancel_Button.BackColor
                 NewButton.FlatStyle = FlatStyle.Flat
                 NewButton.Font = Cancel_Button.Font
                 NewButton.Size = Cancel_Button.Size
@@ -52,6 +51,7 @@ Public Class OpenNoteDialog2
                 NewButton.Tag = list
                 AddHandler NewButton.Click, AddressOf NoteButton_Click
                 FlowLayoutPanel1.Controls.Add(NewButton)
+                number = number + 1
             End If
         Next
     End Sub
@@ -68,6 +68,7 @@ Public Class OpenNoteDialog2
         Form15.TextBox1.Text = list.Item(0)
         Form15.TextBox1old.Text = list.Item(0)
         Form15.FullFilePath = list.Item(1)
+        Form15.NoteName = sender.Text
         OK_Button_Click(Me, e)
     End Sub
 
