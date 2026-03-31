@@ -76,15 +76,14 @@ Public Class TaskInteracter
 
     Private Sub TaskInteracter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Main.UI.DisableOpenFramework = False Then
+            Main.Controller.OpenFramework_SetNewFlowLayoutPanel(FlowLayoutPanel1)
 
+            Main.Controller.OpenFramework_SetAppNameValue("")
+
+            Main.Controller.OpenFramework_LoadApps()
+
+            Main.Controller.OpenFramework_RestoreButtonOrder(True, FlowLayoutPanel1)
         End If
-        Main.Controller.OpenFramework_SetNewFlowLayoutPanel(FlowLayoutPanel1)
-
-        Main.Controller.OpenFramework_SetAppNameValue("")
-
-        Main.Controller.OpenFramework_LoadApps()
-
-        Main.Controller.OpenFramework_RestoreButtonOrder(True, FlowLayoutPanel1)
 
         ResetHandlersOrAddHandlers()
     End Sub

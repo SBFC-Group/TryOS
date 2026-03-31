@@ -28,19 +28,44 @@ Public Class Form1
             End Try
         End If
 
-        Try
-            Dim sd As String = ""
-            Dim your_mom As New Net.WebClient
-            your_mom.DownloadFile("https://raw.githubusercontent.com/sebastian2007bro/TryOSInstaller/refs/heads/main/UpdateData/UpdateURL.txt", My.Application.Info.DirectoryPath & "\Version")
-            sd = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Version")
-            If sd.Contains("https://github.com/sebastian2007bro/TryOS/releases/download") = True Then
-                InstallPath = sd
-            End If
-            My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\Version")
-        Catch ex As Exception
-            MsgBox("Is Internet working?")
-        End Try
-        Timer1.Start()
+        'Try
+        '    Dim sd As String = ""
+        '    Dim your_mom As New Net.WebClient
+        '    your_mom.DownloadFile("https://raw.githubusercontent.com/sebastian2007bro/TryOSInstaller/refs/heads/main/UpdateData/UpdateURL.txt", My.Application.Info.DirectoryPath & "\Version")
+        '    sd = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Version")
+        '    If sd.Contains("https://github.com/sebastian2007bro/TryOS/releases/download") = True Then
+        '        InstallPath = sd
+        '    End If
+        '    My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\Version")
+        'Catch ex As Exception
+        '    MsgBox("Is Internet working?")
+        'End Try
+        'Timer1.Start()
+
+        Dim psi As New ProcessStartInfo(My.Application.Info.DirectoryPath & "\Settings\ReturnGithubLatest.exe")
+        psi.RedirectStandardOutput = True
+        psi.UseShellExecute = False
+        psi.CreateNoWindow = True
+
+        Dim pro As Process = Process.Start(psi)
+
+        pro.WaitForExit()
+
+        Output = pro.StandardOutput.ReadToEnd()
+
+
+
+
+
+
+    End Sub
+
+    Private Output As String
+
+    Private Sub ReturnGithubLatest_Exited(sender As Object, e As EventArgs)
+        Output = sender.StandardOutput.ReadToEnd()
+
+        Debug.WriteLine(Output)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -258,4 +283,43 @@ Public Class Form1
         End If
 
     End Sub
+
+    Async Function GetReleases() As Task
+        Dim owner As String = "sebastian2007bro"
+        Dim repo As String = "TryOS"
+
+        Dim url As String = $"https://api.github.com/repos/{owner}/{repo}/releases"
+
+        Using client As New HttpClient()
+            client.DefaultRequestHeaders.Add("User-Agent", "VB.NET App")
+
+            Dim response As String = Await client.GetStringAsync(url)
+            Dim releases As JArray = JArray.Parse(response)
+
+            Dim latestRelease As JObject = Nothing
+            Dim latestPreRelease As JObject = Nothing
+
+            For Each release As JObject In releases
+                If latestRelease Is Nothing AndAlso Not release("prerelease").Value(Of Boolean)() Then
+                    latestRelease = release
+                End If
+
+                If latestPreRelease Is Nothing AndAlso release("prerelease").Value(Of Boolean)() Then
+                    latestPreRelease = release
+                End If
+
+                If latestRelease IsNot Nothing AndAlso latestPreRelease IsNot Nothing Then
+                    Exit For
+                End If
+            Next
+
+            If latestRelease IsNot Nothing Then
+                Debug.WriteLine("Latest Release: " & latestRelease("tag_name").ToString())
+            End If
+
+            If latestPreRelease IsNot Nothing Then
+                Debug.WriteLine("Latest Pre-release: " & latestPreRelease("tag_name").ToString())
+            End If
+        End Using
+    End Function
 End Class

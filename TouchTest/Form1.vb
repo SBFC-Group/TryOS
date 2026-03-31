@@ -107,7 +107,7 @@ Public Class Form1
         'This checks if the newer TaskInteracter is enabled.
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.TaskInteracter.txt") = False Then
 
-            'This checks if OpenFramework is enabled.
+            'This checks if OpenFramework is enabled. (This isn't readly getting used anymore...)
             If UI.DisableOpenFramework = False Then
                 OpenFramework_Data.OpenFramework.LoadApps(SandboxedUser)
 
@@ -115,6 +115,11 @@ Public Class Form1
             End If
         End If
 
+        If My.Computer.FileSystem.FileExists(User.UserFolderPath & "\Settings\AllowCustom.swfiles") Then
+            UI.DisableCustomCode = False
+        Else
+            UI.DisableCustomCode = True
+        End If
 
         'Checks if DisableCustomCode is false
         If UI.DisableCustomCode = False Then
@@ -162,7 +167,26 @@ Public Class Form1
             End If
         End If
 
-
+        If My.Computer.FileSystem.FileExists(User.UserFolderPath & "\Settings\AutoRunApp.swfiles") Then
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(User.UserFolderPath & "\Settings\AutoRunApp.swfiles")
+            Dim DllName As String = Nothing
+            If My.Computer.FileSystem.FileExists(UI.AppsFolder & "\" & Reader & "\DllPath.txt") = True Then
+                DllName = My.Computer.FileSystem.ReadAllText(UI.AppsFolder & "\" & Reader & "\DllPath.txt")
+            Else
+                DllName = UI.AppsFolder & "\" & Reader & "\Main.dll"
+            End If
+            Try
+                UI.GetFormFromAppDll(UI.AppsFolder & "\" & Reader & "\" & DllName)
+            Catch ex As Exception
+                UI.ShowError(ex.Message)
+            End Try
+        ElseIf My.Computer.FileSystem.FileExists(User.UserFolderPath & "\Settings\AutoRunDllApp.swfiles") Then
+            Try
+                UI.GetFormFromAppDll(My.Computer.FileSystem.ReadAllText(User.UserFolderPath & "\Settings\AutoRunDllApp.swfiles"))
+            Catch ex As Exception
+                UI.ShowError(ex.Message)
+            End Try
+        End If
     End Sub
 
     Public Sub New()

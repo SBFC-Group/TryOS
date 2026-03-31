@@ -1,8 +1,17 @@
 ﻿Imports System.IO
 
 Public Class TryController
+    Public Function GetBranch()
+        Return "Uranium_(1.1)"
+    End Function
+
     Private Sub TryController_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim args As String = Environment.CommandLine
+
+        If args.Contains("/ReturnVersion") = True Then
+            System.Console.WriteLine(GetVersion)
+            End
+        End If
 
         If args.Contains("/InstallApp:") = True Then
             'Does nothing right now.
@@ -26,6 +35,10 @@ Public Class TryController
             Me.ShowInTaskbar = False
         Else
             Console.Show()
+
+            Me.WindowState = FormWindowState.Minimized
+
+            Me.ShowInTaskbar = False
         End If
 
         If args.Contains("/DevMode") = True Then
