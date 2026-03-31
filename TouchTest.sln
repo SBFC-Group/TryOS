@@ -43,6 +43,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "InternetDownloader", "Inter
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DiscordApp", "DiscordApp\DiscordApp.vbproj", "{C0480A89-E7A0-46EF-BD8A-D579A068512F}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ReturnGithubLatest", "ReturnGithubLatest\ReturnGithubLatest.vbproj", "{CE13297A-8FDA-469B-ABA0-39CE1F908F87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{C0480A89-E7A0-46EF-BD8A-D579A068512F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0480A89-E7A0-46EF-BD8A-D579A068512F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0480A89-E7A0-46EF-BD8A-D579A068512F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE13297A-8FDA-469B-ABA0-39CE1F908F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE13297A-8FDA-469B-ABA0-39CE1F908F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE13297A-8FDA-469B-ABA0-39CE1F908F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE13297A-8FDA-469B-ABA0-39CE1F908F87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

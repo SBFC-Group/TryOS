@@ -163,7 +163,9 @@ Public Class UI
                 gg.ShowDialog()
             End If
             Return Nothing
-        ElseIf Command.Contains("SetAppIndex ") Then
+        ElseIf Command.Contains("GetBranch") = True Then
+            Return TryController.GetBranch
+        ElseIf Command.Contains("SetAppIndex ") = True Then
             If User.Role = TryController.Roles.Developer Then
             ElseIf User.Role = TryController.Roles.Program Then
             Else
@@ -177,7 +179,7 @@ Public Class UI
             Catch ex As Exception
                 Return Nothing
             End Try
-        ElseIf Command.Contains("GetAppIndex") Then
+        ElseIf Command.Contains("GetAppIndex") = True Then
             If User.Role = TryController.Roles.Developer Then
             ElseIf User.Role = TryController.Roles.Program Then
             Else

@@ -4,31 +4,35 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{58D07A18-206D-4F0C-8611-C2F9C20DEAB4}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>SettingsApp</RootNamespace>
-    <AssemblyName>SettingsApp</AssemblyName>
+    <ProjectGuid>{CE13297A-8FDA-469B-ABA0-39CE1F908F87}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <StartupObject>ReturnGithubLatest.Module1</StartupObject>
+    <RootNamespace>ReturnGithubLatest</RootNamespace>
+    <AssemblyName>ReturnGithubLatest</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>Windows</MyType>
+    <MyType>Console</MyType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SettingsApp.xml</DocumentationFile>
+    <DocumentationFile>ReturnGithubLatest.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SettingsApp.xml</DocumentationFile>
+    <DocumentationFile>ReturnGithubLatest.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -44,10 +48,12 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -66,13 +72,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InfoApp.Designer.vb">
-      <DependentUpon>InfoApp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="InfoApp.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Main.vb" />
+    <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -88,52 +88,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SettingsForm.Designer.vb">
-      <DependentUpon>SettingsForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="SettingsForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ThemeApp.Designer.vb">
-      <DependentUpon>ThemeApp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ThemeApp.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UpdateApp.Designer.vb">
-      <DependentUpon>UpdateApp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UpdateApp.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserSettings.Designer.vb">
-      <DependentUpon>UserSettings.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UserSettings.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="InfoApp.resx">
-      <DependentUpon>InfoApp.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.resx">
-      <DependentUpon>SettingsForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ThemeApp.resx">
-      <DependentUpon>ThemeApp.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UpdateApp.resx">
-      <DependentUpon>UpdateApp.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserSettings.resx">
-      <DependentUpon>UserSettings.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -146,24 +107,8 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TouchTest\TouchTest.vbproj">
-      <Project>{197b1b09-baa7-4125-aea3-441cf70675a9}</Project>
-      <Name>TouchTest</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\settings_configuration_icon_225724.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\settings_configuration_icon_225724.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>call ..\..\..\CompileSettingsApp.bat</PostBuildEvent>
-  </PropertyGroup>
 </Project>

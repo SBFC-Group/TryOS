@@ -3,6 +3,7 @@
     Public ReadOnly UserFolderPath As String
     Public ReadOnly Role As TryController.Roles
     Public ReadOnly SandboxedUser As Boolean
+    Public ReadOnly LockedMode As Boolean
 
     Public Sub New(Optional TheUserName As String = "", Optional IsSandboxed As Boolean = False)
         If TheUserName = "" Then
@@ -12,7 +13,17 @@
             Username = TheUserName
             UserFolderPath = UI.UsersFolder & "\" & TheUserName
         End If
-        SandboxedUser = IsSandboxed
+
+        If My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group\Edomdekcol", "Edomdekcol", Nothing) = "True" Then
+            LockedMode = True
+        ElseIf My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LockedMode.setting") Then
+            Try
+                LockedMode = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LockedMode.setting"))
+            Catch ex As Exception
+            End Try
+        End If
+
+            SandboxedUser = IsSandboxed
         If IsSandboxed = True Then
             Role = TryController.Roles.StandardSandbox
         Else
