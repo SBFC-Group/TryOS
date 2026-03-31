@@ -89,7 +89,14 @@ Public Class MyControllerForm
             PCC_TaskInteracter.IsContextMenuBase = False
 
             PCC_TaskInteracter.AddItemToMenu("CloseThisAppItem", "Close", Sub()
+                                                                              Dim list As List(Of Object) = PCC_TaskInteracter.Tag
+                                                                              Dim form As Form = list.Item(0)
+                                                                              Main.Form1.AppList.RemoveAt(list.Item(1))
+                                                                              form.Close()
 
+                                                                              If Main.Form1.IsSettingOpen = True Then
+                                                                                  Main.Form1.IsSettingOpen = False
+                                                                              End If
                                                                           End Sub)
 
             For Each c As Control In TaskInteracter_Panel.FlowLayoutPanel1.Controls
@@ -135,25 +142,34 @@ Public Class MyControllerForm
 
     Private Sub MouseDown_Menu_TaskInteracter(sender As Object, e As MouseEventArgs)
         If e.Button = MouseButtons.Right Then
+            'bool that i need to check if PCC_TaskInteracter is open or closed
             IsPCC_TaskInteracterHere = True
 
-            'MsgBox("1")
-            Dim x1 = sender.Location.X
+            'This does some math that puts the context menu in the right place
+            Dim x1 = sender.Location.X - sender.Size.Width
             Dim y1 = Form1_Panel2_Y - PCC_TaskInteracter.Size.Height
 
-            Debug.WriteLine("(Pre +35) x: " & x1 & " y: " & y1)
+            'This stops the Context menu from going into -1 and lower
+            If x1 < -1 Then
+                x1 = 0
+            End If
 
-            'y1 = y1 + Form1_Panel2_Y
+            Dim AppDataList As New List(Of Object)
 
-            'x1 = x1 + Form1_Panel2_X
+            Dim plugin As OpenFramework_Interface = CType(sender.Tag, OpenFramework_Interface)
 
-            'y1 = y1 - e.Location.Y
+            Dim rr As Form = plugin.GetForm()
 
+            If Main.Form1.AppList.Contains(rr) = False Then
+                Return
+            End If
 
-            Debug.WriteLine("(Post +35) x: " & x1 & " y: " & y1)
+            AppDataList.Add(sender.Tag)
+            AppDataList.Add(TaskInteracter_Panel.FlowLayoutPanel1.Controls.IndexOf(sender))
 
             PCC_TaskInteracter.Location = New Drawing.Point(x1, y1)
             PCC_TaskInteracter.Visible = True
+            PCC_TaskInteracter.Tag = AppDataList
         ElseIf e.Button = MouseButtons.Left Then
             IsPCC_TaskInteracterHere = False
 
