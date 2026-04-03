@@ -3,8 +3,12 @@
     Public MessageSource As String = ""
 
     Public Sub Crash(e As Exception)
-        CloseEveryForm()
+        Me.BackColor = Color.Black
+        Me.RichTextBox1.BackColor = Color.Black
         Me.Show()
+        Me.BackColor = Color.Black
+        Me.RichTextBox1.BackColor = Color.Black
+        CloseEveryForm()
         RichTextBox1.Text = "The Program Crashed and will restart soon." & "
 " & e.Message & "
 " & e.Source & "

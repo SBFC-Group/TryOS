@@ -39,6 +39,7 @@
             Form1.AllowNewerLoader = False
             UI.DisableCustomCode = True
             UI.DisableOpenFramework = True
+            UI.LogonBool = True
             Form1.User = New UserManager("Program")
             UI.LoadShell("Program", "")
             Form1.EnableFullAppMode(True)

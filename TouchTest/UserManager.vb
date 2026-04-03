@@ -355,6 +355,6 @@
     End Sub
 
     Public Shared Sub LoadTaskbarButtons()
-        OpenFramework_Data.OpenFramework.RestoreButtonOrder()
+        OpenFramework_Data.OpenFramework.RestoreButtonOrder(False)
     End Sub
 End Class

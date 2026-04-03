@@ -525,6 +525,12 @@
     <Compile Include="SettingsApp.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI_SM.Designer.vb">
+      <DependentUpon>UI_SM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UI_SM.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UpdateApp.Designer.vb">
       <DependentUpon>UpdateApp.vb</DependentUpon>
     </Compile>
@@ -745,6 +751,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI.resx">
       <DependentUpon>UI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI_SM.resx">
+      <DependentUpon>UI_SM.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateApp.resx">
       <DependentUpon>UpdateApp.vb</DependentUpon>

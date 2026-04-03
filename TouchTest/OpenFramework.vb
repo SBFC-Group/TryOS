@@ -67,6 +67,14 @@ Namespace OpenFramework_Data
 
         End Sub
 
+        Public Shared Sub SaveButtonOrder(Optional ControlThing As Control = Nothing)
+            If ControlThing IsNot Nothing Then
+                SaveButtonOrder(True, ControlThing)
+            Else
+                SaveButtonOrder(False, Nothing)
+            End If
+        End Sub
+
         Public Shared Sub SaveButtonOrder(Optional AllowCustom As Boolean = False, Optional ControlThing As Control = Nothing)
             Dim order As New List(Of String)
             If AllowCustom = True Then
@@ -74,19 +82,36 @@ Namespace OpenFramework_Data
                     order.Add(ctrl.Tag.ToString())
                 Next
             Else
-                For Each ctrl As Control In Form1.FlowLayoutPanel1.Controls
+                For Each ctrl As Control In FlowLayoutPanelUse.Controls
                     order.Add(ctrl.Tag.ToString())
                 Next
             End If
             IO.File.WriteAllText(Form1.User.UserFolderPath & "\Settings\Taskbar_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
         End Sub
 
+        Public Shared Sub RestoreButtonOrder(Optional ControlThing As Control = Nothing)
+            If ControlThing IsNot Nothing Then
+                RestoreButtonOrder(True, ControlThing)
+            Else
+                RestoreButtonOrder(False, Nothing)
+            End If
+        End Sub
+
         Public Shared Sub RestoreButtonOrder(Optional AllowCustom As Boolean = False, Optional ControlThing As Control = Nothing)
             If AllowCustom = False Then
-                ControlThing = Form1.FlowLayoutPanel1
+                ControlThing = FlowLayoutPanelUse
             End If
 
+
+
             Dim path As String = Form1.User.UserFolderPath & "\Settings\Taskbar_Order.json"
+
+            If IO.File.Exists(path) = False Then
+                If IO.File.Exists(Form1.User.UserFolderPath & "\Settings\TaskInteracter_Order.json") Then
+                    path = Form1.User.UserFolderPath & "\Settings\TaskInteracter_Order.json"
+                End If
+            End If
+
             If IO.File.Exists(path) Then
                 Dim order = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of String))(IO.File.ReadAllText(path))
                 Dim sortedButtons As New List(Of Control)
@@ -121,6 +146,14 @@ Namespace OpenFramework_Data
             Dim plugins As New List(Of OpenFramework_Interface)()
 
             Dim dir1 = My.Application.Info.DirectoryPath & "\Apps"
+
+            If My.Computer.FileSystem.DirectoryExists(dir1) = False Then
+                If InDevMode = True Then
+                    Debug.WriteLine(dir1 & " Does not exist or you don't own the folder.")
+                End If
+                Return Nothing
+            End If
+
             Dim files() As System.IO.DirectoryInfo
             Dim dirinfo As New System.IO.DirectoryInfo(dir1)
             files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)

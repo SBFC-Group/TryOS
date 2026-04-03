@@ -3,11 +3,11 @@
 Public Class TaskInteracter
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If Main.Form1.UseNewerAppViewer = True Then
-            Dim AppInt As Int64 = Main.UI.RunCommands("GetAppIndex", Main.TryController.Resuteg())
+            Dim AppInt As Int64 = Main.UI.RunCommands("GetAppIndex", Main.TryController.Resuteg(Main.TryController.CoreID))
 
             Debug.WriteLine("Closing App Index: " & AppInt)
 
-            Dim tempapplist As List(Of Form) = Main.UI.RunCommands("GetAppList", Main.TryController.Resuteg())
+            Dim tempapplist As List(Of Form) = Main.UI.RunCommands("GetAppList", Main.TryController.Resuteg(Main.TryController.CoreID))
 
             Dim tempform As Form
 

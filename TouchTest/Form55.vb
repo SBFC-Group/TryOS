@@ -39,7 +39,7 @@
         My.Computer.FileSystem.MoveFile(sender.Tag, UI.UserFolder & "\Temp\App.tryapp")
         TryOS_Store_Manager.Class1.InstallTryOSApp(UI.UserFolder & "\Temp\App.tryapp")
         My.Computer.FileSystem.DeleteFile(UI.UserFolder & "\Temp\App.tryapp")
-        OpenFramework_Data.OpenFramework.RestoreButtonOrder()
+        OpenFramework_Data.OpenFramework.RestoreButtonOrder(False)
         'sender.Stop()
     End Sub
 

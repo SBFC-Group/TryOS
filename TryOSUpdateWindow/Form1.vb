@@ -41,22 +41,11 @@ Public Class Form1
         '    MsgBox("Is Internet working?")
         'End Try
         'Timer1.Start()
+        If Environment.GetCommandLineArgs.Length = 0 Then
+            End
+        End If
 
-        Dim psi As New ProcessStartInfo(My.Application.Info.DirectoryPath & "\Settings\ReturnGithubLatest.exe")
-        psi.RedirectStandardOutput = True
-        psi.UseShellExecute = False
-        psi.CreateNoWindow = True
-
-        Dim pro As Process = Process.Start(psi)
-
-        pro.WaitForExit()
-
-        Output = pro.StandardOutput.ReadToEnd()
-
-
-
-
-
+        UpdateIt(Environment.GetCommandLineArgs)
 
     End Sub
 
@@ -322,4 +311,77 @@ Public Class Form1
             End If
         End Using
     End Function
+
+    Private Sub UpdateIt(args As String())
+
+
+        Dim appPath As String = args(1)
+        Dim zipPath As String = args(2)
+
+        Dim appDir As String = Path.GetDirectoryName(appPath)
+        Dim tempExtract As String = Path.Combine(Path.GetTempPath(), "update_extract")
+
+        Try
+            ' Wait for app to close
+            Threading.Thread.Sleep(2000)
+
+            ' Clean temp folder
+            If Directory.Exists(tempExtract) Then
+                Directory.Delete(tempExtract, True)
+            End If
+
+            ' Extract ZIP
+            IO.Compression.ZipFile.ExtractToDirectory(zipPath, tempExtract)
+
+            ' Copy files (excluding userdata folders)
+            CopyFiles(tempExtract, appDir)
+
+            ' Restart app
+            Process.Start(appPath)
+
+            Try
+                Directory.Delete(tempExtract, True)
+            Catch ex1 As Exception
+                MsgBox("Post-Update Clean up failed: " & ex1.Message)
+            End Try
+
+            End
+        Catch ex As Exception
+            MsgBox("Update failed: " & ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub CopyFiles(sourceDir As String, targetDir As String)
+
+        Dim excludedFolders As String() = {"Users", "Wallpapers", "Settings"}
+
+        ' Copy files
+        For Each file In IO.Directory.GetFiles(sourceDir)
+            Dim fileName = Path.GetFileName(file)
+            Dim destFile = Path.Combine(targetDir, fileName)
+
+            IO.File.Copy(file, destFile, True)
+        Next
+
+        ' Copy directories
+        For Each Dir As String In IO.Directory.GetDirectories(sourceDir)
+
+            Dim dirName = Path.GetFileName(Dir)
+
+            ' Skip userdata folders
+            If excludedFolders.Contains(dirName) Then
+                Continue For
+            End If
+
+            Dim targetSubDir = Path.Combine(targetDir, dirName)
+
+            If Not Directory.Exists(targetSubDir) Then
+                Directory.CreateDirectory(targetSubDir)
+            End If
+
+            CopyFiles(Dir, targetSubDir)
+        Next
+
+    End Sub
 End Class

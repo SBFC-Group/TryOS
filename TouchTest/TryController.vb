@@ -1,6 +1,28 @@
 ﻿Imports System.IO
 
 Public Class TryController
+    Public ReadOnly CoreID As Int64
+    Private HasBeenOpened As Boolean = False
+    Private StartSafe As Boolean = False
+
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+        If UI_SM.IsCoreIDSet = False Then
+            UI_SM.IsCoreIDSet = True
+
+            Dim random As New Random
+            CoreID = random.Next(10000, 99999)
+        Else
+            StartSafe = True
+        End If
+
+    End Sub
+
     Public Function GetBranch()
         Return "Uranium_(1.1)"
     End Function
@@ -78,8 +100,16 @@ Public Class TryController
 
     Private erehresuteg As New UserManager("SuperSecretUser")
 
-    Public Function Resuteg()
-        Return erehresuteg
+    Public Function Resuteg(Optional ID As Int64 = 0)
+        If StartSafe = True Then
+            Return Nothing
+        End If
+
+        If ID = CoreID Then
+            Return erehresuteg
+        Else
+            Return Nothing
+        End If
     End Function
 
     Public Dev As Boolean = False
@@ -160,7 +190,9 @@ Public Class TryController
                 Else
                     If Form1.currentForm.Name = form_.Name Then
                     Else
-                        form_.Close()
+                        If Form1.AppList.Contains(form_) = False Then
+                            form_.Close()
+                        End If
                     End If
                 End If
             Next

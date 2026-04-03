@@ -44,7 +44,7 @@ Module Module1
     End Function
 
     Sub Main()
-        GetReleases()
+        'GetReleases()
     End Sub
 
 End Module

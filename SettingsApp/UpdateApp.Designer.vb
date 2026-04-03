@@ -127,6 +127,7 @@ Partial Class UpdateApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.DarkGray
         Me.Controls.Add(Me.Panel1)
         Me.Name = "UpdateApp"
         Me.Size = New System.Drawing.Size(999, 620)

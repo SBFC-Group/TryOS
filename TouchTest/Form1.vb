@@ -115,10 +115,10 @@ Public Class Form1
             End If
         End If
 
-        If My.Computer.FileSystem.FileExists(User.UserFolderPath & "\Settings\AllowCustom.swfiles") Then
-            UI.DisableCustomCode = False
-        Else
+        If My.Computer.FileSystem.FileExists(User.UserFolderPath & "\Settings\DisallowCustom.swfiles") Then
             UI.DisableCustomCode = True
+        Else
+            UI.DisableCustomCode = False
         End If
 
         'Checks if DisableCustomCode is false
@@ -364,11 +364,11 @@ Public Class Form1
 
             'This code sadly didn't work. So no closing current app (you're wrong. It works now!!)
 
-            Dim AppInt As Int64 = UI.RunCommands("GetAppIndex", TryController.Resuteg())
+            Dim AppInt As Int64 = UI.RunCommands("GetAppIndex", TryController.Resuteg(TryController.CoreID))
 
             Debug.WriteLine("Closing App Index: " & AppInt)
 
-            Dim tempapplist As List(Of Form) = UI.RunCommands("GetAppList", TryController.Resuteg())
+            Dim tempapplist As List(Of Form) = UI.RunCommands("GetAppList", TryController.Resuteg(TryController.CoreID))
 
             Dim tempform As Form
 
@@ -634,8 +634,13 @@ Public Class Form1
     Public HasBattery As Boolean = False
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        UI.RunCommands("end", User)
+        'UI.RunCommands("end", User)
         'FToL.Show()
+        MsgBox(TryController.CoreID)
+
+        Dim jj As New TryController
+        MsgBox(jj.CoreID.ToString)
+
     End Sub
 
     Private Sub InstagramButton_Click(sender As Object, e As EventArgs) Handles InstagramButton.Click
@@ -661,7 +666,7 @@ Public Class Form1
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If UI.DisableOpenFramework = False Then
-            OpenFramework_Data.OpenFramework.SaveButtonOrder()
+            OpenFramework_Data.OpenFramework.SaveButtonOrder(False)
         End If
     End Sub
 
@@ -674,11 +679,11 @@ Public Class Form1
     End Sub
 
     Private Sub SaveButtonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveButtonOrderToolStripMenuItem.Click
-        OpenFramework_Data.OpenFramework.SaveButtonOrder()
+        OpenFramework_Data.OpenFramework.SaveButtonOrder(False)
     End Sub
 
     Private Sub RestoreButtonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreButtonOrderToolStripMenuItem.Click
-        OpenFramework_Data.OpenFramework.RestoreButtonOrder()
+        OpenFramework_Data.OpenFramework.RestoreButtonOrder(False)
     End Sub
 
     Private Sub AllAppsButtonToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AllAppsButtonToolStripMenuItem.Click

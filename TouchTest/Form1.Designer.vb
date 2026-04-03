@@ -61,6 +61,8 @@ Partial Class Form1
         Me.LoadAppsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveButtonOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RestoreButtonOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HiddwedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AllAppsButtonToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripTextBox3 = New System.Windows.Forms.ToolStripTextBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
@@ -69,8 +71,6 @@ Partial Class Form1
         Me.InternetList = New System.Windows.Forms.ImageList(Me.components)
         Me.PowerList = New System.Windows.Forms.ImageList(Me.components)
         Me.PowerTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.HiddwedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AllAppsButtonToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.TimebarPanel.SuspendLayout()
@@ -228,7 +228,6 @@ Partial Class Form1
         Me.Button5.TabIndex = 5
         Me.Button5.Text = "Close Program"
         Me.Button5.UseVisualStyleBackColor = True
-        Me.Button5.Visible = False
         '
         'Label1
         '
@@ -459,20 +458,35 @@ Partial Class Form1
         'LoadAppsToolStripMenuItem
         '
         Me.LoadAppsToolStripMenuItem.Name = "LoadAppsToolStripMenuItem"
-        Me.LoadAppsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.LoadAppsToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.LoadAppsToolStripMenuItem.Text = "LoadApps"
         '
         'SaveButtonOrderToolStripMenuItem
         '
         Me.SaveButtonOrderToolStripMenuItem.Name = "SaveButtonOrderToolStripMenuItem"
-        Me.SaveButtonOrderToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SaveButtonOrderToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.SaveButtonOrderToolStripMenuItem.Text = "SaveButtonOrder"
         '
         'RestoreButtonOrderToolStripMenuItem
         '
         Me.RestoreButtonOrderToolStripMenuItem.Name = "RestoreButtonOrderToolStripMenuItem"
-        Me.RestoreButtonOrderToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RestoreButtonOrderToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.RestoreButtonOrderToolStripMenuItem.Text = "RestoreButtonOrder"
+        '
+        'HiddwedToolStripMenuItem
+        '
+        Me.HiddwedToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AllAppsButtonToolStripMenuItem})
+        Me.HiddwedToolStripMenuItem.Name = "HiddwedToolStripMenuItem"
+        Me.HiddwedToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.HiddwedToolStripMenuItem.Text = "Hidden Items"
+        Me.HiddwedToolStripMenuItem.Visible = False
+        '
+        'AllAppsButtonToolStripMenuItem
+        '
+        Me.AllAppsButtonToolStripMenuItem.Name = "AllAppsButtonToolStripMenuItem"
+        Me.AllAppsButtonToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Tab), System.Windows.Forms.Keys)
+        Me.AllAppsButtonToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
+        Me.AllAppsButtonToolStripMenuItem.Text = "All Apps Button"
         '
         'ToolStripTextBox3
         '
@@ -524,21 +538,6 @@ Partial Class Form1
         'PowerTimer
         '
         Me.PowerTimer.Interval = 5000
-        '
-        'HiddwedToolStripMenuItem
-        '
-        Me.HiddwedToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AllAppsButtonToolStripMenuItem})
-        Me.HiddwedToolStripMenuItem.Name = "HiddwedToolStripMenuItem"
-        Me.HiddwedToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.HiddwedToolStripMenuItem.Text = "Hidden Items"
-        Me.HiddwedToolStripMenuItem.Visible = False
-        '
-        'AllAppsButtonToolStripMenuItem
-        '
-        Me.AllAppsButtonToolStripMenuItem.Name = "AllAppsButtonToolStripMenuItem"
-        Me.AllAppsButtonToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Tab), System.Windows.Forms.Keys)
-        Me.AllAppsButtonToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
-        Me.AllAppsButtonToolStripMenuItem.Text = "All Apps Button"
         '
         'Form1
         '

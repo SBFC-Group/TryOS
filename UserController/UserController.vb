@@ -1,8 +1,8 @@
 ﻿Imports System.Windows.Forms
 Public Class UserController
     Public Shared Sub CreateUser(Username As String, Password As String)
-        Dim TextBox1 As TextBox
-        Dim TextBox2 As TextBox
+        Dim TextBox1 As New TextBox
+        Dim TextBox2 As New TextBox
         TextBox1.Text = Username
         TextBox2.Text = Password
         My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text)

@@ -66,10 +66,12 @@
                 End If
 
             ElseIf ProgressBar1.Value = 50 Then
-                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles") Then
-                Else
+                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles") = False Then
                     My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles", TryController.GetVersion(), False)
-
+                End If
+            ElseIf ProgressBar1.Value = 60 Then
+                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Taskbar_Order.json") = False Then
+                    My.Computer.FileSystem.RenameFile(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Taskbar_Order.json", "TaskInteracter_Order.json")
                 End If
             ElseIf ProgressBar1.Value = 70 Then
                 Dim CloseFormQ As Boolean = False

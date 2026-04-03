@@ -23,9 +23,9 @@ Partial Class ControlCenter
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -42,17 +42,17 @@ Partial Class ControlCenter
         Me.Panel1.Size = New System.Drawing.Size(1035, 596)
         Me.Panel1.TabIndex = 0
         '
-        'Button1
+        'Button3
         '
-        Me.Button1.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(3, 3)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(197, 52)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Close The Program"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.Button3.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Location = New System.Drawing.Point(409, 3)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(131, 52)
+        Me.Button3.TabIndex = 2
+        Me.Button3.Text = "Log Off"
+        Me.Button3.UseVisualStyleBackColor = False
         '
         'Button2
         '
@@ -66,18 +66,17 @@ Partial Class ControlCenter
         Me.Button2.Text = "Restart The Program"
         Me.Button2.UseVisualStyleBackColor = False
         '
-        'Button3
+        'Button1
         '
-        Me.Button3.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button3.Enabled = False
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(409, 3)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(131, 52)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "Log Off"
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.Button1.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(3, 3)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(197, 52)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "Close The Program"
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'ControlCenter
         '

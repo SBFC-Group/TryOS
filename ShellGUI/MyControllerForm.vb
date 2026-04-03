@@ -5,9 +5,9 @@ Imports TouchTest
 Public Class MyControllerForm
     'This will won't ever open
 
-    Public Shared PCC As New PCContentMenu_NoneApp
-    Public Shared PCC_TaskInteracter As New PCContentMenu_NoneApp
-    Public Shared TaskInteracter_Panel As New TaskInteracter
+    Public Shared PCC As PCContentMenu_NoneApp
+    Public Shared PCC_TaskInteracter As PCContentMenu_NoneApp
+    Public Shared TaskInteracter_Panel As TaskInteracter
     Public Bo1 As Boolean 'If true then PCC loads
     Public Bo2 As Boolean 'If true then TaskInteracter loads
     Public Bo3 As Boolean 'If true then use newer Wallpaper loader
@@ -20,12 +20,14 @@ Public Class MyControllerForm
 
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.PCC.txt") Then
             Bo1 = True
+            PCC = New PCContentMenu_NoneApp
         Else
             Bo1 = False
         End If
 
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.TaskInteracter.txt") Then
             Bo2 = True
+            TaskInteracter_Panel = New TaskInteracter
         Else
             Bo2 = False
         End If
@@ -39,6 +41,7 @@ Public Class MyControllerForm
 
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.PCC=TaskInteracter.txt") Then
             Bo4 = True
+            PCC_TaskInteracter = New PCContentMenu_NoneApp
         Else
             Bo4 = False
         End If
@@ -88,16 +91,26 @@ Public Class MyControllerForm
 
             PCC_TaskInteracter.IsContextMenuBase = False
 
-            PCC_TaskInteracter.AddItemToMenu("CloseThisAppItem", "Close", Sub()
-                                                                              Dim list As List(Of Object) = PCC_TaskInteracter.Tag
-                                                                              Dim form As Form = list.Item(0)
-                                                                              Main.Form1.AppList.RemoveAt(list.Item(1))
-                                                                              form.Close()
-
-                                                                              If Main.Form1.IsSettingOpen = True Then
-                                                                                  Main.Form1.IsSettingOpen = False
-                                                                              End If
-                                                                          End Sub)
+            PCC_TaskInteracter.AddItemToMenu("MoveBackItem", "< Move Back", Sub()
+                                                                                Try
+                                                                                    Dim btn As Button = CType(PCC_TaskInteracter.Tag, Button)
+                                                                                    If TaskInteracter_Panel.FlowLayoutPanel1.Controls.IndexOf(btn) - 1 = -1 Then
+                                                                                        Return
+                                                                                    End If
+                                                                                    TaskInteracter_Panel.FlowLayoutPanel1.Controls.SetChildIndex(btn, TaskInteracter_Panel.FlowLayoutPanel1.Controls.IndexOf(btn) - 1)
+                                                                                Catch ex As Exception
+                                                                                End Try
+                                                                            End Sub)
+            PCC_TaskInteracter.AddItemToMenu("MoveForwardItem", "Move Forward >", Sub()
+                                                                                      Try
+                                                                                          Dim btn As Button = CType(PCC_TaskInteracter.Tag, Button)
+                                                                                          If TaskInteracter_Panel.FlowLayoutPanel1.Controls.IndexOf(btn) + 1 = TaskInteracter_Panel.FlowLayoutPanel1.Controls.Count Then
+                                                                                              Return
+                                                                                          End If
+                                                                                          TaskInteracter_Panel.FlowLayoutPanel1.Controls.SetChildIndex(btn, TaskInteracter_Panel.FlowLayoutPanel1.Controls.IndexOf(btn) + 1)
+                                                                                      Catch ex As Exception
+                                                                                      End Try
+                                                                                  End Sub)
 
             For Each c As Control In TaskInteracter_Panel.FlowLayoutPanel1.Controls
                 AddHandler c.MouseDown, AddressOf MouseDown_Menu_TaskInteracter
@@ -114,6 +127,7 @@ Public Class MyControllerForm
     Public Form1_Panel2_Y As Int64 = 0
     Public Form1_Panel2_X As Int64 = 0
 
+    'PCC Controls this
     Private Sub MouseDown_Menu(sender As Object, e As MouseEventArgs)
         If e.Button = MouseButtons.Right Then
             IsPCCHere = True
@@ -140,6 +154,7 @@ Public Class MyControllerForm
         End If
     End Sub
 
+    'PCC_TaskInteracter Controls this
     Private Sub MouseDown_Menu_TaskInteracter(sender As Object, e As MouseEventArgs)
         If e.Button = MouseButtons.Right Then
             'bool that i need to check if PCC_TaskInteracter is open or closed
@@ -154,22 +169,9 @@ Public Class MyControllerForm
                 x1 = 0
             End If
 
-            Dim AppDataList As New List(Of Object)
-
-            Dim plugin As OpenFramework_Interface = CType(sender.Tag, OpenFramework_Interface)
-
-            Dim rr As Form = plugin.GetForm()
-
-            If Main.Form1.AppList.Contains(rr) = False Then
-                Return
-            End If
-
-            AppDataList.Add(sender.Tag)
-            AppDataList.Add(TaskInteracter_Panel.FlowLayoutPanel1.Controls.IndexOf(sender))
-
             PCC_TaskInteracter.Location = New Drawing.Point(x1, y1)
             PCC_TaskInteracter.Visible = True
-            PCC_TaskInteracter.Tag = AppDataList
+            PCC_TaskInteracter.Tag = sender
         ElseIf e.Button = MouseButtons.Left Then
             IsPCC_TaskInteracterHere = False
 
