@@ -62,6 +62,8 @@ Public Class UI
             Command = Command.Replace("RunOpenFrameworkApp ", "")
             Form1.OpenChildForm(GetFormFromAppDll(Command))
             Return Nothing
+        ElseIf Command.Contains("GetBranch") = True Then
+            Return TryController.GetBranch
         ElseIf Command.Contains("SetWallpaper ") = True Then
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")

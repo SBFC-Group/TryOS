@@ -208,4 +208,10 @@
   <data name="TryOS_Store" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TryOS_Store.tryapp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="SettingsApp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SettingsApp.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Updater" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Updater.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

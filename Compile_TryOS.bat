@@ -62,8 +62,6 @@ copy ".\TouchTest\bin\Debug\runtimes\win-x86\native\WebView2Loader.dll" ".\Touch
 copy ".\TouchTest\bin\Debug\TouchTest.exe" ".\TouchTest\bin\Debug\TryOS_Build\TryOS.exe"
 :: Add More when needed.
 
-copy ".\TryOSUpdateWindow\bin\Debug\TryOSUpdateWindow.exe" ".\TouchTest\bin\Debug\TryOS_Build\"
-
 :: Creates TryOS Store App
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps"
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store"

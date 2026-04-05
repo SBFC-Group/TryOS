@@ -1,6 +1,7 @@
 ﻿Namespace CustomController_Data
     Public Interface CustomController_UI_Handler
         Function GetFormCollection() As FormCollection
+        Function OpenFramework_LoadAppsDlls(User As UserManager) As List(Of OpenFramework_Interface)
         Function OpenFramework_LoadPlugins_New() As List(Of OpenFramework_Interface)
         Function OpenFramework_LoadPlugins(folder As String) As List(Of OpenFramework_Interface)
         Function OpenFramework_GetOpenFrameworkVersion()

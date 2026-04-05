@@ -33,6 +33,10 @@ Public Class OpenFramework_Handler
         Return TryController.GetVersion
     End Function
 
+    Public Function GetOpenFrameworkVersion() As String Implements OpenFramework_UI_Handler.GetOpenFrameworkVersion
+        Return OpenFramework_Data.OpenFramework.GetOpenFrameworkVersion()
+    End Function
+
     Public Function GetOSVersion(Optional GetVersionNumber As Boolean = False) As String Implements OpenFramework_UI_Handler.GetOSVersion
         Return TryController.GetOSVersion(GetVersionNumber)
     End Function
@@ -59,13 +63,17 @@ Public Class OpenFramework_Handler
         End If
     End Function
 
-    Public Function SetOrGetArguments(Optional Arguments As String = Nothing) As String Implements OpenFramework_UI_Handler.SetOrGetArguments
-        If Arguments IsNot Nothing Then
-            Form1.ArgData = Arguments
-            Return Arguments
-        Else
-            Return Form1.ArgData
-        End If
+    Public Sub ClearArguments() Implements OpenFramework_UI_Handler.ClearArguments
+        Form1.ArgData = ""
+    End Sub
+
+    Public Function SetOrGetArguments() As String Implements OpenFramework_UI_Handler.SetOrGetArguments
+        Return Form1.ArgData
+    End Function
+
+    Public Function SetOrGetArguments(Arguments As String) As String Implements OpenFramework_UI_Handler.SetOrGetArguments
+        Form1.ArgData = Arguments
+        Return Arguments
     End Function
 
     Public Sub CloseApp(form As Form) Implements OpenFramework_UI_Handler.CloseApp

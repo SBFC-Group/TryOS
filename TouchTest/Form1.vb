@@ -27,13 +27,17 @@ Public Class Form1
     Private lang As New LanguageManager()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        PowerButton.BackgroundImage = PowerList.Images.Item(0)
 
         Timer1.Start()
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LoadDebugMenu.setting") Then
             MenuStrip1.Visible = True
         End If
 
-        AddHandler Button3.Click, AddressOf SettingsForm.PluginButton_Click
+        'AddHandler Button3.Click, AddressOf SettingsForm.PluginButton_Click
+        AddHandler Button3.Click, Sub()
+                                      OpenChildForm(UI.GetFormFromAppDll(UI.SettingsFolder & "\SettingsApp.dll"))
+                                  End Sub
 
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\DisableConsole.setting") Then
             Try

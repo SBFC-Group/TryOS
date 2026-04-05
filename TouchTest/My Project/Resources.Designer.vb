@@ -323,6 +323,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property SettingsApp() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("SettingsApp", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         '''</summary>
         Friend ReadOnly Property task_manager_18854() As System.Drawing.Icon
@@ -358,6 +368,16 @@ Namespace My.Resources
         Friend ReadOnly Property TryOS_USW() As Byte()
             Get
                 Dim obj As Object = ResourceManager.GetObject("TryOS_USW", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property Updater() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Updater", resourceCulture)
                 Return CType(obj,Byte())
             End Get
         End Property

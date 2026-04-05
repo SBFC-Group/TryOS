@@ -48,6 +48,7 @@ Partial Class LoadingUser
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(100, 23)
         Me.ProgressBar1.TabIndex = 2
+        Me.ProgressBar1.Visible = False
         '
         'Timer1
         '

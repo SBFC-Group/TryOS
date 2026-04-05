@@ -3,6 +3,10 @@
 Public Class TryController
     Private IsShellNameUsed As Boolean = False
 
+    Public Function GetBranch()
+        Return "Cerium_(1.0)"
+    End Function
+
     Private Sub TryController_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim args As String = Environment.CommandLine
 

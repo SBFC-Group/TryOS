@@ -7,6 +7,9 @@
         TheURL = TheURL.Replace("\", "/")
         WebView21.Source = New Uri(TheURL)
 
+        If Environment.CommandLine.Contains("/DevMode") = True Then
+            ProgressBar1.Visible = True
+        End If
     End Sub
 
     Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
@@ -32,8 +35,6 @@
             Else
                 UI.DisableOpenFramework = False
                 UI.DisableCustomCode = False
-                'Form1.Username = Username
-                'UI.UserFolder = UI.UsersFolder & "\" & Username
                 UI.LoadShell(Username, Password)
                 System.Threading.Thread.Sleep(500)
                 Close()
@@ -64,6 +65,10 @@
                         TempUser.SaveUserSettings(SettingsListy)
                     End If
 
+                End If
+            ElseIf ProgressBar1.Value = 40 Then
+                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Settings\SettingsApp.dll") = False Then
+                    My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\Settings\SettingsApp.dll", My.Resources.SettingsApp, False)
                 End If
             ElseIf ProgressBar1.Value = 50 Then
                 If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles") Then
