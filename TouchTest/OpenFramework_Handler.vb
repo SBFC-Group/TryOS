@@ -75,4 +75,9 @@ Public Class OpenFramework_Handler
         Form1.ArgData = Arguments
         Return Arguments
     End Function
+
+    Public Sub CloseApp(form As Form) Implements OpenFramework_UI_Handler.CloseApp
+        form.Close()
+        OpenFramework_Data.OpenFramework.AppName = ""
+    End Sub
 End Class

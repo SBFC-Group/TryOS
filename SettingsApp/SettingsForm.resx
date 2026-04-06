@@ -879,7 +879,7 @@
         SZI0TvPM8/8B9EctFKhP1bMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="Button1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="AdministratorToolsButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAKWxJREFUeF7t
         3QnYdnOdwPHXviQ72cpSlkK2ZCpKESZpYYxCSslSthkm7bQYxBRKV1QqjUhCpUVKQ4oWTQqtdrLv+zrz
@@ -1061,7 +1061,7 @@
         mZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmbXZlCn/D5FyZlfyvm5MAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="Button2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="DeviceInfoButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAADQJJREFUeF7t
         3VmorXUBxuFtmlTOZthFZUqG2mBdGEURWBaBkRE2QaZZQQNUVDjRIHQTJoQFdpE0WGAaVhZUQkLQTDlc
@@ -1122,4 +1122,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAArKys/AflaLLQI/LJqAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

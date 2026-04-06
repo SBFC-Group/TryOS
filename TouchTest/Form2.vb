@@ -5,6 +5,8 @@
     Public IsFocusOnButton As Boolean = False
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Icon = My.Resources.desktop_windows_119229
+
         If HasBeenOpened = False Then
             HasBeenOpened = True
         End If

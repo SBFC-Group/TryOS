@@ -5,9 +5,9 @@ Imports TouchTest
 Public Class MyControllerForm
     'This will won't ever open
 
-    Public Shared PCC As PCContentMenu_NoneApp
-    Public Shared PCC_TaskInteracter As PCContentMenu_NoneApp
-    Public Shared TaskInteracter_Panel As TaskInteracter
+    Public Shared PCC As PCContentMenu_NoneApp = New PCContentMenu_NoneApp
+    Public Shared PCC_TaskInteracter As PCContentMenu_NoneApp = New PCContentMenu_NoneApp
+    Public Shared TaskInteracter_Panel As TaskInteracter = New TaskInteracter
     Public Bo1 As Boolean 'If true then PCC loads
     Public Bo2 As Boolean 'If true then TaskInteracter loads
     Public Bo3 As Boolean 'If true then use newer Wallpaper loader
@@ -18,16 +18,18 @@ Public Class MyControllerForm
             Return
         End If
 
+        PCC = New PCContentMenu_NoneApp
+        TaskInteracter_Panel = New TaskInteracter
+        PCC_TaskInteracter = New PCContentMenu_NoneApp
+
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.PCC.txt") Then
             Bo1 = True
-            PCC = New PCContentMenu_NoneApp
         Else
             Bo1 = False
         End If
 
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.TaskInteracter.txt") Then
             Bo2 = True
-            TaskInteracter_Panel = New TaskInteracter
         Else
             Bo2 = False
         End If
@@ -41,7 +43,6 @@ Public Class MyControllerForm
 
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.PCC=TaskInteracter.txt") Then
             Bo4 = True
-            PCC_TaskInteracter = New PCContentMenu_NoneApp
         Else
             Bo4 = False
         End If

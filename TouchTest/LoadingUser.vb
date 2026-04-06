@@ -7,6 +7,9 @@
         TheURL = TheURL.Replace("\", "/")
         WebView21.Source = New Uri(TheURL)
 
+        If Environment.CommandLine.Contains("/DevMode") = True Then
+            ProgressBar1.Visible = True
+        End If
     End Sub
 
     Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
@@ -32,8 +35,6 @@
             Else
                 UI.DisableOpenFramework = False
                 UI.DisableCustomCode = False
-                'Form1.Username = Username
-                'UI.UserFolder = UI.UsersFolder & "\" & Username
                 UI.LoadShell(Username, Password)
                 Close()
             End If
@@ -62,16 +63,19 @@
                         Dim TempUser As New UserManager(Username)
                         TempUser.SaveUserSettings(SettingsListy)
                     End If
-
                 End If
-
             ElseIf ProgressBar1.Value = 50 Then
                 If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles") = False Then
                     My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles", TryController.GetVersion(), False)
                 End If
             ElseIf ProgressBar1.Value = 60 Then
-                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Taskbar_Order.json") = False Then
+                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Taskbar_Order.json") Then
                     My.Computer.FileSystem.RenameFile(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Taskbar_Order.json", "TaskInteracter_Order.json")
+                    Try
+                        My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Taskbar_Order.json")
+                    Catch ex As Exception
+
+                    End Try
                 End If
             ElseIf ProgressBar1.Value = 70 Then
                 Dim CloseFormQ As Boolean = False
@@ -91,7 +95,7 @@
 
             End If
 
-                ProgressBar1.Increment(1)
+            ProgressBar1.Increment(1)
         End If
     End Sub
 End Class

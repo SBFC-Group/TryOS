@@ -86,7 +86,12 @@ Namespace OpenFramework_Data
                     order.Add(ctrl.Tag.ToString())
                 Next
             End If
-            IO.File.WriteAllText(Form1.User.UserFolderPath & "\Settings\Taskbar_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
+            If IO.File.Exists(Form1.User.UserFolderPath & "\Settings\TaskInteracter_Order.json") Then
+                IO.File.WriteAllText(Form1.User.UserFolderPath & "\Settings\TaskInteracter_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
+            Else
+                IO.File.WriteAllText(Form1.User.UserFolderPath & "\Settings\Taskbar_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
+            End If
+
         End Sub
 
         Public Shared Sub RestoreButtonOrder(Optional ControlThing As Control = Nothing)

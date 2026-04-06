@@ -228,6 +228,7 @@ Partial Class Form1
         Me.Button5.TabIndex = 5
         Me.Button5.Text = "Close Program"
         Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.Visible = False
         '
         'Label1
         '
@@ -549,7 +550,7 @@ Partial Class Form1
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
-        Me.Text = "MainForm"
+        Me.Text = "TryOS Shell"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)

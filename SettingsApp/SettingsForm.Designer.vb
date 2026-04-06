@@ -22,15 +22,17 @@ Partial Class SettingsForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SettingsForm))
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.ThemeButton = New System.Windows.Forms.Button()
         Me.InfoButton = New System.Windows.Forms.Button()
         Me.UserSettingsButton = New System.Windows.Forms.Button()
         Me.UpdateButton = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.AdministratorToolsButton = New System.Windows.Forms.Button()
+        Me.DeviceInfoButton = New System.Windows.Forms.Button()
         Me.SettingsPanel = New System.Windows.Forms.Panel()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -41,8 +43,8 @@ Partial Class SettingsForm
         Me.FlowLayoutPanel1.Controls.Add(Me.InfoButton)
         Me.FlowLayoutPanel1.Controls.Add(Me.UserSettingsButton)
         Me.FlowLayoutPanel1.Controls.Add(Me.UpdateButton)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Button1)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Button2)
+        Me.FlowLayoutPanel1.Controls.Add(Me.AdministratorToolsButton)
+        Me.FlowLayoutPanel1.Controls.Add(Me.DeviceInfoButton)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
@@ -97,29 +99,31 @@ Partial Class SettingsForm
         Me.UpdateButton.TabIndex = 3
         Me.UpdateButton.UseVisualStyleBackColor = True
         '
-        'Button1
+        'AdministratorToolsButton
         '
-        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(3, 415)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(102, 97)
-        Me.Button1.TabIndex = 4
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.AdministratorToolsButton.BackgroundImage = CType(resources.GetObject("AdministratorToolsButton.BackgroundImage"), System.Drawing.Image)
+        Me.AdministratorToolsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.AdministratorToolsButton.FlatAppearance.BorderSize = 0
+        Me.AdministratorToolsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.AdministratorToolsButton.Location = New System.Drawing.Point(3, 415)
+        Me.AdministratorToolsButton.Name = "AdministratorToolsButton"
+        Me.AdministratorToolsButton.Size = New System.Drawing.Size(102, 97)
+        Me.AdministratorToolsButton.TabIndex = 4
+        Me.AdministratorToolsButton.UseVisualStyleBackColor = True
         '
-        'Button2
+        'DeviceInfoButton
         '
-        Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Location = New System.Drawing.Point(3, 518)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(102, 97)
-        Me.Button2.TabIndex = 5
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.DeviceInfoButton.BackgroundImage = CType(resources.GetObject("DeviceInfoButton.BackgroundImage"), System.Drawing.Image)
+        Me.DeviceInfoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.DeviceInfoButton.Enabled = False
+        Me.DeviceInfoButton.FlatAppearance.BorderSize = 0
+        Me.DeviceInfoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DeviceInfoButton.Location = New System.Drawing.Point(3, 518)
+        Me.DeviceInfoButton.Name = "DeviceInfoButton"
+        Me.DeviceInfoButton.Size = New System.Drawing.Size(102, 97)
+        Me.DeviceInfoButton.TabIndex = 5
+        Me.DeviceInfoButton.UseVisualStyleBackColor = True
+        Me.DeviceInfoButton.Visible = False
         '
         'SettingsPanel
         '
@@ -129,6 +133,10 @@ Partial Class SettingsForm
         Me.SettingsPanel.Name = "SettingsPanel"
         Me.SettingsPanel.Size = New System.Drawing.Size(1006, 659)
         Me.SettingsPanel.TabIndex = 1
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
         '
         'SettingsForm
         '
@@ -152,6 +160,7 @@ Partial Class SettingsForm
     Friend WithEvents InfoButton As Windows.Forms.Button
     Friend WithEvents UserSettingsButton As Windows.Forms.Button
     Friend WithEvents UpdateButton As Windows.Forms.Button
-    Friend WithEvents Button1 As Windows.Forms.Button
-    Friend WithEvents Button2 As Windows.Forms.Button
+    Friend WithEvents AdministratorToolsButton As Windows.Forms.Button
+    Friend WithEvents DeviceInfoButton As Windows.Forms.Button
+    Friend WithEvents Timer1 As Windows.Forms.Timer
 End Class

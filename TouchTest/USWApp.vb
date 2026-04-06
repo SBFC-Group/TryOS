@@ -91,7 +91,75 @@
         Button4.Text = "Remove Pincode"
     End Sub
 
+    Private Sub CreateUserButton_Click(sender As Object, e As EventArgs)
+        If My.Computer.FileSystem.DirectoryExists(My.Application.Info.DirectoryPath & "\Users") Then
+            If My.Computer.FileSystem.DirectoryExists($"{My.Application.Info.DirectoryPath}\Users\{TextBox1.Text}") Then
+                UI.ShowError("This User already exists.")
+            Else
+                If TextBox1.Text = "SuperSecretUser" Then
+                    UI.ShowError("This Username is not allowed.")
+                ElseIf TextBox1.Text = "Dev" Then
+                    UI.ShowError("This Username is not allowed.")
+                Else
+                    Dim UserFolder As String = My.Application.Info.DirectoryPath & "\Users\" & TextBox1.Text
+
+                    My.Computer.FileSystem.CreateDirectory(UserFolder)
+                    My.Computer.FileSystem.CreateDirectory(UserFolder & "\Downloads")
+                    My.Computer.FileSystem.CreateDirectory(UserFolder & "\Pictures")
+                    My.Computer.FileSystem.CreateDirectory(UserFolder & "\Settings")
+                    My.Computer.FileSystem.CreateDirectory(UserFolder & "\Videos")
+                    My.Computer.FileSystem.CreateDirectory(UserFolder & "\Temp")
+                    'More secure way of storing the webview2 data. (Currently doesn't work.)
+                    My.Computer.FileSystem.CreateDirectory(UserFolder & "\Data")
+
+                    Dim Role As String = "Vkd0U1RrMXJNVFphZWtKUFlXdHJPUT09"
+                    Dim Software_Config As String = "VjJGc2JIQmhjR1Z5UFdwd1p6MHhPd3BKYzBSaGNtdE5iMlJsUm05eVFYQndjejFHWVd4elpUc0tTWE5WYzJsdVowNWxkMlZ5VjJGc2JIQmhjR1Z5VEc5aFpHVnlQVlJ5ZFdVNw=="
+                    Dim UserVersion As String = My.Application.Info.Version.Major.ToString & "." & My.Application.Info.Version.Minor.ToString & "." & My.Application.Info.Version.Build.ToString & "." & My.Application.Info.Version.Revision.ToString
+                    'Dim AppList As String = "Settings|ProgramInfo|TryOS_Store_New|Internet++"
+                    Dim ReaderForPassword As String = TextBox1.Text
+
+                    If TextBox1.Text = "" Then
+                        ReaderForPassword = "VkY5b1gybGZjMTlWWDNOZlpWOXlYMGhmWVY5elgwNWZiMTkwWDJoZmFWOXVYMmM9"
+                    Else
+                        Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(ReaderForPassword)
+                        ReaderForPassword = Convert.ToBase64String(byt)
+                        Dim byt2 As Byte() = System.Text.Encoding.UTF8.GetBytes(ReaderForPassword)
+                        ReaderForPassword = Convert.ToBase64String(byt2)
+                    End If
+
+                    My.Computer.FileSystem.WriteAllText(UserFolder & "\Settings\Password.swfiles", ReaderForPassword, False)
+                    My.Computer.FileSystem.WriteAllText(UserFolder & "\Settings\Role.swfiles", Role, False)
+                    My.Computer.FileSystem.WriteAllText(UserFolder & "\Settings\Software.swfiles", Software_Config, False)
+                    My.Computer.FileSystem.WriteAllText(UserFolder & "\Settings\UserVersion.swfiles", UserVersion, False)
+                    'My.Computer.FileSystem.WriteAllText(UserFolder & "\Settings\ShowedAppsList.swfiles", AppList, False)
+
+                    'Part of the old code.
+                    If Pincode = "None" Then
+                    ElseIf Pincode = "" Then
+                    ElseIf Pincode.Length < 4 Then
+                    Else
+                        Dim ThePin As String = Pincode
+                        Dim byt3 As Byte() = System.Text.Encoding.UTF8.GetBytes(ThePin)
+                        ThePin = Convert.ToBase64String(byt3)
+                        Dim byt4 As Byte() = System.Text.Encoding.UTF8.GetBytes(ThePin)
+                        ThePin = Convert.ToBase64String(byt4)
+                        My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Pincode.swfiles", ThePin, False)
+
+                        My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                    End If
+
+                    'Calls for shutdown of USW and restart of program.
+                    USWThings.CloseUSW()
+                End If
+            End If
+        End If
+    End Sub
+
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        CreateUserButton_Click(sender, e)
+
+        Return
+
         If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & TextBox1.Text) Then
             'MsgBox("This User already exists.")
             UI.ShowError("This User already exists.")

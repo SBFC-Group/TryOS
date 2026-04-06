@@ -32,6 +32,7 @@ Partial Class ThemeApp
         Me.Wallpaper = New System.Windows.Forms.Timer(Me.components)
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TransparencyCheckBox = New System.Windows.Forms.CheckBox()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -132,6 +133,10 @@ Partial Class ThemeApp
         Me.TransparencyCheckBox.Text = "Use Transparency"
         Me.TransparencyCheckBox.UseVisualStyleBackColor = True
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        '
         'ThemeApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -162,4 +167,5 @@ Partial Class ThemeApp
     Friend WithEvents Wallpaper As Windows.Forms.Timer
     Friend WithEvents Button5 As Windows.Forms.Button
     Friend WithEvents TransparencyCheckBox As Windows.Forms.CheckBox
+    Friend WithEvents Timer1 As Windows.Forms.Timer
 End Class

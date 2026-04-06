@@ -47,6 +47,7 @@ Partial Class UserSettingsApp
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
@@ -61,7 +62,6 @@ Partial Class UserSettingsApp
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -377,6 +377,19 @@ Partial Class UserSettingsApp
         Me.Panel4.Size = New System.Drawing.Size(481, 237)
         Me.Panel4.TabIndex = 2
         '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Location = New System.Drawing.Point(324, 183)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(152, 49)
+        Me.Button3.TabIndex = 14
+        Me.Button3.Text = "Change Pincode"
+        Me.Button3.UseVisualStyleBackColor = False
+        Me.Button3.Visible = False
+        '
         'Panel5
         '
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -522,18 +535,6 @@ Partial Class UserSettingsApp
         'Timer1
         '
         Me.Timer1.Enabled = True
-        '
-        'Button3
-        '
-        Me.Button3.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(324, 183)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(152, 49)
-        Me.Button3.TabIndex = 14
-        Me.Button3.Text = "Change Pincode"
-        Me.Button3.UseVisualStyleBackColor = False
         '
         'UserSettingsApp
         '

@@ -1,10 +1,10 @@
-﻿Imports System.Drawing
-
-Public Class InfoApp
-    Private Sub InfoApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+﻿Public Class DeviceInfoApp
+    Private Sub DeviceInto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ChangeDesign(Main.Controller.IsDarkMode())
 
-        Label2.Text = "Version: " & My.Application.Info.Version.ToString
+        Label1.Text = "OS Name: " & Main.Controller.GetOSVersion(False)
+        Label2.Text = "OS Version: " & Main.Controller.GetOSVersion(True)
+        Label4.Text = "Computer Name: " & Environment.MachineName
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -24,11 +24,10 @@ Public Class InfoApp
     Public Sub ChangeDesign(Dark As Boolean)
         If Dark = True Then
             ColorMode = "Dark"
-            Me.BackColor = Color.Gray
+            Me.BackColor = Drawing.Color.Gray
         ElseIf Dark = False Then
             ColorMode = "Normal"
-            Me.BackColor = Color.DarkGray
-
+            Me.BackColor = Drawing.Color.DarkGray
         End If
     End Sub
 End Class

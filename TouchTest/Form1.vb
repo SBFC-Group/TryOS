@@ -36,6 +36,8 @@ Public Class Form1
     Private lang As New LanguageManager()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Icon = My.Resources.desktop_windows_119229
+
 
         If IsSandboxingEnabled = True Then
             SandboxedUser = New UserManager(User.Username, True)

@@ -117,6 +117,49 @@
 
         Panel3.Visible = True
 
+        If My.Computer.FileSystem.DirectoryExists($"{UI.UsersFolder}\{btn.Text}\Settings\Pincode.swfiles") Then
+            If Label5.Text = "Password" Then
+                Label5.Text = "Pin Code"
+
+                TextBox1.Text = btn.Text
+
+                NumberButton0.Visible = True
+                NumberButton1.Visible = True
+                NumberButton2.Visible = True
+                NumberButton3.Visible = True
+                NumberButton4.Visible = True
+                NumberButton5.Visible = True
+                NumberButton6.Visible = True
+                NumberButton7.Visible = True
+                NumberButton8.Visible = True
+                NumberButton9.Visible = True
+                RemoveLetterButton.Visible = True
+
+                LogonButton2.Visible = False
+                TextBox3.Enabled = False
+                TextBox3.UseSystemPasswordChar = True
+
+                RemoveHandler TextBox3.KeyDown, AddressOf MayNeedThis
+
+                Dim NewPoint1 As Int64 = Label5.Location.Y
+                Dim NewPoint2 As Int64 = Label5.Location.X
+
+                Dim NewPoint3 As Int64 = TextBox3.Location.Y
+                Dim NewPoint4 As Int64 = TextBox3.Location.X
+
+                NewPoint1 = NewPoint1 - 30
+
+                NewPoint3 = NewPoint3 - 30
+
+                Label5.Location = New Point(NewPoint2, NewPoint1)
+
+                TextBox3.Location = New Point(NewPoint4, NewPoint3)
+
+                HasOpenUserButton_ClickBeenOpened = False
+
+                ActivatePincodeLayout()
+            End If
+        End If
 
         If HasOpenUserButton_ClickBeenOpened = False Then
             TextBox1.Enabled = False

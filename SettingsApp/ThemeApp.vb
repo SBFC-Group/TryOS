@@ -83,6 +83,8 @@ Public Class ThemeApp
     End Sub
 
     Private Sub ThemeApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ChangeDesign(Main.Controller.IsDarkMode())
+
         User = New TouchTest.UserManager(Main.Controller.GetUsername)
 
         If User.DoesSettingExist("IsTransparentEnabled=True") = True Then
@@ -127,6 +129,49 @@ Public Class ThemeApp
             User.ReplaceSettingInUserSettings("IsTransparentEnabled=False", "IsTransparentEnabled=True")
         Else
             User.ReplaceSettingInUserSettings("IsTransparentEnabled=True", "IsTransparentEnabled=False")
+        End If
+    End Sub
+
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If Main.Controller.IsDarkMode() = True Then
+            If ColorMode = "Normal" Then
+                ChangeDesign(True)
+            End If
+        ElseIf Main.Controller.IsDarkMode() = False Then
+            If ColorMode = "Dark" Then
+                ChangeDesign(False)
+            End If
+        End If
+    End Sub
+
+    Private ColorMode As String = "Normal"
+
+    Public Sub ChangeDesign(Dark As Boolean)
+        If Dark = True Then
+            ColorMode = "Dark"
+            Me.BackColor = Drawing.Color.Gray
+            Button1.BackColor = Drawing.Color.DarkGray
+            Button2.BackColor = Drawing.Color.DarkGray
+            Button3.BackColor = Drawing.Color.DarkGray
+            Button4.BackColor = Drawing.Color.DarkGray
+            Button5.BackColor = Drawing.Color.DarkGray
+
+            For Each c As Control In WallpaperMenu.Controls
+                c.BackColor = Drawing.Color.DarkGray
+            Next
+        ElseIf Dark = False Then
+            ColorMode = "Normal"
+            Me.BackColor = Drawing.Color.DarkGray
+            Button1.BackColor = Drawing.Color.Gainsboro
+            Button2.BackColor = Drawing.Color.Gainsboro
+            Button3.BackColor = Drawing.Color.Gainsboro
+            Button4.BackColor = Drawing.Color.Gainsboro
+            Button5.BackColor = Drawing.Color.Gainsboro
+
+            For Each c As Control In WallpaperMenu.Controls
+                c.BackColor = Drawing.Color.Gainsboro
+            Next
         End If
     End Sub
 End Class

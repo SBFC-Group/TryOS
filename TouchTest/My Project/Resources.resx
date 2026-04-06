@@ -208,4 +208,10 @@
   <data name="TryOS_Store" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TryOS_Store.tryapp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="desktop_windows_119229" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\desktop-windows_119229.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="desktop_windows_1192291" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\desktop-windows_119229.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

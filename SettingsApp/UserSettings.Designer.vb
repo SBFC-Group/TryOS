@@ -22,6 +22,7 @@ Partial Class UserSettings
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.NeedThisPanel = New System.Windows.Forms.Panel()
@@ -35,21 +36,23 @@ Partial Class UserSettings
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.DeletePinCodeButton = New System.Windows.Forms.Button()
+        Me.ChangePinCodeButton = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Button11 = New System.Windows.Forms.Button()
-        Me.Button12 = New System.Windows.Forms.Button()
+        Me.StandardRoleButton = New System.Windows.Forms.Button()
+        Me.AdministratorRoleButton = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.Button10 = New System.Windows.Forms.Button()
+        Me.ChangeUserButton = New System.Windows.Forms.Button()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.DeleteUserButton = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.NeedThisPanel.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -64,12 +67,13 @@ Partial Class UserSettings
         Me.Button1.Enabled = False
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(643, 87)
+        Me.Button1.Location = New System.Drawing.Point(621, 53)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(178, 38)
         Me.Button1.TabIndex = 16
         Me.Button1.Text = "Apply Wallpaper"
         Me.Button1.UseVisualStyleBackColor = False
+        Me.Button1.Visible = False
         '
         'FlowLayoutPanel1
         '
@@ -198,32 +202,45 @@ Partial Class UserSettings
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel4.Controls.Add(Me.Button3)
+        Me.Panel4.Controls.Add(Me.DeletePinCodeButton)
+        Me.Panel4.Controls.Add(Me.ChangePinCodeButton)
         Me.Panel4.Controls.Add(Me.Panel5)
         Me.Panel4.Controls.Add(Me.Label8)
         Me.Panel4.Controls.Add(Me.Label7)
-        Me.Panel4.Controls.Add(Me.Button10)
+        Me.Panel4.Controls.Add(Me.ChangeUserButton)
         Me.Panel4.Controls.Add(Me.TextBox3)
         Me.Panel4.Controls.Add(Me.Label5)
         Me.Panel4.Controls.Add(Me.TextBox4)
-        Me.Panel4.Controls.Add(Me.Button4)
+        Me.Panel4.Controls.Add(Me.DeleteUserButton)
         Me.Panel4.Controls.Add(Me.Label6)
         Me.Panel4.Location = New System.Drawing.Point(-1, 26)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(481, 237)
         Me.Panel4.TabIndex = 2
         '
-        'Button3
+        'DeletePinCodeButton
         '
-        Me.Button3.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(324, 183)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(152, 49)
-        Me.Button3.TabIndex = 14
-        Me.Button3.Text = "Change Pincode"
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.DeletePinCodeButton.BackColor = System.Drawing.Color.Gainsboro
+        Me.DeletePinCodeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DeletePinCodeButton.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DeletePinCodeButton.Location = New System.Drawing.Point(324, 128)
+        Me.DeletePinCodeButton.Name = "DeletePinCodeButton"
+        Me.DeletePinCodeButton.Size = New System.Drawing.Size(152, 49)
+        Me.DeletePinCodeButton.TabIndex = 15
+        Me.DeletePinCodeButton.Text = "Delete Pincode"
+        Me.DeletePinCodeButton.UseVisualStyleBackColor = False
+        '
+        'ChangePinCodeButton
+        '
+        Me.ChangePinCodeButton.BackColor = System.Drawing.Color.Gainsboro
+        Me.ChangePinCodeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ChangePinCodeButton.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChangePinCodeButton.Location = New System.Drawing.Point(324, 183)
+        Me.ChangePinCodeButton.Name = "ChangePinCodeButton"
+        Me.ChangePinCodeButton.Size = New System.Drawing.Size(152, 49)
+        Me.ChangePinCodeButton.TabIndex = 14
+        Me.ChangePinCodeButton.Text = "Change Pincode"
+        Me.ChangePinCodeButton.UseVisualStyleBackColor = False
         '
         'Panel5
         '
@@ -252,37 +269,37 @@ Partial Class UserSettings
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel6.Controls.Add(Me.Button11)
-        Me.Panel6.Controls.Add(Me.Button12)
+        Me.Panel6.Controls.Add(Me.StandardRoleButton)
+        Me.Panel6.Controls.Add(Me.AdministratorRoleButton)
         Me.Panel6.Location = New System.Drawing.Point(-1, 29)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(147, 89)
         Me.Panel6.TabIndex = 6
         '
-        'Button11
+        'StandardRoleButton
         '
-        Me.Button11.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button11.Enabled = False
-        Me.Button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button11.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button11.Location = New System.Drawing.Point(2, 2)
-        Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(139, 39)
-        Me.Button11.TabIndex = 12
-        Me.Button11.Text = "Standard"
-        Me.Button11.UseVisualStyleBackColor = False
+        Me.StandardRoleButton.BackColor = System.Drawing.Color.Gainsboro
+        Me.StandardRoleButton.Enabled = False
+        Me.StandardRoleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.StandardRoleButton.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.StandardRoleButton.Location = New System.Drawing.Point(2, 2)
+        Me.StandardRoleButton.Name = "StandardRoleButton"
+        Me.StandardRoleButton.Size = New System.Drawing.Size(139, 39)
+        Me.StandardRoleButton.TabIndex = 12
+        Me.StandardRoleButton.Text = "Standard"
+        Me.StandardRoleButton.UseVisualStyleBackColor = False
         '
-        'Button12
+        'AdministratorRoleButton
         '
-        Me.Button12.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button12.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button12.Location = New System.Drawing.Point(2, 47)
-        Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(139, 39)
-        Me.Button12.TabIndex = 13
-        Me.Button12.Text = "Administrator"
-        Me.Button12.UseVisualStyleBackColor = False
+        Me.AdministratorRoleButton.BackColor = System.Drawing.Color.Gainsboro
+        Me.AdministratorRoleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.AdministratorRoleButton.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AdministratorRoleButton.Location = New System.Drawing.Point(2, 47)
+        Me.AdministratorRoleButton.Name = "AdministratorRoleButton"
+        Me.AdministratorRoleButton.Size = New System.Drawing.Size(139, 39)
+        Me.AdministratorRoleButton.TabIndex = 13
+        Me.AdministratorRoleButton.Text = "Administrator"
+        Me.AdministratorRoleButton.UseVisualStyleBackColor = False
         '
         'Label8
         '
@@ -304,17 +321,17 @@ Partial Class UserSettings
         Me.Label7.TabIndex = 12
         Me.Label7.Text = "User: "
         '
-        'Button10
+        'ChangeUserButton
         '
-        Me.Button10.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button10.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button10.Location = New System.Drawing.Point(8, 183)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(133, 49)
-        Me.Button10.TabIndex = 11
-        Me.Button10.Text = "Change User"
-        Me.Button10.UseVisualStyleBackColor = False
+        Me.ChangeUserButton.BackColor = System.Drawing.Color.Gainsboro
+        Me.ChangeUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ChangeUserButton.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChangeUserButton.Location = New System.Drawing.Point(8, 183)
+        Me.ChangeUserButton.Name = "ChangeUserButton"
+        Me.ChangeUserButton.Size = New System.Drawing.Size(133, 49)
+        Me.ChangeUserButton.TabIndex = 11
+        Me.ChangeUserButton.Text = "Change User"
+        Me.ChangeUserButton.UseVisualStyleBackColor = False
         '
         'TextBox3
         '
@@ -346,17 +363,17 @@ Partial Class UserSettings
         Me.TextBox4.Size = New System.Drawing.Size(301, 26)
         Me.TextBox4.TabIndex = 8
         '
-        'Button4
+        'DeleteUserButton
         '
-        Me.Button4.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(147, 183)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(171, 49)
-        Me.Button4.TabIndex = 0
-        Me.Button4.Text = "Delete this User"
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.DeleteUserButton.BackColor = System.Drawing.Color.Gainsboro
+        Me.DeleteUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DeleteUserButton.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DeleteUserButton.Location = New System.Drawing.Point(147, 183)
+        Me.DeleteUserButton.Name = "DeleteUserButton"
+        Me.DeleteUserButton.Size = New System.Drawing.Size(171, 49)
+        Me.DeleteUserButton.TabIndex = 0
+        Me.DeleteUserButton.Text = "Delete this User"
+        Me.DeleteUserButton.UseVisualStyleBackColor = False
         '
         'Label6
         '
@@ -379,6 +396,10 @@ Partial Class UserSettings
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Change Username or Password"
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        '
         'UserSettings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -391,7 +412,7 @@ Partial Class UserSettings
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.Button1)
         Me.Name = "UserSettings"
-        Me.Size = New System.Drawing.Size(919, 633)
+        Me.Size = New System.Drawing.Size(1145, 660)
         Me.NeedThisPanel.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -420,19 +441,21 @@ Partial Class UserSettings
     Friend WithEvents Label3 As Windows.Forms.Label
     Friend WithEvents Panel3 As Windows.Forms.Panel
     Friend WithEvents Panel4 As Windows.Forms.Panel
-    Friend WithEvents Button3 As Windows.Forms.Button
+    Friend WithEvents ChangePinCodeButton As Windows.Forms.Button
     Friend WithEvents Panel5 As Windows.Forms.Panel
     Friend WithEvents Label9 As Windows.Forms.Label
     Friend WithEvents Panel6 As Windows.Forms.Panel
-    Friend WithEvents Button11 As Windows.Forms.Button
-    Friend WithEvents Button12 As Windows.Forms.Button
+    Friend WithEvents StandardRoleButton As Windows.Forms.Button
+    Friend WithEvents AdministratorRoleButton As Windows.Forms.Button
     Friend WithEvents Label8 As Windows.Forms.Label
     Friend WithEvents Label7 As Windows.Forms.Label
-    Friend WithEvents Button10 As Windows.Forms.Button
+    Friend WithEvents ChangeUserButton As Windows.Forms.Button
     Friend WithEvents TextBox3 As Windows.Forms.TextBox
     Friend WithEvents Label5 As Windows.Forms.Label
     Friend WithEvents TextBox4 As Windows.Forms.TextBox
-    Friend WithEvents Button4 As Windows.Forms.Button
+    Friend WithEvents DeleteUserButton As Windows.Forms.Button
     Friend WithEvents Label6 As Windows.Forms.Label
     Friend WithEvents Label4 As Windows.Forms.Label
+    Friend WithEvents DeletePinCodeButton As Windows.Forms.Button
+    Friend WithEvents Timer1 As Windows.Forms.Timer
 End Class

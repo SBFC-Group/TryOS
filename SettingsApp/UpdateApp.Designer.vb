@@ -22,6 +22,7 @@ Partial Class UpdateApp
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -30,6 +31,7 @@ Partial Class UpdateApp
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -123,6 +125,10 @@ Partial Class UpdateApp
         Me.Button1.Text = "Check For Updates"
         Me.Button1.UseVisualStyleBackColor = False
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        '
         'UpdateApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -145,4 +151,5 @@ Partial Class UpdateApp
     Friend WithEvents Label2 As Windows.Forms.Label
     Friend WithEvents Label1 As Windows.Forms.Label
     Friend WithEvents Button1 As Windows.Forms.Button
+    Friend WithEvents Timer1 As Windows.Forms.Timer
 End Class

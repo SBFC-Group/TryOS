@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{58D07A18-206D-4F0C-8611-C2F9C20DEAB4}</ProjectGuid>
+    <ProjectGuid>{502C3D3A-5C0E-401E-9BCB-EC204AB27D13}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SettingsApp</RootNamespace>
-    <AssemblyName>SettingsApp</AssemblyName>
+    <RootNamespace>InternalSettingsApp</RootNamespace>
+    <AssemblyName>InternalSettingsApp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -19,7 +19,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SettingsApp.xml</DocumentationFile>
+    <DocumentationFile>InternalSettingsApp.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -28,7 +28,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SettingsApp.xml</DocumentationFile>
+    <DocumentationFile>InternalSettingsApp.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -66,31 +66,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminToolsApp.Designer.vb">
-      <DependentUpon>AdminToolsApp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AdminToolsApp.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DeleteUserDialog.Designer.vb">
-      <DependentUpon>DeleteUserDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="DeleteUserDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DeviceInfoApp.Designer.vb">
-      <DependentUpon>DeviceInfoApp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="DeviceInfoApp.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="InfoApp.Designer.vb">
-      <DependentUpon>InfoApp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="InfoApp.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Main.vb" />
+    <Compile Include="Class1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -106,70 +82,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="PinCodeDialog.Designer.vb">
-      <DependentUpon>PinCodeDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="PinCodeDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsForm.Designer.vb">
-      <DependentUpon>SettingsForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="SettingsForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ThemeApp.Designer.vb">
-      <DependentUpon>ThemeApp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ThemeApp.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UpdateApp.Designer.vb">
-      <DependentUpon>UpdateApp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UpdateApp.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserSettings.Designer.vb">
-      <DependentUpon>UserSettings.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UserSettings.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AdminToolsApp.resx">
-      <DependentUpon>AdminToolsApp.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DeleteUserDialog.resx">
-      <DependentUpon>DeleteUserDialog.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DeviceInfoApp.resx">
-      <DependentUpon>DeviceInfoApp.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InfoApp.resx">
-      <DependentUpon>InfoApp.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PinCodeDialog.resx">
-      <DependentUpon>PinCodeDialog.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.resx">
-      <DependentUpon>SettingsForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ThemeApp.resx">
-      <DependentUpon>ThemeApp.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UpdateApp.resx">
-      <DependentUpon>UpdateApp.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserSettings.resx">
-      <DependentUpon>UserSettings.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -190,16 +109,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\settings_configuration_icon_225724.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\settings_configuration_icon_225724.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+    <None Include="Resources\InternalSettingsApp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>call ..\..\..\CompileSettingsApp.bat</PostBuildEvent>
-  </PropertyGroup>
 </Project>

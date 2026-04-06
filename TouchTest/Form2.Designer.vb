@@ -65,7 +65,7 @@ Partial Class Form2
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form2"
         Me.Padding = New System.Windows.Forms.Padding(40, 40, 40, 78)
-        Me.Text = "Form2"
+        Me.Text = "App Viewer"
         Me.TransparencyKey = System.Drawing.Color.Orchid
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)

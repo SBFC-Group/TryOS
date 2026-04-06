@@ -44,6 +44,8 @@ Public Class UpdateApp
     End Function
 
     Private Sub UpdateApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ChangeDesign(Main.Controller.IsDarkMode())
+
         Label1.Text = "Version: " & Main.Controller.GetProgramVersion()
 
         Branch = Main.Controller.RunCommand("GetBranch")
@@ -75,5 +77,35 @@ Public Class UpdateApp
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         DownloadUpdate(GetLatestVersion()).Start()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If Main.Controller.IsDarkMode() = True Then
+            If ColorMode = "Normal" Then
+                ChangeDesign(True)
+            End If
+        ElseIf Main.Controller.IsDarkMode() = False Then
+            If ColorMode = "Dark" Then
+                ChangeDesign(False)
+            End If
+        End If
+    End Sub
+
+    Private ColorMode As String = "Normal"
+
+    Public Sub ChangeDesign(Dark As Boolean)
+        If Dark = True Then
+            ColorMode = "Dark"
+            Me.BackColor = Drawing.Color.Gray
+            Panel1.BackColor = Drawing.Color.DarkGray
+            Button1.BackColor = Drawing.Color.Silver
+            Button2.BackColor = Drawing.Color.Silver
+        ElseIf Dark = False Then
+            ColorMode = "Normal"
+            Me.BackColor = Drawing.Color.DarkGray
+            Panel1.BackColor = Drawing.Color.Silver
+            Button1.BackColor = Drawing.Color.Gainsboro
+            Button2.BackColor = Drawing.Color.Gainsboro
+        End If
     End Sub
 End Class
