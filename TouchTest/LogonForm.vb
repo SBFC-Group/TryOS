@@ -117,8 +117,8 @@
 
         Panel3.Visible = True
 
-        If My.Computer.FileSystem.DirectoryExists($"{UI.UsersFolder}\{btn.Text}\Settings\Pincode.swfiles") Then
-            If Label5.Text = "Password" Then
+        If My.Computer.FileSystem.FileExists($"{UI.UsersFolder}\{btn.Text}\Settings\Pincode.swfiles") Then
+            If HasOpenUserButton_ClickBeenOpened = True Then
                 Label5.Text = "Pin Code"
 
                 TextBox1.Text = btn.Text
@@ -158,47 +158,65 @@
                 HasOpenUserButton_ClickBeenOpened = False
 
                 ActivatePincodeLayout()
+
+                Return
             End If
+
+            If NumberButton0.Enabled = False Then
+                NumberButton0.Enabled = True
+                NumberButton1.Enabled = True
+                NumberButton2.Enabled = True
+                NumberButton3.Enabled = True
+                NumberButton4.Enabled = True
+                NumberButton5.Enabled = True
+                NumberButton6.Enabled = True
+                NumberButton7.Enabled = True
+                NumberButton8.Enabled = True
+                NumberButton9.Enabled = True
+                RemoveLetterButton.Enabled = True
+            End If
+        Else
+            If HasOpenUserButton_ClickBeenOpened = False Then
+                TextBox1.Enabled = False
+                TextBox2.Enabled = False
+
+                Label5.Text = "Password"
+                NumberButton0.Visible = False
+                NumberButton1.Visible = False
+                NumberButton2.Visible = False
+                NumberButton3.Visible = False
+                NumberButton4.Visible = False
+                NumberButton5.Visible = False
+                NumberButton6.Visible = False
+                NumberButton7.Visible = False
+                NumberButton8.Visible = False
+                NumberButton9.Visible = False
+                RemoveLetterButton.Visible = False
+
+                LogonButton2.Visible = True
+                TextBox3.Enabled = True
+                TextBox3.UseSystemPasswordChar = True
+
+                AddHandler TextBox3.KeyDown, AddressOf MayNeedThis
+
+                Dim NewPoint1 As Int64 = Label5.Location.Y
+                Dim NewPoint2 As Int64 = Label5.Location.X
+
+                Dim NewPoint3 As Int64 = TextBox3.Location.Y
+                Dim NewPoint4 As Int64 = TextBox3.Location.X
+
+                NewPoint1 = NewPoint1 + 30
+
+                NewPoint3 = NewPoint3 + 30
+
+                Label5.Location = New Point(NewPoint2, NewPoint1)
+
+                TextBox3.Location = New Point(NewPoint4, NewPoint3)
+                HasOpenUserButton_ClickBeenOpened = True
+            End If
+
         End If
 
-        If HasOpenUserButton_ClickBeenOpened = False Then
-            TextBox1.Enabled = False
-            TextBox2.Enabled = False
-
-            Label5.Text = "Password"
-            NumberButton0.Visible = False
-            NumberButton1.Visible = False
-            NumberButton2.Visible = False
-            NumberButton3.Visible = False
-            NumberButton4.Visible = False
-            NumberButton5.Visible = False
-            NumberButton6.Visible = False
-            NumberButton7.Visible = False
-            NumberButton8.Visible = False
-            NumberButton9.Visible = False
-            RemoveLetterButton.Visible = False
-
-            LogonButton2.Visible = True
-            TextBox3.Enabled = True
-            TextBox3.UseSystemPasswordChar = True
-
-            AddHandler TextBox3.KeyDown, AddressOf MayNeedThis
-
-            Dim NewPoint1 As Int64 = Label5.Location.Y
-            Dim NewPoint2 As Int64 = Label5.Location.X
-
-            Dim NewPoint3 As Int64 = TextBox3.Location.Y
-            Dim NewPoint4 As Int64 = TextBox3.Location.X
-
-            NewPoint1 = NewPoint1 + 30
-
-            NewPoint3 = NewPoint3 + 30
-
-            Label5.Location = New Point(NewPoint2, NewPoint1)
-
-            TextBox3.Location = New Point(NewPoint4, NewPoint3)
-            HasOpenUserButton_ClickBeenOpened = True
-        End If
 
 
     End Sub
@@ -220,9 +238,9 @@
         TextBox1.Enabled = False
         TextBox2.Enabled = False
         PinEncoded = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\PinCode.swfiles")
-        Me.KeyPreview = True
-        FlowLayoutPanel1.Visible = False
-        Me.Activate()
+        'Me.KeyPreview = True
+        'FlowLayoutPanel1.Visible = False
+        'Me.Activate()
     End Sub
 
     Private Sub Login() Handles Button1.Click
@@ -291,8 +309,8 @@
 
 
                 Else
-                        If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & TextBox1.Text & "\Password.swfiles") Then
-                        If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & TextBox1.Text & "\Settings") Then
+                    If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & TextBox1.Text & "\Password.swfiles") Then
+                        If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & TextBox1.Text & "\Settings") = False Then
                             My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Settings")
                         End If
                         My.Computer.FileSystem.MoveFile(UI.UsersFolder & "\" & TextBox1.Text & "\Password.swfiles", UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles")
@@ -303,7 +321,6 @@
             End If
         Catch ex As Exception
             UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
-            'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit")
         End Try
 
     End Sub
@@ -465,6 +482,7 @@
     End Sub
 
     Private Sub NumberButton1_KeyDown(sender As Object, e As KeyEventArgs) Handles NumberButton1.KeyDown, NumberButton2.KeyDown, NumberButton3.KeyDown, NumberButton4.KeyDown, NumberButton5.KeyDown, NumberButton6.KeyDown, NumberButton7.KeyDown, NumberButton8.KeyDown, NumberButton9.KeyDown, NumberButton0.KeyDown, RemoveLetterButton.KeyDown, Button2.KeyDown, MyBase.KeyDown
+        Return
         If PincodeBoolean = True Then
             If e.KeyValue = 48 Then ' Key 0
                 NumberButton0_Click()

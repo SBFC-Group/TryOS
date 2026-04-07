@@ -22,8 +22,10 @@ Partial Class StopWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -38,14 +40,14 @@ Partial Class StopWindow
         '
         'RichTextBox1
         '
-        Me.RichTextBox1.BackColor = System.Drawing.Color.Black
+        Me.RichTextBox1.BackColor = System.Drawing.Color.White
         Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.RichTextBox1.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.RichTextBox1.DetectUrls = False
         Me.RichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RichTextBox1.Enabled = False
         Me.RichTextBox1.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.ForeColor = System.Drawing.Color.White
+        Me.RichTextBox1.ForeColor = System.Drawing.Color.Black
         Me.RichTextBox1.Location = New System.Drawing.Point(0, 0)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
@@ -53,6 +55,10 @@ Partial Class StopWindow
         Me.RichTextBox1.Size = New System.Drawing.Size(1096, 505)
         Me.RichTextBox1.TabIndex = 0
         Me.RichTextBox1.Text = "TestingThis"
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 10000
         '
         'StopWindow
         '
@@ -74,4 +80,5 @@ Partial Class StopWindow
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents Timer1 As Timer
 End Class

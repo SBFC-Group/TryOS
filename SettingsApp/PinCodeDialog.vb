@@ -52,7 +52,6 @@ Public Class PinCodeDialog
         If TextBox3.Text.Length = 4 Then
         Else
             TextBox3.Text = TextBox3.Text + "1"
-            IsTextBoxFull()
         End If
     End Sub
 
@@ -60,8 +59,6 @@ Public Class PinCodeDialog
         If TextBox3.Text.Length = 4 Then
         Else
             TextBox3.Text = TextBox3.Text + "2"
-            IsTextBoxFull()
-
         End If
     End Sub
 
@@ -69,7 +66,6 @@ Public Class PinCodeDialog
         If TextBox3.Text.Length = 4 Then
         Else
             TextBox3.Text = TextBox3.Text + "3"
-            IsTextBoxFull()
         End If
     End Sub
 
@@ -77,7 +73,6 @@ Public Class PinCodeDialog
         If TextBox3.Text.Length = 4 Then
         Else
             TextBox3.Text = TextBox3.Text + "4"
-            IsTextBoxFull()
         End If
     End Sub
 
@@ -85,7 +80,6 @@ Public Class PinCodeDialog
         If TextBox3.Text.Length = 4 Then
         Else
             TextBox3.Text = TextBox3.Text + "5"
-            IsTextBoxFull()
         End If
     End Sub
 
@@ -93,7 +87,6 @@ Public Class PinCodeDialog
         If TextBox3.Text.Length = 4 Then
         Else
             TextBox3.Text = TextBox3.Text + "6"
-            IsTextBoxFull()
         End If
     End Sub
 
@@ -101,7 +94,6 @@ Public Class PinCodeDialog
         If TextBox3.Text.Length = 4 Then
         Else
             TextBox3.Text = TextBox3.Text + "7"
-            IsTextBoxFull()
         End If
     End Sub
 
@@ -109,7 +101,6 @@ Public Class PinCodeDialog
         If TextBox3.Text.Length = 4 Then
         Else
             TextBox3.Text = TextBox3.Text + "8"
-            IsTextBoxFull()
         End If
     End Sub
 
@@ -117,7 +108,6 @@ Public Class PinCodeDialog
         If TextBox3.Text.Length = 4 Then
         Else
             TextBox3.Text = TextBox3.Text + "9"
-            IsTextBoxFull()
         End If
     End Sub
 
@@ -125,7 +115,6 @@ Public Class PinCodeDialog
         If TextBox3.Text.Length = 4 Then
         Else
             TextBox3.Text = TextBox3.Text + "0"
-            IsTextBoxFull()
         End If
     End Sub
 
@@ -160,8 +149,52 @@ Public Class PinCodeDialog
     End Sub
 
     Private Sub PinCodeDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'AddHandler Me.KeyDown, AddressOf Key_Down_Here
+        ChangeDesign(Main.Controller.IsDarkMode())
+    End Sub
 
-        'AddKeyPreviewToAll(Me)
+    Private ColorMode As String = "Normal"
+
+    Private Sub ChangeDesign(Dark As Boolean)
+        If Dark = True Then
+            ColorMode = "Dark"
+            Panel2.BackColor = Drawing.Color.Gray
+            TextBox3.BackColor = Drawing.Color.DarkGray
+            NumberButton0.BackColor = Drawing.Color.DarkGray
+            NumberButton1.BackColor = Drawing.Color.DarkGray
+            NumberButton2.BackColor = Drawing.Color.DarkGray
+            NumberButton3.BackColor = Drawing.Color.DarkGray
+            NumberButton4.BackColor = Drawing.Color.DarkGray
+            NumberButton5.BackColor = Drawing.Color.DarkGray
+            NumberButton6.BackColor = Drawing.Color.DarkGray
+            NumberButton7.BackColor = Drawing.Color.DarkGray
+            NumberButton8.BackColor = Drawing.Color.DarkGray
+            NumberButton9.BackColor = Drawing.Color.DarkGray
+            RemoveLetterButton.BackColor = Drawing.Color.DarkGray
+            NextStepButton.BackColor = Drawing.Color.DarkGray
+        ElseIf Dark = False Then
+            ColorMode = "Normal"
+            Panel2.BackColor = Drawing.Color.DarkGray
+            TextBox3.BackColor = Drawing.Color.Gainsboro
+            NumberButton0.BackColor = Drawing.Color.Gainsboro
+            NumberButton1.BackColor = Drawing.Color.Gainsboro
+            NumberButton2.BackColor = Drawing.Color.Gainsboro
+            NumberButton3.BackColor = Drawing.Color.Gainsboro
+            NumberButton4.BackColor = Drawing.Color.Gainsboro
+            NumberButton5.BackColor = Drawing.Color.Gainsboro
+            NumberButton6.BackColor = Drawing.Color.Gainsboro
+            NumberButton7.BackColor = Drawing.Color.Gainsboro
+            NumberButton8.BackColor = Drawing.Color.Gainsboro
+            NumberButton9.BackColor = Drawing.Color.Gainsboro
+            RemoveLetterButton.BackColor = Drawing.Color.Gainsboro
+            NextStepButton.BackColor = Drawing.Color.Gainsboro
+        End If
+    End Sub
+
+    Private Sub NextStepButton_Click(sender As Object, e As EventArgs) Handles NextStepButton.Click
+        If TextBox3.Text.Length = 0 Then
+            Cancel_Button_Click(sender, e)
+        Else
+            IsTextBoxFull()
+        End If
     End Sub
 End Class

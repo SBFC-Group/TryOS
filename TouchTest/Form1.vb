@@ -178,27 +178,17 @@ Public Class Form1
                 DllName = UI.AppsFolder & "\" & Reader & "\Main.dll"
             End If
             Try
-                UI.GetFormFromAppDll(UI.AppsFolder & "\" & Reader & "\" & DllName)
+                OpenChildForm(UI.GetFormFromAppDll(UI.AppsFolder & "\" & Reader & "\" & DllName))
             Catch ex As Exception
                 UI.ShowError(ex.Message)
             End Try
         ElseIf My.Computer.FileSystem.FileExists(User.UserFolderPath & "\Settings\AutoRunDllApp.swfiles") Then
             Try
-                UI.GetFormFromAppDll(My.Computer.FileSystem.ReadAllText(User.UserFolderPath & "\Settings\AutoRunDllApp.swfiles"))
+                OpenChildForm(UI.GetFormFromAppDll(My.Computer.FileSystem.ReadAllText(User.UserFolderPath & "\Settings\AutoRunDllApp.swfiles")))
             Catch ex As Exception
                 UI.ShowError(ex.Message)
             End Try
         End If
-    End Sub
-
-    Public Sub New()
-
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-
     End Sub
 
     Public Function Funnything() As Panel

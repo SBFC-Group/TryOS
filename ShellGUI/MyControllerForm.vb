@@ -47,9 +47,10 @@ Public Class MyControllerForm
             Bo4 = False
         End If
 
-        'Trys to load elements inside Form1 (Main Window)
+        'Trys to load elements inside Form1 (TryOS Shell)
         AddHandlerToAll(Main.Form1)
 
+        'This loads PCC (Context Menu)
         If Bo1 = True Then
 
             PCC.IsContextMenuBase = True
@@ -65,10 +66,12 @@ Public Class MyControllerForm
             PCC.Visible = False
         End If
 
+        'This loads TaskInteracter
         If Bo2 = True Then
             LoadTaskInteracter()
         End If
 
+        'This will load the newer Wallpaper loader
         If Bo3 = True Then
             If Main.Form1.User.DoesSettingExist("IsUsingNewerWallpaperLoader=True") = True Then
                 If My.Computer.FileSystem.FileExists(Main.Form1.User.UserFolderPath & "\Settings\WallpaperImage.swfiles") Then
@@ -87,7 +90,7 @@ Public Class MyControllerForm
             End If
         End If
 
-
+        'This loads PCC_TaskInteracter (Context Menu for TaskInteracter)
         If Bo4 = True Then
 
             PCC_TaskInteracter.IsContextMenuBase = False
@@ -121,8 +124,6 @@ Public Class MyControllerForm
 
             PCC_TaskInteracter.Visible = False
         End If
-        'OpenTaskInteracter(Main.Form1.Funnything())
-
     End Sub
 
     Public Form1_Panel2_Y As Int64 = 0
@@ -132,24 +133,21 @@ Public Class MyControllerForm
     Private Sub MouseDown_Menu(sender As Object, e As MouseEventArgs)
         If e.Button = MouseButtons.Right Then
             IsPCCHere = True
-            'MsgBox("1")
-            Dim x1 = e.Location.X
-            Dim y1 = e.Location.Y
 
-            y1 = y1 + 35
-
-            PCC.Location = New Drawing.Point(x1, y1)
+            PCC.Location = New Drawing.Point(e.Location.X, e.Location.Y + 35)
             PCC.Visible = True
 
             If PCC_TaskInteracter.Visible = True Then
+                IsPCC_TaskInteracterHere = False
                 PCC_TaskInteracter.Visible = False
             End If
         ElseIf e.Button = MouseButtons.Left Then
             IsPCCHere = False
-            'MsgBox("2")
+
             PCC.Visible = False
 
             If PCC_TaskInteracter.Visible = True Then
+                IsPCC_TaskInteracterHere = False
                 PCC_TaskInteracter.Visible = False
             End If
         End If
@@ -165,7 +163,7 @@ Public Class MyControllerForm
             Dim x1 = sender.Location.X - sender.Size.Width
             Dim y1 = Form1_Panel2_Y - PCC_TaskInteracter.Size.Height
 
-            'This stops the Context menu from going into -1 and lower
+            'This stops the Context menu Point X from going lower then 0
             If x1 < -1 Then
                 x1 = 0
             End If
@@ -173,10 +171,20 @@ Public Class MyControllerForm
             PCC_TaskInteracter.Location = New Drawing.Point(x1, y1)
             PCC_TaskInteracter.Visible = True
             PCC_TaskInteracter.Tag = sender
+
+            If PCC.Visible = True Then
+                IsPCCHere = False
+                PCC.Visible = False
+            End If
         ElseIf e.Button = MouseButtons.Left Then
             IsPCC_TaskInteracterHere = False
 
             PCC_TaskInteracter.Visible = False
+
+            If PCC.Visible = True Then
+                IsPCCHere = False
+                PCC.Visible = False
+            End If
         End If
     End Sub
 
@@ -217,7 +225,8 @@ Public Class MyControllerForm
                 If Bo1 = True Then
                     c.Controls.Add(PCC)
                     PCC.BringToFront()
-
+                End If
+                If Bo4 = True Then
                     c.Controls.Add(PCC_TaskInteracter)
                     PCC_TaskInteracter.BringToFront()
                 End If
@@ -233,6 +242,10 @@ Public Class MyControllerForm
                 If Bo1 = True Then
                     AddHandler c.Click, Sub(sender As Object, e As EventArgs)
                                             PCC.Visible = False
+                                        End Sub
+                End If
+                If Bo4 = True Then
+                    AddHandler c.Click, Sub(sender As Object, e As EventArgs)
                                             PCC_TaskInteracter.Visible = False
                                         End Sub
                 End If
@@ -240,13 +253,19 @@ Public Class MyControllerForm
                 If Bo1 = True Then
                     AddHandler c.Click, Sub(sender As Object, e As EventArgs)
                                             If IsPCCHere = True Then
-                                                PCC.Visible = True
+                                                IsPCCHere = False
+                                                PCC.Visible = False
                                             End If
-
-                                            PCC_TaskInteracter.Visible = False
                                         End Sub
                 End If
-
+                If Bo4 = True Then
+                    AddHandler c.Click, Sub(sender As Object, e As EventArgs)
+                                            If IsPCC_TaskInteracterHere = True Then
+                                                IsPCC_TaskInteracterHere = False
+                                                PCC_TaskInteracter.Visible = False
+                                            End If
+                                        End Sub
+                End If
             End If
 
             If c.HasChildren Then AddHandlerToAll(c)
@@ -266,31 +285,11 @@ Public Class MyControllerForm
             If Bo4 = True Then
                 AddHandler c.MouseDown, AddressOf MouseDown_Menu_TaskInteracter
             End If
-            'If c.HasChildren Then AddHandlerToAll(c)
         Next
     End Sub
 
     Private Sub MyControllerForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         RemoveHandlerToAll(Main.Form1)
-    End Sub
-
-    Public currentForm As Form = Nothing
-    Public Sub OpenTaskInteracter(PanelElement As Panel)
-        Dim childForm As New TaskInteracter_F
-
-        If currentForm IsNot Nothing Then currentForm.Close()
-        currentForm = childForm
-        childForm.TopLevel = False
-        childForm.FormBorderStyle = FormBorderStyle.None
-        childForm.Dock = DockStyle.Fill
-        PanelElement.Controls.Add(childForm)
-        PanelElement.Tag = childForm
-        Try
-            childForm.Show()
-            childForm.BringToFront()
-        Catch ex As Exception
-
-        End Try
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -312,9 +311,6 @@ Public Class MyControllerForm
         TaskInteracter_Panel.Dock = DockStyle.None
 
         P2.Controls.Remove(TaskInteracter_Panel)
-
-
-
     End Sub
 
     Public Overloads Sub Show()

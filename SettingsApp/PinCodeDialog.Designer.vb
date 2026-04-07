@@ -36,6 +36,7 @@ Partial Class PinCodeDialog
         Me.NumberButton3 = New System.Windows.Forms.Button()
         Me.NumberButton5 = New System.Windows.Forms.Button()
         Me.NumberButton4 = New System.Windows.Forms.Button()
+        Me.NextStepButton = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -44,6 +45,7 @@ Partial Class PinCodeDialog
         Me.Panel2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Panel2.BackColor = System.Drawing.Color.Silver
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.NextStepButton)
         Me.Panel2.Controls.Add(Me.RemoveLetterButton)
         Me.Panel2.Controls.Add(Me.Label3)
         Me.Panel2.Controls.Add(Me.NumberButton0)
@@ -224,6 +226,21 @@ Partial Class PinCodeDialog
         Me.NumberButton4.Text = "4"
         Me.NumberButton4.UseVisualStyleBackColor = False
         '
+        'NextStepButton
+        '
+        Me.NextStepButton.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.NextStepButton.BackColor = System.Drawing.Color.LightGray
+        Me.NextStepButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.NextStepButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver
+        Me.NextStepButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.NextStepButton.Font = New System.Drawing.Font("Segoe MDL2 Assets", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NextStepButton.Location = New System.Drawing.Point(38, 233)
+        Me.NextStepButton.Name = "NextStepButton"
+        Me.NextStepButton.Size = New System.Drawing.Size(55, 48)
+        Me.NextStepButton.TabIndex = 86
+        Me.NextStepButton.Text = ""
+        Me.NextStepButton.UseVisualStyleBackColor = False
+        '
         'PinCodeDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -262,4 +279,5 @@ Partial Class PinCodeDialog
     Friend WithEvents NumberButton3 As Windows.Forms.Button
     Friend WithEvents NumberButton5 As Windows.Forms.Button
     Friend WithEvents NumberButton4 As Windows.Forms.Button
+    Friend WithEvents NextStepButton As Windows.Forms.Button
 End Class

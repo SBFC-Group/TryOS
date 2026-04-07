@@ -50,6 +50,12 @@ Public Class UpdateApp
 
         Branch = Main.Controller.RunCommand("GetBranch")
         Debug.WriteLine(Branch)
+
+        If My.Computer.FileSystem.DirectoryExists(My.Application.Info.DirectoryPath & "\Settings") Then
+            If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Settings\Updater.exe") = False Then
+                My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\Settings\Updater.exe", My.Resources.Updater, False)
+            End If
+        End If
     End Sub
 
     Async Function DownloadUpdate(url As String) As Task

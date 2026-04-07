@@ -33,6 +33,8 @@ Partial Class ThemeApp
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TransparencyCheckBox = New System.Windows.Forms.CheckBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -137,11 +139,37 @@ Partial Class ThemeApp
         '
         Me.Timer1.Enabled = True
         '
+        'Button6
+        '
+        Me.Button6.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button6.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.Location = New System.Drawing.Point(450, 3)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(304, 38)
+        Me.Button6.TabIndex = 18
+        Me.Button6.Text = "Use Normal Mode for Apps"
+        Me.Button6.UseVisualStyleBackColor = False
+        '
+        'Button7
+        '
+        Me.Button7.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button7.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button7.Location = New System.Drawing.Point(450, 47)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(304, 38)
+        Me.Button7.TabIndex = 19
+        Me.Button7.Text = "Use Normal Mode for Programs"
+        Me.Button7.UseVisualStyleBackColor = False
+        '
         'ThemeApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkGray
+        Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.TransparencyCheckBox)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button1)
@@ -168,4 +196,6 @@ Partial Class ThemeApp
     Friend WithEvents Button5 As Windows.Forms.Button
     Friend WithEvents TransparencyCheckBox As Windows.Forms.CheckBox
     Friend WithEvents Timer1 As Windows.Forms.Timer
+    Friend WithEvents Button6 As Windows.Forms.Button
+    Friend WithEvents Button7 As Windows.Forms.Button
 End Class

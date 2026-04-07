@@ -68,7 +68,7 @@ Public Class PCContentMenu_NoneApp
                                                           End Sub)
         If My.Computer.FileSystem.DirectoryExists(Main.UI.AppsFolder & "\Internet++") = True Then
             AddItemToMenu("InternetPlusPlusButton", "Internet++", Sub()
-                                                                      Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\Internet++\Main.dll"))
+                                                                      Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(My.Computer.FileSystem.ReadAllText(Main.UI.AppsFolder & "\Internet++\DllPath.dll")))
                                                                   End Sub)
         End If
         If Environment.CommandLine.Contains("/ShowCommanderOnContextMenu") = True Then

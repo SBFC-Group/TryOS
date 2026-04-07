@@ -17,9 +17,7 @@ Namespace OpenFramework_Data
         Private Shared host As New OpenFramework_Handler()
 
         Public Shared Sub LoadApps(User As UserManager)
-            If My.Computer.FileSystem.DirectoryExists(User.UserFolderPath & "\Apps") Then
-
-
+            If My.Computer.FileSystem.DirectoryExists(UI.AppsFolder) Then
                 Try
                     Dim plugins = LoadAppsDlls(User)
 
@@ -42,7 +40,7 @@ Namespace OpenFramework_Data
                         End Try
                     Next
                 Catch ex As Exception
-                    UI.ShowError("Someting has changed to make your app not work.")
+                    UI.ShowError("Something has changed to make your app not work.")
                 End Try
             Else
                 UI.ShowError("Apps Folder does not exist.")

@@ -34,8 +34,10 @@
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Process.Start(My.Application.Info.DirectoryPath & "\TryOSUpdateWindow.exe")
-        UI.RunCommands("end", Form1.User)
+        UI.ShowError("This updater is no longer used.")
+
+        'Process.Start(My.Application.Info.DirectoryPath & "\TryOSUpdateWindow.exe")
+        'UI.RunCommands("end", Form1.User)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick

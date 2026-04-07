@@ -12,4 +12,23 @@ Public Class DeleteUserDialog
         Me.Close()
     End Sub
 
+    Private Sub DeleteUserDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ChangeDesign(Main.Controller.IsDarkMode())
+    End Sub
+
+    Private ColorMode As String = "Normal"
+
+    Private Sub ChangeDesign(Dark As Boolean)
+        If Dark = True Then
+            ColorMode = "Dark"
+            Panel1.BackColor = Drawing.Color.Gray
+            OK_Button.BackColor = Drawing.Color.DarkGray
+            Cancel_Button.BackColor = Drawing.Color.DarkGray
+        ElseIf Dark = False Then
+            ColorMode = "Normal"
+            Panel1.BackColor = Drawing.Color.DarkGray
+            OK_Button.BackColor = Drawing.Color.Gainsboro
+            Cancel_Button.BackColor = Drawing.Color.Gainsboro
+        End If
+    End Sub
 End Class

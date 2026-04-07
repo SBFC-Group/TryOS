@@ -15,6 +15,7 @@ mkdir ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI"
 echo txt_file_does_not_contain_anything_that_you_need > ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI\SettingsApp.SettingsForm.txt"
 echo txt_file_does_not_contain_anything_that_you_need > ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI\ShellGUI.PCC.txt"
 echo txt_file_does_not_contain_anything_that_you_need > ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI\ShellGUI.TaskInteracter.txt"
+echo txt_file_does_not_contain_anything_that_you_need > ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI\ShellGUI.PCC=TaskInteracter.txt"
 echo txt_file_does_not_contain_anything_that_you_need > ".\TouchTest\bin\Debug\TryOS_Build\ShellApps\ShellGUI\ShellGUI=TouchTest.Form1.txt"
 
 :: Copys new Logon page
@@ -72,8 +73,6 @@ copy ".\TouchTest\bin\Debug\runtimes\win-x86\native\WebView2Loader.dll" ".\Touch
 :: Copys Main Program .exe
 copy ".\TouchTest\bin\Debug\TouchTest.exe" ".\TouchTest\bin\Debug\TryOS_Build\TryOS.exe"
 :: Add More when needed.
-
-copy ".\TryOSUpdateWindow\bin\Debug\TryOSUpdateWindow.exe" ".\TouchTest\bin\Debug\TryOS_Build\"
 
 :: Creates TryOS Store App
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps"

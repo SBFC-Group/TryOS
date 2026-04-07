@@ -51,5 +51,9 @@
             'Form1.Button3
             Return Form1.Button3
         End Function
+
+        Public Shared Function _11()
+            Return New NeedThisClass
+        End Function
     End Class
 End Namespace
