@@ -2,7 +2,7 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim TheRole As TouchTest.TryController.Roles
 
-        If My.Application.Info.Version.Revision < 300 Or My.Application.Info.Version.Revision = 300 Then
+        If My.Application.Info.Version.Revision < 321 Or My.Application.Info.Version.Revision = 321 Then
             TheRole = Main.ProgramData.GetRole()
         Else
             TheRole = Main.ProgramData.RunCommand("whoami /nogui")

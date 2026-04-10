@@ -27,4 +27,28 @@ Public Class Form55
         StorePanel.Controls.Add(AppList)
         AppList.Dock = DockStyle.Fill
     End Sub
+
+    Private ColorMode As String = "Normal"
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If Main.Controller.IsDarkMode() = True Then
+            If ColorMode = "Normal" Then
+                ChangeDesign(True)
+            End If
+        ElseIf Main.Controller.IsDarkMode() = False Then
+            If ColorMode = "Dark" Then
+                ChangeDesign(False)
+            End If
+        End If
+    End Sub
+
+    Public Sub ChangeDesign(Dark As Boolean)
+        If Dark = True Then
+            ColorMode = "Dark"
+            FlowLayoutPanel1.BackColor = Drawing.Color.Gray
+        ElseIf Dark = False Then
+            ColorMode = "Normal"
+            FlowLayoutPanel1.BackColor = Drawing.Color.Silver
+        End If
+    End Sub
 End Class

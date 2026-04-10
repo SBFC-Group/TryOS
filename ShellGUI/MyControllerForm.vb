@@ -124,6 +124,8 @@ Public Class MyControllerForm
                 AddHandler c.MouseDown, AddressOf MouseDown_Menu_TaskInteracter
             Next
 
+            AddHandler TaskInteracter_Panel.FlowLayoutPanel1.MouseDown, AddressOf MouseDown_Menu_TaskInteracter_2_0
+
             PCC_TaskInteracter.BackColor = Color.FromArgb(55, Color.DarkGray)
 
             PCC_TaskInteracter.Visible = False
@@ -190,6 +192,11 @@ Public Class MyControllerForm
                 PCC.Visible = False
             End If
         End If
+    End Sub
+
+    Private Sub MouseDown_Menu_TaskInteracter_2_0(sender As Object, e As MouseEventArgs)
+        PCC_TaskInteracter.Visible = False
+        PCC.Visible = False
     End Sub
 
     Private Sub MyControllerForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load

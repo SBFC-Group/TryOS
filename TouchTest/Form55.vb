@@ -53,10 +53,45 @@
     End Sub
 
     Private Sub Form55_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Environment.CommandLine.Contains("/NoTryOSStoreUpdate1_0") = False Then
-            If TryOSStoreDialogNewVersion.ShowDialog = DialogResult.Yes Then
 
-            End If
+
+
+        If Environment.CommandLine.Contains("/NoTryOSStoreUpdate1_0") = False Then
+
+            Dim temptimer As New Timer
+            temptimer.Interval = 1000
+            AddHandler temptimer.Tick, Sub()
+                                           temptimer.Stop()
+
+                                           If TryOSStoreDialogNewVersion.ShowDialog = DialogResult.Yes Then
+                                               If My.Computer.FileSystem.DirectoryExists(UI.AppsFolder & "\TryOS_Store") = True Or My.Computer.FileSystem.DirectoryExists(UI.AppsFolder & "\TryOS Store") = True Then
+                                                   Dim psi As New ProcessStartInfo(My.Application.Info.DirectoryPath & "\InternetDownloader.exe", "/Address:https://app-web-cv.netlify.app/tryos_store/files/tryos_store/1.1.0/TryOS_Store.tryapp" & " /fileName:" & My.Application.Info.DirectoryPath & "\TryOS_Store.tryapp")
+                                                   psi.RedirectStandardOutput = True
+                                                   psi.UseShellExecute = False
+                                                   psi.CreateNoWindow = True
+
+
+                                                   If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\InternetDownloader.exe") = False Then
+                                                       My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\InternetDownloader.exe", My.Resources.InternetDownloader, False)
+                                                   End If
+
+                                                   Dim process As Process = Process.Start(psi)
+
+                                                   Dim output As String = process.StandardOutput.ReadToEnd()
+                                                   process.WaitForExit()
+
+                                                   TryOSStoreDialogNewVersion.RichTextBox1.Text = "You need to restart to update TryOS Store.
+Do you want to restart?"
+                                                   If TryOSStoreDialogNewVersion.ShowDialog() = DialogResult.Yes Then
+                                                       My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Settings\UpdateTryOS_Store.setting", My.Application.Info.DirectoryPath & "\TryOS_Store.tryapp", False)
+                                                       Application.Restart()
+                                                   End If
+                                               End If
+                                           End If
+                                       End Sub
+            temptimer.Start()
+
+
         End If
 
     End Sub

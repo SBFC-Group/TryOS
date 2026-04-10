@@ -59,7 +59,7 @@ Public Class PCContentMenu_NoneApp
                                                               If My.Computer.FileSystem.DirectoryExists(Main.UI.AppsFolder & "\TryOS_Store_New") = True Then
                                                                   Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\TryOS_Store_New\TryOS_Store.dll"))
                                                               Else
-                                                                  If My.Computer.FileSystem.FileExists(Main.UI.AppsFolder & "\TryOS_Store_New\TryOS_Store.dll") = True Then
+                                                                  If My.Computer.FileSystem.FileExists(Main.UI.AppsFolder & "\TryOS_Store\TryOS_Store.dll") = True Then
                                                                       Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\TryOS_Store\TryOS_Store.dll"))
                                                                   Else
                                                                       Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\TryOS_Store\Main.dll"))
@@ -68,7 +68,7 @@ Public Class PCContentMenu_NoneApp
                                                           End Sub)
         If My.Computer.FileSystem.DirectoryExists(Main.UI.AppsFolder & "\Internet++") = True Then
             AddItemToMenu("InternetPlusPlusButton", "Internet++", Sub()
-                                                                      Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(My.Computer.FileSystem.ReadAllText(Main.UI.AppsFolder & "\Internet++\DllPath.dll")))
+                                                                      Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(My.Computer.FileSystem.ReadAllText(Main.UI.AppsFolder & "\Internet++\DllPath.txt")))
                                                                   End Sub)
         End If
         If Environment.CommandLine.Contains("/ShowCommanderOnContextMenu") = True Then
