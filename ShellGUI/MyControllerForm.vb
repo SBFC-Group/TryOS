@@ -95,6 +95,10 @@ Public Class MyControllerForm
 
             PCC_TaskInteracter.IsContextMenuBase = False
 
+            PCC_TaskInteracter.AddItemToMenu("MoveBackItem", "Refresh", Sub()
+                                                                            Main.Controller.OpenFramework_RestoreButtonOrder(False)
+                                                                        End Sub)
+
             PCC_TaskInteracter.AddItemToMenu("MoveBackItem", "< Move Back", Sub()
                                                                                 Try
                                                                                     Dim btn As Button = CType(PCC_TaskInteracter.Tag, Button)

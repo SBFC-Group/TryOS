@@ -33,7 +33,7 @@ Public Class Main
 
     Public ReadOnly Property Icon As Image Implements OpenFramework_Interface.Icon
         Get
-            Return My.Resources.ic_local_grocery_store_128_284601
+            Return My.Resources.shopping_icon_237773
         End Get
     End Property
 

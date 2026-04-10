@@ -185,7 +185,7 @@ Public Class Form15
 
         'Text = "TEsting"
 
-        Button5.Visible = True
+        'Button5.Visible = True
 
         If Main._host.IsDarkMode() = True Then
             TextBox1.BackColor = Color.DarkGray

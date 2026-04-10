@@ -77,7 +77,16 @@ copy ".\TouchTest\bin\Debug\TouchTest.exe" ".\TouchTest\bin\Debug\TryOS_Build\Tr
 :: Creates TryOS Store App
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps"
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store"
-copy ".\TryOS_Store_Loader\bin\Debug\TryOS_Store_Loader.dll" ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store\Main.dll"
+copy ".\TryOS_Store\bin\Debug\TryOS_Store.dll" ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store\TryOS_Store.dll"
+copy ".\TryOS_Store\bin\Debug\Microsoft.Web.WebView2.Core.dll" ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store\"
+copy ".\TryOS_Store\bin\Debug\Microsoft.Web.WebView2.WinForms.dll" ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store\"
+copy ".\TryOS_Store\bin\Debug\Microsoft.Web.WebView2.Wpf.dll" ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store\"
+copy ".\TryOS_Store\bin\Debug\TryOS_Store_Manager.dll" ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store\"
+
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store\runtimes\win-x64\native"
+copy ".\TryOS_Store\bin\Debug\runtimes\win-x64\native\WebView2Loader.dll" ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store\runtimes\win-x64\native\"
+mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store\runtimes\win-x86\native"
+copy ".\TryOS_Store\bin\Debug\runtimes\win-x86\native\WebView2Loader.dll" ".\TouchTest\bin\Debug\TryOS_Build\Apps\TryOS_Store\runtimes\win-x86\native\
 
 :: Creates Settings App
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps\Settings"

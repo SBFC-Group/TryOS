@@ -64,6 +64,15 @@
                         TempUser.SaveUserSettings(SettingsListy)
                     End If
                 End If
+            ElseIf ProgressBar1.Value = 40 Then
+                If Environment.CommandLine.Contains("/KeepDllPathTryOS_Store") = False Then
+                    If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Apps\TryOS_Store\Main.dll") Then
+                    ElseIf My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Apps\TryOS_Store\TryOS_Store.dll") Then
+                        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Apps\TryOS_Store\DllPath.txt") = False Then
+                            My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Apps\TryOS_Store\DllPath.txt", My.Application.Info.DirectoryPath & "\Apps\TryOS_Store\TryOS_Store.dll", False)
+                        End If
+                    End If
+                End If
             ElseIf ProgressBar1.Value = 50 Then
                 If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles") = False Then
                     My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles", TryController.GetVersion(), False)
@@ -74,7 +83,9 @@
                     Try
                         My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Taskbar_Order.json")
                     Catch ex As Exception
-
+                        If Environment.CommandLine.Contains("/DevMode") = True Then
+                            Debug.WriteLine(ex.Message)
+                        End If
                     End Try
                 End If
             ElseIf ProgressBar1.Value = 70 Then

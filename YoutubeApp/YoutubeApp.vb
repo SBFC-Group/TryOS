@@ -5,8 +5,6 @@
 
     Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
         If e.IsSuccess = True Then
-
-
             Dim TheRole As TouchTest.TryController.Roles = Class1._host.GetRole()
             If TheRole = TouchTest.TryController.Roles.Developer Then
             Else
@@ -20,17 +18,13 @@
                 WebView21.CoreWebView2.Profile.PreferredColorScheme = Microsoft.Web.WebView2.Core.CoreWebView2PreferredColorScheme.Light
             End If
 
-            Dim jj = WebView21.CoreWebView2.Environment.CreateContextMenuItem("J", Nothing, Microsoft.Web.WebView2.Core.CoreWebView2ContextMenuItemKind.Command)
-
-            AddHandler jj.CustomItemSelected, Sub()
-                                                  Class1._host.RunCommand("RunApp Form2")
-                                              End Sub
+            AddHandler WebView21.CoreWebView2.ContainsFullScreenElementChanged, AddressOf Timer1_Tick
         End If
     End Sub
 
     Private IsWebView2FullScreen As Boolean = False
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs)
         Try
             If WebView21.CoreWebView2.ContainsFullScreenElement = True Then
                 Class1._host.EnableFullscreen(True)
@@ -39,11 +33,9 @@
                 If IsWebView2FullScreen = True Then
                     IsWebView2FullScreen = False
                     Class1._host.EnableFullscreen(False)
-
                 End If
             End If
         Catch ex As Exception
-
         End Try
     End Sub
 End Class

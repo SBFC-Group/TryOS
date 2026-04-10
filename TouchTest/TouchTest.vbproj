@@ -513,6 +513,12 @@
     <Compile Include="TryController.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TryOSStoreDialogNewVersion.Designer.vb">
+      <DependentUpon>TryOSStoreDialogNewVersion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TryOSStoreDialogNewVersion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI.Designer.vb">
       <DependentUpon>UI.vb</DependentUpon>
     </Compile>
@@ -748,6 +754,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TryController.resx">
       <DependentUpon>TryController.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TryOSStoreDialogNewVersion.resx">
+      <DependentUpon>TryOSStoreDialogNewVersion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI.resx">
       <DependentUpon>UI.vb</DependentUpon>

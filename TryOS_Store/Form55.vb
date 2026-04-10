@@ -5,7 +5,7 @@ Public Class Form55
     Public AppList As AppList = Nothing
 
     Private Sub Form55_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Icon = My.Resources.ic_local_grocery_store_128_28460
+        Icon = My.Resources.shopping_icon_2377731
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

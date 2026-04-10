@@ -95,7 +95,6 @@ Public Class Form1
                 Panel2.BackColor = Color.Gray
                 TimebarPanel.BackColor = Color.Gray
             End If
-
         ElseIf IsUsingDarkThemeForPrograms = False Then
             If IsTransparentEnabled = True Then
                 Panel2.BackColor = Color.FromArgb(55, Color.Silver)
@@ -157,15 +156,15 @@ Public Class Form1
                 Try
                     UseNewerAppViewer = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\UseAppViewer.setting"))
                 Catch ex As Exception
-                    Debug.WriteLine(ex.Message)
+                    If Environment.CommandLine.Contains("/DevMode") = True Then
+                        Debug.WriteLine(ex.Message)
+                    End If
                     UI.ShowError("Couldn't get an boolean from the file.")
                 End Try
                 If UseNewerAppViewer = True Then
                     Form2.Show()
                     VolumeButton.Visible = True
-
                 End If
-
             End If
         End If
 
@@ -268,7 +267,6 @@ Public Class Form1
         Try
             App.Show()
         Catch ex As Exception
-
         End Try
     End Sub
 
@@ -354,8 +352,6 @@ Public Class Form1
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         If UseNewerAppViewer = True Then
 
-            'This code sadly didn't work. So no closing current app (you're wrong. It works now!!)
-
             Dim AppInt As Int64 = UI.RunCommands("GetAppIndex", TryController.Resuteg(TryController.CoreID))
 
             Debug.WriteLine("Closing App Index: " & AppInt)
@@ -386,8 +382,6 @@ Public Class Form1
             End If
 
             OpenFramework_Data.OpenFramework.AppName = ""
-
-            'UI.ShowError("Currentlly this is disabled when the AppViewer is enabled. (Will work again soon)", ErrorMSGBox.Alerts.Information)
         Else
             Try
                 currentForm.Close()

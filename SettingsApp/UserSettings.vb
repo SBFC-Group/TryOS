@@ -50,7 +50,22 @@ Public Class UserSettings
     Public Sub UserButton_Click(sender As Object, e As EventArgs)
         Dim btn As Button = CType(sender, Button)
         SelectedUserButton = btn
+
         Dim Usermanager As TouchTest.UserManager = CType(btn.Tag, TouchTest.UserManager)
+
+        If My.Computer.FileSystem.DirectoryExists(Usermanager.UserFolderPath) Then
+            If My.Computer.FileSystem.FileExists(Usermanager.UserFolderPath & "\Settings\Password.swfiles") = False Then
+                If Environment.CommandLine.Contains("/DevMode") = True Then
+                    Debug.WriteLine("This directory does not exist. """ & Usermanager.UserFolderPath & """")
+                End If
+                Return
+            End If
+        Else
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                Debug.WriteLine("This directory does not exist. """ & Usermanager.UserFolderPath & """")
+            End If
+            Return
+        End If
 
         Dim TheRole As TouchTest.TryController.Roles = Main.Controller.GetRole()
 

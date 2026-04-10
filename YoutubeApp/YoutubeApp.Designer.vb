@@ -29,10 +29,6 @@ Partial Class YoutubeApp
         CType(Me.WebView21, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'Timer1
-        '
-        Me.Timer1.Enabled = True
-        '
         'WebView21
         '
         Me.WebView21.AllowExternalDrop = True
