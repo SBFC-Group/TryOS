@@ -77,7 +77,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
+    <Compile Include="Main.vb" />
     <Compile Include="FacebookApp.Designer.vb">
       <DependentUpon>FacebookApp.vb</DependentUpon>
     </Compile>

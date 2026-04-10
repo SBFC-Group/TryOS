@@ -22,16 +22,18 @@ Partial Class Form55
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.StorePanel = New System.Windows.Forms.Panel()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'FlowLayoutPanel1
         '
-        Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.LightGray
+        Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.Silver
         Me.FlowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.FlowLayoutPanel1.Controls.Add(Me.Button1)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button2)
@@ -67,12 +69,17 @@ Partial Class Form55
         '
         'StorePanel
         '
+        Me.StorePanel.BackColor = System.Drawing.Color.DarkGray
         Me.StorePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.StorePanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.StorePanel.Location = New System.Drawing.Point(114, 0)
         Me.StorePanel.Name = "StorePanel"
         Me.StorePanel.Size = New System.Drawing.Size(831, 545)
         Me.StorePanel.TabIndex = 1
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
         '
         'Form55
         '
@@ -92,4 +99,5 @@ Partial Class Form55
     Friend WithEvents Button1 As Windows.Forms.Button
     Friend WithEvents Button2 As Windows.Forms.Button
     Friend WithEvents StorePanel As Windows.Forms.Panel
+    Friend WithEvents Timer1 As Windows.Forms.Timer
 End Class

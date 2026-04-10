@@ -40,7 +40,18 @@
             End If
 
         Else
-            If ProgressBar1.Value = 30 Then
+            If ProgressBar1.Value = 20 Then
+                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Settings\UpdateTryOS_Store.setting") Then
+                    My.Computer.FileSystem.DeleteDirectory(My.Application.Info.DirectoryPath & "\Apps\TryOS_Store", FileIO.DeleteDirectoryOption.DeleteAllContents)
+
+                    Dim NewTryOS_StoreVersion As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Settings\UpdateTryOS_Store.setting")
+
+                    TryOS_Store_Manager.Class1.InstallTryOSApp(NewTryOS_StoreVersion, TryController.GetVersion())
+
+                    My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\Settings\UpdateTryOS_Store.setting")
+                    My.Computer.FileSystem.DeleteFile(NewTryOS_StoreVersion)
+                End If
+            ElseIf ProgressBar1.Value = 30 Then
                 If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Software.swfiles") Then
                 Else
                     Dim SettingsListy As String = Nothing

@@ -38,6 +38,7 @@ Partial Class YoutubeApp
         Me.WebView21.Location = New System.Drawing.Point(0, 0)
         Me.WebView21.Name = "WebView21"
         Me.WebView21.Size = New System.Drawing.Size(800, 450)
+        Me.WebView21.Source = New System.Uri("https://youtube.com", System.UriKind.Absolute)
         Me.WebView21.TabIndex = 1
         Me.WebView21.ZoomFactor = 1.0R
         '
@@ -49,7 +50,7 @@ Partial Class YoutubeApp
         Me.Controls.Add(Me.WebView21)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "YoutubeApp"
-        Me.Text = "YoutubeApp"
+        Me.Text = "Youtube"
         CType(Me.WebView21, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

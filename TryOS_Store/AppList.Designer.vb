@@ -22,6 +22,7 @@ Partial Class AppList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.NeedThisButton = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -31,6 +32,8 @@ Partial Class AppList
         Me.VersonLabel = New System.Windows.Forms.Label()
         Me.AppFolderLabel = New System.Windows.Forms.Label()
         Me.AppNameLabel = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.FlowLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.AppIcon, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -40,11 +43,12 @@ Partial Class AppList
         Me.FlowLayoutPanel1.AutoScroll = True
         Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.Silver
         Me.FlowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.FlowLayoutPanel1.Controls.Add(Me.NeedThisButton)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(367, 659)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(370, 659)
         Me.FlowLayoutPanel1.TabIndex = 0
         Me.FlowLayoutPanel1.WrapContents = False
         '
@@ -53,7 +57,7 @@ Partial Class AppList
         Me.NeedThisButton.BackColor = System.Drawing.Color.Gainsboro
         Me.NeedThisButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.NeedThisButton.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NeedThisButton.Location = New System.Drawing.Point(305, 3)
+        Me.NeedThisButton.Location = New System.Drawing.Point(3, 3)
         Me.NeedThisButton.Name = "NeedThisButton"
         Me.NeedThisButton.Size = New System.Drawing.Size(361, 39)
         Me.NeedThisButton.TabIndex = 1
@@ -84,17 +88,17 @@ Partial Class AppList
         Me.Panel1.Controls.Add(Me.AppFolderLabel)
         Me.Panel1.Controls.Add(Me.AppNameLabel)
         Me.Panel1.Controls.Add(Me.Button1)
-        Me.Panel1.Controls.Add(Me.NeedThisButton)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(367, 0)
+        Me.Panel1.Location = New System.Drawing.Point(370, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(666, 659)
+        Me.Panel1.Size = New System.Drawing.Size(663, 659)
         Me.Panel1.TabIndex = 3
         '
         'Button2
         '
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Button2.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button2.Enabled = False
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Location = New System.Drawing.Point(5, 615)
@@ -144,6 +148,10 @@ Partial Class AppList
         Me.AppNameLabel.TabIndex = 3
         Me.AppNameLabel.Text = "Name: "
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        '
         'AppList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -152,6 +160,7 @@ Partial Class AppList
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Name = "AppList"
         Me.Size = New System.Drawing.Size(1033, 659)
+        Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.AppIcon, System.ComponentModel.ISupportInitialize).EndInit()
@@ -168,4 +177,5 @@ Partial Class AppList
     Friend WithEvents AppFolderLabel As Windows.Forms.Label
     Friend WithEvents AppIcon As Windows.Forms.PictureBox
     Friend WithEvents Button2 As Windows.Forms.Button
+    Friend WithEvents Timer1 As Windows.Forms.Timer
 End Class

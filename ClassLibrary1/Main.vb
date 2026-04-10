@@ -1,14 +1,14 @@
-﻿Imports TouchTest
-Imports System.Windows.Forms
+﻿Imports System.Windows.Forms
+Imports TouchTest
 
-Public Class Class1
+Public Class Main
     Implements TouchTest.OpenFramework_Interface
 
     Public Shared _host As TouchTest.OpenFramework_Handler
 
     Public ReadOnly Property Name As String Implements OpenFramework_Interface.Name
         Get
-            Return "Youtube"
+            Return "Facebook"
         End Get
     End Property
 
@@ -32,7 +32,7 @@ Public Class Class1
 
     Public ReadOnly Property Icon As System.Drawing.Image Implements OpenFramework_Interface.Icon
         Get
-            Return My.Resources.Youtube_icon_icons_com_66802
+            Return My.Resources.FacebookApp
         End Get
     End Property
 
@@ -40,7 +40,7 @@ Public Class Class1
         _host = host
     End Sub
 
-    Public Function GetForm() As Windows.Forms.Form Implements OpenFramework_Interface.GetForm
-        Return New YoutubeApp
+    Public Function GetForm() As Form Implements OpenFramework_Interface.GetForm
+        Return New FacebookApp
     End Function
 End Class

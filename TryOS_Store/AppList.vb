@@ -61,4 +61,42 @@ Public Class AppList
             My.Computer.FileSystem.DeleteDirectory(My.Application.Info.DirectoryPath & "\Apps\" & LocalAppInfo.FolderName, FileIO.DeleteDirectoryOption.DeleteAllContents)
         End If
     End Sub
+
+    Private ColorMode As String = "Normal"
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If Main.Controller.IsDarkMode() = True Then
+            If ColorMode = "Normal" Then
+                ChangeDesign(True)
+            End If
+        ElseIf Main.Controller.IsDarkMode() = False Then
+            If ColorMode = "Dark" Then
+                ChangeDesign(False)
+            End If
+        End If
+    End Sub
+
+    Public Sub ChangeDesign(Dark As Boolean)
+        If Dark = True Then
+            ColorMode = "Dark"
+            Panel1.BackColor = Drawing.Color.Gray
+            FlowLayoutPanel1.BackColor = Drawing.Color.Gray
+            NeedThisButton.BackColor = Drawing.Color.DarkGray
+            Button1.BackColor = Drawing.Color.DarkGray
+            Button2.BackColor = Drawing.Color.DarkGray
+            For Each c As Control In FlowLayoutPanel1.Controls
+                c.BackColor = Drawing.Color.DarkGray
+            Next
+        ElseIf Dark = False Then
+            ColorMode = "Normal"
+            FlowLayoutPanel1.BackColor = Drawing.Color.Silver
+            Panel1.BackColor = Drawing.Color.Silver
+            NeedThisButton.BackColor = Drawing.Color.Gainsboro
+            Button1.BackColor = Drawing.Color.Gainsboro
+            Button1.BackColor = Drawing.Color.Gainsboro
+            For Each c As Control In FlowLayoutPanel1.Controls
+                c.BackColor = Drawing.Color.Gainsboro
+            Next
+        End If
+    End Sub
 End Class
