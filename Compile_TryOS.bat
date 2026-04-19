@@ -5,7 +5,7 @@ copy ".\TouchTest\bin\Debug\*.dll" ".\TouchTest\bin\Debug\TryOS_Build\"
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Settings"
 copy ".\TouchTest\bin\Debug\Settings\ShellName USW.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\ShellName.setting"
 copy ".\TouchTest\bin\Debug\Settings\LogonWallpaper.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\"
-echo True > ".\TouchTest\bin\Debug\Settings\UseAppViewer.setting"
+copy ".\TouchTest\bin\Debug\Settings\UseAppViewer.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\"
 
 :: Creates new ShellApps Folder to load newer ui elements and for newer Settings to load the new gui (20-03-2026 now haves the new ShellApp dll)
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\ShellApps"
@@ -42,9 +42,9 @@ copy ".\TouchTest\bin\Debug\Settings\Page\imgs\Wallpaper.jpg" ".\TouchTest\bin\D
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users"
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser"
 
-:: User Apps (Not Used with normal or program) Users 
-mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Apps"
-echo Nothing > ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Apps\temp.txt"
+:: User Apps (Not Used with normal or program) Users (Disabled as the program itself don't create them anymore for new users)
+::mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Apps"
+::echo Nothing > ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Apps\temp.txt"
 
 :: Copys Settings (Program User will only use the older settings files as the newer system is disable for program users)
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Settings"

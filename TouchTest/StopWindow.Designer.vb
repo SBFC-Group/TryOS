@@ -40,14 +40,13 @@ Partial Class StopWindow
         '
         'RichTextBox1
         '
-        Me.RichTextBox1.BackColor = System.Drawing.Color.White
+        Me.RichTextBox1.BackColor = System.Drawing.SystemColors.ControlDark
         Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.RichTextBox1.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.RichTextBox1.DetectUrls = False
         Me.RichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RichTextBox1.Enabled = False
         Me.RichTextBox1.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.ForeColor = System.Drawing.Color.Black
+        Me.RichTextBox1.ForeColor = System.Drawing.SystemColors.ControlText
         Me.RichTextBox1.Location = New System.Drawing.Point(0, 0)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
@@ -67,7 +66,7 @@ Partial Class StopWindow
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(1100, 509)
         Me.Controls.Add(Me.Panel1)
-        Me.ForeColor = System.Drawing.Color.White
+        Me.ForeColor = System.Drawing.SystemColors.ControlDark
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "StopWindow"
         Me.Padding = New System.Windows.Forms.Padding(2)

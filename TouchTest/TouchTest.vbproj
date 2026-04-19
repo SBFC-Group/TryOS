@@ -843,6 +843,7 @@
     <None Include="Resources\Search_find_locate_1542.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\SettingsApp.tryapp" />
     <None Include="Resources\task_manager_18854.ico" />
   </ItemGroup>
   <ItemGroup>

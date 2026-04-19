@@ -85,7 +85,27 @@
                     End If
                 End If
             ElseIf ProgressBar1.Value = 50 Then
-                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles") = False Then
+                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles") Then
+                    Dim VersionOB As New Version(My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles"))
+
+                    My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles", TryController.GetVersion(), False)
+
+                    If Not VersionOB.Revision > 400 Or VersionOB.Revision = 400 Then
+                        If My.Computer.FileSystem.DirectoryExists(My.Application.Info.DirectoryPath & "\Apps\Settings") = False Then
+
+                            If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\TempApp.tryapp") Then
+                                My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\TempApp.tryapp")
+                            End If
+
+                            My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\TempApp.tryapp", My.Resources.SettingsApp, False)
+                            TryOS_Store_Manager.Class1.InstallTryOSApp(My.Application.Info.DirectoryPath & "\TempApp.tryapp")
+                        End If
+
+                        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Settings\UseAppViewer.setting") = False Then
+                            My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Settings\UseAppViewer.setting", "True", False)
+                        End If
+                    End If
+                Else
                     My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles", TryController.GetVersion(), False)
                 End If
             ElseIf ProgressBar1.Value = 60 Then
@@ -100,6 +120,9 @@
                     End Try
                 End If
             ElseIf ProgressBar1.Value = 70 Then
+                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\TempApp.tryapp") Then
+                    My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\TempApp.tryapp")
+                End If
                 Dim CloseFormQ As Boolean = False
                 For Each Formthing As Form In My.Application.OpenForms
                     If Formthing.Name = "Form1" Then

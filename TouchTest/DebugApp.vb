@@ -16,7 +16,11 @@ RunUserControl <usercontrol> - Opens a form that will contain the UserControl"
             ElseIf RichTextBox1.Text.Contains("TestErrorBox") = True Then
                 UI.ShowError("Hello World")
             ElseIf RichTextBox1.Text.Contains("TestStopWindow") = True Then
-                UI.ShowStopWindow("Hello World")
+                If MsgBox("This WILL Crash the program. Are you sure you want to do this?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    Dim test As Button
+                    test.Text = "Hello world"
+                End If
+                'UI.ShowStopWindow("Hello World")
             ElseIf RichTextBox1.Text.Contains("ShowProgramVersion") = True Then
                 RichTextBox2.Text = My.Application.Info.Version.ToString
             ElseIf RichTextBox1.Text.Contains("TestThis") = True Then

@@ -2,7 +2,7 @@
 Imports System.Windows.Forms
 
 Public Class UpdateApp
-    Private IsDevBuild As Boolean = True
+    Private IsDevBuild As Boolean = False
 
 
 
