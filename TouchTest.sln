@@ -35,6 +35,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TryExplorer", "TryExplorer\
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "InternalSettingsApp", "InternalSettingsApp\InternalSettingsApp.vbproj", "{C44416F5-8AC7-43F3-9A83-929B889C0F04}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ReadOrEditUser", "ReadOrEditUser\ReadOrEditUser.vbproj", "{D0AA4C7A-CCCE-495F-88DA-3663F7796428}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{C44416F5-8AC7-43F3-9A83-929B889C0F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C44416F5-8AC7-43F3-9A83-929B889C0F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C44416F5-8AC7-43F3-9A83-929B889C0F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0AA4C7A-CCCE-495F-88DA-3663F7796428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0AA4C7A-CCCE-495F-88DA-3663F7796428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0AA4C7A-CCCE-495F-88DA-3663F7796428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0AA4C7A-CCCE-495F-88DA-3663F7796428}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

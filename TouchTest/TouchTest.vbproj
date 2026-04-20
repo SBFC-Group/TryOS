@@ -875,7 +875,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Updater.exe" />
-    <None Include="bin\Debug\Settings\SettingsApp.dll" />
     <None Include="Resources\SettingsApp.dll" />
     <Content Include="TryOS_png.ico" />
   </ItemGroup>

@@ -43,6 +43,26 @@
     Private Sub UpdateApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Label1.Text = "Version: " & TryController.GetVersion
         Label3.Text = "Version: Not Checked"
+
+        User = New UserManager(Form1.User.Username)
+
+        If User.DoesSettingExist("ShowUpdatePopUp=True") = True Then
+            ShowUpCheckbox.Checked = True
+            PictureBox1.Visible = True
+            TryOSBigUpdateButton.Visible = True
+            TryOSBigUpdateButton.Enabled = True
+        ElseIf User.DoesSettingExist("ShowUpdatePopUp=False") = True Then
+            ShowUpCheckbox.Checked = False
+            PictureBox1.Visible = False
+            TryOSBigUpdateButton.Visible = False
+            TryOSBigUpdateButton.Enabled = False
+        Else
+            User.AddSettingToUserSettings("ShowUpdatePopUp=True;")
+            ShowUpCheckbox.Checked = True
+            PictureBox1.Visible = True
+            TryOSBigUpdateButton.Visible = True
+            TryOSBigUpdateButton.Enabled = True
+        End If
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -89,7 +109,7 @@
 
     'Newer UpdateApp Code (from Uranium codebase)
 
-    Private IsDevBuild As Boolean = True
+    Private IsDevBuild As Boolean = False
 
     Public Branch As String
 
@@ -142,5 +162,41 @@
 
         Process.Start(My.Application.Info.DirectoryPath & "\Settings\Updater.exe", """" & currentApp & """ """ & zipFile & """")
         Application.Exit()
+    End Sub
+
+    'Post 1.1 (Uranium codebase) Update Code
+
+    Private Sub TryOSBigUpdateButton_Click(sender As Object, e As EventArgs) Handles TryOSBigUpdateButton.Click
+        Try
+            Dim client As New Net.WebClient()
+
+            DownloadUpdate(client.DownloadString("https://raw.githubusercontent.com/SBFC-Group/TryOS/refs/heads/Uranium_(1.1)/Z_NonDevVersion.txt").Trim()).Start()
+        Catch ex As Exception
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                Debug.WriteLine(ex.Message)
+            End If
+        End Try
+    End Sub
+
+    Public User As UserManager
+
+    Private Sub ShowUpCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles ShowUpCheckbox.CheckedChanged
+        If ShowUpCheckbox.Checked = True Then
+            If User.DoesSettingExist("ShowUpdatePopUp=True;") = True Then
+            ElseIf User.DoesSettingExist("ShowUpdatePopUp=False;") = True Then
+                User.ReplaceSettingInUserSettings("ShowUpdatePopUp=False;", "ShowUpdatePopUp=True;")
+            End If
+            PictureBox1.Visible = True
+            TryOSBigUpdateButton.Visible = True
+            TryOSBigUpdateButton.Enabled = True
+        ElseIf ShowUpCheckbox.Checked = False Then
+            If User.DoesSettingExist("ShowUpdatePopUp=False;") = True Then
+            ElseIf User.DoesSettingExist("ShowUpdatePopUp=True;") = True Then
+                User.ReplaceSettingInUserSettings("ShowUpdatePopUp=True;", "ShowUpdatePopUp=False;")
+            End If
+            PictureBox1.Visible = False
+            TryOSBigUpdateButton.Visible = False
+            TryOSBigUpdateButton.Enabled = False
+        End If
     End Sub
 End Class
