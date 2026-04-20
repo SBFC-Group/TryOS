@@ -165,6 +165,7 @@ Public Class UI
             Return Nothing
         ElseIf Command.Contains("RefreshTaskInteracter") = True Then
             OpenFramework_Data.OpenFramework.RestoreButtonOrder(False)
+            Return Nothing
         ElseIf Command.Contains("GetBranch") = True Then
             Return TryController.GetBranch
         ElseIf Command.Contains("SetAppIndex ") = True Then

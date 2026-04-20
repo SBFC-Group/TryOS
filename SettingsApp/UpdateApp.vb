@@ -11,8 +11,6 @@ Public Class UpdateApp
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If IsUpdateAvailable(Main.Controller.GetProgramVersion(), GetLatestVersion()) = True Then
             Button2.Visible = True
-        Else
-
         End If
 
     End Sub
