@@ -3,6 +3,10 @@
     Private historyIndex As Integer = -1
 
     Private Sub ConsoleHelper_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Environment.CommandLine.Contains("/DevMode") = False Then
+            Close()
+        End If
+
         txtConsole.AppendText("Console Ready..." & vbCrLf)
     End Sub
 

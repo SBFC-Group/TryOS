@@ -59,8 +59,8 @@ Public Class PCContentMenu_NoneApp
                                                               If My.Computer.FileSystem.DirectoryExists(Main.UI.AppsFolder & "\TryOS_Store_New") = True Then
                                                                   Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\TryOS_Store_New\TryOS_Store.dll"))
                                                               Else
-                                                                  If My.Computer.FileSystem.FileExists(Main.UI.AppsFolder & "\TryOS_Store\TryOS_Store.dll") = True Then
-                                                                      Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\TryOS_Store\TryOS_Store.dll"))
+                                                                  If My.Computer.FileSystem.FileExists(Main.UI.AppsFolder & "\TryOS_Store\DllPath.txt") = True Then
+                                                                      Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(My.Computer.FileSystem.ReadAllText(Main.UI.AppsFolder & "\TryOS_Store\DllPath.txt")))
                                                                   Else
                                                                       Main.Form1.OpenChildForm(Main.UI.GetFormFromAppDll(Main.UI.AppsFolder & "\TryOS_Store\Main.dll"))
                                                                   End If

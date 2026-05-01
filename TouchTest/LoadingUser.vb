@@ -1,4 +1,6 @@
 ﻿Public Class LoadingUser
+    Public User As UserManager
+
     Public Username As String = Nothing
     Public Password As String = Nothing
 
@@ -38,7 +40,6 @@
                 UI.LoadShell(Username, Password)
                 Close()
             End If
-
         Else
             If ProgressBar1.Value = 20 Then
                 If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Settings\UpdateTryOS_Store.setting") Then
@@ -50,30 +51,6 @@
 
                     My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\Settings\UpdateTryOS_Store.setting")
                     My.Computer.FileSystem.DeleteFile(NewTryOS_StoreVersion)
-                End If
-            ElseIf ProgressBar1.Value = 30 Then
-                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Software.swfiles") Then
-                Else
-                    Dim SettingsListy As String = Nothing
-
-                    'This is converting settings files to text
-                    If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Wallpaper.swfiles") Then
-                        Dim Reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Wallpaper.swfiles")
-                        SettingsListy = SettingsListy & "Wallpaper=" & Reader & ";" & Environment.NewLine
-                    End If
-                    If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\DarkThemeForApps.swfiles") Then
-                        Dim Reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\DarkThemeForApps.swfiles")
-                        SettingsListy = SettingsListy & "IsDarkModeForApps=" & Reader & ";" & Environment.NewLine
-                    End If
-                    If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\DarkThemeForPrograms.swfiles") Then
-                        Dim Reader As String = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\DarkThemeForPrograms.swfiles")
-                        SettingsListy = SettingsListy & "IsDarkModeForProgram=" & Reader & ";" & Environment.NewLine
-                    End If
-
-                    If SettingsListy IsNot Nothing Then
-                        Dim TempUser As New UserManager(Username)
-                        TempUser.SaveUserSettings(SettingsListy)
-                    End If
                 End If
             ElseIf ProgressBar1.Value = 40 Then
                 If Environment.CommandLine.Contains("/KeepDllPathTryOS_Store") = False Then

@@ -10,9 +10,15 @@
                 My.Computer.FileSystem.DeleteFile(UI.UsersFolder & "\SuperSecretUser\Settings\Password.swfiles")
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\SuperSecretUser\Settings\Role.swfiles", "VkZod2NrMUZOVlZYVkVaUFVrVXdPUT09", False)
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\SuperSecretUser\Settings\Password.swfiles", "VG05UVlYTnpkMjl5WkE9PQ==", False)
+                My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Software.swfiles", "U1hORVlYSnJUVzlrWlVadmNrRndjSE05Um1Gc2MyVTdDa2x6UkdGeWEwMXZaR1ZHYjNKUWNtOW5jbUZ0UFVaaGJITmxPd3BKYzFWemFXNW5UbVYzWlhKWFlXeHNjR0Z3WlhKTWIyRmtaWEk5VkhKMVpUc0tSRzlsYzBoaGMxUnBiV1ZDWVhJOVJtRnNjMlU3Q2tselZISmhibk53WVhKbGJuUkZibUZpYkdWa1BVWmhiSE5sT3c9PQ==", False)
             End If
-            Form1.User = New UserManager("SuperSecretUser")
-            LogonUser = New UserManager("SuperSecretUser")
+
+            If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\SuperSecretUser\Settings\Software.swfiles") = False Then
+                My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\SuperSecretUser\Settings\Software.swfiles", "U1hORVlYSnJUVzlrWlVadmNrRndjSE05Um1Gc2MyVTdDa2x6UkdGeWEwMXZaR1ZHYjNKUWNtOW5jbUZ0UFVaaGJITmxPd3BKYzFWemFXNW5UbVYzWlhKWFlXeHNjR0Z3WlhKTWIyRmtaWEk5VkhKMVpUc0tSRzlsYzBoaGMxUnBiV1ZDWVhJOVJtRnNjMlU3Q2tselZISmhibk53WVhKbGJuUkZibUZpYkdWa1BVWmhiSE5sT3c9PQ==", False)
+            End If
+
+            Form1.User = TryController.Resuteg(TryController.CoreID)
+            LogonUser = TryController.Resuteg(TryController.CoreID)
         End Sub
 
         Public Sub OpenLogonForm()
@@ -22,11 +28,14 @@
             Else
                 UI.DisableCustomCode = True
             End If
-            Form1.AllowNewerLoader = False
+            'Form1.AllowNewerLoader = False
             UI.LoadShell("SuperSecretUser", "")
-            Form1.HideTaskbar(True)
+            Form1.EnableFullAppMode(True)
+            Form1.UseNewerAppViewer = False
             Form1.OpenChildForm(New LogonForm)
             Form1.DisableConsole = True
+
+            Form2.Close()
 
         End Sub
 

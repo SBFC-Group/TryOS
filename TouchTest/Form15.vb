@@ -172,6 +172,11 @@ Public Class Form15
 
     Public Path As String
     Private Sub Form15_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Form1.V_AllowUseOfOldInternalApps = False Then
+            OpenFramework_Data.OpenFramework.AppName = ""
+            Close()
+        End If
+
         'UI.SecureAppCheck("{C8CAFE9B-DB4C-4BDB-BECF-7A6FF4378C21}", Me, Versionofapp)
         Timer1.Start()
         'If Form_1pad.BlockSebsModren = True Then

@@ -9,8 +9,9 @@
     Function GetOSVersion(Optional GetVersionNumber As Boolean = False) As String
     Function GetUsername() As String
     Function GetUserFolder() As String
-    Function GetRole() As String
+    Function GetRole() As TryController.Roles
     Function IsDarkMode() As Boolean
+    Function ShowColorDialog() As Color
     Sub ClearArguments()
     Function SetOrGetArguments() As String
     Function SetOrGetArguments(Arg As String) As String

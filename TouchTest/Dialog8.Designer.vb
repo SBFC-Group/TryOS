@@ -76,9 +76,8 @@ Partial Class Dialog8
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.PictureBox49 = New System.Windows.Forms.PictureBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -134,13 +133,12 @@ Partial Class Dialog8
         '
         'TableLayoutPanel1
         '
-        Me.TableLayoutPanel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(256, 421)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(259, 376)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -177,7 +175,8 @@ Partial Class Dialog8
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.PictureBox1.Location = New System.Drawing.Point(60, 85)
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.Location = New System.Drawing.Point(63, 40)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox1.TabIndex = 1
@@ -186,7 +185,8 @@ Partial Class Dialog8
         'PictureBox2
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.PictureBox2.Location = New System.Drawing.Point(116, 85)
+        Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox2.Location = New System.Drawing.Point(119, 40)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox2.TabIndex = 2
@@ -195,7 +195,8 @@ Partial Class Dialog8
         'PictureBox3
         '
         Me.PictureBox3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.PictureBox3.Location = New System.Drawing.Point(172, 85)
+        Me.PictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox3.Location = New System.Drawing.Point(175, 40)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox3.TabIndex = 3
@@ -204,7 +205,8 @@ Partial Class Dialog8
         'PictureBox4
         '
         Me.PictureBox4.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.PictureBox4.Location = New System.Drawing.Point(228, 85)
+        Me.PictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox4.Location = New System.Drawing.Point(231, 40)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox4.TabIndex = 4
@@ -213,7 +215,8 @@ Partial Class Dialog8
         'PictureBox5
         '
         Me.PictureBox5.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.PictureBox5.Location = New System.Drawing.Point(282, 85)
+        Me.PictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox5.Location = New System.Drawing.Point(285, 40)
         Me.PictureBox5.Name = "PictureBox5"
         Me.PictureBox5.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox5.TabIndex = 5
@@ -222,7 +225,8 @@ Partial Class Dialog8
         'PictureBox6
         '
         Me.PictureBox6.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.PictureBox6.Location = New System.Drawing.Point(338, 85)
+        Me.PictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox6.Location = New System.Drawing.Point(341, 40)
         Me.PictureBox6.Name = "PictureBox6"
         Me.PictureBox6.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox6.TabIndex = 6
@@ -231,7 +235,8 @@ Partial Class Dialog8
         'PictureBox7
         '
         Me.PictureBox7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.PictureBox7.Location = New System.Drawing.Point(394, 85)
+        Me.PictureBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox7.Location = New System.Drawing.Point(397, 40)
         Me.PictureBox7.Name = "PictureBox7"
         Me.PictureBox7.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox7.TabIndex = 7
@@ -240,7 +245,8 @@ Partial Class Dialog8
         'PictureBox8
         '
         Me.PictureBox8.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.PictureBox8.Location = New System.Drawing.Point(60, 141)
+        Me.PictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox8.Location = New System.Drawing.Point(63, 96)
         Me.PictureBox8.Name = "PictureBox8"
         Me.PictureBox8.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox8.TabIndex = 8
@@ -249,7 +255,8 @@ Partial Class Dialog8
         'PictureBox9
         '
         Me.PictureBox9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.PictureBox9.Location = New System.Drawing.Point(116, 141)
+        Me.PictureBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox9.Location = New System.Drawing.Point(119, 96)
         Me.PictureBox9.Name = "PictureBox9"
         Me.PictureBox9.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox9.TabIndex = 9
@@ -258,7 +265,8 @@ Partial Class Dialog8
         'PictureBox10
         '
         Me.PictureBox10.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.PictureBox10.Location = New System.Drawing.Point(172, 141)
+        Me.PictureBox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox10.Location = New System.Drawing.Point(175, 96)
         Me.PictureBox10.Name = "PictureBox10"
         Me.PictureBox10.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox10.TabIndex = 10
@@ -267,7 +275,8 @@ Partial Class Dialog8
         'PictureBox11
         '
         Me.PictureBox11.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.PictureBox11.Location = New System.Drawing.Point(228, 141)
+        Me.PictureBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox11.Location = New System.Drawing.Point(231, 96)
         Me.PictureBox11.Name = "PictureBox11"
         Me.PictureBox11.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox11.TabIndex = 11
@@ -276,7 +285,8 @@ Partial Class Dialog8
         'PictureBox12
         '
         Me.PictureBox12.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.PictureBox12.Location = New System.Drawing.Point(282, 141)
+        Me.PictureBox12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox12.Location = New System.Drawing.Point(285, 96)
         Me.PictureBox12.Name = "PictureBox12"
         Me.PictureBox12.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox12.TabIndex = 12
@@ -285,7 +295,8 @@ Partial Class Dialog8
         'PictureBox13
         '
         Me.PictureBox13.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.PictureBox13.Location = New System.Drawing.Point(338, 141)
+        Me.PictureBox13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox13.Location = New System.Drawing.Point(341, 96)
         Me.PictureBox13.Name = "PictureBox13"
         Me.PictureBox13.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox13.TabIndex = 13
@@ -294,7 +305,8 @@ Partial Class Dialog8
         'PictureBox14
         '
         Me.PictureBox14.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.PictureBox14.Location = New System.Drawing.Point(394, 141)
+        Me.PictureBox14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox14.Location = New System.Drawing.Point(397, 96)
         Me.PictureBox14.Name = "PictureBox14"
         Me.PictureBox14.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox14.TabIndex = 14
@@ -303,7 +315,8 @@ Partial Class Dialog8
         'PictureBox15
         '
         Me.PictureBox15.BackColor = System.Drawing.Color.Red
-        Me.PictureBox15.Location = New System.Drawing.Point(60, 197)
+        Me.PictureBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox15.Location = New System.Drawing.Point(63, 152)
         Me.PictureBox15.Name = "PictureBox15"
         Me.PictureBox15.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox15.TabIndex = 15
@@ -312,7 +325,8 @@ Partial Class Dialog8
         'PictureBox16
         '
         Me.PictureBox16.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PictureBox16.Location = New System.Drawing.Point(116, 197)
+        Me.PictureBox16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox16.Location = New System.Drawing.Point(119, 152)
         Me.PictureBox16.Name = "PictureBox16"
         Me.PictureBox16.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox16.TabIndex = 16
@@ -321,7 +335,8 @@ Partial Class Dialog8
         'PictureBox17
         '
         Me.PictureBox17.BackColor = System.Drawing.Color.Yellow
-        Me.PictureBox17.Location = New System.Drawing.Point(172, 197)
+        Me.PictureBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox17.Location = New System.Drawing.Point(175, 152)
         Me.PictureBox17.Name = "PictureBox17"
         Me.PictureBox17.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox17.TabIndex = 17
@@ -330,7 +345,8 @@ Partial Class Dialog8
         'PictureBox18
         '
         Me.PictureBox18.BackColor = System.Drawing.Color.Lime
-        Me.PictureBox18.Location = New System.Drawing.Point(228, 197)
+        Me.PictureBox18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox18.Location = New System.Drawing.Point(231, 152)
         Me.PictureBox18.Name = "PictureBox18"
         Me.PictureBox18.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox18.TabIndex = 18
@@ -339,7 +355,8 @@ Partial Class Dialog8
         'PictureBox19
         '
         Me.PictureBox19.BackColor = System.Drawing.Color.Aqua
-        Me.PictureBox19.Location = New System.Drawing.Point(282, 197)
+        Me.PictureBox19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox19.Location = New System.Drawing.Point(285, 152)
         Me.PictureBox19.Name = "PictureBox19"
         Me.PictureBox19.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox19.TabIndex = 19
@@ -348,7 +365,8 @@ Partial Class Dialog8
         'PictureBox20
         '
         Me.PictureBox20.BackColor = System.Drawing.Color.Blue
-        Me.PictureBox20.Location = New System.Drawing.Point(338, 197)
+        Me.PictureBox20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox20.Location = New System.Drawing.Point(341, 152)
         Me.PictureBox20.Name = "PictureBox20"
         Me.PictureBox20.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox20.TabIndex = 20
@@ -357,7 +375,8 @@ Partial Class Dialog8
         'PictureBox21
         '
         Me.PictureBox21.BackColor = System.Drawing.Color.Fuchsia
-        Me.PictureBox21.Location = New System.Drawing.Point(394, 197)
+        Me.PictureBox21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox21.Location = New System.Drawing.Point(397, 152)
         Me.PictureBox21.Name = "PictureBox21"
         Me.PictureBox21.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox21.TabIndex = 21
@@ -366,7 +385,8 @@ Partial Class Dialog8
         'PictureBox22
         '
         Me.PictureBox22.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PictureBox22.Location = New System.Drawing.Point(60, 253)
+        Me.PictureBox22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox22.Location = New System.Drawing.Point(63, 208)
         Me.PictureBox22.Name = "PictureBox22"
         Me.PictureBox22.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox22.TabIndex = 22
@@ -375,7 +395,8 @@ Partial Class Dialog8
         'PictureBox23
         '
         Me.PictureBox23.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PictureBox23.Location = New System.Drawing.Point(116, 253)
+        Me.PictureBox23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox23.Location = New System.Drawing.Point(119, 208)
         Me.PictureBox23.Name = "PictureBox23"
         Me.PictureBox23.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox23.TabIndex = 23
@@ -384,7 +405,8 @@ Partial Class Dialog8
         'PictureBox24
         '
         Me.PictureBox24.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PictureBox24.Location = New System.Drawing.Point(172, 253)
+        Me.PictureBox24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox24.Location = New System.Drawing.Point(175, 208)
         Me.PictureBox24.Name = "PictureBox24"
         Me.PictureBox24.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox24.TabIndex = 24
@@ -393,7 +415,8 @@ Partial Class Dialog8
         'PictureBox25
         '
         Me.PictureBox25.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PictureBox25.Location = New System.Drawing.Point(228, 253)
+        Me.PictureBox25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox25.Location = New System.Drawing.Point(231, 208)
         Me.PictureBox25.Name = "PictureBox25"
         Me.PictureBox25.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox25.TabIndex = 25
@@ -402,7 +425,8 @@ Partial Class Dialog8
         'PictureBox26
         '
         Me.PictureBox26.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.PictureBox26.Location = New System.Drawing.Point(282, 253)
+        Me.PictureBox26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox26.Location = New System.Drawing.Point(285, 208)
         Me.PictureBox26.Name = "PictureBox26"
         Me.PictureBox26.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox26.TabIndex = 26
@@ -411,7 +435,8 @@ Partial Class Dialog8
         'PictureBox27
         '
         Me.PictureBox27.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.PictureBox27.Location = New System.Drawing.Point(338, 253)
+        Me.PictureBox27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox27.Location = New System.Drawing.Point(341, 208)
         Me.PictureBox27.Name = "PictureBox27"
         Me.PictureBox27.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox27.TabIndex = 27
@@ -420,7 +445,8 @@ Partial Class Dialog8
         'PictureBox28
         '
         Me.PictureBox28.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.PictureBox28.Location = New System.Drawing.Point(394, 253)
+        Me.PictureBox28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox28.Location = New System.Drawing.Point(397, 208)
         Me.PictureBox28.Name = "PictureBox28"
         Me.PictureBox28.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox28.TabIndex = 28
@@ -429,7 +455,8 @@ Partial Class Dialog8
         'PictureBox29
         '
         Me.PictureBox29.BackColor = System.Drawing.Color.Maroon
-        Me.PictureBox29.Location = New System.Drawing.Point(60, 309)
+        Me.PictureBox29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox29.Location = New System.Drawing.Point(63, 264)
         Me.PictureBox29.Name = "PictureBox29"
         Me.PictureBox29.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox29.TabIndex = 29
@@ -438,7 +465,8 @@ Partial Class Dialog8
         'PictureBox30
         '
         Me.PictureBox30.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PictureBox30.Location = New System.Drawing.Point(116, 309)
+        Me.PictureBox30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox30.Location = New System.Drawing.Point(119, 264)
         Me.PictureBox30.Name = "PictureBox30"
         Me.PictureBox30.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox30.TabIndex = 30
@@ -447,7 +475,8 @@ Partial Class Dialog8
         'PictureBox31
         '
         Me.PictureBox31.BackColor = System.Drawing.Color.Olive
-        Me.PictureBox31.Location = New System.Drawing.Point(172, 309)
+        Me.PictureBox31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox31.Location = New System.Drawing.Point(175, 264)
         Me.PictureBox31.Name = "PictureBox31"
         Me.PictureBox31.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox31.TabIndex = 31
@@ -456,7 +485,8 @@ Partial Class Dialog8
         'PictureBox32
         '
         Me.PictureBox32.BackColor = System.Drawing.Color.Green
-        Me.PictureBox32.Location = New System.Drawing.Point(228, 309)
+        Me.PictureBox32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox32.Location = New System.Drawing.Point(231, 264)
         Me.PictureBox32.Name = "PictureBox32"
         Me.PictureBox32.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox32.TabIndex = 32
@@ -465,7 +495,8 @@ Partial Class Dialog8
         'PictureBox33
         '
         Me.PictureBox33.BackColor = System.Drawing.Color.Teal
-        Me.PictureBox33.Location = New System.Drawing.Point(282, 309)
+        Me.PictureBox33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox33.Location = New System.Drawing.Point(285, 264)
         Me.PictureBox33.Name = "PictureBox33"
         Me.PictureBox33.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox33.TabIndex = 33
@@ -474,7 +505,8 @@ Partial Class Dialog8
         'PictureBox34
         '
         Me.PictureBox34.BackColor = System.Drawing.Color.Navy
-        Me.PictureBox34.Location = New System.Drawing.Point(338, 309)
+        Me.PictureBox34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox34.Location = New System.Drawing.Point(341, 264)
         Me.PictureBox34.Name = "PictureBox34"
         Me.PictureBox34.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox34.TabIndex = 34
@@ -483,7 +515,8 @@ Partial Class Dialog8
         'PictureBox35
         '
         Me.PictureBox35.BackColor = System.Drawing.Color.Purple
-        Me.PictureBox35.Location = New System.Drawing.Point(394, 309)
+        Me.PictureBox35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox35.Location = New System.Drawing.Point(397, 264)
         Me.PictureBox35.Name = "PictureBox35"
         Me.PictureBox35.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox35.TabIndex = 35
@@ -492,7 +525,8 @@ Partial Class Dialog8
         'PictureBox36
         '
         Me.PictureBox36.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PictureBox36.Location = New System.Drawing.Point(60, 365)
+        Me.PictureBox36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox36.Location = New System.Drawing.Point(63, 320)
         Me.PictureBox36.Name = "PictureBox36"
         Me.PictureBox36.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox36.TabIndex = 36
@@ -501,7 +535,8 @@ Partial Class Dialog8
         'PictureBox37
         '
         Me.PictureBox37.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.PictureBox37.Location = New System.Drawing.Point(116, 365)
+        Me.PictureBox37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox37.Location = New System.Drawing.Point(119, 320)
         Me.PictureBox37.Name = "PictureBox37"
         Me.PictureBox37.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox37.TabIndex = 37
@@ -510,7 +545,8 @@ Partial Class Dialog8
         'PictureBox38
         '
         Me.PictureBox38.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PictureBox38.Location = New System.Drawing.Point(172, 365)
+        Me.PictureBox38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox38.Location = New System.Drawing.Point(175, 320)
         Me.PictureBox38.Name = "PictureBox38"
         Me.PictureBox38.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox38.TabIndex = 38
@@ -519,7 +555,8 @@ Partial Class Dialog8
         'PictureBox39
         '
         Me.PictureBox39.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PictureBox39.Location = New System.Drawing.Point(228, 365)
+        Me.PictureBox39.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox39.Location = New System.Drawing.Point(231, 320)
         Me.PictureBox39.Name = "PictureBox39"
         Me.PictureBox39.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox39.TabIndex = 39
@@ -528,7 +565,8 @@ Partial Class Dialog8
         'PictureBox40
         '
         Me.PictureBox40.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.PictureBox40.Location = New System.Drawing.Point(282, 365)
+        Me.PictureBox40.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox40.Location = New System.Drawing.Point(285, 320)
         Me.PictureBox40.Name = "PictureBox40"
         Me.PictureBox40.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox40.TabIndex = 40
@@ -537,7 +575,8 @@ Partial Class Dialog8
         'PictureBox41
         '
         Me.PictureBox41.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.PictureBox41.Location = New System.Drawing.Point(338, 365)
+        Me.PictureBox41.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox41.Location = New System.Drawing.Point(341, 320)
         Me.PictureBox41.Name = "PictureBox41"
         Me.PictureBox41.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox41.TabIndex = 41
@@ -546,7 +585,8 @@ Partial Class Dialog8
         'PictureBox42
         '
         Me.PictureBox42.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.PictureBox42.Location = New System.Drawing.Point(394, 365)
+        Me.PictureBox42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox42.Location = New System.Drawing.Point(397, 320)
         Me.PictureBox42.Name = "PictureBox42"
         Me.PictureBox42.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox42.TabIndex = 42
@@ -555,7 +595,8 @@ Partial Class Dialog8
         'PictureBox43
         '
         Me.PictureBox43.BackColor = System.Drawing.Color.White
-        Me.PictureBox43.Location = New System.Drawing.Point(4, 85)
+        Me.PictureBox43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox43.Location = New System.Drawing.Point(7, 40)
         Me.PictureBox43.Name = "PictureBox43"
         Me.PictureBox43.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox43.TabIndex = 43
@@ -564,7 +605,8 @@ Partial Class Dialog8
         'PictureBox44
         '
         Me.PictureBox44.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.PictureBox44.Location = New System.Drawing.Point(4, 141)
+        Me.PictureBox44.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox44.Location = New System.Drawing.Point(7, 96)
         Me.PictureBox44.Name = "PictureBox44"
         Me.PictureBox44.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox44.TabIndex = 44
@@ -573,7 +615,8 @@ Partial Class Dialog8
         'PictureBox45
         '
         Me.PictureBox45.BackColor = System.Drawing.Color.Silver
-        Me.PictureBox45.Location = New System.Drawing.Point(4, 197)
+        Me.PictureBox45.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox45.Location = New System.Drawing.Point(7, 152)
         Me.PictureBox45.Name = "PictureBox45"
         Me.PictureBox45.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox45.TabIndex = 45
@@ -582,7 +625,8 @@ Partial Class Dialog8
         'PictureBox46
         '
         Me.PictureBox46.BackColor = System.Drawing.Color.Gray
-        Me.PictureBox46.Location = New System.Drawing.Point(4, 253)
+        Me.PictureBox46.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox46.Location = New System.Drawing.Point(7, 208)
         Me.PictureBox46.Name = "PictureBox46"
         Me.PictureBox46.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox46.TabIndex = 46
@@ -591,7 +635,8 @@ Partial Class Dialog8
         'PictureBox47
         '
         Me.PictureBox47.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.PictureBox47.Location = New System.Drawing.Point(4, 309)
+        Me.PictureBox47.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox47.Location = New System.Drawing.Point(7, 264)
         Me.PictureBox47.Name = "PictureBox47"
         Me.PictureBox47.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox47.TabIndex = 47
@@ -600,7 +645,8 @@ Partial Class Dialog8
         'PictureBox48
         '
         Me.PictureBox48.BackColor = System.Drawing.Color.Black
-        Me.PictureBox48.Location = New System.Drawing.Point(4, 365)
+        Me.PictureBox48.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox48.Location = New System.Drawing.Point(7, 320)
         Me.PictureBox48.Name = "PictureBox48"
         Me.PictureBox48.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox48.TabIndex = 48
@@ -610,18 +656,17 @@ Partial Class Dialog8
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(0, 54)
+        Me.Label1.Location = New System.Drawing.Point(3, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(245, 24)
+        Me.Label1.Size = New System.Drawing.Size(139, 24)
         Me.Label1.TabIndex = 49
-        Me.Label1.Text = "Pick a Color for the Taskbar"
+        Me.Label1.Text = "Select an Color"
         '
         'Label2
         '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(0, 431)
+        Me.Label2.Location = New System.Drawing.Point(3, 386)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(134, 24)
         Me.Label2.TabIndex = 50
@@ -629,45 +674,20 @@ Partial Class Dialog8
         '
         'PictureBox49
         '
-        Me.PictureBox49.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PictureBox49.BackColor = System.Drawing.Color.White
         Me.PictureBox49.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox49.Location = New System.Drawing.Point(140, 421)
+        Me.PictureBox49.Location = New System.Drawing.Point(143, 376)
         Me.PictureBox49.Name = "PictureBox49"
         Me.PictureBox49.Size = New System.Drawing.Size(50, 50)
         Me.PictureBox49.TabIndex = 51
         Me.PictureBox49.TabStop = False
         '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.Button1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(448, 49)
-        Me.Panel1.TabIndex = 52
-        '
-        'Button1
-        '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.BackgroundImage = Global.TouchTest.My.Resources.Resources._2920659_2
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Trebuchet MS", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(401, 3)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(44, 43)
-        Me.Button1.TabIndex = 6
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'Button2
         '
-        Me.Button2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Button2.BackColor = System.Drawing.Color.Gainsboro
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Trebuchet MS", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(318, 52)
+        Me.Button2.Location = New System.Drawing.Point(321, 7)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(127, 27)
         Me.Button2.TabIndex = 53
@@ -675,73 +695,85 @@ Partial Class Dialog8
         Me.Button2.UseVisualStyleBackColor = False
         Me.Button2.Visible = False
         '
+        'Panel1
+        '
+        Me.Panel1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Panel1.BackColor = System.Drawing.Color.Silver
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.Button2)
+        Me.Panel1.Controls.Add(Me.TableLayoutPanel1)
+        Me.Panel1.Controls.Add(Me.PictureBox49)
+        Me.Panel1.Controls.Add(Me.PictureBox1)
+        Me.Panel1.Controls.Add(Me.Label2)
+        Me.Panel1.Controls.Add(Me.PictureBox2)
+        Me.Panel1.Controls.Add(Me.PictureBox3)
+        Me.Panel1.Controls.Add(Me.PictureBox48)
+        Me.Panel1.Controls.Add(Me.PictureBox4)
+        Me.Panel1.Controls.Add(Me.PictureBox47)
+        Me.Panel1.Controls.Add(Me.PictureBox5)
+        Me.Panel1.Controls.Add(Me.PictureBox46)
+        Me.Panel1.Controls.Add(Me.PictureBox6)
+        Me.Panel1.Controls.Add(Me.PictureBox45)
+        Me.Panel1.Controls.Add(Me.PictureBox7)
+        Me.Panel1.Controls.Add(Me.PictureBox44)
+        Me.Panel1.Controls.Add(Me.PictureBox8)
+        Me.Panel1.Controls.Add(Me.PictureBox43)
+        Me.Panel1.Controls.Add(Me.PictureBox9)
+        Me.Panel1.Controls.Add(Me.PictureBox42)
+        Me.Panel1.Controls.Add(Me.PictureBox10)
+        Me.Panel1.Controls.Add(Me.PictureBox41)
+        Me.Panel1.Controls.Add(Me.PictureBox11)
+        Me.Panel1.Controls.Add(Me.PictureBox40)
+        Me.Panel1.Controls.Add(Me.PictureBox12)
+        Me.Panel1.Controls.Add(Me.PictureBox39)
+        Me.Panel1.Controls.Add(Me.PictureBox13)
+        Me.Panel1.Controls.Add(Me.PictureBox38)
+        Me.Panel1.Controls.Add(Me.PictureBox14)
+        Me.Panel1.Controls.Add(Me.PictureBox37)
+        Me.Panel1.Controls.Add(Me.PictureBox15)
+        Me.Panel1.Controls.Add(Me.PictureBox36)
+        Me.Panel1.Controls.Add(Me.PictureBox16)
+        Me.Panel1.Controls.Add(Me.PictureBox35)
+        Me.Panel1.Controls.Add(Me.PictureBox17)
+        Me.Panel1.Controls.Add(Me.PictureBox34)
+        Me.Panel1.Controls.Add(Me.PictureBox18)
+        Me.Panel1.Controls.Add(Me.PictureBox33)
+        Me.Panel1.Controls.Add(Me.PictureBox19)
+        Me.Panel1.Controls.Add(Me.PictureBox32)
+        Me.Panel1.Controls.Add(Me.PictureBox20)
+        Me.Panel1.Controls.Add(Me.PictureBox31)
+        Me.Panel1.Controls.Add(Me.PictureBox21)
+        Me.Panel1.Controls.Add(Me.PictureBox30)
+        Me.Panel1.Controls.Add(Me.PictureBox22)
+        Me.Panel1.Controls.Add(Me.PictureBox29)
+        Me.Panel1.Controls.Add(Me.PictureBox23)
+        Me.Panel1.Controls.Add(Me.PictureBox28)
+        Me.Panel1.Controls.Add(Me.PictureBox24)
+        Me.Panel1.Controls.Add(Me.PictureBox27)
+        Me.Panel1.Controls.Add(Me.PictureBox25)
+        Me.Panel1.Controls.Add(Me.PictureBox26)
+        Me.Panel1.Location = New System.Drawing.Point(12, 11)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(453, 437)
+        Me.Panel1.TabIndex = 54
+        '
         'Dialog8
         '
         Me.AcceptButton = Me.OK_Button
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.CancelButton = Me.Cancel_Button
-        Me.ClientSize = New System.Drawing.Size(448, 477)
-        Me.Controls.Add(Me.Button2)
+        Me.BackColor = System.Drawing.Color.Lavender
+        Me.ClientSize = New System.Drawing.Size(477, 460)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.PictureBox49)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.PictureBox48)
-        Me.Controls.Add(Me.PictureBox47)
-        Me.Controls.Add(Me.PictureBox46)
-        Me.Controls.Add(Me.PictureBox45)
-        Me.Controls.Add(Me.PictureBox44)
-        Me.Controls.Add(Me.PictureBox43)
-        Me.Controls.Add(Me.PictureBox42)
-        Me.Controls.Add(Me.PictureBox41)
-        Me.Controls.Add(Me.PictureBox40)
-        Me.Controls.Add(Me.PictureBox39)
-        Me.Controls.Add(Me.PictureBox38)
-        Me.Controls.Add(Me.PictureBox37)
-        Me.Controls.Add(Me.PictureBox36)
-        Me.Controls.Add(Me.PictureBox35)
-        Me.Controls.Add(Me.PictureBox34)
-        Me.Controls.Add(Me.PictureBox33)
-        Me.Controls.Add(Me.PictureBox32)
-        Me.Controls.Add(Me.PictureBox31)
-        Me.Controls.Add(Me.PictureBox30)
-        Me.Controls.Add(Me.PictureBox29)
-        Me.Controls.Add(Me.PictureBox28)
-        Me.Controls.Add(Me.PictureBox27)
-        Me.Controls.Add(Me.PictureBox26)
-        Me.Controls.Add(Me.PictureBox25)
-        Me.Controls.Add(Me.PictureBox24)
-        Me.Controls.Add(Me.PictureBox23)
-        Me.Controls.Add(Me.PictureBox22)
-        Me.Controls.Add(Me.PictureBox21)
-        Me.Controls.Add(Me.PictureBox20)
-        Me.Controls.Add(Me.PictureBox19)
-        Me.Controls.Add(Me.PictureBox18)
-        Me.Controls.Add(Me.PictureBox17)
-        Me.Controls.Add(Me.PictureBox16)
-        Me.Controls.Add(Me.PictureBox15)
-        Me.Controls.Add(Me.PictureBox14)
-        Me.Controls.Add(Me.PictureBox13)
-        Me.Controls.Add(Me.PictureBox12)
-        Me.Controls.Add(Me.PictureBox11)
-        Me.Controls.Add(Me.PictureBox10)
-        Me.Controls.Add(Me.PictureBox9)
-        Me.Controls.Add(Me.PictureBox8)
-        Me.Controls.Add(Me.PictureBox7)
-        Me.Controls.Add(Me.PictureBox6)
-        Me.Controls.Add(Me.PictureBox5)
-        Me.Controls.Add(Me.PictureBox4)
-        Me.Controls.Add(Me.PictureBox3)
-        Me.Controls.Add(Me.PictureBox2)
-        Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Dialog8"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Color Picker"
+        Me.TransparencyKey = System.Drawing.Color.Lavender
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -793,8 +825,8 @@ Partial Class Dialog8
         CType(Me.PictureBox48, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox49, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
@@ -851,7 +883,6 @@ Partial Class Dialog8
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents PictureBox49 As PictureBox
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents Panel1 As Panel
 End Class

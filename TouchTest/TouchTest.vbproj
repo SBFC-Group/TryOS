@@ -513,6 +513,7 @@
     <Compile Include="TryController.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TryOSCommandLineEventArgs.vb" />
     <Compile Include="TryOSStoreDialogNewVersion.Designer.vb">
       <DependentUpon>TryOSStoreDialogNewVersion.vb</DependentUpon>
     </Compile>

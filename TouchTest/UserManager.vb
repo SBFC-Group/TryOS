@@ -23,7 +23,7 @@
             End Try
         End If
 
-            SandboxedUser = IsSandboxed
+        SandboxedUser = IsSandboxed
         If IsSandboxed = True Then
             Role = TryController.Roles.StandardSandbox
         Else
@@ -60,22 +60,7 @@
             Dim settingstemp As String()
             settingstemp = usedencode.Split(";"c)
             For Each setting In settingstemp
-
-                If setting.Contains("Wallpaper=") = True Then
-                    setting = setting.Replace("Wallpaper=", "")
-
-                    'This is copied code ;)
-                    If setting.Contains("jpg=") = True Then
-                        setting = setting.Replace("jpg=", "")
-                        UI.RunCommands("Loadjpg " & setting, Me)
-                    ElseIf setting.Contains("png=") = True Then
-                        setting = setting.Replace("png=", "")
-                        UI.RunCommands("Loadpng " & setting, Me)
-                    ElseIf setting.Contains("gif=") = True Then
-                        setting = setting.Replace("gif=", "")
-                        UI.RunCommands("Loadgif " & setting, Me)
-                    End If
-                ElseIf setting.Contains("IsTransparentEnabled=") = True Then
+                If setting.Contains("IsTransparentEnabled=") = True Then
                     setting = setting.Replace("IsTransparentEnabled=", "")
                     Form1.IsTransparentEnabled = Convert.ToBoolean(setting)
                 ElseIf setting.Contains("AllowOpenFrameworkToLoadApps=") = True Then
@@ -357,4 +342,70 @@
     Public Shared Sub LoadTaskbarButtons()
         OpenFramework_Data.OpenFramework.RestoreButtonOrder(False)
     End Sub
+
+    Public Shared Function Login(Username As String, Password As String, Optional ShowErrors As Boolean = False) As TryController.HowWasTaskCompleted
+        If Form1.User.Role = TryController.Roles.Program Then
+        ElseIf Form1.User.Role = TryController.Roles.Developer Then
+        Else
+            Return TryController.HowWasTaskCompleted.Canceled
+        End If
+
+        If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & Username) = True Then
+            If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Username & "\Settings\Password.swfiles") = True Then
+
+                Dim tempPassword As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Password.swfiles")
+                If tempPassword = "" Then
+                    If ShowErrors = True Then
+                        UI.ShowError("""Password.swfiles"" can't be nothing.", ErrorMSGBox.Alerts.Critical)
+                    End If
+                    Return TryController.HowWasTaskCompleted.Failed
+                End If
+                Try
+                    Dim b As Byte() = Convert.FromBase64String(Password)
+                    Password = System.Text.Encoding.UTF8.GetString(b)
+                    b = Convert.FromBase64String(Password)
+                    Password = System.Text.Encoding.UTF8.GetString(b)
+                Catch ex As Exception
+                    If ShowErrors = True Then
+                        UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
+                    End If
+                    Return TryController.HowWasTaskCompleted.Failed
+                End Try
+                If tempPassword = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
+                    tempPassword = ""
+                End If
+
+                Dim UserMode As String = Nothing
+                If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Username & "\Settings\UserMode.swfiles") Then
+                    UserMode = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\UserMode.swfiles")
+                End If
+
+                If UserMode = "UserMode=Disabled" Then
+                    If ShowErrors = True Then
+                        UI.ShowError("Can't find an user with that password.", ErrorMSGBox.Alerts.Information)
+                    End If
+                    Return TryController.HowWasTaskCompleted.Failed
+                Else
+                    If tempPassword = Password Then
+                        Return TryController.HowWasTaskCompleted.Successfully
+                    Else
+                        If ShowErrors = True Then
+                            UI.ShowError("Can't find an user with that password.")
+                        End If
+                        Return TryController.HowWasTaskCompleted.Failed
+                    End If
+                End If
+            Else
+                If ShowErrors = True Then
+                    UI.ShowError("Can't find an Password.", ErrorMSGBox.Alerts.Critical)
+                End If
+                Return TryController.HowWasTaskCompleted.Failed
+            End If
+        Else
+            If ShowErrors = True Then
+                UI.ShowError("Can't find an user with that password.", ErrorMSGBox.Alerts.Information)
+            End If
+            Return TryController.HowWasTaskCompleted.Failed
+        End If
+    End Function
 End Class

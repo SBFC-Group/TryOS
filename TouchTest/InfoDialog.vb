@@ -35,12 +35,13 @@ Public Class InfoDialog
 
 
     Private AllowClosing As Boolean = False
+    Dim InfoForms_Info
 
     Private Sub InfoDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If UI.InfoForms_Info = Nothing Then
+        If InfoForms_Info = Nothing Then
             AllowClosing = True
             Close()
-        ElseIf UI.InfoForms_Info = "OnlyOkButton" Then
+        ElseIf InfoForms_Info = "OnlyOkButton" Then
             Button1.Visible = True
             Button2.Visible = False
             Button3.Visible = False
@@ -50,11 +51,11 @@ Public Class InfoDialog
             Button5.Enabled = True
 
             'Resets Info
-            UI.InfoForms_Info = "OnlyOkButton"
+            InfoForms_Info = "OnlyOkButton"
 
             'Allows the form to close
             AllowClosing = True
-        ElseIf UI.InfoForms_Info = "YesNoButton" Then
+        ElseIf InfoForms_Info = "YesNoButton" Then
             Button1.Visible = False
             Button2.Visible = False
             Button3.Visible = True
@@ -64,11 +65,11 @@ Public Class InfoDialog
             Button5.Enabled = False
 
             'Resets Info
-            UI.InfoForms_Info = "OnlyOkButton"
+            InfoForms_Info = "OnlyOkButton"
 
             'Disallows the form to close
             AllowClosing = False
-        ElseIf UI.InfoForms_Info = "OKCancelButton" Then
+        ElseIf InfoForms_Info = "OKCancelButton" Then
             Button1.Visible = True
             Button2.Visible = True
             Button3.Visible = False
@@ -78,7 +79,7 @@ Public Class InfoDialog
             Button5.Enabled = False
 
             'Resets Info
-            UI.InfoForms_Info = "OnlyOkButton"
+            InfoForms_Info = "OnlyOkButton"
 
             'Disallows the form to close
             AllowClosing = False

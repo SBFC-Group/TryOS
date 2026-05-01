@@ -49,7 +49,7 @@ Public Class OpenFramework_Handler
         Return Form1.SandboxedUser.UserFolderPath
     End Function
 
-    Public Function GetRole() As String Implements OpenFramework_UI_Handler.GetRole
+    Public Function GetRole() As TryController.Roles Implements OpenFramework_UI_Handler.GetRole
         Return Form1.User.Role
     End Function
 
@@ -80,4 +80,14 @@ Public Class OpenFramework_Handler
         form.Close()
         OpenFramework_Data.OpenFramework.AppName = ""
     End Sub
+
+    Public Function ShowColorDialog() As Color Implements OpenFramework_UI_Handler.ShowColorDialog
+        If Dialog8.ShowDialog() = DialogResult.OK Then
+            Dim tempcolor As Color = Dialog8.Color
+            Dialog8.Color = Nothing
+            Return tempcolor
+        Else
+            Return Nothing
+        End If
+    End Function
 End Class

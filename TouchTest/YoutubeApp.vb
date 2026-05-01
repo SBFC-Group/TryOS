@@ -1,7 +1,9 @@
 ﻿Public Class YoutubeApp
     Private Sub YoutubeApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
+        If Form1.V_AllowUseOfOldInternalApps = False Then
+            OpenFramework_Data.OpenFramework.AppName = ""
+            Close()
+        End If
     End Sub
 
     Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted

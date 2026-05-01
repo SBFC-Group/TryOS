@@ -2,7 +2,12 @@
     Private Sub USWApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If USWThings.HasBeenOpened = True Then
             Panel3.Visible = False
-            UI.RunCommands("Loadjpg 1", Form1.User)
+            If My.Computer.FileSystem.DirectoryExists(UI.SettingsFolder) Then
+                If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LogonWallpaper.setting") Then
+                    UI.RunCommands("SetWallpaper " & UI.WallpaperFolder & "\" & My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LogonWallpaper.setting"), Form1.User)
+                End If
+            End If
+
             AxWindowsMediaPlayer1.Dock = DockStyle.Fill
             AxWindowsMediaPlayer1.uiMode = "none"
             AxWindowsMediaPlayer1.URL = UI.UsersFolder & "\Program\Temp\USW.mp4"

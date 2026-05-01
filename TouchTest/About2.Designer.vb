@@ -133,7 +133,7 @@ Partial Class About2
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(370, 35)
         Me.Label3.TabIndex = 6
-        Me.Label3.Text = "Copyright © SBFC Group 2025" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label3.Text = "Copyright © SBFC Group 2026" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label2
         '

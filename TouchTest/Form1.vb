@@ -52,12 +52,6 @@ Public Class Form1
             MenuStrip1.Visible = True
         End If
 
-        'This checks if the newer TaskInteracter is disabled. If it is then Adds a Handler to the Settings Button
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.TaskInteracter.txt") = False Then
-            AddHandler Button3.Click, AddressOf SettingsForm.PluginButton_Click
-        End If
-
-
         'Checks if "DisableConsole.setting" exists.
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\DisableConsole.setting") Then
             Try
@@ -105,8 +99,13 @@ Public Class Form1
             End If
         End If
 
-        'This checks if the newer TaskInteracter is enabled.
+        'This checks if the newer TaskInteracter is enabled. (Removing this soon)
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.TaskInteracter.txt") = False Then
+
+            AddHandler Button3.Click, AddressOf SettingsForm.PluginButton_Click
+
+            AddHandler Button4.Click, AddressOf Button4_Click
+
 
             'This checks if OpenFramework is enabled. (This isn't readly getting used anymore...)
             If UI.DisableOpenFramework = False Then
@@ -162,8 +161,10 @@ Public Class Form1
                     UI.ShowError("Couldn't get an boolean from the file.")
                 End Try
                 If UseNewerAppViewer = True Then
-                    Form2.Show()
+                    'Form2.Show()
                     VolumeButton.Visible = True
+                Else
+                    VolumeButton.Visible = False
                 End If
             End If
         End If
@@ -197,6 +198,18 @@ Public Class Form1
     Public Function Z_Funnything1() As FlowLayoutPanel
         Return FlowLayoutPanel1
     End Function
+
+    Public Function Z_Funnything2() As FlowLayoutPanel
+        Return OpenFramework_Data.OpenFramework.FlowLayoutPanelUse
+    End Function
+
+    Public Sub QNKDRGS(ob As Object)
+        Dim ksgd As UserManager = ob
+        If ksgd.Role = TryController.Roles.Program Then
+            Dim ev As New EventArgs
+            Form1_Load(Me, ev)
+        End If
+    End Sub
 
     Public TestingMode As Boolean = True
 
@@ -343,13 +356,15 @@ Public Class Form1
 
     End Sub
 
+    Public V_AllowUseOfOldInternalApps As Boolean = False
+
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
     End Sub
 
     Public CurrentOpenAppIndex As Int64 = 0
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs)
         If UseNewerAppViewer = True Then
 
             Dim AppInt As Int64 = UI.RunCommands("GetAppIndex", TryController.Resuteg(TryController.CoreID))

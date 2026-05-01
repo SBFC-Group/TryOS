@@ -212,14 +212,11 @@ Why is it getting faced out?
     End Sub
 
     Private Sub ActivatePincodeLayout(Reader As String)
+        Return
         PincodeBoolean = True
         Panel3.Visible = True
         TextBox1.Enabled = False
         TextBox2.Enabled = False
-        If TryController.IsMySWFilesNew(UI.UsersFolder & "\" & Reader & "\Settings\PinCode.swfiles") = False Then
-        Else
-
-        End If
 
         If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Reader & "\Temp\NoneS.swfiles") Then
             My.Computer.FileSystem.DeleteFile(UI.UsersFolder & "\" & Reader & "\Temp\NoneS.swfiles", FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)

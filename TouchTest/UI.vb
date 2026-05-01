@@ -15,9 +15,14 @@ Public Class UI
     Public DisableOpenFramework As Boolean = False
     Public DisableCustomCode As Boolean = False
 
+    Public Shared Event Command_Exetured(sender As Object, Command As String)
+
     Public Function RunCommands(Command As String, User As UserManager, Optional TheForm As Object = Nothing)
         Dim IsUserNothing As Boolean
         IsUserNothing = User.SandboxedUser
+
+        RaiseEvent Command_Exetured(TheForm, Command)
+
         If Command.Contains("exit") = True Then
             Try
                 TheForm.Close()
@@ -107,6 +112,14 @@ Public Class UI
             Else
                 Return Nothing
             End If
+        ElseIf Command.Contains("TestColorDialog") = True Then
+            Dim newcolordialog As New Dialog8
+            If newcolordialog.ShowDialog = DialogResult.OK Then
+                Dim form As New Form
+                form.Show()
+                form.BackColor = newcolordialog.Color
+            End If
+            Return Nothing
         ElseIf Command.Contains("Loadjpg ") = True Then
             If IsUserNothing = False Then
                 Dim Text1 As String = Command
@@ -626,7 +639,16 @@ Public Class UI
 
     Public GiveValuestoForm1 As Boolean = True
     Public WallpaperNumber As Integer = 1
+
+    Public IsOldWallpaperUsable As Boolean = False
+
     Public Sub UploadWallpaperToShell(Number As Integer, FileFormat As String)
+        If IsOldWallpaperUsable = False Then
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                Debug.WriteLine("The Older Wallpaper System is disabled.")
+            End If
+            Return
+        End If
         If FileFormat.StartsWith(".") Then
             FileFormat = FileFormat.Replace(".", "")
         End If
@@ -664,61 +686,6 @@ Public Class UI
         System.Threading.Thread.Sleep(500)
         Close()
     End Sub
-
-    Public IsKeyboardEnabled As Boolean = False
-
-    Public Function GetKeyboard(Optional KeepText As String = Nothing) As DialogResult
-        Keyboard.TextBox1.Text = KeepText
-        If Keyboard.ShowDialog = DialogResult.OK Then
-            Return DialogResult.OK
-        Else
-            Return DialogResult.Cancel
-        End If
-    End Function
-
-    Public InfoForms_Info As String = "OnlyOkButton"
-
-    Public Sub GetIntoToInfoForm(Optional OnlyOk As Boolean = True, Optional OKCancelOrYesNo As Boolean = False)
-        If OnlyOk = True Then
-            InfoForms_Info = "OnlyOkButton"
-        ElseIf OnlyOk = False Then
-            If OKCancelOrYesNo = True Then
-                InfoForms_Info = "YesNoButton"
-            ElseIf OKCancelOrYesNo = False Then
-                InfoForms_Info = "OKCancelButton"
-            End If
-        End If
-    End Sub
-
-    ' GetIntoToInfoForm(True)
-    '        InfoDialog.TextBox1.Text = "This is a test"
-    '        If InfoDialog.ShowDialog = DialogResult.OK Then
-    '            MsgBox("This Worked!")
-    '        End If
-    'ElseIf CommandText.Contains("msg 2ok") = True Then
-    '        GetIntoToInfoForm(False, False)
-    '        InfoDialog.TextBox1.Text = "This is a test"
-    '        If InfoDialog.ShowDialog = DialogResult.OK Then
-    '            MsgBox("This Worked!")
-    '        End If
-    'ElseIf CommandText.Contains("msg cal") = True Then
-    '        GetIntoToInfoForm(False, False)
-    '        InfoDialog.TextBox1.Text = "This is a test"
-    '        If InfoDialog.ShowDialog = DialogResult.Cancel Then
-    '            MsgBox("This Worked!")
-    '        End If
-    'ElseIf CommandText.Contains("msg yes") = True Then
-    '        GetIntoToInfoForm(False, True)
-    '        InfoDialog.TextBox1.Text = "This is a test"
-    '        If InfoDialog.ShowDialog = DialogResult.Yes Then
-    '            MsgBox("This Worked!")
-    '        End If
-    'ElseIf CommandText.Contains("msg no") = True Then
-    '        GetIntoToInfoForm(False, True)
-    '        InfoDialog.TextBox1.Text = "This is a test"
-    '        If InfoDialog.ShowDialog = DialogResult.No Then
-    '            MsgBox("This Worked!")
-    '        End If
 
     Public Sub OpenFormByName(formName As String)
         ' Get the current assembly

@@ -29,4 +29,10 @@
         Return Nothing
     End Function
 
+    Private Sub Form40_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Form1.V_AllowUseOfOldInternalApps = False Then
+            OpenFramework_Data.OpenFramework.AppName = ""
+            Close()
+        End If
+    End Sub
 End Class

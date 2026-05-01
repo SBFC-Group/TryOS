@@ -6,7 +6,7 @@
             LogonFormThings.OpenLogonForm()
             Close()
         Else
-            UI.RunCommands("Loadjpg 1", Form1.User)
+            'UI.RunCommands("Loadjpg 1", Form1.User)
 
             'Loads the Logon Wallpaper
             If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LogonWallpaper.setting") Then
@@ -19,12 +19,13 @@
                     PictureBox1.BackColor = Color.DarkGray
                 End Try
             Else
-                Try
-                    'Just loads "Wallpaper_1.jpg" thats inside Wallpapers Folder
-                    PictureBox1.Load(UI.WallpaperFolder & "\Wallpaper_1.jpg")
-                Catch ex As Exception
-                    PictureBox1.BackColor = Color.DarkGray
-                End Try
+                'Try
+                'Update: does not work anymore due to change in wallpaper loading system
+                'Just loads "Wallpaper_1.jpg" thats inside Wallpapers Folder
+                'PictureBox1.Load(UI.WallpaperFolder & "\Wallpaper_1.jpg")
+                'Catch ex As Exception
+                'End Try
+                PictureBox1.BackColor = Color.DarkGray
             End If
 
             If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
@@ -44,7 +45,6 @@
                             Dim b As Byte() = Convert.FromBase64String(SecondReader)
                             SecondReader = System.Text.Encoding.UTF8.GetString(b)
                         Catch ex As Exception
-                            'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
                             UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
                         End Try
                         Try
@@ -52,7 +52,6 @@
                             SecondReader = System.Text.Encoding.UTF8.GetString(b)
                         Catch ex As Exception
                             UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)
-                            'MsgBox(ex.Message, MsgBoxStyle.Critical, "Quick Edit ")
                         End Try
                         If SecondReader = "T_h_i_s_U_s_e_r_H_a_s_N_o_t_h_i_n_g" Then
                             'Login()
@@ -243,8 +242,35 @@
         'Me.Activate()
     End Sub
 
+    Private UseNewerSplitCode As Boolean = True
     Private Sub Login() Handles Button1.Click
-        Try
+        If UseNewerSplitCode = True Then
+            Dim WasUserCheckSuccessfully As TryController.HowWasTaskCompleted = UserManager.Login(TextBox1.Text, TextBox2.Text, True)
+            If WasUserCheckSuccessfully = TryController.HowWasTaskCompleted.Successfully Then
+                If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LastKnownUser.setting") Then
+                    Dim ReadMyUserData As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LastKnownUser.setting")
+                    If TextBox1.Text = ReadMyUserData Then
+                    Else
+                        My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                    End If
+                Else
+                    My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\LastKnownUser.setting", TextBox1.Text, False)
+                End If
+
+                'Creates an new LoadingUser Form to safely load the user
+                Dim LogonLoadingUser As New LoadingUser
+                LogonLoadingUser.Show()
+
+                'Creates a temp UserManager Object
+                LogonLoadingUser.User = New UserManager(TextBox1.Text, True)
+
+                'Closes LogonForm
+                LogonFormThings.CloseLogonForm()
+            End If
+            Return
+        End If
+
+            Try
             If My.Computer.FileSystem.DirectoryExists(UI.UsersFolder & "\" & TextBox1.Text) Then
                 If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles") Then
 

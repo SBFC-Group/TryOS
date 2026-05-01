@@ -13,7 +13,6 @@
                     My.Computer.FileSystem.CreateDirectory(UI.UsersFolder)
                 End If
                 My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program")
-                My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program\Apps")
                 My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program\Settings")
                 My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program\Downloads")
                 My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\Program\Pictures")
@@ -23,7 +22,8 @@
 
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Password.swfiles", ReaderForPassword, False)
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Role.swfiles", "VkRCU1RrNUZNVFpXV0hCUVZrVnJPUT09", False)
-                My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Wallpaper.swfiles", "jpg=1", False)
+                My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Software.swfiles", "U1hORVlYSnJUVzlrWlVadmNrRndjSE05Um1Gc2MyVTdDa2x6UkdGeWEwMXZaR1ZHYjNKUWNtOW5jbUZ0UFVaaGJITmxPd3BKYzFWemFXNW5UbVYzWlhKWFlXeHNjR0Z3WlhKTWIyRmtaWEk5VkhKMVpUc0tSRzlsYzBoaGMxUnBiV1ZDWVhJOVJtRnNjMlU3Q2tselZISmhibk53WVhKbGJuUkZibUZpYkdWa1BVWmhiSE5sT3c9PQ==", False)
+                My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\UserMode.swfiles", "UserMode=Disabled", False)
             End If
         End Sub
 
@@ -36,7 +36,7 @@
             Else
                 My.Computer.FileSystem.WriteAllBytes(UI.UsersFolder & "\Program\Temp\USW.mp4", My.Resources.TryOS_USW, False)
             End If
-            Form1.AllowNewerLoader = False
+            'Form1.AllowNewerLoader = False
             UI.DisableCustomCode = True
             UI.DisableOpenFramework = True
             UI.LogonBool = True
@@ -44,7 +44,11 @@
             UI.LoadShell("Program", "")
             Form1.EnableFullAppMode(True)
             Form1.OpenChildForm(New USWApp)
-            Form1.DisableConsole = True
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                Form1.DisableFullScreenConsole = True
+            Else
+                Form1.DisableConsole = True
+            End If
         End Sub
 
         Public Sub CloseUSW()

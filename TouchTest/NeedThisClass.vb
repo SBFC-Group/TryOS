@@ -99,24 +99,4 @@ Public Class NeedThisClass
             UI.WallpaperNumber = value
         End Set
     End Property
-
-    <Description("Used For WIP Keyboard")>
-    Public Property IsKeyboardEnabled() As Boolean
-        Get
-            Return UI.IsKeyboardEnabled
-        End Get
-        Set(ByVal value As Boolean)
-            UI.IsKeyboardEnabled = value
-        End Set
-    End Property
-
-    <Description("Was used for msgbox")>
-    Public Property InfoForms_Info() As String
-        Get
-            Return UI.InfoForms_Info
-        End Get
-        Set(ByVal value As String)
-            UI.InfoForms_Info = value
-        End Set
-    End Property
 End Class
