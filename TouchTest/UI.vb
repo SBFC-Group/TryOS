@@ -178,6 +178,20 @@ Public Class UI
             Return Nothing
         ElseIf Command.Contains("RefreshTaskInteracter") = True Then
             OpenFramework_Data.OpenFramework.RestoreButtonOrder(False)
+            Return Nothing
+        ElseIf Command.Contains("ReloadTaskInteracter") = True Then
+            OpenFramework_Data.OpenFramework.SaveButtonOrder(False)
+            Dim co As New List(Of Control)
+            For Each c As Control In OpenFramework_Data.OpenFramework.FlowLayoutPanelUse.Controls
+                co.Add(c)
+            Next
+            OpenFramework_Data.OpenFramework.FlowLayoutPanelUse.Controls.Clear()
+            For Each c As Control In co
+                c.Dispose()
+            Next
+            OpenFramework_Data.OpenFramework.LoadApps(Form1.SandboxedUser)
+            OpenFramework_Data.OpenFramework.RestoreButtonOrder(False)
+            Return Nothing
         ElseIf Command.Contains("GetBranch") = True Then
             Return TryController.GetBranch
         ElseIf Command.Contains("SetAppIndex ") = True Then

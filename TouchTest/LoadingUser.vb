@@ -5,6 +5,11 @@
     Public Password As String = Nothing
 
     Private Sub LoadingUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            Username = User.Username
+        Catch ex As Exception
+        End Try
+
         Dim TheURL As String = "file:///" & UI.SettingsFolder & "\Page\index.html"
         TheURL = TheURL.Replace("\", "/")
         WebView21.Source = New Uri(TheURL)
@@ -26,7 +31,9 @@
                 WebView21.CoreWebView2.Settings.IsStatusBarEnabled = False
                 WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
             End If
-
+            If Not WebView21.CoreWebView2.Profile.DefaultDownloadFolderPath = User.UserFolderPath & "\Downloads\" Then
+                WebView21.CoreWebView2.Profile.DefaultDownloadFolderPath = User.UserFolderPath & "\Downloads\"
+            End If
         End If
     End Sub
 

@@ -1,5 +1,5 @@
 ﻿Public Class Console
-    Private User As New UserManager("SuperSecretUser", False)
+    Private User As UserManager
 
     Private Sub RichTextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles RichTextBox2.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -9,6 +9,7 @@
     End Sub
 
     Private Sub Console_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        User = TryController.Resuteg(TryController.CoreID)
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\RunCommandAtStart.setting") Then
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\RunCommandAtStart.setting")
             RichTextBox2.Text = RichTextBox2.Text & Reader

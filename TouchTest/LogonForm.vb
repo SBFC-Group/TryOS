@@ -242,7 +242,7 @@
         'Me.Activate()
     End Sub
 
-    Private UseNewerSplitCode As Boolean = True
+    Private UseNewerSplitCode As Boolean = False
     Private Sub Login() Handles Button1.Click
         If UseNewerSplitCode = True Then
             Dim WasUserCheckSuccessfully As TryController.HowWasTaskCompleted = UserManager.Login(TextBox1.Text, TextBox2.Text, True)
