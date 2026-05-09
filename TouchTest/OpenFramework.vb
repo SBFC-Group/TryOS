@@ -202,21 +202,29 @@ Namespace OpenFramework_Data
                         Try
                             Dim asm As Assembly = Assembly.LoadFrom(DllPath)
 
+
+
                             ' Find all types that implement OpenFramework_Interface
                             For Each t In asm.GetTypes()
+
+
                                 If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
                                     Try
                                         Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)
                                         plugins.Add(plugin)
                                     Catch ex As Exception
                                         UI.ShowError(ex.Message)
-                                        Debug.WriteLine(ex.Message)
+                                        If Environment.CommandLine.Contains("/DevMode") = True Then
+                                            Debug.WriteLine(ex.Message)
+                                        End If
                                     End Try
                                 End If
                             Next
                         Catch Exceptionthing As Exception
                             UI.ShowError(Exceptionthing.Message)
-                            Debug.WriteLine(Exceptionthing.Message)
+                            If Environment.CommandLine.Contains("/DevMode") = True Then
+                                Debug.WriteLine(Exceptionthing.Message)
+                            End If
                         End Try
 
                     End If
