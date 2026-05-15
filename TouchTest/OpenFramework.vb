@@ -138,6 +138,8 @@ Namespace OpenFramework_Data
             End If
         End Sub
 
+
+
         Public Shared Function LoadAppsDlls(User As UserManager) As List(Of OpenFramework_Interface)
 
             Dim InDevMode As Boolean = False

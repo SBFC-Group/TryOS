@@ -15,6 +15,8 @@ Public Class Form1
     Public IsTransparentEnabled As Boolean = True
     Public OpenNewstAppAfterClosingAnApp As Boolean = False
 
+    Public ThisIsUsedAlready As Object = Nothing
+
     Public SizeX As Integer = 0
     Public SizeY As Integer = 0
 
@@ -37,7 +39,6 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Icon = My.Resources.desktop_windows_119229
-
 
         If IsSandboxingEnabled = True Then
             SandboxedUser = New UserManager(User.Username, True)

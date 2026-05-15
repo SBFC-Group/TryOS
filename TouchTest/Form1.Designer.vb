@@ -83,7 +83,7 @@ Partial Class Form1
         '
         Me.Button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Button1.BackColor = System.Drawing.Color.Transparent
-        Me.Button1.BackgroundImage = Global.TouchTest.My.Resources.Resources.internet_world_wide_web_www_globe_communication_website_browser_network_connection_icon_1957101
+        Me.Button1.BackgroundImage = TouchTest.My.Resources.internet_world_wide_web_www_globe_communication_website_browser_network_connection_icon_1957101
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat

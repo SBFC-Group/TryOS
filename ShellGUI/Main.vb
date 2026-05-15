@@ -40,6 +40,7 @@ Public Class Main
         UI = UI_Form
 
         Dim ThisForm As New MyControllerForm
+        Form1.ThisIsUsedAlready = ThisForm
         ThisForm.LoadEverything()
     End Sub
 
