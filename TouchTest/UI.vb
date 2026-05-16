@@ -409,10 +409,6 @@ Public Class UI
         End If
     End Sub
 
-    Private Sub test()
-        OpenFramework_Data.OpenFramework.LoadApps()
-    End Sub
-
     Public Sub CreateNewUser(Username As String, Password As String)
 
     End Sub

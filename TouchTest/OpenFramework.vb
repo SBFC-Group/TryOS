@@ -5,7 +5,7 @@ Namespace OpenFramework_Data
     Public Class OpenFramework
 
         Public Shared Function GetOpenFrameworkVersion()
-            Return "0.36.0"
+            Return "0.37.0"
         End Function
 
         Public Shared FlowLayoutPanelUse As FlowLayoutPanel = Form1.FlowLayoutPanel1
@@ -24,14 +24,15 @@ Namespace OpenFramework_Data
                     For Each p In plugins
                         Try
                             Debug.WriteLine("Loaded App: " & p.Name)
-                            p.Initialize(host)
+                            p.OpenFramework_Interface.Initialize(host)
                             Dim btn As New Button()
                             btn.Name = p.Name
-                            btn.BackgroundImage = p.Icon
+                            btn.BackgroundImage = p.OpenFramework_Interface.Icon
                             btn.FlatStyle = FlatStyle.Flat
                             btn.FlatAppearance.BorderSize = 0
                             btn.BackgroundImageLayout = ImageLayout.Stretch
                             btn.Tag = p
+                            p.SetButtonObject(btn, TryController.CoreID)
                             btn.Size = Form1.Button3.Size
                             AddHandler btn.Click, AddressOf PluginButton_Click
                             FlowLayoutPanelUse.Controls.Add(btn)
@@ -51,7 +52,7 @@ Namespace OpenFramework_Data
 
         Private Shared Sub PluginButton_Click(sender As Object, e As EventArgs)
             Dim btn As Button = CType(sender, Button)
-            Dim plugin As OpenFramework_Interface = CType(btn.Tag, OpenFramework_Interface)
+            Dim plugin As OpenFrameworkAppInformation = CType(btn.Tag, OpenFrameworkAppInformation)
 
             Dim frm As Form = plugin.GetForm()
             If Form1.currentForm IsNot Nothing Then
@@ -77,11 +78,11 @@ Namespace OpenFramework_Data
             Dim order As New List(Of String)
             If AllowCustom = True Then
                 For Each ctrl As Control In ControlThing.Controls
-                    order.Add(ctrl.Tag.ToString())
+                    order.Add(ctrl.Tag.OpenFramework_Interface.ToString())
                 Next
             Else
                 For Each ctrl As Control In FlowLayoutPanelUse.Controls
-                    order.Add(ctrl.Tag.ToString())
+                    order.Add(ctrl.Tag.OpenFramework_Interface.ToString())
                 Next
             End If
             If IO.File.Exists(Form1.User.UserFolderPath & "\Settings\TaskInteracter_Order.json") Then
@@ -120,7 +121,7 @@ Namespace OpenFramework_Data
                 Dim sortedButtons As New List(Of Control)
 
                 For Each id In order
-                    Dim match = ControlThing.Controls.Cast(Of Control)().FirstOrDefault(Function(c) c.Tag.ToString() = id)
+                    Dim match = ControlThing.Controls.Cast(Of Control)().FirstOrDefault(Function(c) c.Tag.OpenFramework_Interface.ToString() = id)
                     If match IsNot Nothing Then
                         sortedButtons.Add(match)
                     End If
@@ -138,9 +139,9 @@ Namespace OpenFramework_Data
             End If
         End Sub
 
+        Private Shared AppFormlist As New List(Of OpenFrameworkAppInformation)()
 
-
-        Public Shared Function LoadAppsDlls(User As UserManager) As List(Of OpenFramework_Interface)
+        Public Shared Function LoadAppsDlls(User As UserManager) As List(Of OpenFrameworkAppInformation)
 
             Dim InDevMode As Boolean = False
             If Environment.CommandLine.Contains("/DevMode") = True Then
@@ -148,7 +149,13 @@ Namespace OpenFramework_Data
                 Debug.WriteLine("Function Name: LoadAppsDlls()")
             End If
 
-            Dim plugins As New List(Of OpenFramework_Interface)()
+            If AppFormlist.Any = True Then
+                For Each op In AppFormlist
+                    op.Dispose()
+                Next
+            End If
+
+            'Dim AppFormlist As New List(Of OpenFrameworkAppInformation)()
 
             Dim dir1 = My.Application.Info.DirectoryPath & "\Apps"
 
@@ -213,7 +220,9 @@ Namespace OpenFramework_Data
                                 If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
                                     Try
                                         Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)
-                                        plugins.Add(plugin)
+
+                                        Dim AppInfo As New OpenFrameworkAppInformation(plugin.Name, file.FullName, New Version(plugin.MajerVersion, plugin.MinorVersion, plugin.PatchVersion, 0), plugin)
+                                        AppFormlist.Add(AppInfo)
                                     Catch ex As Exception
                                         UI.ShowError(ex.Message)
                                         If Environment.CommandLine.Contains("/DevMode") = True Then
@@ -234,7 +243,7 @@ Namespace OpenFramework_Data
 
             Next
 
-            Return plugins
+            Return AppFormlist
         End Function
     End Class
 End Namespace

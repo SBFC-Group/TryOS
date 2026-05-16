@@ -15,6 +15,7 @@
     Sub ClearArguments()
     Function SetOrGetArguments() As String
     Function SetOrGetArguments(Arg As String) As String
+    Function GetAppPath() As String
     Sub StartCMD(Optional GG As String = "New")
     Sub CloseApp(form As Form)
 End Interface

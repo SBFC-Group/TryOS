@@ -92,4 +92,8 @@ Public Class OpenFramework_Handler
             Return Nothing
         End If
     End Function
+
+    Public Function GetAppPath() As String Implements OpenFramework_UI_Handler.GetAppPath
+        Throw New NotImplementedException()
+    End Function
 End Class

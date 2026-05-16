@@ -3,10 +3,10 @@
         Dim plugins = OpenFramework_Data.OpenFramework.LoadAppsDlls(Form1.SandboxedUser)
 
         For Each p In plugins
-            Debug.WriteLine("Loaded " & p.Name)
+            Debug.WriteLine("Loaded " & p.OpenFramework_Interface.Name)
             Dim Btn As New Button
             'btn.Text = p.Name
-            Btn.BackgroundImage = p.Icon
+            Btn.BackgroundImage = p.OpenFramework_Interface.Icon
             'btn.TextImageRelation = TextImageRelation.ImageAboveText
             Btn.FlatStyle = FlatStyle.Flat
             Btn.FlatAppearance.BorderSize = 0

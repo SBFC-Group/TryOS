@@ -44,7 +44,7 @@
         For Each p In plugins
             Debug.WriteLine("Loaded App Button """ & p.Name & """ Into TaskbarOrderApp")
             Dim Btn As New Button
-            Btn.BackgroundImage = p.Icon
+            Btn.BackgroundImage = p.OpenFramework_Interface.Icon
             Btn.FlatStyle = FlatStyle.Flat
             Btn.FlatAppearance.BorderSize = 0
             Btn.BackgroundImageLayout = ImageLayout.Stretch

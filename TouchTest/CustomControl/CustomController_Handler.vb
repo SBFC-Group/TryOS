@@ -26,15 +26,15 @@
             Return My.Application.OpenForms
         End Function
 
-        Public Function OpenFramework_LoadAppsDlls(User As UserManager) As List(Of OpenFramework_Interface) Implements CustomController_UI_Handler.OpenFramework_LoadAppsDlls
+        Public Function OpenFramework_LoadAppsDlls(User As UserManager) As List(Of OpenFrameworkAppInformation) Implements CustomController_UI_Handler.OpenFramework_LoadAppsDlls
             Return OpenFramework_Data.OpenFramework.LoadAppsDlls(User)
         End Function
 
-        Public Function OpenFramework_LoadPlugins_New() As List(Of OpenFramework_Interface) Implements CustomController_UI_Handler.OpenFramework_LoadPlugins_New
+        Public Function OpenFramework_LoadPlugins_New() As List(Of OpenFrameworkAppInformation) Implements CustomController_UI_Handler.OpenFramework_LoadPlugins_New
             Return OpenFramework_Data.OpenFramework.LoadAppsDlls(Form1.SandboxedUser)
         End Function
 
-        Public Function OpenFramework_LoadPlugins(folder As String) As List(Of OpenFramework_Interface) Implements CustomController_UI_Handler.OpenFramework_LoadPlugins
+        Public Function OpenFramework_LoadPlugins(folder As String) As List(Of OpenFrameworkAppInformation) Implements CustomController_UI_Handler.OpenFramework_LoadPlugins
             Return Nothing
         End Function
 

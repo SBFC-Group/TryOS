@@ -8,26 +8,28 @@
     Public Shared DoesSuperSecretUserExist As Boolean = False
 
     Public Sub New(Optional TheUserName As String = "", Optional IsSandboxed As Boolean = False)
-        If TheUserName = "SuperSecretUser" Then
-            If DoesSuperSecretUserExist = False Then DoesSuperSecretUserExist = True
-        End If
+        'If TheUserName = "SuperSecretUser" Then
+        '    If DoesSuperSecretUserExist = False Then DoesSuperSecretUserExist = True
+        'End If
 
-        If TheUserName = "SuperSecretUser" Then
-            If DoesSuperSecretUserExist = True Then
+        'If TheUserName = "SuperSecretUser" Then
+        '    If DoesSuperSecretUserExist = True Then
 
-            End If
-        End If
+        '    End If
+        'End If
 
         If TheUserName = "" Then
             Username = Form1.Username
             UserFolderPath = UI.UsersFolder & "\" & Form1.Username
         Else
-            If TheUserName = "SuperSecretUser" Then
-                If DoesSuperSecretUserExist = False Then
-                    Username = TheUserName
-                    UserFolderPath = UI.UsersFolder & "\" & TheUserName
-                End If
-            End If
+            Username = TheUserName
+            UserFolderPath = UI.UsersFolder & "\" & TheUserName
+            'If TheUserName = "SuperSecretUser" Then
+            '    If DoesSuperSecretUserExist = False Then
+            '        Username = TheUserName
+            '        UserFolderPath = UI.UsersFolder & "\" & TheUserName
+            '    End If
+            'End If
         End If
 
         If My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group\Edomdekcol", "Edomdekcol", Nothing) = "True" Then
