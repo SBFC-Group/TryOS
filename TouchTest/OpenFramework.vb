@@ -149,11 +149,14 @@ Namespace OpenFramework_Data
                 Debug.WriteLine("Function Name: LoadAppsDlls()")
             End If
 
-            If AppFormlist.Any = True Then
-                For Each op In AppFormlist
-                    op.Dispose()
-                Next
-            End If
+            'If AppFormlist.Any = True Then
+            For Each op In AppFormlist
+                op.Dispose()
+            Next
+
+            FlowLayoutPanelUse.Controls.Clear()
+            AppFormlist.Clear()
+            'End If
 
             'Dim AppFormlist As New List(Of OpenFrameworkAppInformation)()
 

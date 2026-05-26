@@ -259,10 +259,12 @@
 
                 'Creates an new LoadingUser Form to safely load the user
                 Dim LogonLoadingUser As New LoadingUser
-                LogonLoadingUser.Show()
 
                 'Creates a temp UserManager Object
                 LogonLoadingUser.User = New UserManager(TextBox1.Text, True)
+
+                'Opens The LoadingUser Form
+                LogonLoadingUser.Show()
 
                 'Closes LogonForm
                 LogonFormThings.CloseLogonForm()

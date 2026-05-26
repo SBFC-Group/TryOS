@@ -38,7 +38,7 @@ Partial Class LoadingUser
         Me.WebView21.Location = New System.Drawing.Point(0, 0)
         Me.WebView21.Name = "WebView21"
         Me.WebView21.Size = New System.Drawing.Size(800, 450)
-        Me.WebView21.Source = New System.Uri("https://sebs-sw-b.netlify.app/news-sebs-sw.html", System.UriKind.Absolute)
+        Me.WebView21.Source = New System.Uri("https://www.google.com", System.UriKind.Absolute)
         Me.WebView21.TabIndex = 1
         Me.WebView21.ZoomFactor = 1.0R
         '
@@ -70,8 +70,7 @@ Partial Class LoadingUser
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents WebView21 As Microsoft.Web.WebView2.WinForms.WebView2
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents WebView21 As Microsoft.Web.WebView2.WinForms.WebView2
 End Class

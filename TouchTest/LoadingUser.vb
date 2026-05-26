@@ -12,6 +12,7 @@
 
         Dim TheURL As String = "file:///" & UI.SettingsFolder & "\Page\index.html"
         TheURL = TheURL.Replace("\", "/")
+
         WebView21.Source = New Uri(TheURL)
 
         If Environment.CommandLine.Contains("/DevMode") = True Then
@@ -31,9 +32,11 @@
                 WebView21.CoreWebView2.Settings.IsStatusBarEnabled = False
                 WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
             End If
-            If Not WebView21.CoreWebView2.Profile.DefaultDownloadFolderPath = User.UserFolderPath & "\Downloads\" Then
-                WebView21.CoreWebView2.Profile.DefaultDownloadFolderPath = User.UserFolderPath & "\Downloads\"
-            End If
+            'If Not WebView21.CoreWebView2.Profile.DefaultDownloadFolderPath = User.UserFolderPath & "\Downloads\" Then
+            '    WebView21.CoreWebView2.Profile.DefaultDownloadFolderPath = User.UserFolderPath & "\Downloads\"
+            'End If
+
+
         End If
     End Sub
 

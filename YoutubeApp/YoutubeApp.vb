@@ -1,6 +1,6 @@
 ﻿Public Class YoutubeApp
     Private Sub YoutubeApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        WebView21.Source = New Uri("https://youtube.com")
     End Sub
 
     Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
