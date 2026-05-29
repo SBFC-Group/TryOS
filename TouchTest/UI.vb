@@ -837,4 +837,19 @@ Public Class UI
     Public Sub EnableFullAppMode(IsAppFull As Boolean)
         Form1.EnableFullAppMode(IsAppFull)
     End Sub
+
+    ''' <summary>This can allow you to minimize or close the current OpenFramework App</summary>
+    Public Sub MinimizeOrCloseCurrentOpenFrameworkApp(MinimizeCurrentApp As Boolean)
+        If MinimizeCurrentApp = True Then
+            If Form1.Panel3.Tag IsNot Nothing Then
+                Form1.Panel3.Controls.Remove(Form1.Panel3.Tag)
+            End If
+        Else
+            Form1.AppList.RemoveAt(Form1.AppList.IndexOf(Form1.currentForm))
+
+            Form1.currentForm.Close()
+
+            OpenFramework_Data.OpenFramework.AppName = ""
+        End If
+    End Sub
 End Class

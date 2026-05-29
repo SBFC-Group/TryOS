@@ -2,6 +2,10 @@
     Public TheForm As Form
 
     Private Sub ReOpenApp_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If TheForm Is Form1.currentForm Then
+            Return
+        End If
+
         Form1.OpenAppAgain(TheForm, Form1.AppList.IndexOf(TheForm))
 
         HideForm2()

@@ -29,6 +29,10 @@ RunUserControl <usercontrol> - Opens a form that will contain the UserControl"
                 Form1.User = New UserManager("Program")
                 Form1.SandboxedUser = New UserManager("Program", True)
                 Form1.User.LoadUserSettings()
+            ElseIf RichTextBox1.Text.Contains("UImini-close=false") = True Then
+                UI.MinimizeOrCloseCurrentOpenFrameworkApp(False)
+            ElseIf RichTextBox1.Text.Contains("UImini-close=true") = True Then
+                UI.MinimizeOrCloseCurrentOpenFrameworkApp(True)
             Else
                 UI.RunCommands(RichTextBox1.Text, Form1.User, Me)
             End If
