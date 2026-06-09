@@ -189,5 +189,11 @@
   <ItemGroup>
     <None Include="Resources\install_line_icon_236048.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_memo_stroke_pad_editor_text_note_icon_256412.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_memo_stroke_pad_editor_text_note_icon_256412.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

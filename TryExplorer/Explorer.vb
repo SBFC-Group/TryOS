@@ -20,7 +20,8 @@ Public Class Explorer
         imagelist.ImageSize = New Drawing.Size(32, 32)
 
         imagelist.Images.Add("Images", My.Resources.FileIconResourceFile.image_file_icon_2150231)
-        imagelist.Images.Add("QuickNotes", My.Resources.FileIconResourceFile.file_text_icon_2505241)
+        imagelist.Images.Add("QuickNotes", My.Resources.FileIconResourceFile.document_memo_stroke_pad_editor_text_note_icon_2564121)
+        imagelist.Images.Add("SWFiles", My.Resources.FileIconResourceFile.file_text_icon_2505241)
         imagelist.Images.Add("Installer", My.Resources.FileIconResourceFile.image_file_icon_2150231)
         imagelist.Images.Add("Folder", My.Resources.FileIconResourceFile.foldercustom_932061)
         imagelist.Images.Add("Unknown", My.Resources.FileIconResourceFile.file_unknown_icon_2375631)
@@ -29,9 +30,6 @@ Public Class Explorer
         ListView1.SmallImageList = imagelist
 
         LoadConfig()
-
-
-
 
     End Sub
 
@@ -112,6 +110,10 @@ Public Class Explorer
 
             If My.Computer.FileSystem.FileExists(ConfigFolder & "\DefaultFolder.swfiles") Then
                 CurrentPath = My.Computer.FileSystem.ReadAllText(ConfigFolder & "\DefaultFolder.swfiles")
+                TextBox1.Text = CurrentPath
+
+                AddToHistory(CurrentPath)
+
                 Try
                     LoadAllDirectories()
                 Catch ex As Exception
@@ -192,9 +194,15 @@ Public Class Explorer
         Dim tempstring As String = Path
 
         If tempstring.StartsWith(Main.Controller.GetUserFolder) = True Then
-            tempstring = tempstring.Replace(Main.Controller.GetUserFolder, "user")
+            tempstring = tempstring.Replace(Main.Controller.GetUserFolder, "user:")
         ElseIf tempstring.StartsWith(My.Application.Info.DirectoryPath) = True Then
             tempstring = tempstring.Replace(My.Application.Info.DirectoryPath, "root:")
+        End If
+
+        If Path.StartsWith("user:") = True Then
+            Path = Path.Replace("user:", Main.Controller.GetUserFolder)
+        ElseIf tempstring.StartsWith("root:") = True Then
+            Path = Path.Replace("root:", My.Application.Info.DirectoryPath)
         End If
 
         Dim folderinfo As New IO.DirectoryInfo(Path)
@@ -205,10 +213,12 @@ Public Class Explorer
         NewButton.Size = Button4.Size
         NewButton.Font = Button4.Font
         'NewButton.Anchor = Button4.Anchor
-        NewButton.Tag = Path
+        NewButton.Tag = tempstring
         NewButton.Text = folderinfo.Name
         FlowLayoutPanel1.Controls.Add(NewButton)
         AddHandler NewButton.Click, AddressOf ClickSubForListedFolders
+
+
     End Sub
 
 
@@ -220,15 +230,17 @@ Public Class Explorer
         TextBox1.Text = btn.Tag
 
         CurrentPath = btn.Tag
+
+        TextBox1.Text = btn.Tag
         LoadAllDirectories()
+
+        AddToHistory(CurrentPath)
     End Sub
 
-    Private Sub LoadAllDirectories()
+    Private Sub LoadAllDirectories(Optional IsUsedByForwardandBack As Boolean = False)
         Dim btnpanel As TabButton = CType(Me.Tag, TabButton)
 
-        PathHistory.Add(CurrentPath)
 
-        CurrentPlaceInHistory = CurrentPlaceInHistory + 1
 
         ListView1.Items.Clear()
         Dim dir1 = CurrentPath
@@ -272,6 +284,8 @@ Public Class Explorer
             Dim lvi As ListViewItem
             If file.Extension = ".swnote" Then
                 lvi = New ListViewItem(file.Name, "QuickNotes")
+            ElseIf file.Extension = ".swfiles" Then
+                lvi = New ListViewItem(file.Name, "SWFiles")
             ElseIf file.Extension = ".jpg" Then
                 lvi = New ListViewItem(file.Name, "Images")
             ElseIf file.Extension = ".png" Then
@@ -317,12 +331,19 @@ Public Class Explorer
             If ListView1.SelectedItems(0).ImageKey = "Folder" Then
                 PathHistory.Add(CurrentPath)
                 Dim lvi As ListViewItem = ListView1.SelectedItems(0)
+                If lvi.Tag.StartsWith(Main.Controller.GetUserFolder()) = True Then
+                    TextBox1.Text = lvi.Tag.Replace(Main.Controller.GetUserFolder(), "user:")
+                ElseIf lvi.Tag.StartsWith(My.Application.Info.DirectoryPath) = True Then
+                    TextBox1.Text = lvi.Tag.Replace(My.Application.Info.DirectoryPath, "root:")
+                Else
+                    TextBox1.Text = lvi.Tag
+                End If
 
-                TextBox1.Text = lvi.Tag
-                CurrentPath = lvi.Tag
+                CurrentPath = TextBox1.Text 'lvi.Tag
+                AddToHistory(CurrentPath)
                 LoadAllDirectories()
             ElseIf file.Extension = "swnote" Then
-
+            ElseIf file.Extension = "swfiles" Then
             ElseIf file.Extension = ".jpg" Then
                 Main.Controller.SetOrGetArguments(file.FullName)
                 Main.Controller.RunCommand("RunOpenFrameworkApp " & My.Application.Info.DirectoryPath & "\Apps\ImageViewer\ImageViewer.dll")
@@ -382,6 +403,7 @@ Public Class Explorer
             End If
 
             CurrentPath = TextBox1.Text
+            AddToHistory(CurrentPath)
 
             Try
                 LoadAllDirectories()
@@ -395,24 +417,59 @@ Public Class Explorer
 
     End Sub
 
-    Private Sub BackButton_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If PathHistory.Count = 1 Then
-            Button1.Enabled = False
-        Else
-            Button1.Enabled = True
-        End If
+    Public CurrentDirObject As IO.DirectoryInfo
 
-        CurrentPath = PathHistory.Item(PathHistory.Count - 1)
-        LoadAllDirectories()
+    Private Sub BackButton_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+
+        If CurrentPlaceInHistory <= 0 Then Return
+
+        CurrentPlaceInHistory -= 1
+        CurrentPath = PathHistory(CurrentPlaceInHistory)
+
+        TextBox1.Text = CurrentPath
+        LoadAllDirectories(True)
     End Sub
 
     Private Sub ForwardButton_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        If PathHistory.Count = CurrentPlaceInHistory + 1 Then
-            Button2.Enabled = False
-        Else
-            Button2.Enabled = True
-            CurrentPath = PathHistory.Item(PathHistory.Count - 1)
-            LoadAllDirectories()
+        If CurrentPlaceInHistory >= PathHistory.Count - 1 Then Return
+
+        CurrentPlaceInHistory += 1
+        CurrentPath = PathHistory(CurrentPlaceInHistory)
+
+        TextBox1.Text = CurrentPath
+        LoadAllDirectories(True)
+    End Sub
+
+    Private Sub RefreshButton_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        For Each s As String In PathHistory
+            Debug.WriteLine(s)
+        Next
+        Debug.WriteLine("I'm done with that shit")
+    End Sub
+
+    Private Sub AddToHistory(path As String)
+
+        ' Remove forward history if user navigates somewhere new
+        If CurrentPlaceInHistory < PathHistory.Count - 1 Then
+            PathHistory.RemoveRange(CurrentPlaceInHistory + 1,
+                                    PathHistory.Count - CurrentPlaceInHistory - 1)
         End If
+
+        ' Prevent duplicate consecutive entries
+        If PathHistory.Count > 0 AndAlso PathHistory(PathHistory.Count - 1) = path Then
+            Return
+        End If
+
+        PathHistory.Add(path)
+        CurrentPlaceInHistory = PathHistory.Count - 1
+
+    End Sub
+
+    Private Sub UpdateNavigationButtons()
+
+        Button1.Enabled = CurrentPlaceInHistory > 0
+        Button2.Enabled = CurrentPlaceInHistory < PathHistory.Count - 1
+
     End Sub
 End Class

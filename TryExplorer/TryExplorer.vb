@@ -17,6 +17,8 @@ Public Class TryExplorer
         FlowLayoutPanel1.Controls.Add(ANewTabButton)
 
         TabThatExist = TabThatExist + 1
+
+        ANewTabButton.Button2.PerformClick()
     End Sub
 
     Public Sub AddTabUserControl(explorer As Explorer)

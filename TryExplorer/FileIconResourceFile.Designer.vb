@@ -67,6 +67,26 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend Shared ReadOnly Property document_memo_stroke_pad_editor_text_note_icon_256412() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("document_memo_stroke_pad_editor_text_note_icon_256412", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        '''</summary>
+        Friend Shared ReadOnly Property document_memo_stroke_pad_editor_text_note_icon_2564121() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("document_memo_stroke_pad_editor_text_note_icon_2564121", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend Shared ReadOnly Property file_text_icon_250524() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("file_text_icon_250524", resourceCulture)
