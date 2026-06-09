@@ -37,6 +37,7 @@ Public Class Class1
 
             My.Computer.FileSystem.DeleteDirectory(TempFolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
         End If
+        Return Nothing
     End Function
 
     Public Shared Function InstallTryOSApp(FileName As String, Optional TryOSVersion As String = "Null")
@@ -106,7 +107,7 @@ Public Class Class1
         My.Computer.FileSystem.CopyDirectory(TempFolder, My.Application.Info.DirectoryPath & "\Apps\" & AppFolderName)
 
         My.Computer.FileSystem.DeleteDirectory(TempFolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
-
+        Return Nothing
     End Function
 
     Private Shared Function GetAppNumber() As Int64
@@ -145,6 +146,7 @@ Public Class Class1
         Else
             Return MyNumber
         End If
+        Return Nothing
     End Function
 
     Public Shared Function UpdateTryOSApp(FileName As String, TryOSVersion As String, Optional HasOpenFrameworkUpdated As Boolean = False)
@@ -175,5 +177,6 @@ Public Class Class1
 
         My.Computer.FileSystem.DeleteDirectory(TempFolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
 
+        Return Nothing
     End Function
 End Class

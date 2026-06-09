@@ -28,7 +28,7 @@
     End Enum
 
     Public Function LoadPicture(FilePath As String)
-
+        Return Nothing
     End Function
 
     Private Sub GoBackButton_Click(sender As Object, e As EventArgs) Handles GoBackButton.Click

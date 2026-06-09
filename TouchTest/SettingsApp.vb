@@ -123,6 +123,8 @@
         End If
     End Sub
 
+    Private DoesOldGUIApply As Boolean = False
+
     Private Sub SettingsApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ChangeDesign(Form1.IsUsingDarkThemeForApps)
 
@@ -143,6 +145,14 @@
             Button7.Visible = False
             Button7.Enabled = False
         End If
+
+        If DoesOldGUIApply = True Then
+            If UI_SM.DoesOldGUIWork = False Then
+                Dispose()
+                Return
+            End If
+        End If
+
 
         If Form1.User.Role = TryController.Roles.Administrator Then
         ElseIf Form1.User.Role = TryController.Roles.Program Then

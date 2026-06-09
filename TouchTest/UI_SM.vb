@@ -1,5 +1,7 @@
 ﻿Public Class UI_SM
     Public IsCoreIDSet As Boolean = False
+    Public LogonID As Int64
+    Public DoesOldGUIWork As Boolean
 
     Public Overridable Overloads Sub Show()
         Return

@@ -490,7 +490,7 @@ Public Class UI
     Public Sub RunApp(Run_ As String, Optional arg1 As String = "Null=Nothing")
         If Run_ = "Settings" Then
             If Form1.IsSettingOpen = False Then
-                Form1.OpenChildForm(New SettingsForm)
+                Form1.OpenChildForm(New SettingsForm, arg1)
                 Form1.IsSettingOpen = True
             End If
             If Form1.IsInstagramAppOpen = True Then
@@ -513,7 +513,7 @@ Public Class UI
             End If
         ElseIf Run_ = "Internet++" Then
             If Form1.IsInternetOpen = False Then
-                Form1.OpenChildForm(New Internetplusplus)
+                Form1.OpenChildForm(New Internetplusplus, arg1)
                 Form1.IsInternetOpen = True
             End If
             If Form1.IsInstagramAppOpen = True Then
@@ -536,7 +536,7 @@ Public Class UI
             End If
         ElseIf Run_ = "QuickNotes" Then
             If Form1.IsQuickNotesOpen = False Then
-                Form1.OpenChildForm(New Form15)
+                Form1.OpenChildForm(New Form15, arg1)
                 If arg1 = "" Then
                 ElseIf arg1 = "Null=Nothing" Then
                 Else
@@ -564,7 +564,7 @@ Public Class UI
             End If
         ElseIf Run_ = "YoutubeApp" Then
             If Form1.IsYoutubeAppOpen = False Then
-                Form1.OpenChildForm(New YoutubeApp)
+                Form1.OpenChildForm(New YoutubeApp, arg1)
                 Form1.IsYoutubeAppOpen = True
             End If
             If Form1.IsInstagramAppOpen = True Then
@@ -587,7 +587,7 @@ Public Class UI
             End If
         ElseIf Run_ = "InstagramApp" Then
             If Form1.IsInstagramAppOpen = False Then
-                Form1.OpenChildForm(New InstagramApp)
+                Form1.OpenChildForm(New InstagramApp, arg1)
                 Form1.IsInstagramAppOpen = True
             End If
             If Form1.IsFacebookAppOpen = True Then
@@ -610,7 +610,7 @@ Public Class UI
             End If
         ElseIf Run_ = "FacebookApp" Then
             If Form1.IsFacebookAppOpen = False Then
-                Form1.OpenChildForm(New FacebookApp)
+                Form1.OpenChildForm(New FacebookApp, arg1)
                 Form1.IsFacebookAppOpen = True
             End If
             If Form1.IsInstagramAppOpen = True Then
@@ -633,7 +633,7 @@ Public Class UI
             End If
         ElseIf Run_ = "SpotifyApp" Then
             If Form1.IsSpotifyAppOpen = False Then
-                Form1.OpenChildForm(New SpotifyApp)
+                Form1.OpenChildForm(New SpotifyApp, arg1)
                 Form1.IsSpotifyAppOpen = True
             End If
             If Form1.IsInstagramAppOpen = True Then
