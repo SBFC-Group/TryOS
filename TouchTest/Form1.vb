@@ -108,7 +108,7 @@ Public Class Form1
             AddHandler Button4.Click, AddressOf Button4_Click
 
 
-            'This checks if OpenFramework is enabled. (This isn't readly getting used anymore...)
+            'This checks if OpenFramework is enabled. (This isn't really getting used anymore...)
             If UI.DisableOpenFramework = False Then
                 OpenFramework_Data.OpenFramework.LoadApps(SandboxedUser)
 
@@ -635,14 +635,11 @@ Public Class Form1
     Public BatteryPower As Int64 = 100
     Public HasBattery As Boolean = False
 
+    Dim jja As Int64 = 0
+
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        'UI.RunCommands("end", User)
-        'FToL.Show()
-        MsgBox(TryController.CoreID)
-
-        Dim jj As New TryController
-        MsgBox(jj.CoreID.ToString)
-
+        jja = jja + 1
+        UI.ShowNotification(NotificationClass.CreateNotification("Form1", "Testing This" & jja.ToString(), NotificationClass.NotificationType.Alert))
     End Sub
 
     Private Sub InstagramButton_Click(sender As Object, e As EventArgs) Handles InstagramButton.Click

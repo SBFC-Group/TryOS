@@ -94,6 +94,10 @@ Public Class OpenFramework_Handler
     End Function
 
     Public Function GetAppPath() As String Implements OpenFramework_UI_Handler.GetAppPath
-        Throw New NotImplementedException()
+        Return Nothing
     End Function
+
+    Public Sub SendNotification(Title As String, Text As String, NotificationType As NotificationClass.NotificationType) Implements OpenFramework_UI_Handler.SendNotification
+        UI.ShowNotification(NotificationClass.CreateNotification(Title, Text, NotificationType))
+    End Sub
 End Class

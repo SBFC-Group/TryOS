@@ -852,4 +852,12 @@ Public Class UI
             OpenFramework_Data.OpenFramework.AppName = ""
         End If
     End Sub
+
+    Public Sub ShowNotification(NotificationClass As NotificationClass)
+        If Form1.ModernControlCenter Is Nothing Then
+            Form1.ModernControlCenterHasBeenOpened = True
+            Form1.ModernControlCenter = New ControlCenter
+        End If
+        Form1.ModernControlCenter.CreateNotificationBox(NotificationClass)
+    End Sub
 End Class

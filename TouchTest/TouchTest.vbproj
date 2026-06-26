@@ -227,6 +227,13 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NeedThisClass.vb" />
+    <Compile Include="NotificationBox.Designer.vb">
+      <DependentUpon>NotificationBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationBox.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NotificationClass.vb" />
     <Compile Include="OpenFrameworkAppInformation.vb" />
     <Compile Include="SecureFile.vb" />
     <Compile Include="TaskbarOrderApp.Designer.vb">
@@ -622,6 +629,9 @@
     <EmbeddedResource Include="LogonForm.resx">
       <DependentUpon>LogonForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NotificationBox.resx">
+      <DependentUpon>NotificationBox.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TaskbarOrderApp.resx">
       <DependentUpon>TaskbarOrderApp.vb</DependentUpon>
     </EmbeddedResource>
@@ -915,6 +925,7 @@
   <ItemGroup>
     <None Include="Resources\desktop-windows_119229.ico" />
     <None Include="Resources\desktop-windows_119229.png" />
+    <None Include="Resources\Alert_1.wav" />
     <Content Include="TryOS_png.ico" />
   </ItemGroup>
   <ItemGroup>

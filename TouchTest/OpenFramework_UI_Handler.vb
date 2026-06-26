@@ -18,4 +18,5 @@
     Function GetAppPath() As String
     Sub StartCMD(Optional GG As String = "New")
     Sub CloseApp(form As Form)
+    Sub SendNotification(Title As String, Text As String, NotificationType As NotificationClass.NotificationType)
 End Interface
