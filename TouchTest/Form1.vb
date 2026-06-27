@@ -35,6 +35,8 @@ Public Class Form1
 
     Public AppList As New List(Of Form)
 
+    Public CurrentAppDir As String = Nothing
+
     Private lang As New LanguageManager()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -100,19 +102,21 @@ Public Class Form1
             End If
         End If
 
-        'This checks if the newer TaskInteracter is enabled. (Removing this soon)
-        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.TaskInteracter.txt") = False Then
+        If UI_SM.DoesOldGUIWork = True Then
+            'This checks if the newer TaskInteracter is enabled. (Removing this soon)
+            If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.TaskInteracter.txt") = False Then
 
-            AddHandler Button3.Click, AddressOf SettingsForm.PluginButton_Click
+                AddHandler Button3.Click, AddressOf SettingsForm.PluginButton_Click
 
-            AddHandler Button4.Click, AddressOf Button4_Click
+                AddHandler Button4.Click, AddressOf Button4_Click
 
 
-            'This checks if OpenFramework is enabled. (This isn't really getting used anymore...)
-            If UI.DisableOpenFramework = False Then
-                OpenFramework_Data.OpenFramework.LoadApps(SandboxedUser)
+                'This checks if OpenFramework is enabled. (This isn't really getting used anymore...)
+                If UI.DisableOpenFramework = False Then
+                    OpenFramework_Data.OpenFramework.LoadApps(SandboxedUser)
 
-                UserManager.LoadTaskbarButtons()
+                    UserManager.LoadTaskbarButtons()
+                End If
             End If
         End If
 

@@ -379,10 +379,10 @@
                     Return TryController.HowWasTaskCompleted.Failed
                 End If
                 Try
-                    Dim b As Byte() = Convert.FromBase64String(Password)
-                    Password = System.Text.Encoding.UTF8.GetString(b)
-                    b = Convert.FromBase64String(Password)
-                    Password = System.Text.Encoding.UTF8.GetString(b)
+                    Dim b As Byte() = Convert.FromBase64String(tempPassword)
+                    tempPassword = System.Text.Encoding.UTF8.GetString(b)
+                    b = Convert.FromBase64String(tempPassword)
+                    tempPassword = System.Text.Encoding.UTF8.GetString(b)
                 Catch ex As Exception
                     If ShowErrors = True Then
                         UI.ShowError(ex.Message, ErrorMSGBox.Alerts.Critical)

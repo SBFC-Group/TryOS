@@ -94,7 +94,7 @@ Public Class OpenFramework_Handler
     End Function
 
     Public Function GetAppPath() As String Implements OpenFramework_UI_Handler.GetAppPath
-        Return Nothing
+        Return Form1.CurrentAppDir
     End Function
 
     Public Sub SendNotification(Title As String, Text As String, NotificationType As NotificationClass.NotificationType) Implements OpenFramework_UI_Handler.SendNotification

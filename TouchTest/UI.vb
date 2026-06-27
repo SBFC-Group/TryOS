@@ -756,6 +756,13 @@ Public Class UI
                 If GetType(OpenFramework_Interface).IsAssignableFrom(t) AndAlso Not t.IsInterface AndAlso Not t.IsAbstract Then
                     Try
                         Dim plugin As OpenFramework_Interface = CType(Activator.CreateInstance(t), OpenFramework_Interface)
+
+                        Dim tempfileinfo As New IO.FileInfo(DllPath)
+
+                        Form1.CurrentAppDir = tempfileinfo.Directory.FullName
+
+                        plugin.Initialize(OpenFramework_Data.OpenFramework.loadapps(TryController.CoreID))
+
                         Return plugin.GetForm()
                     Catch ex As Exception
                         ShowError(ex.Message)
