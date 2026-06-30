@@ -926,6 +926,13 @@
     <None Include="Resources\desktop-windows_119229.ico" />
     <None Include="Resources\desktop-windows_119229.png" />
     <None Include="Resources\Alert_1.wav" />
+    <None Include="Resources\Alert_2.png" />
+    <None Include="Resources\Warning_2.png" />
+    <None Include="Resources\Info_2.png" />
+    <None Include="Resources\Alert_3.ico" />
+    <None Include="Resources\Warning_3.ico" />
+    <None Include="Resources\Info_3.ico" />
+    <None Include="Resources\Warning_1.wav" />
     <Content Include="TryOS_png.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -220,4 +220,25 @@
   <data name="Alert_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Alert_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Alert_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Alert_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Alert_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Alert_3.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Info_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Info_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info_3.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Warning_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Warning_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Warning_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Warning_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Warning_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Warning_3.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

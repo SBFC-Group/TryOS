@@ -33,6 +33,10 @@ RunUserControl <usercontrol> - Opens a form that will contain the UserControl"
                 UI.MinimizeOrCloseCurrentOpenFrameworkApp(False)
             ElseIf RichTextBox1.Text.Contains("UImini-close=true") = True Then
                 UI.MinimizeOrCloseCurrentOpenFrameworkApp(True)
+            ElseIf RichTextBox1.Text.Contains("Noti1") = True Then
+                UI.SaveCurrentNotifications()
+            ElseIf RichTextBox1.Text.Contains("Noti2") = True Then
+                UI.LoadNotifications()
             Else
                 UI.RunCommands(RichTextBox1.Text, Form1.User, Me)
             End If

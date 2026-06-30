@@ -238,6 +238,9 @@ Public Class Form1
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Timer1.Stop()
 
+        ModernControlCenter = New ControlCenter
+        ModernControlCenterHasBeenOpened = True
+
         SizeX = Panel3.Size.Width
         SizeY = Panel3.Size.Height ' - 57
     End Sub
@@ -642,8 +645,17 @@ Public Class Form1
     Dim jja As Int64 = 0
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim ff = MsgBox("A=1|W=2|I=3", MsgBoxStyle.YesNoCancel)
         jja = jja + 1
-        UI.ShowNotification(NotificationClass.CreateNotification("Form1", "Testing This" & jja.ToString(), NotificationClass.NotificationType.Alert))
+        If ff = MsgBoxResult.Yes Then
+            UI.ShowNotification(NotificationClass.CreateNotification("Form1", "Testing This" & jja.ToString(), NotificationClass.NotificationType.Alert))
+        ElseIf ff = MsgBoxResult.No Then
+            UI.ShowNotification(NotificationClass.CreateNotification("Form1", "Testing This" & jja.ToString(), NotificationClass.NotificationType.Warring))
+        ElseIf ff = MsgBoxResult.Cancel Then
+            UI.ShowNotification(NotificationClass.CreateNotification("Form1", "Testing This" & jja.ToString(), NotificationClass.NotificationType.Information))
+        End If
+
+
     End Sub
 
     Private Sub InstagramButton_Click(sender As Object, e As EventArgs) Handles InstagramButton.Click
@@ -668,13 +680,19 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If UseNewerAppViewer = True Then
+            If ModernControlCenter IsNot Nothing Then
+                UI.SaveCurrentNotifications()
+            End If
+        End If
+
         If UI.DisableOpenFramework = False Then
             OpenFramework_Data.OpenFramework.SaveButtonOrder(False)
         End If
     End Sub
 
     Private Sub ToolStripTextBox3_MouseDown(sender As Object, e As MouseEventArgs) Handles ToolStripTextBox3.MouseDown
-        UI.RunCommands(ToolStripTextBox3.Text, User)
+        'UI.RunCommands(ToolStripTextBox3.Text, User)
     End Sub
 
     Private Sub LoadAppsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadAppsToolStripMenuItem.Click
@@ -691,5 +709,11 @@ Public Class Form1
 
     Private Sub AllAppsButtonToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AllAppsButtonToolStripMenuItem.Click
         PowerButton_Click(sender, e)
+    End Sub
+
+    Private Sub ToolStripTextBox3_KeyDown(sender As Object, e As KeyEventArgs) Handles ToolStripTextBox3.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            UI.RunCommands(ToolStripTextBox3.Text, User)
+        End If
     End Sub
 End Class
