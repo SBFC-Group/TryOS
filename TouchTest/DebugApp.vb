@@ -3,16 +3,28 @@
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             If RichTextBox1.Text.Contains("help") = True Then
-                RichTextBox2.Text = "windowmode=mini - Trys to Minimize current app
-exit - closes current app
+                RichTextBox2.Text = "exit - closes current app
 end - Closes the program itself
 run <shell object name> - Opens a shell program
 start <form> - Starts a form
 RunApp <form> - Starts a form inside the Shell Window
-Loadjpg <number> - Loads a wallpaper with the jpg format
-Loadpng <number> - Loads a wallpaper with the png format
-Loadgif <number> - Loads a wallpaper with the gif format
-RunUserControl <usercontrol> - Opens a form that will contain the UserControl"
+RunOpenFrameworkApp <filepath> - Opens a OpenFramework App from it's dll
+Loadjpg <number> - Loads a wallpaper with the jpg format (don't work anymore)
+Loadpng <number> - Loads a wallpaper with the png format (don't work anymore)
+Loadgif <number> - Loads a wallpaper with the gif format (don't work anymore)
+RunUserControl <usercontrol> - Opens a form that will contain the UserControl
+windowmode=<normal/maxi/mini> - changes the WindowState of form that's currently connected to Command
+installapp <filepath> - Installs an app from "".tryapp""
+GetVersionObject - Gets the current version of the program
+RefreshTaskInteracter - Refreshs the button point on TaskInteractor
+ReloadTaskInteracter - Reloads the App buttons on the TaskInteractor
+GetBranch - Gets the current branch
+SetAppIndex <number> - Sets the AppIndex
+GetAppIndex - Get the AppIndex value
+GetAppList - Gets the AppList Object
+SetWallpaper <filepath> - Sets the wallpaper from a image file (replaces Loadjpg, Loadpng and Loadgif)
+GetWallpaper - Gets the current wallpaper image
+Restore-TryOS-Store - Restores TryOS Store from internal .tryapp file"
             ElseIf RichTextBox1.Text.Contains("TestErrorBox") = True Then
                 UI.ShowError("Hello World")
             ElseIf RichTextBox1.Text.Contains("TestStopWindow") = True Then

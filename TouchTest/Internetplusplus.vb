@@ -158,6 +158,16 @@ Public Class Internetplusplus
         End If
         'Panel1.Visible = True
         'FormBorderStyle = FormBorderStyle.None
+        If Environment.CommandLine.Contains("/NoInternet++4.0Update") = False Then
+            Dim temptimer As New Timer
+            temptimer.Interval = 1000
+            AddHandler temptimer.Tick, Sub()
+                                           temptimer.Stop()
+                                           UI.ShowError("Internal Internet++ 4.0 is no-longer supported.
+Please uninstall this version and go to the TryOS Store. Install the newer Internet++ 5.0.")
+                                       End Sub
+            temptimer.Start()
+        End If
     End Sub
 
     Public Sub Loadweb(ss As String)

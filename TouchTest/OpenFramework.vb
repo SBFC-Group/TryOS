@@ -115,8 +115,6 @@ Namespace OpenFramework_Data
                 ControlThing = FlowLayoutPanelUse
             End If
 
-
-
             Dim path As String = Form1.User.UserFolderPath & "\Settings\Taskbar_Order.json"
 
             If IO.File.Exists(path) = False Then

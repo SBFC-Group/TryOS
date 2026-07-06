@@ -112,12 +112,10 @@ Public Class UI
             Else
                 Return Nothing
             End If
-        ElseIf Command.Contains("TestColorDialog") = True Then
+        ElseIf Command.Contains("ColorDialog") = True Then
             Dim newcolordialog As New Dialog8
             If newcolordialog.ShowDialog = DialogResult.OK Then
-                Dim form As New Form
-                form.Show()
-                form.BackColor = newcolordialog.Color
+                Return newcolordialog.Color
             End If
             Return Nothing
         ElseIf Command.Contains("Loadjpg ") = True Then
@@ -176,6 +174,8 @@ Public Class UI
                 gg.ShowDialog()
             End If
             Return Nothing
+        ElseIf Command.Contains("GetVersionObject") = True Then
+            Return My.Application.Info.Version
         ElseIf Command.Contains("RefreshTaskInteracter") = True Then
             OpenFramework_Data.OpenFramework.RestoreButtonOrder(False)
             Return Nothing

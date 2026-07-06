@@ -55,5 +55,9 @@
         Public Shared Function _11()
             Return New NeedThisClass
         End Function
+
+        Public Shared Function _12()
+            Return OpenFramework_Data.OpenFramework.FlowLayoutPanelUse
+        End Function
     End Class
 End Namespace
