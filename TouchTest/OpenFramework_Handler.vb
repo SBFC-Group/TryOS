@@ -8,8 +8,6 @@ Public Class OpenFramework_Handler
     End Sub
 
     Public Function RunCommand(Command As String, Optional TheForm As Object = Nothing) Implements OpenFramework_UI_Handler.RunCommand
-
-
         Return UI.RunCommands(Command, Form1.SandboxedUser, TheForm)
     End Function
 
@@ -32,7 +30,7 @@ Public Class OpenFramework_Handler
     End Sub
 
     Public Function GetProgramVersion() As String Implements OpenFramework_UI_Handler.GetProgramVersion
-        Return TryController.GetVersion
+        Return TryController.GetVersion()
     End Function
 
     Public Function GetOpenFrameworkVersion() As String Implements OpenFramework_UI_Handler.GetOpenFrameworkVersion
@@ -100,4 +98,24 @@ Public Class OpenFramework_Handler
     Public Sub SendNotification(Title As String, Text As String, NotificationType As NotificationClass.NotificationType) Implements OpenFramework_UI_Handler.SendNotification
         UI.ShowNotification(NotificationClass.CreateNotification(Title, Text, NotificationType))
     End Sub
+
+    Public Sub CreateNewSetting(setting As String) Implements OpenFramework_UI_Handler.CreateNewSetting
+        Form1.User.ChangeSetting(UserManager.SettingType.Add, setting)
+    End Sub
+
+    Public Sub DeleteSetting(setting As String) Implements OpenFramework_UI_Handler.DeleteSetting
+        Form1.User.ChangeSetting(UserManager.SettingType.Remove, setting)
+    End Sub
+
+    Public Sub RenameSetting(setting As String, NewName As String) Implements OpenFramework_UI_Handler.RenameSetting
+        Form1.User.ChangeSetting(UserManager.SettingType.NewSettingName, setting, NewName)
+    End Sub
+
+    Public Sub SetNewSettingValue(setting As String, value As String) Implements OpenFramework_UI_Handler.SetNewSettingValue
+        Form1.User.ChangeSetting(UserManager.SettingType.ChangeValue, setting, value)
+    End Sub
+
+    Public Function GetSettingValue(setting As String) As String Implements OpenFramework_UI_Handler.GetSettingValue
+        Return Form1.User.ReadSetting(setting)
+    End Function
 End Class

@@ -123,7 +123,7 @@
         End If
     End Sub
 
-    Private DoesOldGUIApply As Boolean = False
+    Private DoesOldGUIApply As Boolean = True
 
     Private Sub SettingsApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ChangeDesign(Form1.IsUsingDarkThemeForApps)

@@ -85,6 +85,12 @@
     <Compile Include="AppList.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="AppUpdate.Designer.vb">
+      <DependentUpon>AppUpdate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AppUpdate.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="DownloadingApp.Designer.vb">
       <DependentUpon>DownloadingApp.vb</DependentUpon>
     </Compile>
@@ -123,6 +129,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AppList.resx">
       <DependentUpon>AppList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppUpdate.resx">
+      <DependentUpon>AppUpdate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DownloadingApp.resx">
       <DependentUpon>DownloadingApp.vb</DependentUpon>
@@ -185,6 +194,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\InternetDownloader.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reload_refresh_update_icon_149403.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reload_refresh_update_icon_149403.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.3650.58\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.3650.58\build\Microsoft.Web.WebView2.targets')" />

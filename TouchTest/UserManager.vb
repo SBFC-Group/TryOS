@@ -135,6 +135,7 @@
         End If
     End Function
 
+    ''' <summary>This will not be deprecated. Because this is used by TryOS Itself. But it's better to use the newer Contains("setting name here")</summary>
     Public Function DoesSettingExist(SettingName As String) As Boolean
         'Gets Data
         Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
@@ -161,6 +162,7 @@
         End If
     End Function
 
+    ''' <summary>This is getting deprecated. Please use ChangeSetting(SettingType.Add, "setting name here")</summary>
     Public Function AddSettingToUserSettings(SettingName As String) As HowWasTaskDone
         If DoesSettingExist(SettingName) = False Then
             'Gets Data
@@ -196,6 +198,7 @@
         End If
     End Function
 
+    ''' <summary>This is getting deprecated. Please use ChangeSetting(SettingType.Remove, "setting name here")</summary>
     Public Function RemoveSettingFromUserSettings(SettingName As String) As HowWasTaskDone
         If DoesSettingExist(SettingName) = True Then
             'Gets Data
@@ -229,6 +232,7 @@
         End If
     End Function
 
+    ''' <summary>This is getting deprecated. Please use ChangeSetting(SettingType.Replace, "setting name here"). The new sub only changes the setting name and not the value</summary>
     Public Function ReplaceSettingInUserSettings(SettingName As String, NewName As String) As HowWasTaskDone
         If DoesSettingExist(SettingName) = True Then
             'Gets Data
@@ -261,6 +265,256 @@
             Return HowWasTaskDone.Canceled
         End If
     End Function
+
+    Public Sub ChangeSetting(type As SettingType, setting As String)
+        'Sandboxed UserManager Objects are disallowed from changing the settings    
+        If Role = TryController.Roles.StandardSandbox Then Return
+
+        If type = SettingType.Add Then
+            If My.Computer.FileSystem.FileExists(UserFolderPath & "\Settings\Software.swfiles") = False Then
+                Return
+            End If
+
+            If Contains(setting) = True Then Return
+
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles")
+
+            Dim b As Byte() = Convert.FromBase64String(Reader)
+            Reader = System.Text.Encoding.UTF8.GetString(b)
+            b = Convert.FromBase64String(Reader)
+            Reader = System.Text.Encoding.UTF8.GetString(b)
+
+            If setting.EndsWith(";") = True Then
+                Reader = Reader & "
+" & setting & "="
+            Else
+                Reader = Reader & "
+" & setting & "=;"
+            End If
+
+            SaveUserSettings(Reader)
+        ElseIf type = SettingType.Remove Then
+            If My.Computer.FileSystem.FileExists(UserFolderPath & "\Settings\Software.swfiles") = False Then
+                Return
+            End If
+
+            If Contains(setting) = False Then Return
+
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles")
+
+            Dim b As Byte() = Convert.FromBase64String(Reader)
+            Reader = System.Text.Encoding.UTF8.GetString(b)
+            b = Convert.FromBase64String(Reader)
+            Reader = System.Text.Encoding.UTF8.GetString(b)
+
+            Dim newlist As New List(Of String)
+            For Each str As String In Reader.Split(";"c)
+                newlist.Add(str.Trim())
+            Next
+
+            Reader = Nothing
+
+            Dim newlist2 As New List(Of String)
+
+            For Each str As String In newlist
+                Debug.WriteLine(str)
+                If str.StartsWith(setting & "=") = True Then
+                    newlist.Remove(str & "=")
+                Else
+                    newlist2.Add(str)
+                End If
+            Next
+
+            For Each str As String In newlist2
+                If Reader Is Nothing Then
+                    Reader = str & ";"
+                Else
+                    Reader = Reader & "
+" & str & ";"
+                End If
+            Next
+
+            Reader = Reader.Replace("
+;", "")
+
+            'Debug.WriteLine(Reader)
+
+            SaveUserSettings(Reader)
+        ElseIf type = SettingType.NewSettingName Then
+            Return
+        ElseIf type = SettingType.ChangeValue Then
+            Return
+        End If
+    End Sub
+
+    Public Sub ChangeSetting(type As SettingType, setting As String, NewNameOrValue As String)
+        If type = SettingType.Add Then
+            ChangeSetting(type, setting)
+        ElseIf type = SettingType.Remove Then
+            ChangeSetting(type, setting)
+        ElseIf type = SettingType.NewSettingName Then
+            'This part gives the setting a new name.
+            If My.Computer.FileSystem.FileExists(UserFolderPath & "\Settings\Software.swfiles") = False Then
+                Return
+            End If
+
+            If Contains(setting) = False Then Return
+
+            'Makes sure that we don't override pre-existing setting names
+            If Contains(NewNameOrValue) = True Then Return
+
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles")
+
+            Dim b As Byte() = Convert.FromBase64String(Reader)
+            Reader = System.Text.Encoding.UTF8.GetString(b)
+            b = Convert.FromBase64String(Reader)
+            Reader = System.Text.Encoding.UTF8.GetString(b)
+
+            Dim newlist As New List(Of String)
+            For Each str As String In Reader.Split(";"c)
+                If str.Trim().StartsWith(setting & "=") = True Then
+                    str = str.Replace(setting, NewNameOrValue)
+                    newlist.Add(str.Trim())
+                Else
+                    newlist.Add(str.Trim())
+                End If
+
+            Next
+
+            Dim Reader2 As String = Nothing
+
+            For Each str As String In newlist
+                If Reader2 Is Nothing Then
+                    Reader2 = str & ";"
+                Else
+                    Reader2 = Reader2 & "
+" & str & ";"
+                End If
+            Next
+
+            Reader2 = Reader2.Replace("
+;", "")
+
+            SaveUserSettings(Reader2)
+        ElseIf type = SettingType.ChangeValue Then
+            'This part changes the value.
+            If My.Computer.FileSystem.FileExists(UserFolderPath & "\Settings\Software.swfiles") = False Then
+                Return
+            End If
+
+            If Contains(setting) = False Then Return
+
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles")
+
+            Dim b As Byte() = Convert.FromBase64String(Reader)
+            Reader = System.Text.Encoding.UTF8.GetString(b)
+            b = Convert.FromBase64String(Reader)
+            Reader = System.Text.Encoding.UTF8.GetString(b)
+
+            Dim newlist As New List(Of String)
+            For Each str As String In Reader.Split(";"c)
+                If str.Trim().StartsWith(setting & "=") = True Then
+                    Dim Name_Value As New List(Of String)
+                    For Each s As String In str.Trim().Split("="c)
+                        Name_Value.Add(s)
+                    Next
+
+                    Name_Value(1) = NewNameOrValue
+
+                    str = Name_Value(0) & "=" & Name_Value(1)
+                End If
+                newlist.Add(str.Trim())
+            Next
+
+            Dim Reader2 As String = Nothing
+
+            For Each str As String In newlist
+                If Reader2 Is Nothing Then
+                    Reader2 = str & ";"
+                Else
+                    Reader2 = Reader2 & "
+" & str & ";"
+                End If
+            Next
+
+            Reader2 = Reader2.Replace("
+;", "")
+
+            SaveUserSettings(Reader2)
+        End If
+    End Sub
+
+    Public Function Contains(setting As String) As Boolean
+        If My.Computer.FileSystem.FileExists(UserFolderPath & "\Settings\Software.swfiles") = False Then
+            Return False
+        End If
+
+        Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles")
+
+        Dim b As Byte() = Convert.FromBase64String(Reader)
+        Reader = System.Text.Encoding.UTF8.GetString(b)
+        b = Convert.FromBase64String(Reader)
+        Reader = System.Text.Encoding.UTF8.GetString(b)
+
+        Dim NewList As New List(Of String)
+
+        For Each str As String In Reader.Split(";"c)
+            NewList.Add(str)
+        Next
+
+        For Each str As String In NewList
+            If str.Trim().StartsWith(setting & "=") = True Then
+                If Environment.CommandLine().Contains("/DevMode") = True Then
+                    Debug.WriteLine("Found: " & str.Trim())
+                End If
+                Return True
+            Else
+                If Environment.CommandLine().Contains("/DevMode") = True Then
+                    Debug.WriteLine("Not It: " & str.Trim())
+                End If
+            End If
+        Next
+
+        'Returns False if doesn't find the setting.
+        Return False
+    End Function
+
+    Public Function ReadSetting(setting As String) As String
+        If My.Computer.FileSystem.FileExists(UserFolderPath & "\Settings\Software.swfiles") = False Then
+            Return Nothing
+        End If
+
+        If Contains(setting) = False Then Return Nothing
+
+        Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles")
+
+        Dim b As Byte() = Convert.FromBase64String(Reader)
+        Reader = System.Text.Encoding.UTF8.GetString(b)
+        b = Convert.FromBase64String(Reader)
+        Reader = System.Text.Encoding.UTF8.GetString(b)
+
+        For Each str As String In Reader.Split(";"c)
+            If str.Trim().StartsWith(setting & "=") = True Then
+                Dim Name_Value As New List(Of String)
+                For Each s As String In str.Trim().Split("="c)
+                    Name_Value.Add(s)
+                Next
+
+                Return Name_Value(1)
+            End If
+
+        Next
+
+        'I don't think that it can get here
+        Return Nothing
+    End Function
+
+    Public Enum SettingType
+        Add = 1
+        Remove = 2
+        NewSettingName = 3
+        ChangeValue = 4
+    End Enum
 
     Private Function GetRole() As TryController.Roles
         If My.Computer.FileSystem.FileExists(UserFolderPath & "\Settings\Role.swfiles") Then
@@ -308,6 +562,9 @@
         End If
     End Function
 
+
+
+    ''' <summary>This is deprecated. This will be removed.</summary>
     Public Shared Sub LoadWallpaperFromUserSettings()
         If My.Computer.FileSystem.FileExists(Form1.User.UserFolderPath & "\Settings\Wallpaper.swfiles") Then
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\Wallpaper.swfiles")
@@ -324,6 +581,7 @@
         End If
     End Sub
 
+    ''' <summary>This is deprecated. This will be removed.</summary>
     Public Shared Sub CheckForDarkThemeFile()
         If My.Computer.FileSystem.FileExists(Form1.User.UserFolderPath & "\Settings\DarkThemeForApps.swfiles") Then
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\DarkThemeForApps.swfiles")
@@ -339,6 +597,7 @@
         End If
     End Sub
 
+    ''' <summary>This is deprecated. This will be removed.</summary>
     Public Shared Sub LoadShellColors()
         If My.Computer.FileSystem.FileExists(Form1.User.UserFolderPath & "\Settings\DarkThemeForPrograms.swfiles") Then
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\DarkThemeForApps.swfiles")
@@ -357,6 +616,7 @@
         'Form1.TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
     End Sub
 
+    ''' <summary>This is deprecated. This will be removed.</summary>
     Public Shared Sub LoadTaskbarButtons()
         OpenFramework_Data.OpenFramework.RestoreButtonOrder(False)
     End Sub

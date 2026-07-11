@@ -49,6 +49,28 @@ Restore-TryOS-Store - Restores TryOS Store from internal .tryapp file"
                 UI.SaveCurrentNotifications()
             ElseIf RichTextBox1.Text.Contains("Noti2") = True Then
                 UI.LoadNotifications()
+            ElseIf RichTextBox1.Text.Contains("UserM=1") = True Then
+                Form1.User.ChangeSetting(UserManager.SettingType.Add, "yyy")
+            ElseIf RichTextBox1.Text.Contains("UserM=2") = True Then
+                Form1.User.ChangeSetting(UserManager.SettingType.Remove, "yyy")
+            ElseIf RichTextBox1.Text.Contains("UserM=3") = True Then
+                Form1.User.ChangeSetting(UserManager.SettingType.NewSettingName, "yyy", "yyy1")
+            ElseIf RichTextBox1.Text.Contains("UserM=R3") = True Then
+                Form1.User.ChangeSetting(UserManager.SettingType.NewSettingName, "yyy1", "yyy")
+            ElseIf RichTextBox1.Text.Contains("UserM=4") = True Then
+                Form1.User.ChangeSetting(UserManager.SettingType.ChangeValue, "yyy", "69")
+            ElseIf RichTextBox1.Text.Contains("UserM=Q4") = True Then
+                Form1.User.ChangeSetting(UserManager.SettingType.ChangeValue, "yyy", "True")
+            ElseIf RichTextBox1.Text.Contains("UserM=C4") = True Then
+                Form1.User.ChangeSetting(UserManager.SettingType.ChangeValue, "yyy", "")
+            ElseIf RichTextBox1.Text.Contains("UserM=5") = True Then
+                UI.ShowError(Form1.User.ReadSetting("yyy"))
+            ElseIf RichTextBox1.Text.Contains("UserM=C") = True Then
+                If Form1.User.Contains("IsDarkModeForProgram") = True Then
+                    RichTextBox2.Text = "True"
+                Else
+                    RichTextBox2.Text = "False"
+                End If
             Else
                 UI.RunCommands(RichTextBox1.Text, Form1.User, Me)
             End If

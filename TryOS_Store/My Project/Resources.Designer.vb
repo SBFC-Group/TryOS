@@ -113,6 +113,26 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property reload_refresh_update_icon_149403() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("reload_refresh_update_icon_149403", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        '''</summary>
+        Friend ReadOnly Property reload_refresh_update_icon_1494031() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("reload_refresh_update_icon_1494031", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property shopping_icon_237773() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("shopping_icon_237773", resourceCulture)

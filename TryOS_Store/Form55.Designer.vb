@@ -26,6 +26,7 @@ Partial Class Form55
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.StorePanel = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -37,6 +38,7 @@ Partial Class Form55
         Me.FlowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.FlowLayoutPanel1.Controls.Add(Me.Button1)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button2)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button3)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
@@ -66,6 +68,19 @@ Partial Class Form55
         Me.Button2.Size = New System.Drawing.Size(108, 98)
         Me.Button2.TabIndex = 1
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.BackgroundImage = Global.TryOS_Store.My.Resources.Resources.reload_refresh_update_icon_149403
+        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button3.FlatAppearance.BorderSize = 0
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Location = New System.Drawing.Point(3, 211)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(108, 98)
+        Me.Button3.TabIndex = 2
+        Me.Button3.UseVisualStyleBackColor = True
+        Me.Button3.Visible = False
         '
         'StorePanel
         '
@@ -100,4 +115,5 @@ Partial Class Form55
     Friend WithEvents Button2 As Windows.Forms.Button
     Friend WithEvents StorePanel As Windows.Forms.Panel
     Friend WithEvents Timer1 As Windows.Forms.Timer
+    Friend WithEvents Button3 As Windows.Forms.Button
 End Class

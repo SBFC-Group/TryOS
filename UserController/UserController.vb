@@ -6,8 +6,10 @@ Public Class UserController
         TextBox1.Text = Username
         TextBox2.Text = Password
         My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text)
-        My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Apps")
+        My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Downloads")
+        My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Pictures")
         My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Settings")
+        My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Videos")
         My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Temp")
 
         Dim ReaderForPassword As String = TextBox2.Text
@@ -23,9 +25,7 @@ Public Class UserController
 
         My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles", ReaderForPassword, False)
         My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Role.swfiles", "Vkd0U1RrMXJNVFphZWtKUFlXdHJPUT09", False)
-        My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Wallpaper.swfiles", "jpg=1", False)
-
-        My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Apps\Internet++.swfiles", "", False)
+        My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Software.swfiles", "VjJGc2JIQmhjR1Z5UFdwd1p6MHhPd3BKYzBSaGNtdE5iMlJsUm05eVFYQndjejFHWVd4elpUc0tTWE5WYzJsdVowNWxkMlZ5VjJGc2JIQmhjR1Z5VEc5aFpHVnlQVlJ5ZFdVNw==", False)
     End Sub
 
     Public Shared Sub CreateUser(Username As String, Password As String, PinCode As String)
@@ -34,8 +34,10 @@ Public Class UserController
         TextBox1.Text = Username
         TextBox2.Text = Password
         My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text)
-        My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Apps")
+        My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Downloads")
+        My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Pictures")
         My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Settings")
+        My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Videos")
         My.Computer.FileSystem.CreateDirectory(UI.UsersFolder & "\" & TextBox1.Text & "\Temp")
 
         Dim ReaderForPassword As String = TextBox2.Text
@@ -51,9 +53,7 @@ Public Class UserController
 
         My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Password.swfiles", ReaderForPassword, False)
         My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Role.swfiles", "Vkd0U1RrMXJNVFphZWtKUFlXdHJPUT09", False)
-        My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Wallpaper.swfiles", "jpg=1", False)
-
-        My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Apps\Internet++.swfiles", "", False)
+        My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Software.swfiles", "VjJGc2JIQmhjR1Z5UFdwd1p6MHhPd3BKYzBSaGNtdE5iMlJsUm05eVFYQndjejFHWVd4elpUc0tTWE5WYzJsdVowNWxkMlZ5VjJGc2JIQmhjR1Z5VEc5aFpHVnlQVlJ5ZFdVNw==", False)
 
         If PinCode = "None" Then
         ElseIf PinCode = "" Then
@@ -66,7 +66,7 @@ Public Class UserController
             ThePin = Convert.ToBase64String(byt4)
             My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & TextBox1.Text & "\Settings\Pincode.swfiles", ThePin, False)
 
-            My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\AutoUser.setting", TextBox1.Text, False)
+            'My.Computer.FileSystem.WriteAllText(UI.SettingsFolder & "\AutoUser.setting", TextBox1.Text, False)
         End If
     End Sub
 End Class

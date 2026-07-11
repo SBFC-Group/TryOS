@@ -60,7 +60,6 @@ Public Class Form1
             Try
                 DisableConsole = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\DisableConsole.setting"))
             Catch ex As Exception
-
             End Try
         End If
 

@@ -3,6 +3,7 @@
 Public Class Form55
     Public StorePage As StorePage = Nothing
     Public AppList As AppList = Nothing
+    Public AppUpdate As AppUpdate = Nothing
 
     Private Sub Form55_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Icon = My.Resources.shopping_icon_2377731
@@ -14,6 +15,7 @@ Public Class Form55
             StorePage = New StorePage
         End If
         StorePanel.Controls.Remove(AppList)
+        StorePanel.Controls.Remove(AppUpdate)
         StorePanel.Controls.Add(StorePage)
         StorePage.Dock = DockStyle.Fill
     End Sub
@@ -24,6 +26,7 @@ Public Class Form55
             AppList = New AppList
         End If
         StorePanel.Controls.Remove(StorePage)
+        StorePanel.Controls.Remove(AppUpdate)
         StorePanel.Controls.Add(AppList)
         AppList.Dock = DockStyle.Fill
     End Sub
@@ -50,5 +53,16 @@ Public Class Form55
             ColorMode = "Normal"
             FlowLayoutPanel1.BackColor = Drawing.Color.Silver
         End If
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If AppUpdate IsNot Nothing Then
+        Else
+            AppUpdate = New AppUpdate
+        End If
+        StorePanel.Controls.Remove(StorePage)
+        StorePanel.Controls.Remove(AppList)
+        StorePanel.Controls.Add(AppUpdate)
+        AppUpdate.Dock = DockStyle.Fill
     End Sub
 End Class

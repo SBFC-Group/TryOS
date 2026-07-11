@@ -27,7 +27,7 @@ Public Class Main
 
     Public ReadOnly Property PatchVersion As Long Implements OpenFramework_Interface.PatchVersion
         Get
-            Return 0
+            Return 1
         End Get
     End Property
 

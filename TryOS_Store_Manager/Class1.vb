@@ -5,7 +5,7 @@ Public Class Class1
 
     Private Shared Form15Text As String = ""
 
-    Public Shared Function PackageCreator(FolderPath As String, FileName As String, PackageName As String, TryOSVersion As String, Optional DllName As String = "Null")
+    Public Shared Function PackageCreator(FolderPath As String, FileName As String, PackageName As String, TryOSVersion As String, Optional DllName As String = "Null", Optional TryOSStoreOnlineURL As String = Nothing)
         'Checks if the package file aready exists.
         If My.Computer.FileSystem.DirectoryExists(FileName) Then
         Else
@@ -14,10 +14,12 @@ Public Class Class1
             'Creates the folder "Temp" inside the programs root directory.
             My.Computer.FileSystem.CreateDirectory(TempFolder)
 
-
             My.Computer.FileSystem.CopyDirectory(FolderPath, TempFolder, False)
             My.Computer.FileSystem.WriteAllText(TempFolder & "\Name.swfiles", PackageName, False)
             My.Computer.FileSystem.WriteAllText(TempFolder & "\Version.swfiles", TryOSVersion, False)
+            If TryOSStoreOnlineURL IsNot Nothing Then
+                My.Computer.FileSystem.WriteAllText(TempFolder & "\StoreVersionURL.txt", TryOSVersion, False)
+            End If
 
 
             If DllName = "Null" Then

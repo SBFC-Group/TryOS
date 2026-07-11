@@ -11,7 +11,6 @@
                 If IsWebView2FullScreen = True Then
                     IsWebView2FullScreen = False
                     Main.Controller.EnableFullscreen(False)
-
                 End If
             End If
         Catch ex As Exception
@@ -22,6 +21,10 @@
     Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
         If e.IsSuccess = True Then
             CoreWebview21 = WebView21.CoreWebView2
+            If Environment.CommandLine.Contains("/DevMode") = False Then
+                WebView21.CoreWebView2.Settings.AreDefaultContextMenusEnabled = False
+                WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
+            End If
         End If
     End Sub
 

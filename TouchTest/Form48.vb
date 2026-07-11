@@ -2,6 +2,11 @@
     Private lang As New LanguageManager()
 
     Private Sub Form48_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If UI_SM.DoesOldGUIWork = False Then
+            UI.OpenFormByName("TouchTest.LogonForm")
+            Close()
+        End If
+
 
         If Environment.CommandLine.Contains("/UseOldLoader") = True Then
         Else
