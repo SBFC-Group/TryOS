@@ -24,9 +24,13 @@ Namespace CustomController_Data
                     IsShellCodeVerifyed = True
                 End If
                 If IsShellCodeVerifyed = False Then
-                    Debug.WriteLine("Verifyed Shell Code Only! Found unverifyed code.")
+                    If Environment.CommandLine.Contains("/DevMode") = True Then
+                        Debug.WriteLine("Verifyed Shell Code Only! Found unverifyed code.")
+                    End If
                 Else
-                    Debug.WriteLine("Loaded Shell Code by the name of: " & plugin.Name)
+                    If Environment.CommandLine.Contains("/DevMode") = True Then
+                        Debug.WriteLine("Loaded Shell Code by the name of: " & plugin.Name)
+                    End If
                     plugin.Initialize(Host)
                     plugin.ExecuteForm1Subs(Form1)
                     plugin.ExecuteUISubs(UI)

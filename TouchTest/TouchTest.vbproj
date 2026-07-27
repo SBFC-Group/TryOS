@@ -212,6 +212,7 @@
     <Compile Include="CustomControl\CustomController_Handler.vb" />
     <Compile Include="CustomControl\CustomController_Interface.vb" />
     <Compile Include="CustomControl\CustomController_UI_Handler.vb" />
+    <Compile Include="DefaultAppClass.vb" />
     <Compile Include="Form48Data.vb" />
     <Compile Include="FunnyCode.vb" />
     <Compile Include="LoadingUser.Designer.vb">

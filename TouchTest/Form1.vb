@@ -15,6 +15,8 @@ Public Class Form1
     Public IsTransparentEnabled As Boolean = True
     Public OpenNewstAppAfterClosingAnApp As Boolean = False
 
+    Public IsFullScreen As Boolean = False
+
     Public ThisIsUsedAlready As Object = Nothing
 
     Public SizeX As Integer = 0
@@ -135,7 +137,9 @@ Public Class Form1
                 Dim plugins = Q_U_U_U_Q.LoadPlugins(pluginPath)
 
                 For Each plugin In plugins
-                    Debug.WriteLine("Loaded plugin: " & plugin.Name)
+                    If Environment.CommandLine.Contains("/DevMode") = True Then
+                        Debug.WriteLine("Loaded plugin: " & plugin.Name)
+                    End If
                     plugin.ExecuteDebug(Me)
                     plugin.ExecuteUISubs(UI)
                 Next
@@ -165,7 +169,6 @@ Public Class Form1
                     UI.ShowError("Couldn't get an boolean from the file.")
                 End Try
                 If UseNewerAppViewer = True Then
-                    'Form2.Show()
                     VolumeButton.Visible = True
                 Else
                     VolumeButton.Visible = False
@@ -366,7 +369,6 @@ Public Class Form1
     Public V_AllowUseOfOldInternalApps As Boolean = False
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
     End Sub
 
     Public CurrentOpenAppIndex As Int64 = 0
@@ -443,9 +445,11 @@ Public Class Form1
         If IsAppFull = True Then
             Panel2.Visible = False
             TimebarPanel.Visible = False
+            IsFullScreen = True
         ElseIf IsAppFull = False Then
             Panel2.Visible = True
             TimebarPanel.Visible = True
+            IsFullScreen = False
         End If
     End Sub
 

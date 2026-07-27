@@ -22,7 +22,7 @@ Public Class Class1
             End If
 
 
-            If DllName = "Null" Then
+            If DllName = "Null" Or Nothing Then
                 If My.Computer.FileSystem.FileExists(TempFolder & "\DllPath.txt") Then
                     My.Computer.FileSystem.DeleteFile(TempFolder & "\DllPath.txt")
                 End If
@@ -50,16 +50,18 @@ Public Class Class1
 
         IO.Compression.ZipFile.ExtractToDirectory(FileName, TempFolder)
 
-        'If TryOSVersion = "Null" Then
-        '    TryOSVersion = My.Application.Info.Version.ToString
-        'End If
+        If TryOSVersion = "Null" Then
+            TryOSVersion = My.Application.Info.Version.ToString
+        End If
 
-        'Dim ReaderVersion As String = My.Computer.FileSystem.ReadAllText(TempFolder & "\Version.swfiles")
+        If IsNewerVersion(TryOSVersion, My.Computer.FileSystem.ReadAllText(TempFolder & "\Version.swfiles")) = True Then
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                Debug.WriteLine("You can't install apps for newer TryOS Versions.")
+            End If
+            My.Computer.FileSystem.DeleteDirectory(TempFolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
+            Return Nothing
+        End If
 
-        'If ReaderVersion.Contains(TryOSVersion) Then
-        'Else
-        '    Exit Function
-        'End If
 
         Dim Reader As String = My.Computer.FileSystem.ReadAllText(TempFolder & "\Name.swfiles")
 
@@ -149,6 +151,10 @@ Public Class Class1
             Return MyNumber
         End If
         Return Nothing
+    End Function
+
+    Private Shared Function IsNewerVersion(currentVersion As String, latestVersion As String) As Boolean
+        Return New Version(currentVersion) < New Version(latestVersion)
     End Function
 
     Public Shared Function UpdateTryOSApp(FileName As String, TryOSVersion As String, Optional HasOpenFrameworkUpdated As Boolean = False)

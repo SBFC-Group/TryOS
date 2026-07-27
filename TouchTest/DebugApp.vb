@@ -66,7 +66,7 @@ Restore-TryOS-Store - Restores TryOS Store from internal .tryapp file"
             ElseIf RichTextBox1.Text.Contains("UserM=5") = True Then
                 UI.ShowError(Form1.User.ReadSetting("yyy"))
             ElseIf RichTextBox1.Text.Contains("UserM=C") = True Then
-                If Form1.User.Contains("IsDarkModeForProgram") = True Then
+                If Form1.User.Contains("yyy") = True Then
                     RichTextBox2.Text = "True"
                 Else
                     RichTextBox2.Text = "False"

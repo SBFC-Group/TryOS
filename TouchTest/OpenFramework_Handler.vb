@@ -53,14 +53,9 @@ Public Class OpenFramework_Handler
         Return Form1.User.Role
     End Function
 
+
     Public Function IsDarkMode() As Boolean Implements OpenFramework_UI_Handler.IsDarkMode
-        If Form1.IsUsingDarkThemeForApps = True Then
-            Return True
-        ElseIf Form1.IsUsingDarkThemeForApps = False Then
-            Return False
-        Else
-            Return False
-        End If
+        Return Form1.IsUsingDarkThemeForApps
     End Function
 
     Public Sub ClearArguments() Implements OpenFramework_UI_Handler.ClearArguments
@@ -79,6 +74,13 @@ Public Class OpenFramework_Handler
     Public Sub CloseApp(form As Form) Implements OpenFramework_UI_Handler.CloseApp
         form.Close()
         OpenFramework_Data.OpenFramework.AppName = ""
+        Try
+            Form1.AppList.RemoveAt(Form1.AppList.IndexOf(form))
+        Catch ex As Exception
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                Debug.WriteLine(ex.Message)
+            End If
+        End Try
     End Sub
 
     Public Function ShowColorDialog() As Color Implements OpenFramework_UI_Handler.ShowColorDialog
@@ -117,5 +119,9 @@ Public Class OpenFramework_Handler
 
     Public Function GetSettingValue(setting As String) As String Implements OpenFramework_UI_Handler.GetSettingValue
         Return Form1.User.ReadSetting(setting)
+    End Function
+
+    Public Function ContainsSetting(setting As String) As Boolean Implements OpenFramework_UI_Handler.ContainsSetting
+        Return Form1.User.Contains(setting)
     End Function
 End Class

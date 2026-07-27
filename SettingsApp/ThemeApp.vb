@@ -1,7 +1,7 @@
 ﻿Imports System.Windows.Forms
 
 Public Class ThemeApp
-    Public User As TouchTest.UserManager
+    ' Public User As TouchTest.UserManager
 
     Public FileFormat As ImageFormats
 
@@ -92,20 +92,29 @@ Public Class ThemeApp
     Private Sub ThemeApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ChangeDesign(Main.Controller.IsDarkMode())
 
-        User = New TouchTest.UserManager(Main.Controller.GetUsername)
-
-        If User.DoesSettingExist("IsTransparentEnabled=True") = True Then
-            TransparencyCheckBox.Checked = True
-        ElseIf User.DoesSettingExist("IsTransparentEnabled=False") = True Then
-            TransparencyCheckBox.Checked = False
+        ' User = New TouchTest.UserManager(Main.Controller.GetUsername)
+        If Main.Controller.ContainsSetting("IsTransparentEnabled") = True Then
+            Dim boo As Boolean = True
+            Try
+                boo = Convert.ToBoolean(Main.Controller.GetSettingValue("IsTransparentEnabled"))
+            Catch ex As Exception
+                If Environment.CommandLine.Contains("/DevMode") = True Then
+                    Debug.WriteLine(ex.Message)
+                End If
+            End Try
+            If boo = True Then
+                TransparencyCheckBox.Checked = True
+            Else
+                TransparencyCheckBox.Checked = False
+            End If
         Else
             TransparencyCheckBox.Checked = True
-            User.AddSettingToUserSettings("IsTransparentEnabled=True")
+            Main.Controller.CreateNewSetting("IsTransparentEnabled")
+            Main.Controller.SetNewSettingValue("IsTransparentEnabled", "True")
         End If
 
         AddHandler TransparencyCheckBox.CheckedChanged, AddressOf TransparencyCheckBox_CheckedChanged
 
-        'NormalHeightWallpaperMenu = WallpaperMenu.Size.Height
         Dim bitmap1 As Drawing.Bitmap = Main.Controller.RunCommand("GetWallpaper")
 
         PictureBox1.Image = bitmap1
@@ -152,10 +161,12 @@ Public Class ThemeApp
     End Sub
 
     Private Sub TransparencyCheckBox_CheckedChanged(sender As Object, e As EventArgs)
-        If TransparencyCheckBox.Checked = True Then
-            User.ReplaceSettingInUserSettings("IsTransparentEnabled=False", "IsTransparentEnabled=True")
-        Else
-            User.ReplaceSettingInUserSettings("IsTransparentEnabled=True", "IsTransparentEnabled=False")
+        If Main.Controller.ContainsSetting("IsTransparentEnabled") = True Then
+            If TransparencyCheckBox.Checked = True Then
+                Main.Controller.SetNewSettingValue("IsTransparentEnabled", "True")
+            Else
+                Main.Controller.SetNewSettingValue("IsTransparentEnabled", "False")
+            End If
         End If
     End Sub
 
@@ -210,64 +221,64 @@ Public Class ThemeApp
     Private IsDarkModeForProgramsOn As Boolean = False
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        If IsDarkModeForAppsOn = True Then
-            IsDarkModeForAppsOn = False
+        If Main.Controller.ContainsSetting("IsDarkModeForApps") = True Then
+            Dim boo As Boolean = True
+            Try
+                boo = Convert.ToBoolean(Main.Controller.GetSettingValue("IsDarkModeForApps"))
+            Catch ex As Exception
+                If Environment.CommandLine.Contains("/DevMode") = True Then
+                    Debug.WriteLine(ex.Message)
+                End If
+            End Try
+            If boo = True Then
+                Main.Controller.SetNewSettingValue("IsDarkModeForApps", "False")
+                IsDarkModeForAppsOn = False
 
-            If User.DoesSettingExist("IsDarkModeForApps=True") = True Then
-                User.ReplaceSettingInUserSettings("IsDarkModeForApps=True", "IsDarkModeForApps=False")
-            ElseIf User.DoesSettingExist("IsDarkModeForApps=False") = True Then
+                Button6.Text = "Use Normal Mode for Apps"
+
+                Main.Controller.RunCommand("ThemeManager /SetResource DarkModeForApps=False")
             Else
-                User.AddSettingToUserSettings("IsDarkModeForApps=False")
+                Main.Controller.SetNewSettingValue("IsDarkModeForApps", "True")
+                IsDarkModeForAppsOn = True
+
+                Button6.Text = "Use Dark Mode for Apps"
+
+                Main.Controller.RunCommand("ThemeManager /SetResource DarkModeForApps=True")
             End If
-
-            Button6.Text = "Use Normal Mode for Apps"
-
-            Main.Controller.RunCommand("ThemeManager /SetResource DarkModeForApps=False")
         Else
-            IsDarkModeForAppsOn = True
-
-            If User.DoesSettingExist("IsDarkModeForApps=False") = True Then
-                User.ReplaceSettingInUserSettings("IsDarkModeForApps=False", "IsDarkModeForApps=True")
-            ElseIf User.DoesSettingExist("IsDarkModeForApps=True") = True Then
-            Else
-                User.AddSettingToUserSettings("IsDarkModeForApps=True")
-            End If
-
-            Button6.Text = "Use Dark Mode for Apps"
-
-            Main.Controller.RunCommand("ThemeManager /SetResource DarkModeForApps=True")
-
+            Main.Controller.CreateNewSetting("IsDarkModeForApps")
+            Main.Controller.SetNewSettingValue("IsDarkModeForApps", "False")
         End If
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        If IsDarkModeForProgramsOn = True Then
-            IsDarkModeForProgramsOn = False
+        If Main.Controller.ContainsSetting("IsDarkModeForProgram") = True Then
+            Dim boo As Boolean = True
+            Try
+                boo = Convert.ToBoolean(Main.Controller.GetSettingValue("IsDarkModeForProgram"))
+            Catch ex As Exception
+                If Environment.CommandLine.Contains("/DevMode") = True Then
+                    Debug.WriteLine(ex.Message)
+                End If
+            End Try
+            If boo = True Then
+                Main.Controller.SetNewSettingValue("IsDarkModeForProgram", "False")
+                IsDarkModeForAppsOn = False
 
-            If User.DoesSettingExist("IsDarkModeForProgram=True") = True Then
-                User.ReplaceSettingInUserSettings("IsDarkModeForProgram=True", "IsDarkModeForProgram=False")
-            ElseIf User.DoesSettingExist("IsDarkModeForProgram=False") = True Then
+                Button6.Text = "Use Normal Mode for Programs"
+
+                Main.Controller.RunCommand("ThemeManager /SetResource DarkModeForPrograms=False")
             Else
-                User.AddSettingToUserSettings("IsDarkModeForProgram=False")
+                Main.Controller.SetNewSettingValue("IsDarkModeForProgram", "True")
+                IsDarkModeForAppsOn = True
+
+                Button6.Text = "Use Dark Mode for Programs"
+
+                Main.Controller.RunCommand("ThemeManager /SetResource DarkModeForPrograms=True")
             End If
-
-            Button7.Text = "Use Normal Mode for Programs"
-
-            Main.Controller.RunCommand("ThemeManager /SetResource DarkModeForPrograms=False")
         Else
-            IsDarkModeForProgramsOn = True
-
-            If User.DoesSettingExist("IsDarkModeForProgram=False") = True Then
-                User.ReplaceSettingInUserSettings("IsDarkModeForProgram=False", "IsDarkModeForProgram=True")
-            ElseIf User.DoesSettingExist("IsDarkModeForProgram=True") = True Then
-            Else
-                User.AddSettingToUserSettings("IsDarkModeForProgram=True")
-            End If
-
-            Button7.Text = "Use Dark Mode for Programs"
-
-            Main.Controller.RunCommand("ThemeManager /SetResource DarkModeForPrograms=True")
-
+            Main.Controller.CreateNewSetting("IsDarkModeForProgram")
+            Main.Controller.SetNewSettingValue("IsDarkModeForProgram", "False")
         End If
     End Sub
 End Class

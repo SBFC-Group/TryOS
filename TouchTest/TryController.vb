@@ -30,13 +30,31 @@ Public Class TryController
     Private Sub TryController_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim args As String = Environment.CommandLine
 
-        If args.Contains("/ReturnVersion") = True Then
-            System.Console.WriteLine(GetVersion)
-            End
-        End If
+        'If args.Contains("/ReturnVersion") = True Then
+        '    System.Console.WriteLine(GetVersion)
+        '    End
+        'End If
 
         If args.Contains("/InstallApp:") = True Then
-            'Does nothing right now.
+
+            Dim strlist As String() = Environment.GetCommandLineArgs()
+
+            For Each str As String In strlist
+                If str.StartsWith("/InstallApp:") = True And str.Contains(":\") = True And str.EndsWith(".tryapp") = True Then
+                    str = str.Remove(0, 12)
+                    TryOS_Store_Manager.Class1.InstallTryOSApp(str)
+                End If
+            Next
+
+            If args.Contains("/DevMode") = True Then
+                If MsgBox("Want to run TryOS?", MsgBoxStyle.YesNo, "TryOS") = MsgBoxResult.No Then
+                    End
+                End If
+            Else
+                End
+            End If
+
+
         End If
 
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\ShellName.setting") Then

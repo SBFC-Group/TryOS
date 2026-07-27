@@ -236,6 +236,8 @@ Public Class UI
 
         ElseIf Command.Contains("GetWallpaper") = True Then
             Return Form1.Panel1.BackgroundImage
+        ElseIf Command.Contains("GetDefaultApps") = True Then
+            Return New DefaultAppClass(Form1.User)
         ElseIf Command.Contains("whoami") = True Then
             If Command.Contains("/nogui") = True Then
                 Return Form1.User.Role

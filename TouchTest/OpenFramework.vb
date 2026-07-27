@@ -23,7 +23,9 @@ Namespace OpenFramework_Data
 
                     For Each p In plugins
                         Try
-                            Debug.WriteLine("Loaded App: " & p.Name)
+                            If Environment.CommandLine.Contains("/DevMode") = True Then
+                                Debug.WriteLine("Loaded App: " & p.Name)
+                            End If
                             p.OpenFramework_Interface.Initialize(host)
                             Dim btn As New Button()
                             btn.Name = p.Name

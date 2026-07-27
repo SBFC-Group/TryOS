@@ -20,4 +20,8 @@
 
         End If
     End Sub
+
+    Private Sub Commander_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        OpenFramework_Data.OpenFramework.AppName = ""
+    End Sub
 End Class

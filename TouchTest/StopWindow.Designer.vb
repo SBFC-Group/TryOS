@@ -26,11 +26,13 @@ Partial Class StopWindow
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.RichTextBox1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(2, 2)
@@ -60,6 +62,19 @@ Partial Class StopWindow
         '
         Me.Timer1.Interval = 10000
         '
+        'Button1
+        '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Button1.Location = New System.Drawing.Point(991, 463)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(102, 39)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "End Program"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'StopWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -81,4 +96,5 @@ Partial Class StopWindow
     Friend WithEvents Panel1 As Panel
     Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents Button1 As Button
 End Class

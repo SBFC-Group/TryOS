@@ -24,4 +24,5 @@
     Sub RenameSetting(setting As String, NewName As String)
     Sub SetNewSettingValue(setting As String, value As String)
     Function GetSettingValue(setting As String) As String
+    Function ContainsSetting(setting As String) As Boolean
 End Interface
