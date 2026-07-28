@@ -562,63 +562,20 @@
         End If
     End Function
 
-
-
-    ''' <summary>This is deprecated. This will be removed.</summary>
+    ''' <summary>This is deprecated and no longer works.</summary>
     Public Shared Sub LoadWallpaperFromUserSettings()
-        If My.Computer.FileSystem.FileExists(Form1.User.UserFolderPath & "\Settings\Wallpaper.swfiles") Then
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\Wallpaper.swfiles")
-            If Reader.StartsWith("jpg=") Then
-                Reader = Reader.Replace("jpg=", "")
-                UI.RunCommands("Loadjpg " & Reader, Form1.User)
-            ElseIf Reader.StartsWith("png=") Then
-                Reader = Reader.Replace("png=", "")
-                UI.RunCommands("Loadpng " & Reader, Form1.User)
-            ElseIf Reader.StartsWith("gif=") Then
-                Reader = Reader.Replace("gif=", "")
-                UI.RunCommands("Loadgif " & Reader, Form1.User)
-            End If
-        End If
     End Sub
 
-    ''' <summary>This is deprecated. This will be removed.</summary>
+    ''' <summary>This is deprecated and no longer works.</summary>
     Public Shared Sub CheckForDarkThemeFile()
-        If My.Computer.FileSystem.FileExists(Form1.User.UserFolderPath & "\Settings\DarkThemeForApps.swfiles") Then
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\DarkThemeForApps.swfiles")
-            If Reader = "True" Then
-                Form1.IsUsingDarkThemeForApps = True
-            ElseIf Reader = "False" Then
-                Form1.IsUsingDarkThemeForApps = False
-            Else
-                Form1.IsUsingDarkThemeForApps = False
-            End If
-        Else
-            Form1.IsUsingDarkThemeForApps = False
-        End If
     End Sub
 
-    ''' <summary>This is deprecated. This will be removed.</summary>
+    ''' <summary>This is deprecated and no longer works.</summary>
     Public Shared Sub LoadShellColors()
-        If My.Computer.FileSystem.FileExists(Form1.User.UserFolderPath & "\Settings\DarkThemeForPrograms.swfiles") Then
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\DarkThemeForApps.swfiles")
-            If Reader = "True" Then
-                Form1.IsUsingDarkThemeForPrograms = True
-            ElseIf Reader = "False" Then
-                Form1.IsUsingDarkThemeForPrograms = False
-            Else
-                Form1.IsUsingDarkThemeForPrograms = False
-            End If
-        Else
-            Form1.IsUsingDarkThemeForPrograms = False
-        End If
-
-        'Form1.Panel2.BackColor = Color.FromArgb(55, Color.Silver)
-        'Form1.TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
     End Sub
 
-    ''' <summary>This is deprecated. This will be removed.</summary>
+    ''' <summary>This is deprecated and no longer works.</summary>
     Public Shared Sub LoadTaskbarButtons()
-        OpenFramework_Data.OpenFramework.RestoreButtonOrder(False)
     End Sub
 
     Public Shared Function Login(Username As String, Password As String, Optional ShowErrors As Boolean = False) As TryController.HowWasTaskCompleted
