@@ -31,10 +31,13 @@ Partial Class Commander
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.SegToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.RichTextBoxCommandBox = New System.Windows.Forms.RichTextBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.RichTextBoxCommandHistory = New System.Windows.Forms.RichTextBox()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -130,26 +133,54 @@ Partial Class Commander
         Me.ToolStripMenuItem2.Size = New System.Drawing.Size(121, 22)
         Me.ToolStripMenuItem2.Text = "1-"
         '
-        'RichTextBox1
+        'RichTextBoxCommandBox
         '
-        Me.RichTextBox1.BackColor = System.Drawing.Color.Black
-        Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.RichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RichTextBox1.Font = New System.Drawing.Font("Consolas", 12.0!)
-        Me.RichTextBox1.ForeColor = System.Drawing.Color.White
-        Me.RichTextBox1.Location = New System.Drawing.Point(0, 59)
-        Me.RichTextBox1.Multiline = False
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(800, 391)
-        Me.RichTextBox1.TabIndex = 3
-        Me.RichTextBox1.Text = "Console>"
+        Me.RichTextBoxCommandBox.BackColor = System.Drawing.Color.Black
+        Me.RichTextBoxCommandBox.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.RichTextBoxCommandBox.DetectUrls = False
+        Me.RichTextBoxCommandBox.Dock = System.Windows.Forms.DockStyle.Top
+        Me.RichTextBoxCommandBox.Font = New System.Drawing.Font("Consolas", 12.0!)
+        Me.RichTextBoxCommandBox.ForeColor = System.Drawing.Color.White
+        Me.RichTextBoxCommandBox.Location = New System.Drawing.Point(0, 0)
+        Me.RichTextBoxCommandBox.Multiline = False
+        Me.RichTextBoxCommandBox.Name = "RichTextBoxCommandBox"
+        Me.RichTextBoxCommandBox.Size = New System.Drawing.Size(798, 18)
+        Me.RichTextBoxCommandBox.TabIndex = 3
+        Me.RichTextBoxCommandBox.Text = "Console>"
+        '
+        'Panel2
+        '
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.RichTextBoxCommandHistory)
+        Me.Panel2.Controls.Add(Me.RichTextBoxCommandBox)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel2.Location = New System.Drawing.Point(0, 59)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(800, 391)
+        Me.Panel2.TabIndex = 5
+        '
+        'RichTextBoxCommandHistory
+        '
+        Me.RichTextBoxCommandHistory.BackColor = System.Drawing.Color.Black
+        Me.RichTextBoxCommandHistory.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.RichTextBoxCommandHistory.DetectUrls = False
+        Me.RichTextBoxCommandHistory.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RichTextBoxCommandHistory.Font = New System.Drawing.Font("Consolas", 12.0!)
+        Me.RichTextBoxCommandHistory.ForeColor = System.Drawing.Color.White
+        Me.RichTextBoxCommandHistory.Location = New System.Drawing.Point(0, 18)
+        Me.RichTextBoxCommandHistory.Name = "RichTextBoxCommandHistory"
+        Me.RichTextBoxCommandHistory.ReadOnly = True
+        Me.RichTextBoxCommandHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None
+        Me.RichTextBoxCommandHistory.Size = New System.Drawing.Size(798, 371)
+        Me.RichTextBoxCommandHistory.TabIndex = 4
+        Me.RichTextBoxCommandHistory.Text = ""
         '
         'Commander
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -160,6 +191,7 @@ Partial Class Commander
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -172,5 +204,7 @@ Partial Class Commander
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents SegToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
-    Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents RichTextBoxCommandBox As RichTextBox
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents RichTextBoxCommandHistory As RichTextBox
 End Class

@@ -30,11 +30,6 @@ Public Class TryController
     Private Sub TryController_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim args As String = Environment.CommandLine
 
-        'If args.Contains("/ReturnVersion") = True Then
-        '    System.Console.WriteLine(GetVersion)
-        '    End
-        'End If
-
         If args.Contains("/InstallApp:") = True Then
 
             Dim strlist As String() = Environment.GetCommandLineArgs()

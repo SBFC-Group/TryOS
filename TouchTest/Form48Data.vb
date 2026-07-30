@@ -23,7 +23,7 @@
 
         Public Sub OpenLogonForm()
             UI.DisableOpenFramework = True
-            If My.Computer.FileSystem.FileExists(LogonUser.UserFolderPath & "\Settings\AllowCustom.swfiles") Then
+            If My.Computer.FileSystem.FileExists(LogonUser.UserFolderPath & "\Settings\AllowCustom.swfiles") = True Then
                 UI.DisableCustomCode = False
             Else
                 UI.DisableCustomCode = True
@@ -52,7 +52,9 @@
                     UI.LogonBool = False
                 End If
             Catch ex As Exception
-
+                If Environment.CommandLine.Contains("/DevMode") Then
+                    Debug.WriteLine(ex.Message)
+                End If
             End Try
 
         End Sub

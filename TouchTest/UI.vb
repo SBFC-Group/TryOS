@@ -411,10 +411,11 @@ Public Class UI
         End If
     End Sub
 
+    ''' <summary>This isn't used.</summary>
     Public Sub CreateNewUser(Username As String, Password As String)
-
     End Sub
 
+    ''' <summary>This loads the shell. (Form1)</summary>
     Public Sub LoadShell(Optional Username As String = "", Optional Password As String = "")
         If Username = "" Then
 
@@ -423,11 +424,9 @@ Public Class UI
             Form1.Password = Password
         End If
         Form1.Show()
-        'Form1.Panel2.BackColor = Color.FromArgb(55, Color.Silver)
-        'Form1.TimebarPanel.BackColor = Color.FromArgb(55, Color.Silver)
-
     End Sub
 
+    ''' <summary>This isn't used</summary>
     Public Sub RunShellPrograms(Run_ As String)
         If Run_ = "LogonPage" Then
             Form48.Show()
@@ -767,16 +766,19 @@ Public Class UI
 
                         Return plugin.GetForm()
                     Catch ex As Exception
+                        If Environment.CommandLine.Contains("/DevMode") = True Then
+                            Debug.WriteLine(ex.Message)
+                        End If
                         ShowError(ex.Message)
-                        Debug.WriteLine(ex.Message)
-
                     End Try
                 End If
             Next
             Return Nothing
         Catch Exceptionthing As Exception
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                Debug.WriteLine(Exceptionthing.Message)
+            End If
             ShowError(Exceptionthing.Message)
-            Debug.WriteLine(Exceptionthing.Message)
             Return Nothing
         End Try
     End Function

@@ -42,10 +42,26 @@ Public Class Main
     End Sub
 
     Public Function GetForm() As Form Implements OpenFramework_Interface.GetForm
+
         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\SettingsApp.SettingsForm.txt") Then
-            Return New SettingsForm
+            If Controller.ContainsSetting("DisableNewSettings") = True Then
+                Dim bool As Boolean = False
+                Try
+                    bool = Convert.ToBoolean(Controller.GetSettingValue("DisableNewSettings"))
+                Catch ex As Exception
+                End Try
+
+                If bool = True Then
+                    Return New TouchTest.SettingsForm
+                Else
+                    Return New SettingsForm
+                End If
+            Else
+                Return New SettingsForm
+            End If
+
         Else
-            Return New TouchTest.SettingsForm
+                Return New TouchTest.SettingsForm
         End If
 
 

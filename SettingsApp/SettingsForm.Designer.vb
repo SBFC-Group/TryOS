@@ -33,6 +33,7 @@ Partial Class SettingsForm
         Me.DeviceInfoButton = New System.Windows.Forms.Button()
         Me.SettingsPanel = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.AppButton = New System.Windows.Forms.Button()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -45,6 +46,7 @@ Partial Class SettingsForm
         Me.FlowLayoutPanel1.Controls.Add(Me.UpdateButton)
         Me.FlowLayoutPanel1.Controls.Add(Me.AdministratorToolsButton)
         Me.FlowLayoutPanel1.Controls.Add(Me.DeviceInfoButton)
+        Me.FlowLayoutPanel1.Controls.Add(Me.AppButton)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
@@ -138,6 +140,18 @@ Partial Class SettingsForm
         '
         Me.Timer1.Enabled = True
         '
+        'AppButton
+        '
+        Me.AppButton.BackgroundImage = CType(resources.GetObject("AppButton.BackgroundImage"), System.Drawing.Image)
+        Me.AppButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.AppButton.FlatAppearance.BorderSize = 0
+        Me.AppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.AppButton.Location = New System.Drawing.Point(3, 621)
+        Me.AppButton.Name = "AppButton"
+        Me.AppButton.Size = New System.Drawing.Size(102, 97)
+        Me.AppButton.TabIndex = 6
+        Me.AppButton.UseVisualStyleBackColor = True
+        '
         'SettingsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -163,4 +177,5 @@ Partial Class SettingsForm
     Friend WithEvents AdministratorToolsButton As Windows.Forms.Button
     Friend WithEvents DeviceInfoButton As Windows.Forms.Button
     Friend WithEvents Timer1 As Windows.Forms.Timer
+    Friend WithEvents AppButton As Windows.Forms.Button
 End Class
