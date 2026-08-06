@@ -49,7 +49,7 @@ Public Class UpdateApp
         Label1.Text = "Version: " & Main.Controller.GetProgramVersion()
 
         Branch = Main.Controller.RunCommand("GetBranch")
-        Debug.WriteLine(Branch)
+        'Debug.WriteLine(Branch)
 
         If My.Computer.FileSystem.DirectoryExists(My.Application.Info.DirectoryPath & "\Settings") Then
             If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Settings\Updater.exe") = False Then
