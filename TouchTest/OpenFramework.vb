@@ -5,7 +5,7 @@ Namespace OpenFramework_Data
     Public Class OpenFramework
 
         Public Shared Function GetOpenFrameworkVersion()
-            Return "0.37.4"
+            Return "0.37.5"
         End Function
 
         Public Shared FlowLayoutPanelUse As FlowLayoutPanel = Form1.FlowLayoutPanel1
@@ -24,7 +24,7 @@ Namespace OpenFramework_Data
                     For Each p In plugins
                         Try
                             If Environment.CommandLine.Contains("/DevMode") = True Then
-                                Debug.WriteLine("Loaded App: " & p.Name)
+                                TryController.DebugManager.WriteLine("Loaded App: " & p.Name)
                             End If
                             p.OpenFramework_Interface.Initialize(host)
                             Dim btn As New Button()
@@ -43,7 +43,7 @@ Namespace OpenFramework_Data
                         End Try
                     Next
                 Catch ex As Exception
-                    UI.ShowError("Something has changed to make your app not work.")
+                    UI.ShowError("App loading has failed.")
                 End Try
             Else
                 UI.ShowError("Apps Folder does not exist.")
@@ -155,7 +155,7 @@ Namespace OpenFramework_Data
             Dim InDevMode As Boolean = False
             If Environment.CommandLine.Contains("/DevMode") = True Then
                 InDevMode = True
-                Debug.WriteLine("Function Name: LoadAppsDlls()")
+                TryController.DebugManager.WriteLine("Function Name: LoadAppsDlls()")
             End If
 
             'If AppFormlist.Any = True Then
@@ -173,7 +173,7 @@ Namespace OpenFramework_Data
 
             If My.Computer.FileSystem.DirectoryExists(dir1) = False Then
                 If InDevMode = True Then
-                    Debug.WriteLine(dir1 & " Does not exist or you don't own the folder.")
+                    TryController.DebugManager.WriteLine(dir1 & " Does not exist or you don't own the folder.")
                 End If
                 Return Nothing
             End If
@@ -183,7 +183,7 @@ Namespace OpenFramework_Data
             files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
             For Each file In files
                 If InDevMode = True Then
-                    Debug.WriteLine($"Apps Folder Name: {file.Name}")
+                    TryController.DebugManager.WriteLine($"Apps Folder Name: {file.Name}")
                 End If
 
                 Dim Path As String = ""
@@ -191,7 +191,7 @@ Namespace OpenFramework_Data
                 Path = file.FullName
 
                 If Not IO.Directory.Exists(Path) Then
-                    Debug.WriteLine(Path & " Does not exist or you don't own the folder.")
+                    TryController.DebugManager.WriteLine(Path & " Does not exist or you don't own the folder.")
                 Else
                     Dim DllPath As String = ""
                     Dim ContinueThis As Boolean = False
@@ -238,7 +238,7 @@ Namespace OpenFramework_Data
                                     Catch ex As Exception
                                         UI.ShowError(ex.Message)
                                         If Environment.CommandLine.Contains("/DevMode") = True Then
-                                            Debug.WriteLine(ex.Message)
+                                            TryController.DebugManager.WriteLine(ex.Message)
                                         End If
                                     End Try
                                 End If
@@ -246,7 +246,7 @@ Namespace OpenFramework_Data
                         Catch Exceptionthing As Exception
                             UI.ShowError(Exceptionthing.Message)
                             If Environment.CommandLine.Contains("/DevMode") = True Then
-                                Debug.WriteLine(Exceptionthing.Message)
+                                TryController.DebugManager.WriteLine(Exceptionthing.Message)
                             End If
                         End Try
 

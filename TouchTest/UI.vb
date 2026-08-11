@@ -17,6 +17,7 @@ Public Class UI
 
     Public Shared Event Command_Exetured(sender As Object, Command As String)
 
+    ''' <summary>This allows you to run a command or run a command and it returns the requested object.</summary>
     Public Function RunCommands(Command As String, User As UserManager, Optional TheForm As Object = Nothing)
         Dim IsUserNothing As Boolean
         IsUserNothing = User.SandboxedUser
@@ -240,28 +241,37 @@ Public Class UI
             Return New DefaultAppClass(Form1.User)
         ElseIf Command.Contains("whoami") = True Then
             If Command.Contains("/nogui") = True Then
-                Return Form1.User.Role
-            Else
-                Dim TheRole As TryController.Roles = Form1.User.Role
-                Dim StringRole As String
-
-                If TheRole = TouchTest.TryController.Roles.StandardSandbox Then
-                    StringRole = "StandardSandbox"
-                ElseIf TheRole = TouchTest.TryController.Roles.Guest Then
-                    StringRole = "Guest"
-                ElseIf TheRole = TouchTest.TryController.Roles.Standard Then
-                    StringRole = "Standard"
-                ElseIf TheRole = TouchTest.TryController.Roles.Administrator Then
-                    StringRole = "Administrator"
-                ElseIf TheRole = TouchTest.TryController.Roles.Program Then
-                    StringRole = "Program"
-                ElseIf TheRole = TouchTest.TryController.Roles.Developer Then
-                    StringRole = "Developer"
+                If Command.Contains("/role") = True Then
+                    Return Form1.User.Role
                 Else
-                    StringRole = "Unknown"
+                    Return Form1.User.Username
                 End If
-                ShowError(StringRole, ErrorMSGBox.Alerts.Information)
-                Return StringRole
+            Else
+                If Command.Contains("/role") = True Then
+                    'Dim TheRole As TryController.Roles = Form1.User.Role
+                    'Dim StringRole As String
+
+                    'If TheRole = TouchTest.TryController.Roles.StandardSandbox Then
+                    '    StringRole = "StandardSandbox"
+                    'ElseIf TheRole = TouchTest.TryController.Roles.Guest Then
+                    '    StringRole = "Guest"
+                    'ElseIf TheRole = TouchTest.TryController.Roles.Standard Then
+                    '    StringRole = "Standard"
+                    'ElseIf TheRole = TouchTest.TryController.Roles.Administrator Then
+                    '    StringRole = "Administrator"
+                    'ElseIf TheRole = TouchTest.TryController.Roles.Program Then
+                    '    StringRole = "Program"
+                    'ElseIf TheRole = TouchTest.TryController.Roles.Developer Then
+                    '    StringRole = "Developer"
+                    'Else
+                    '    StringRole = "Unknown"
+                    'End If
+                    ShowError(Form1.User.Role.ToString)
+                    Return Form1.User.Role.ToString
+                Else
+                    ShowError(Form1.User.Username)
+                    Return Form1.User.Username
+                End If
             End If
         ElseIf Command.Contains("ThemeManager") = True Then
             If Command.Contains("/GetResource") = True Then
@@ -328,6 +338,7 @@ Public Class UI
             Return Nothing
         End If
     End Function
+
     Public Sub StartCMD(Optional GG As String = "New")
         Form1.OpenChildForm(New Commander)
     End Sub
@@ -666,7 +677,7 @@ Public Class UI
     Public Sub UploadWallpaperToShell(Number As Integer, FileFormat As String)
         If IsOldWallpaperUsable = False Then
             If Environment.CommandLine.Contains("/DevMode") = True Then
-                Debug.WriteLine("The Older Wallpaper System is disabled.")
+                TryController.DebugManager.WriteLine("The Older Wallpaper System is disabled.")
             End If
             Return
         End If
@@ -767,7 +778,7 @@ Public Class UI
                         Return plugin.GetForm()
                     Catch ex As Exception
                         If Environment.CommandLine.Contains("/DevMode") = True Then
-                            Debug.WriteLine(ex.Message)
+                            TryController.DebugManager.WriteLine(ex.Message)
                         End If
                         ShowError(ex.Message)
                     End Try
@@ -776,7 +787,7 @@ Public Class UI
             Return Nothing
         Catch Exceptionthing As Exception
             If Environment.CommandLine.Contains("/DevMode") = True Then
-                Debug.WriteLine(Exceptionthing.Message)
+                TryController.DebugManager.WriteLine(Exceptionthing.Message)
             End If
             ShowError(Exceptionthing.Message)
             Return Nothing
@@ -948,7 +959,7 @@ Public Class UI
         Dim dirinfo As New System.IO.DirectoryInfo(Form1.User.UserFolderPath & "\Settings\PastNotifications")
         files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
         For Each file In files
-            'Debug.WriteLine(file.Name)
+            'TryController.DebugManager.WriteLine(file.Name)
 
             If NotiInPath.Contains(file.Name) = False Then
                 DoesNotExistAnymore.Add(file.Name)

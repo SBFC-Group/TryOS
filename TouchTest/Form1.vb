@@ -121,10 +121,12 @@ Public Class Form1
             End If
         End If
 
-        If My.Computer.FileSystem.FileExists(User.UserFolderPath & "\Settings\DisallowCustom.swfiles") Then
-            UI.DisableCustomCode = True
-        Else
-            UI.DisableCustomCode = False
+        If UI.LogonBool = False Then
+            If My.Computer.FileSystem.FileExists(User.UserFolderPath & "\Settings\DisallowCustom.swfiles") Then
+                UI.DisableCustomCode = True
+            Else
+                UI.DisableCustomCode = False
+            End If
         End If
 
         'Checks if DisableCustomCode is false
@@ -138,7 +140,7 @@ Public Class Form1
 
                 For Each plugin In plugins
                     If Environment.CommandLine.Contains("/DevMode") = True Then
-                        Debug.WriteLine("Loaded plugin: " & plugin.Name)
+                        TryController.DebugManager.WriteLine("Loaded plugin: " & plugin.Name)
                     End If
                     plugin.ExecuteDebug(Me)
                     plugin.ExecuteUISubs(UI)
@@ -164,7 +166,7 @@ Public Class Form1
                     UseNewerAppViewer = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\UseAppViewer.setting"))
                 Catch ex As Exception
                     If Environment.CommandLine.Contains("/DevMode") = True Then
-                        Debug.WriteLine(ex.Message)
+                        TryController.DebugManager.WriteLine(ex.Message)
                     End If
                     UI.ShowError("Couldn't get an boolean from the file.")
                 End Try
@@ -378,7 +380,7 @@ Public Class Form1
 
             Dim AppInt As Int64 = UI.RunCommands("GetAppIndex", TryController.Resuteg(TryController.CoreID))
 
-            Debug.WriteLine("Closing App Index: " & AppInt)
+            TryController.DebugManager.WriteLine("Closing App Index: " & AppInt)
 
             Dim tempapplist As List(Of Form) = UI.RunCommands("GetAppList", TryController.Resuteg(TryController.CoreID))
 
@@ -388,7 +390,7 @@ Public Class Form1
                 tempform = tempapplist.Item(AppInt)
             Catch ex As Exception
                 If Environment.CommandLine.Contains("/DevMode") = True Then
-                    Debug.WriteLine(ex.Message)
+                    TryController.DebugManager.WriteLine(ex.Message)
                 End If
                 Return
             End Try

@@ -33,7 +33,7 @@
                 NewButton.Button1.Text = f.Text
                 FlowLayoutPanel1.Controls.Add(NewButton)
             Catch ex As Exception
-                Debug.WriteLine(ex.Message)
+                TryController.DebugManager.WriteLine(ex.Message)
             End Try
 
         Next

@@ -5,6 +5,8 @@ Public Class TryController
     Private HasBeenOpened As Boolean = False
     Private StartSafe As Boolean = False
 
+    Public DebugManager As DebugManager
+
     Public Sub New()
 
         ' This call is required by the designer.
@@ -50,6 +52,10 @@ Public Class TryController
             End If
 
 
+        End If
+
+        If args.Contains("/DevMode") = True Then
+            DebugManager = New DebugManager
         End If
 
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\ShellName.setting") Then
@@ -177,7 +183,7 @@ Public Class TryController
                 End If
             Next
         Catch ex As Exception
-            Debug.WriteLine(ex.Message)
+            DebugManager.WriteLine(ex.Message)
         End Try
 
     End Sub

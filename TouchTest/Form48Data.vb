@@ -53,7 +53,7 @@
                 End If
             Catch ex As Exception
                 If Environment.CommandLine.Contains("/DevMode") Then
-                    Debug.WriteLine(ex.Message)
+                    TryController.DebugManager.WriteLine(ex.Message)
                 End If
             End Try
 

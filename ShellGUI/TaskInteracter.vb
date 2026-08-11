@@ -5,7 +5,9 @@ Public Class TaskInteracter
         If Main.Form1.UseNewerAppViewer = True Then
             Dim AppInt As Int64 = Main.UI.RunCommands("GetAppIndex", Main.TryController.Resuteg(Main.TryController.CoreID))
 
-            Debug.WriteLine("Closing App Index: " & AppInt)
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                Main.TryController.DebugManager.WriteLine("Closing App Index: " & AppInt)
+            End If
 
             Dim tempapplist As List(Of Form) = Main.UI.RunCommands("GetAppList", Main.TryController.Resuteg(Main.TryController.CoreID))
 
@@ -15,7 +17,7 @@ Public Class TaskInteracter
                 tempform = tempapplist.Item(AppInt)
             Catch ex As Exception
                 If Environment.CommandLine.Contains("/DevMode") = True Then
-                    Debug.WriteLine(ex.Message)
+                    Main.TryController.DebugManager.WriteLine(ex.Message)
                 End If
                 Return
             End Try

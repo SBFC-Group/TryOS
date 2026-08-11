@@ -41,7 +41,7 @@
     End Sub
 
     Public Sub WriteLine(value As String)
-        Debug.WriteLine(value)
+        TryController.DebugManager.WriteLine(value)
     End Sub
 
     Public Function ReadLine() As String

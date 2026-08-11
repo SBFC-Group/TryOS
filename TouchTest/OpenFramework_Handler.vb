@@ -78,7 +78,7 @@ Public Class OpenFramework_Handler
             Form1.AppList.RemoveAt(Form1.AppList.IndexOf(form))
         Catch ex As Exception
             If Environment.CommandLine.Contains("/DevMode") = True Then
-                Debug.WriteLine(ex.Message)
+                TryController.DebugManager.WriteLine(ex.Message)
             End If
         End Try
     End Sub

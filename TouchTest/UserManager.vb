@@ -317,7 +317,7 @@
             Dim newlist2 As New List(Of String)
 
             For Each str As String In newlist
-                Debug.WriteLine(str)
+                TryController.DebugManager.WriteLine(str)
                 If str.StartsWith(setting & "=") = True Then
                     newlist.Remove(str & "=")
                 Else
@@ -337,7 +337,7 @@
             Reader = Reader.Replace("
 ;", "")
 
-            'Debug.WriteLine(Reader)
+            'TryController.DebugManager.WriteLine(Reader)
 
             SaveUserSettings(Reader)
         ElseIf type = SettingType.NewSettingName Then
@@ -465,12 +465,12 @@
         For Each str As String In NewList
             If str.Trim().StartsWith(setting & "=") = True Then
                 If Environment.CommandLine().Contains("/DevMode") = True Then
-                    Debug.WriteLine("Found: " & str.Trim())
+                    TryController.DebugManager.WriteLine("Found: " & str.Trim())
                 End If
                 Return True
             Else
                 If Environment.CommandLine().Contains("/DevMode") = True Then
-                    Debug.WriteLine("Not It: " & str.Trim())
+                    TryController.DebugManager.WriteLine("Not It: " & str.Trim())
                 End If
             End If
         Next

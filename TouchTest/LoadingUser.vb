@@ -82,7 +82,7 @@
                         My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Taskbar_Order.json")
                     Catch ex As Exception
                         If Environment.CommandLine.Contains("/DevMode") = True Then
-                            Debug.WriteLine(ex.Message)
+                            TryController.DebugManager.WriteLine(ex.Message)
                         End If
                     End Try
                 End If
