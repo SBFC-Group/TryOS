@@ -56,13 +56,13 @@ Public Class UserSettings
         If My.Computer.FileSystem.DirectoryExists(Usermanager.UserFolderPath) Then
             If My.Computer.FileSystem.FileExists(Usermanager.UserFolderPath & "\Settings\Password.swfiles") = False Then
                 If Environment.CommandLine.Contains("/DevMode") = True Then
-                    Debug.WriteLine("This directory does not exist. """ & Usermanager.UserFolderPath & """")
+                    TouchTest.TryController.WriteToDebuggerOutput("This directory does not exist. """ & Usermanager.UserFolderPath & """")
                 End If
                 Return
             End If
         Else
             If Environment.CommandLine.Contains("/DevMode") = True Then
-                Debug.WriteLine("This directory does not exist. """ & Usermanager.UserFolderPath & """")
+                TouchTest.TryController.WriteToDebuggerOutput("This directory does not exist. """ & Usermanager.UserFolderPath & """")
             End If
             Return
         End If
@@ -287,7 +287,7 @@ Public Class UserSettings
                         Return pass
                     Catch ex As Exception
                         If Environment.CommandLine.Contains("/DevMode") = True Then
-                            Debug.WriteLine(ex.Message)
+                            TouchTest.TryController.WriteToDebuggerOutput(ex.Message)
                         End If
                     End Try
                 End If
@@ -309,7 +309,7 @@ Public Class UserSettings
                         Return pass
                     Catch ex As Exception
                         If Environment.CommandLine.Contains("/DevMode") = True Then
-                            Debug.WriteLine(ex.Message)
+                            TouchTest.TryController.WriteToDebuggerOutput(ex.Message)
                         End If
                     End Try
                 End If
@@ -415,7 +415,7 @@ Public Class UserSettings
 
                 Catch ex As Exception
                     If Environment.CommandLine.Contains("/DevMode") = True Then
-                        Debug.WriteLine(ex.Message)
+                        TouchTest.TryController.WriteToDebuggerOutput(ex.Message)
                     End If
                 End Try
                 My.Computer.FileSystem.RenameDirectory(My.Application.Info.DirectoryPath & "\Users\" & CurrentUsername, NewUsername)
@@ -501,7 +501,7 @@ Public Class UserSettings
                     DeletePinCodeButton.Visible = False
                 Catch ex As Exception
                     If Environment.CommandLine.Contains("/DevMode") = True Then
-                        Debug.WriteLine(ex.Message)
+                        TouchTest.TryController.WriteToDebuggerOutput(ex.Message)
                     End If
                     Return
                 End Try

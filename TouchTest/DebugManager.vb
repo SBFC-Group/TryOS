@@ -18,7 +18,6 @@
         Else
             WriteToDebugWindow(text)
         End If
-
     End Sub
 
     Public Sub WriteLine(bool As Boolean)

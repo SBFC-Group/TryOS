@@ -104,6 +104,10 @@ Public Class TryController
         End If
     End Sub
 
+    Public Shared Sub WriteToDebuggerOutput(ob As Object)
+        TryController.DebugManager.WriteLine(ob)
+    End Sub
+
     Public Function GetVersion() As String
         Return My.Application.Info.Version.ToString
     End Function

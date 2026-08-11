@@ -50,7 +50,7 @@ Public Class NewNoteDialog
                 My.Computer.FileSystem.CreateDirectory(Main._host.GetUserFolder() & "\Notes")
                 Button1_Click(Me, e)
             Catch ex As UnauthorizedAccessException
-                MsgBox(ex.Message)
+                Main._host.ShowError(ex.Message)
             End Try
         End If
     End Sub

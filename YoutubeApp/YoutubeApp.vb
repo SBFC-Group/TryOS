@@ -33,7 +33,7 @@
             End If
         Catch ex As Exception
             If Environment.CommandLine.Contains("/DevMode") = True Then
-                Debug.WriteLine(ex.Message)
+                TouchTest.TryController.WriteToDebuggerOutput(ex.Message)
             End If
         End Try
     End Sub

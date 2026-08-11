@@ -27,7 +27,7 @@ Public Class UpdateApp
             End If
         Catch ex As Exception
             If Environment.CommandLine.Contains("/DevMode") = True Then
-                Debug.WriteLine(ex.Message)
+                TouchTest.TryController.WriteToDebuggerOutput(ex.Message)
             End If
             Return Nothing
         End Try
@@ -69,6 +69,9 @@ Public Class UpdateApp
 
         Catch ex As Exception
             Main.Controller.ShowError("Download failed: " & ex.Message)
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                TouchTest.TryController.WriteToDebuggerOutput(ex.Message)
+            End If
         End Try
     End Function
 

@@ -99,7 +99,7 @@ Public Class ThemeApp
                 boo = Convert.ToBoolean(Main.Controller.GetSettingValue("IsTransparentEnabled"))
             Catch ex As Exception
                 If Environment.CommandLine.Contains("/DevMode") = True Then
-                    Debug.WriteLine(ex.Message)
+                    TouchTest.TryController.WriteToDebuggerOutput(ex.Message)
                 End If
             End Try
             If boo = True Then
@@ -227,7 +227,7 @@ Public Class ThemeApp
                 boo = Convert.ToBoolean(Main.Controller.GetSettingValue("IsDarkModeForApps"))
             Catch ex As Exception
                 If Environment.CommandLine.Contains("/DevMode") = True Then
-                    Debug.WriteLine(ex.Message)
+                    TouchTest.TryController.WriteToDebuggerOutput(ex.Message)
                 End If
             End Try
             If boo = True Then
@@ -258,7 +258,7 @@ Public Class ThemeApp
                 boo = Convert.ToBoolean(Main.Controller.GetSettingValue("IsDarkModeForProgram"))
             Catch ex As Exception
                 If Environment.CommandLine.Contains("/DevMode") = True Then
-                    Debug.WriteLine(ex.Message)
+                    TouchTest.TryController.WriteToDebuggerOutput(ex.Message)
                 End If
             End Try
             If boo = True Then
