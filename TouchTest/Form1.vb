@@ -116,10 +116,12 @@ Public Class Form1
             End If
         End If
 
-        If My.Computer.FileSystem.FileExists(User.UserFolderPath & "\Settings\DisallowCustom.swfiles") Then
-            UI.DisableCustomCode = True
-        Else
-            UI.DisableCustomCode = False
+        If UI.LogonBool = False Then
+            If My.Computer.FileSystem.FileExists(User.UserFolderPath & "\Settings\DisallowCustom.swfiles") Then
+                UI.DisableCustomCode = True
+            Else
+                UI.DisableCustomCode = False
+            End If
         End If
 
         'Checks if DisableCustomCode is false
@@ -197,6 +199,18 @@ Public Class Form1
     Public Function Z_Funnything1() As FlowLayoutPanel
         Return FlowLayoutPanel1
     End Function
+
+    Public Function Z_Funnything2() As FlowLayoutPanel
+        Return OpenFramework_Data.OpenFramework.FlowLayoutPanelUse
+    End Function
+
+    Public Sub QNKDRGS(ob As Object)
+        Dim ksgd As UserManager = ob
+        If ksgd.Role = TryController.Roles.Program Then
+            Dim ev As New EventArgs
+            Form1_Load(Me, ev)
+        End If
+    End Sub
 
     Public TestingMode As Boolean = True
 

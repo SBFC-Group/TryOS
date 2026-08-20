@@ -199,11 +199,6 @@ Public Class MyControllerForm
         PCC.Visible = False
     End Sub
 
-    Private Sub MyControllerForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'LoadEverything()
-
-    End Sub
-
     Private Sub RemoveHandlerToAll(parent As Control)
         For Each c As Control In parent.Controls
 
@@ -307,7 +302,7 @@ Public Class MyControllerForm
 
     End Sub
 
-    Public Shared Sub LoadTaskInteracter()
+    Public Sub LoadTaskInteracter()
         Dim P2 As Panel = Main.Form1.Funnything()
 
         P2.Controls.Add(TaskInteracter_Panel)
@@ -316,7 +311,7 @@ Public Class MyControllerForm
         TaskInteracter_Panel.BringToFront()
     End Sub
 
-    Public Shared Sub UnloadTaskInteracter()
+    Public Sub UnloadTaskInteracter()
         Dim P2 As Panel = Main.Form1.Funnything()
 
         TaskInteracter_Panel.Dock = DockStyle.None

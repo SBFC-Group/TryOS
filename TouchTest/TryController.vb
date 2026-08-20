@@ -41,7 +41,6 @@ Public Class TryController
 
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\ShellName.setting") Then
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\ShellName.setting")
-            'UI.OpenFormByName(Reader)
 
             Try
                 Dim form As Form = UI.GetForm(Reader)

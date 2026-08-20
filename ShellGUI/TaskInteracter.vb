@@ -5,7 +5,9 @@ Public Class TaskInteracter
         If Main.Form1.UseNewerAppViewer = True Then
             Dim AppInt As Int64 = Main.UI.RunCommands("GetAppIndex", Main.TryController.Resuteg(Main.TryController.CoreID))
 
-            Debug.WriteLine("Closing App Index: " & AppInt)
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                Debug.WriteLine("Closing App Index: " & AppInt)
+            End If
 
             Dim tempapplist As List(Of Form) = Main.UI.RunCommands("GetAppList", Main.TryController.Resuteg(Main.TryController.CoreID))
 
@@ -41,13 +43,13 @@ Public Class TaskInteracter
 
 
             Main.Controller.OpenFramework_SetAppNameValue("")
-
-            'Main.UI.ShowError("Currently this is disabled when the AppViewer is enabled.", TouchTest.ErrorMSGBox.Alerts.Information)
         Else
             Try
                 Main.Form1.currentForm.Close()
             Catch ex As Exception
-
+                If Environment.CommandLine.Contains("/DevMode") = True Then
+                    Debug.WriteLine(ex.Message)
+                End If
             End Try
             If MyControllerForm.IsPCCHere = True Then
                 MyControllerForm.PCC.Visible = True
@@ -56,10 +58,7 @@ Public Class TaskInteracter
                 Main.Form1.IsSettingOpen = False
             End If
             Main.Controller.OpenFramework_SetAppNameValue("")
-
-
         End If
-
     End Sub
 
     Private Sub ResetHandlersOrAddHandlers()
@@ -86,9 +85,5 @@ Public Class TaskInteracter
         End If
 
         ResetHandlersOrAddHandlers()
-    End Sub
-
-    Private Sub UpdateAppList_Tick(sender As Object, e As EventArgs) Handles UpdateAppList.Tick
-
     End Sub
 End Class

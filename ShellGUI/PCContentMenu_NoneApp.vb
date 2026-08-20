@@ -2,14 +2,7 @@
 Imports System.Drawing
 
 Public Class PCContentMenu_NoneApp
-
-
-
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-
-    End Sub
-
-
+    Public IsContextMenuBase As Boolean = False
 
     Public Sub AddItemToMenu(NameItem As String, TextItem As String, YourCode As Action)
         Dim NewButton As New Button
@@ -30,9 +23,6 @@ Public Class PCContentMenu_NoneApp
         NewButton.Tag = YourCode
 
         AddHandler NewButton.Click, AddressOf PluginButton_Click
-        'NewButton.Font = New Font("Trebuchet MS", "14,25pt")
-        'AddHandler NewButton.Click, 
-
     End Sub
 
     Private Sub PluginButton_Click(sender As Object, e As EventArgs)
@@ -76,12 +66,6 @@ Public Class PCContentMenu_NoneApp
                                                               Main.UI.StartCMD()
                                                           End Sub)
         End If
-
-    End Sub
-
-    Public IsContextMenuBase As Boolean = False
-
-    Private Sub PCContentMenu_NoneApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 

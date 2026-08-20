@@ -79,5 +79,47 @@ Public Class OpenFramework_Handler
     Public Sub CloseApp(form As Form) Implements OpenFramework_UI_Handler.CloseApp
         form.Close()
         OpenFramework_Data.OpenFramework.AppName = ""
+        Try
+            Form1.AppList.RemoveAt(Form1.AppList.IndexOf(form))
+        Catch ex As Exception
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                Debug.WriteLine(ex.Message)
+            End If
+        End Try
     End Sub
+
+    ''' <summary>This is here to allow newer apps to start on 1.1. But It doesn't do anything.</summary>
+    Public Sub SendNotification(Title As String, Text As String, NotificationType As NotificationClass.NotificationType) Implements OpenFramework_UI_Handler.SendNotification
+    End Sub
+
+    ''' <summary>This is here to allow newer apps to start on 1.1. But It doesn't do anything.</summary>
+    Public Sub CreateNewSetting(setting As String) Implements OpenFramework_UI_Handler.CreateNewSetting
+    End Sub
+
+    ''' <summary>This is here to allow newer apps to start on 1.1. But It doesn't do anything.</summary>
+    Public Sub DeleteSetting(setting As String) Implements OpenFramework_UI_Handler.DeleteSetting
+    End Sub
+
+    ''' <summary>This is here to allow newer apps to start on 1.1. But It doesn't do anything.</summary>
+    Public Sub RenameSetting(setting As String, NewName As String) Implements OpenFramework_UI_Handler.RenameSetting
+    End Sub
+
+    ''' <summary>This is here to allow newer apps to start on 1.1. But It doesn't do anything.</summary>
+    Public Sub SetNewSettingValue(setting As String, value As String) Implements OpenFramework_UI_Handler.SetNewSettingValue
+    End Sub
+
+    ''' <summary>This is here to allow newer apps to start on 1.1. But It doesn't do anything.</summary>
+    Public Function GetSettingValue(setting As String) As String Implements OpenFramework_UI_Handler.GetSettingValue
+        Return Nothing
+    End Function
+
+    ''' <summary>This is here to allow newer apps to start on 1.1. But It doesn't do anything.</summary>
+    Public Function ContainsSetting(setting As String) As Boolean Implements OpenFramework_UI_Handler.ContainsSetting
+        Return Nothing
+    End Function
+
+    ''' <summary>This is here to allow newer apps to start on 1.1. But It doesn't do anything.</summary>
+    Public Function GetAppPath() As String Implements OpenFramework_UI_Handler.GetAppPath
+        Return Nothing
+    End Function
 End Class

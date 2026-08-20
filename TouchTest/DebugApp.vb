@@ -33,6 +33,8 @@ RunUserControl <usercontrol> - Opens a form that will contain the UserControl"
                 Form1.User = New UserManager("Program")
                 Form1.SandboxedUser = New UserManager("Program", True)
                 Form1.User.LoadUserSettings()
+            ElseIf RichTextBox1.Text.Contains("ShowWindowsVersion") = True Then
+                RichTextBox2.Text = TryController.GetOSVersion()
             Else
                 UI.RunCommands(RichTextBox1.Text, Form1.User, Me)
             End If

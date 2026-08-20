@@ -5,6 +5,8 @@ Public Class ThemeApp
 
     Public FileFormat As ImageFormats
 
+    Public WallpaperCount As Int64 = 1
+
     Public NormalHeightWallpaperMenu As Int64 = 0
 
     Public Sub LoadWallpapers(Format As ImageFormats)
@@ -32,11 +34,13 @@ Public Class ThemeApp
             NewButton.Font = Button5.Font
             NewButton.ForeColor = Button5.ForeColor
             NewButton.Tag = file.FullName
-            NewButton.Text = file.Name
-            NewButton.Text = NewButton.Text.Replace(".jpg", "")
-            NewButton.Text = NewButton.Text.Replace(".png", "")
-            NewButton.Text = NewButton.Text.Replace(".gif", "")
-            NewButton.Text = NewButton.Text.Replace("_", " ")
+            NewButton.Text = "Wallpaper " & WallpaperCount.ToString()
+            WallpaperCount = WallpaperCount + 1
+            'NewButton.Text = file.Name
+            'NewButton.Text = NewButton.Text.Replace(".jpg", "")
+            'NewButton.Text = NewButton.Text.Replace(".png", "")
+            'NewButton.Text = NewButton.Text.Replace(".gif", "")
+            'NewButton.Text = NewButton.Text.Replace("_", " ")
             WallpaperMenu.Size = New Drawing.Size(WallpaperMenu.Size.Width, WallpaperMenu.Size.Height + 45)
             WallpaperMenu.Controls.Add(NewButton)
             AddHandler NewButton.Click, AddressOf SetWallpaper

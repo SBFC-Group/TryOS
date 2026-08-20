@@ -62,7 +62,6 @@ Namespace OpenFramework_Data
             AppName = frm.Text
             frm.Text = plugin.Name
             Form1.OpenChildForm(frm)
-
         End Sub
 
         Public Shared Sub SaveButtonOrder(Optional ControlThing As Control = Nothing)
@@ -91,6 +90,15 @@ Namespace OpenFramework_Data
             End If
 
         End Sub
+
+        Public Shared Function loadapps(user As Object) As Object
+            Dim int As Int64 = user
+            If TryController.CoreID = int Then
+                Return host
+            Else
+                Return Nothing
+            End If
+        End Function
 
         Public Shared Sub RestoreButtonOrder(Optional ControlThing As Control = Nothing)
             If ControlThing IsNot Nothing Then
