@@ -17,7 +17,7 @@ RunUserControl <usercontrol> - Opens a form that will contain the UserControl"
                 UI.ShowError("Hello World")
             ElseIf RichTextBox1.Text.Contains("TestStopWindow") = True Then
                 If MsgBox("This WILL Crash the program. Are you sure you want to do this?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                    Dim test As Button
+                    Dim test As Button = Nothing
                     test.Text = "Hello world"
                 End If
                 'UI.ShowStopWindow("Hello World")
