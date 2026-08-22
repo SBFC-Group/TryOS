@@ -22,7 +22,10 @@
     Private Sub CloseEveryForm()
         Me.BeginInvoke(Sub()
                            For Each frm As Form In Application.OpenForms.OfType(Of Form)().ToList()
-                               If frm IsNot Me Then
+                               If frm Is Me Then
+                               ElseIf frm Is TryController Then
+                               ElseIf frm Is DebugManagerWindow Then
+                               Else
                                    frm.Close()
                                End If
                            Next

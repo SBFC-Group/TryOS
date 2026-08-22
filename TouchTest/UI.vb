@@ -343,8 +343,8 @@ Public Class UI
         Form1.OpenChildForm(New Commander)
     End Sub
 
-    Public Function Q_F(kk As String) As FormCollection
-        If kk = "4321" Then
+    Public Function Q_F(ob As Object) As Object
+        If ob = "4321" Then
             Return My.Application.OpenForms
         Else
             Return Nothing

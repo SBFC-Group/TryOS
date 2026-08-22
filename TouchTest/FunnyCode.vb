@@ -36,11 +36,9 @@
             Else
                 OpenFramework_Data.OpenFramework.LoadApps(Form1.SandboxedUser)
             End If
-
         End Sub
 
         Public Shared Sub _8(folderpath As String)
-
         End Sub
 
         Public Shared Sub _9()
@@ -58,6 +56,34 @@
 
         Public Shared Function _12()
             Return OpenFramework_Data.OpenFramework.FlowLayoutPanelUse
+        End Function
+
+        Public Shared Function _13()
+            Return Form1
+        End Function
+
+        Public Shared Function _14()
+            Return UI
+        End Function
+
+        Public Shared Function _15()
+            Return Nothing
+        End Function
+
+        Public Shared Function _16()
+            Return Nothing
+        End Function
+
+        Public Shared Function _17()
+            Return Nothing
+        End Function
+
+        Public Shared Function _18()
+            Return Nothing
+        End Function
+
+        Public Shared Function _19()
+            Return Nothing
         End Function
     End Class
 End Namespace

@@ -9,6 +9,10 @@ Public Class TestFileExplorer
     }
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Environment.CommandLine.Contains("/DevMode") = False Then
+            Close()
+        End If
+
         ' Setup ListView
         ListView1.View = View.Details
         ListView1.FullRowSelect = True

@@ -28,7 +28,10 @@ Restore-TryOS-Store - Restores TryOS Store from internal .tryapp file"
             ElseIf RichTextBox1.Text.Contains("TestErrorBox") = True Then
                 UI.ShowError("Hello World")
             ElseIf RichTextBox1.Text.Contains("TestStopWindow") = True Then
-                UI.ShowStopWindow("Hello World")
+                If MsgBox("This will Crash the program by using a Form that is nothing/null. Do you want to crash the program?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    Dim s As Form = Nothing
+                    s.Show()
+                End If
             ElseIf RichTextBox1.Text.Contains("ShowProgramVersion") = True Then
                 RichTextBox2.Text = My.Application.Info.Version.ToString
             ElseIf RichTextBox1.Text.Contains("TestThis") = True Then
