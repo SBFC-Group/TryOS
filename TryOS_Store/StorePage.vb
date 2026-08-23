@@ -10,24 +10,29 @@
 
     Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
         If e.IsSuccess = True Then
-            'Sets the UserAgent to TryOS Store's Version (Allows The TryOS Store webpage to find what version of app is used)
-            WebView21.CoreWebView2.Settings.UserAgent = "TryOS-Store=" & Main.VersionThing.Major.ToString & "." & Main.VersionThing.Minor.ToString & "." & Main.VersionThing.Build.ToString
+            Try
+                'Sets the UserAgent to TryOS Store's Version (Allows The TryOS Store webpage to find what version of app is used)
+                WebView21.CoreWebView2.Settings.UserAgent = "TryOS-Store=" & Main.VersionThing.Major.ToString & "." & Main.VersionThing.Minor.ToString & "." & Main.VersionThing.Build.ToString
 
-            'This SHOULD disable the DefaultScriptDialog and use the custom one
-            WebView21.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = False
-            AddHandler WebView21.CoreWebView2.ScriptDialogOpening, AddressOf CoreWebView2_ScriptDialogOpening
+                'This SHOULD disable the DefaultScriptDialog and use the custom one
+                WebView21.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = False
+                AddHandler WebView21.CoreWebView2.ScriptDialogOpening, AddressOf CoreWebView2_ScriptDialogOpening
 
-            WebView21Control = WebView21.CoreWebView2
+                WebView21Control = WebView21.CoreWebView2
 
-            'Does some role crap
-            Dim TheRole As TouchTest.TryController.Roles = Main.Controller.RunCommand("whoami /nogui")
-            If TheRole = TouchTest.TryController.Roles.Developer Then
-            Else
-                WebView21.CoreWebView2.Settings.AreDefaultContextMenusEnabled = False
-                WebView21.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = False
-                WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
-                WebView21.CoreWebView2.Settings.IsStatusBarEnabled = False
-            End If
+                'Does some role crap
+                Dim TheRole As TouchTest.TryController.Roles = Main.Controller.GetRole()
+                If TheRole = TouchTest.TryController.Roles.Developer Then
+                Else
+                    WebView21.CoreWebView2.Settings.AreDefaultContextMenusEnabled = False
+                    WebView21.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = False
+                    WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
+                    WebView21.CoreWebView2.Settings.IsStatusBarEnabled = False
+                End If
+            Catch ex As Exception
+                Debug.WriteLine(ex.Message & " More: " & ex.ToString)
+            End Try
+
         End If
     End Sub
 

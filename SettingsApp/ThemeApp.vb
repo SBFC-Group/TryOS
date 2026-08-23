@@ -69,6 +69,7 @@ Public Class ThemeApp
     End Enum
 
     Private Sub png_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        WallpaperNumber = 0
         Button2.Enabled = False
         Button3.Enabled = True
         Button4.Enabled = True
@@ -76,6 +77,7 @@ Public Class ThemeApp
     End Sub
 
     Private Sub jpg_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        WallpaperNumber = 0
         Button2.Enabled = True
         Button3.Enabled = False
         Button4.Enabled = True
@@ -83,6 +85,7 @@ Public Class ThemeApp
     End Sub
 
     Private Sub gif_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        WallpaperNumber = 0
         Button2.Enabled = True
         Button3.Enabled = True
         Button4.Enabled = False
@@ -263,16 +266,16 @@ Public Class ThemeApp
             End Try
             If boo = True Then
                 Main.Controller.SetNewSettingValue("IsDarkModeForProgram", "False")
-                IsDarkModeForAppsOn = False
+                IsDarkModeForProgramsOn = False
 
-                Button6.Text = "Use Normal Mode for Programs"
+                Button7.Text = "Use Normal Mode for Programs"
 
                 Main.Controller.RunCommand("ThemeManager /SetResource DarkModeForPrograms=False")
             Else
                 Main.Controller.SetNewSettingValue("IsDarkModeForProgram", "True")
-                IsDarkModeForAppsOn = True
+                IsDarkModeForProgramsOn = True
 
-                Button6.Text = "Use Dark Mode for Programs"
+                Button7.Text = "Use Dark Mode for Programs"
 
                 Main.Controller.RunCommand("ThemeManager /SetResource DarkModeForPrograms=True")
             End If

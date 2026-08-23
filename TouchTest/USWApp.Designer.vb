@@ -43,12 +43,12 @@ Partial Class USWApp
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.AxWindowsMediaPlayer1 = New AxWMPLib.AxWindowsMediaPlayer()
         Me.StartMainTimer = New System.Windows.Forms.Timer(Me.components)
         Me.MainTimer = New System.Windows.Forms.Timer(Me.components)
@@ -71,7 +71,7 @@ Partial Class USWApp
         Me.SetupPanel.Controls.Add(Me.Panel1)
         Me.SetupPanel.Location = New System.Drawing.Point(21, 26)
         Me.SetupPanel.Name = "SetupPanel"
-        Me.SetupPanel.Size = New System.Drawing.Size(955, 564)
+        Me.SetupPanel.Size = New System.Drawing.Size(957, 564)
         Me.SetupPanel.TabIndex = 1
         '
         'Panel2
@@ -93,7 +93,7 @@ Partial Class USWApp
         Me.Panel2.Controls.Add(Me.NumberButton3)
         Me.Panel2.Controls.Add(Me.NumberButton5)
         Me.Panel2.Controls.Add(Me.NumberButton4)
-        Me.Panel2.Location = New System.Drawing.Point(654, 32)
+        Me.Panel2.Location = New System.Drawing.Point(655, 32)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(264, 341)
         Me.Panel2.TabIndex = 3
@@ -287,7 +287,7 @@ Partial Class USWApp
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(40, 32)
+        Me.Panel1.Location = New System.Drawing.Point(41, 32)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(607, 341)
         Me.Panel1.TabIndex = 2
@@ -315,6 +315,18 @@ Partial Class USWApp
         Me.Button4.TabIndex = 7
         Me.Button4.Text = "Create Pincode"
         Me.Button4.UseVisualStyleBackColor = False
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.Gainsboro
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(220, 287)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(174, 47)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "Close Program"
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'Button2
         '
@@ -373,18 +385,6 @@ Partial Class USWApp
         Me.Label1.Size = New System.Drawing.Size(104, 27)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Username"
-        '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(220, 287)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(174, 47)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Close Program"
-        Me.Button1.UseVisualStyleBackColor = False
         '
         'AxWindowsMediaPlayer1
         '

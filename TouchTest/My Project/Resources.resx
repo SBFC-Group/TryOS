@@ -241,4 +241,13 @@
   <data name="Warning_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Warning_3.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="NewLogonPage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewLogonPage.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SettingsApp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SettingsApp.tryapp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="WallpaperNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WallpaperNew.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

@@ -516,6 +516,14 @@
         ChangeValue = 4
     End Enum
 
+    Public Function GetUsername()
+        Return Username
+    End Function
+
+    Public Function GetUserFolderPath()
+        Return UserFolderPath
+    End Function
+
     Private Function GetRole() As TryController.Roles
         If My.Computer.FileSystem.FileExists(UserFolderPath & "\Settings\Role.swfiles") Then
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Role.swfiles")

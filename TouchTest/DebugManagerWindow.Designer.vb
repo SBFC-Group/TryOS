@@ -36,6 +36,8 @@ Partial Class DebugManagerWindow
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
+        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
+        Me.TextBox1.ShortcutsEnabled = False
         Me.TextBox1.Size = New System.Drawing.Size(281, 190)
         Me.TextBox1.TabIndex = 0
         '

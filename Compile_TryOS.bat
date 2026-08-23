@@ -5,7 +5,7 @@ copy ".\TouchTest\bin\Debug\*.dll" ".\TouchTest\bin\Debug\TryOS_Build\"
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Settings"
 copy ".\TouchTest\bin\Debug\Settings\ShellName USW.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\ShellName.setting"
 copy ".\TouchTest\bin\Debug\Settings\LogonWallpaper.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\"
-echo True > ".\TouchTest\bin\Debug\Settings\UseAppViewer.setting"
+echo True > ".\TouchTest\bin\Debug\Settings\TryOS_Build\UseAppViewer.setting"
 
 :: Creates new ShellApps Folder to load newer ui elements and for newer Settings to load the new gui (20-03-2026 now haves the new ShellApp dll)
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\ShellApps"
@@ -46,11 +46,11 @@ mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser"
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Apps"
 echo Nothing > ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Apps\temp.txt"
 
-:: Copys Settings (Program User will only use the older settings files as the newer system is disable for program users)
+:: Copys Settings
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Settings"
 copy ".\TouchTest\bin\Debug\Users\SuperSecretUser\Settings\Password.swfiles" ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Settings\"
 copy ".\TouchTest\bin\Debug\Users\SuperSecretUser\Settings\Role.swfiles" ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Settings\"
-copy ".\TouchTest\bin\Debug\Users\SuperSecretUser\Settings\Wallpaper.swfiles" ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Settings\"
+copy ".\TouchTest\bin\Debug\Users\SuperSecretUser\Settings\Software.swfiles" ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Settings\"
 copy ".\TouchTest\bin\Debug\Users\SuperSecretUser\Settings\UserMode.swfiles" ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Settings\"
 
 :: yeah it creates a temp for later use.
@@ -58,11 +58,13 @@ mkdir ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Temp"
 echo Nothing > ".\TouchTest\bin\Debug\TryOS_Build\Users\SuperSecretUser\Temp\temp.txt"
 
 :: Creates Folder for wallpapers
-mkdir ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers"
-copy ".\TouchTest\bin\Debug\Wallpapers\Wallpaper_1.jpg" ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers\"
-copy ".\TouchTest\bin\Debug\Wallpapers\Wallpaper_2.jpg" ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers\"
-copy ".\TouchTest\bin\Debug\Wallpapers\Wallpaper_3.jpg" ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers\"
-copy ".\TouchTest\bin\Debug\Wallpapers\Wallpaper_4.jpg" ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers\"
+ xcopy ".\TouchTest\bin\Debug\Wallpapers" ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers" /E /I /H
+
+::mkdir ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers"
+:: copy ".\TouchTest\bin\Debug\Wallpapers\Wallpaper_1.jpg" ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers\"
+:: copy ".\TouchTest\bin\Debug\Wallpapers\Wallpaper_2.jpg" ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers\"
+:: copy ".\TouchTest\bin\Debug\Wallpapers\Wallpaper_3.jpg" ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers\"
+:: copy ".\TouchTest\bin\Debug\Wallpapers\Wallpaper_4.jpg" ".\TouchTest\bin\Debug\TryOS_Build\Wallpapers\"
 
 :: Creates the folders that Webview2 needs.
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\runtimes\win-x64\native"
@@ -73,6 +75,10 @@ copy ".\TouchTest\bin\Debug\runtimes\win-x86\native\WebView2Loader.dll" ".\Touch
 :: Copys Main Program .exe
 copy ".\TouchTest\bin\Debug\TouchTest.exe" ".\TouchTest\bin\Debug\TryOS_Build\TryOS.exe"
 :: Add More when needed.
+
+:: Remove Unneeded Files
+del ".\TouchTest\bin\Debug\TryOS_Build\SWFiles.dll"
+del ".\TouchTest\bin\Debug\TryOS_Build\Test.dll"
 
 :: Creates TryOS Store App
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Apps"

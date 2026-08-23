@@ -848,6 +848,7 @@
     <None Include="Resources\logout_90894.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\NewLogonPage.zip" />
     <None Include="Resources\restart_icon_227406.png" />
   </ItemGroup>
   <ItemGroup>
@@ -866,6 +867,7 @@
     <None Include="Resources\Search_find_locate_1542.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\SettingsApp.tryapp" />
     <None Include="Resources\task_manager_18854.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -938,6 +940,7 @@
     <None Include="Resources\desktop-windows_119229.png" />
     <None Include="Resources\Alert_1.wav" />
     <None Include="Resources\Alert_2.png" />
+    <None Include="Resources\WallpaperNew.zip" />
     <None Include="Resources\Warning_2.png" />
     <None Include="Resources\Info_2.png" />
     <None Include="Resources\Alert_3.ico" />

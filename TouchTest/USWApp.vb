@@ -117,8 +117,16 @@
                     'More secure way of storing the webview2 data. (Currently doesn't work.)
                     My.Computer.FileSystem.CreateDirectory(UserFolder & "\Data")
 
+                    Dim Wallpaper As String = Nothing
+
+                    If My.Computer.FileSystem.DirectoryExists(UI.SettingsFolder) Then
+                        If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LogonWallpaper.setting") Then
+                            Wallpaper = UI.WallpaperFolder & "\" & My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LogonWallpaper.setting")
+                        End If
+                    End If
+
                     Dim Role As String = "Vkd0U1RrMXJNVFphZWtKUFlXdHJPUT09"
-                    Dim Software_Config As String = "VjJGc2JIQmhjR1Z5UFdwd1p6MHhPd3BKYzBSaGNtdE5iMlJsUm05eVFYQndjejFHWVd4elpUc0tTWE5WYzJsdVowNWxkMlZ5VjJGc2JIQmhjR1Z5VEc5aFpHVnlQVlJ5ZFdVNw=="
+                    Dim Software_Config As String = "U1hORVlYSnJUVzlrWlVadmNrRndjSE05Um1Gc2MyVTdDa2x6UkdGeWEwMXZaR1ZHYjNKUWNtOW5jbUZ0UFVaaGJITmxPd3BKYzFWemFXNW5UbVYzWlhKWFlXeHNjR0Z3WlhKTWIyRmtaWEk5VkhKMVpUcz0==="
                     Dim UserVersion As String = My.Application.Info.Version.Major.ToString & "." & My.Application.Info.Version.Minor.ToString & "." & My.Application.Info.Version.Build.ToString & "." & My.Application.Info.Version.Revision.ToString
                     'Dim AppList As String = "Settings|ProgramInfo|TryOS_Store_New|Internet++"
                     Dim ReaderForPassword As String = TextBox1.Text
@@ -132,6 +140,7 @@
                         ReaderForPassword = Convert.ToBase64String(byt2)
                     End If
 
+                    My.Computer.FileSystem.WriteAllText(UserFolder & "\Settings\WallpaperImage.swfiles", Wallpaper, False)
                     My.Computer.FileSystem.WriteAllText(UserFolder & "\Settings\Password.swfiles", ReaderForPassword, False)
                     My.Computer.FileSystem.WriteAllText(UserFolder & "\Settings\Role.swfiles", Role, False)
                     My.Computer.FileSystem.WriteAllText(UserFolder & "\Settings\Software.swfiles", Software_Config, False)

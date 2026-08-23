@@ -25,6 +25,32 @@
             TextBox2.Text = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Settings\LastKnownUser.setting")
         End If
 
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Settings\LoadDebugMenu.setting") Then
+            CheckBox1.Enabled = True
+        End If
+
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Settings\DisableConsole.setting") Then
+            Try
+                Dim reader As Boolean = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Settings\DisableConsole.setting"))
+                CheckBox2.Enabled = reader
+            Catch ex As Exception
+                If Environment.CommandLine.Contains("/DevMode") = True Then
+                    TouchTest.TryController.WriteToDebuggerOutput(ex.Message)
+                End If
+            End Try
+        End If
+
+        If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Settings\UserList.setting") Then
+            Try
+                Dim reader As Boolean = Convert.ToBoolean(My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Settings\UserList.setting"))
+                CheckBox3.Enabled = reader
+            Catch ex As Exception
+                If Environment.CommandLine.Contains("/DevMode") = True Then
+                    TouchTest.TryController.WriteToDebuggerOutput(ex.Message)
+                End If
+            End Try
+        End If
+
         If Main.Controller.GetRole() = TouchTest.TryController.Roles.Administrator Then
             CheckBox1.Visible = True
             CheckBox2.Visible = True

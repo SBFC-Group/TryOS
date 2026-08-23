@@ -31,9 +31,9 @@ Partial Class SettingsForm
         Me.UpdateButton = New System.Windows.Forms.Button()
         Me.AdministratorToolsButton = New System.Windows.Forms.Button()
         Me.DeviceInfoButton = New System.Windows.Forms.Button()
+        Me.AppButton = New System.Windows.Forms.Button()
         Me.SettingsPanel = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.AppButton = New System.Windows.Forms.Button()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -127,6 +127,19 @@ Partial Class SettingsForm
         Me.DeviceInfoButton.UseVisualStyleBackColor = True
         Me.DeviceInfoButton.Visible = False
         '
+        'AppButton
+        '
+        Me.AppButton.BackgroundImage = CType(resources.GetObject("AppButton.BackgroundImage"), System.Drawing.Image)
+        Me.AppButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.AppButton.FlatAppearance.BorderSize = 0
+        Me.AppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.AppButton.Location = New System.Drawing.Point(3, 621)
+        Me.AppButton.Name = "AppButton"
+        Me.AppButton.Size = New System.Drawing.Size(102, 97)
+        Me.AppButton.TabIndex = 6
+        Me.AppButton.UseVisualStyleBackColor = True
+        Me.AppButton.Visible = False
+        '
         'SettingsPanel
         '
         Me.SettingsPanel.BackColor = System.Drawing.Color.DarkGray
@@ -139,18 +152,6 @@ Partial Class SettingsForm
         'Timer1
         '
         Me.Timer1.Enabled = True
-        '
-        'AppButton
-        '
-        Me.AppButton.BackgroundImage = CType(resources.GetObject("AppButton.BackgroundImage"), System.Drawing.Image)
-        Me.AppButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.AppButton.FlatAppearance.BorderSize = 0
-        Me.AppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.AppButton.Location = New System.Drawing.Point(3, 621)
-        Me.AppButton.Name = "AppButton"
-        Me.AppButton.Size = New System.Drawing.Size(102, 97)
-        Me.AppButton.TabIndex = 6
-        Me.AppButton.UseVisualStyleBackColor = True
         '
         'SettingsForm
         '
