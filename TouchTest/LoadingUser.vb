@@ -99,62 +99,6 @@
 
                         My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\TempApp.tryapp")
 
-                        If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Username & "\Settings\WallpaperImage.swfiles") = False Then
-                            If My.Computer.FileSystem.FileExists(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles") Then
-                                Dim tempusersetting As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
-                                Dim b As Byte() = Convert.FromBase64String(tempusersetting)
-                                tempusersetting = System.Text.Encoding.UTF8.GetString(b)
-                                b = Convert.FromBase64String(tempusersetting)
-                                tempusersetting = System.Text.Encoding.UTF8.GetString(b)
-
-                                tempusersetting = tempusersetting.Replace("Wallpaper=jpg", "Wallpaper_jpg")
-                                tempusersetting = tempusersetting.Replace("Wallpaper=png", "Wallpaper_png")
-                                tempusersetting = tempusersetting.Replace("Wallpaper=gif", "Wallpaper_gif")
-
-                                User.SaveUserSettings(tempusersetting)
-                                '1 = jpg
-                                '2 = png
-                                '3 = gif
-                                Dim tempformat As String = Nothing
-                                If User.Contains("Wallpaper_jpg") = True Then
-                                    Dim reader As String = User.ReadSetting("Wallpaper_jpg")
-                                    Dim data As String = UI.WallpaperFolder & "\Wallpaper_" & reader & ".jpg"
-
-                                    Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(data)
-                                    data = Convert.ToBase64String(byt)
-                                    byt = System.Text.Encoding.UTF8.GetBytes(data)
-                                    data = Convert.ToBase64String(byt)
-
-                                    My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & Username & "\Settings\WallpaperImage.swfiles", data, False)
-                                    tempformat = "Wallpaper_jpg"
-                                ElseIf User.Contains("Wallpaper_png") = True Then
-                                    Dim reader As String = User.ReadSetting("Wallpaper_png")
-                                    Dim data As String = UI.WallpaperFolder & "\Wallpaper_" & reader & ".png"
-
-                                    Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(data)
-                                    data = Convert.ToBase64String(byt)
-                                    byt = System.Text.Encoding.UTF8.GetBytes(data)
-                                    data = Convert.ToBase64String(byt)
-
-                                    My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & Username & "\Settings\WallpaperImage.swfiles", data, False)
-                                    tempformat = "Wallpaper_png"
-                                ElseIf User.Contains("Wallpaper_gif") = True Then
-                                    Dim reader As String = User.ReadSetting("Wallpaper_gif")
-                                    Dim data As String = UI.WallpaperFolder & "\Wallpaper_" & reader & ".gif"
-
-                                    Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(data)
-                                    data = Convert.ToBase64String(byt)
-                                    byt = System.Text.Encoding.UTF8.GetBytes(data)
-                                    data = Convert.ToBase64String(byt)
-
-                                    My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\" & Username & "\Settings\WallpaperImage.swfiles", data, False)
-                                    tempformat = "Wallpaper_gif"
-                                End If
-
-                                User.ChangeSetting(UserManager.SettingType.Remove, tempformat)
-                            End If
-                        End If
-
                         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Wallpaper.zip") = False Then
                             My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\Wallpaper.zip", My.Resources.WallpaperNew, False)
                         End If
