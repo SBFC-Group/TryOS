@@ -46,8 +46,27 @@ Public Class UpdateApp
 
         Label1.Text = "Version: " & Main.Controller.GetProgramVersion()
 
+        User = New TouchTest.UserManager(Main.Controller.GetUsername)
+
+        If User.DoesSettingExist("ShowUpdatePopUp=True") = True Then
+            ShowUpCheckbox.Checked = True
+            PictureBox1.Visible = True
+            TryOSBigUpdateButton.Visible = True
+            TryOSBigUpdateButton.Enabled = True
+        ElseIf User.DoesSettingExist("ShowUpdatePopUp=False") = True Then
+            ShowUpCheckbox.Checked = False
+            PictureBox1.Visible = False
+            TryOSBigUpdateButton.Visible = False
+            TryOSBigUpdateButton.Enabled = False
+        Else
+            User.AddSettingToUserSettings("ShowUpdatePopUp=True;")
+            ShowUpCheckbox.Checked = True
+            PictureBox1.Visible = True
+            TryOSBigUpdateButton.Visible = True
+            TryOSBigUpdateButton.Enabled = True
+        End If
+
         Branch = Main.Controller.RunCommand("GetBranch")
-        Debug.WriteLine(Branch)
 
         If My.Computer.FileSystem.DirectoryExists(My.Application.Info.DirectoryPath & "\Settings") Then
             If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Settings\Updater.exe") = False Then
@@ -110,6 +129,53 @@ Public Class UpdateApp
             Panel1.BackColor = Drawing.Color.Silver
             Button1.BackColor = Drawing.Color.Gainsboro
             Button2.BackColor = Drawing.Color.Gainsboro
+        End If
+    End Sub
+
+    'Post 1.2 Update code
+
+    Private Sub TryOSBigUpdateButton_Click(sender As Object, e As EventArgs) Handles TryOSBigUpdateButton.Click
+        Try
+            If My.Computer.FileSystem.FileExists(Main.Controller.GetUserFolder & "\Settings\WallpaperImage.swfiles") = False Then
+                Dim reader As String = Main.Controller.RunCommand("GetPathWallpaper")
+
+                Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(reader)
+                reader = Convert.ToBase64String(byt)
+                byt = System.Text.Encoding.UTF8.GetBytes(reader)
+                reader = Convert.ToBase64String(byt)
+
+                My.Computer.FileSystem.WriteAllText(Main.Controller.GetUserFolder & "\Settings\WallpaperImage.swfiles", reader, False)
+            End If
+
+            Dim client As New Net.WebClient()
+
+            DownloadUpdate(client.DownloadString("https://raw.githubusercontent.com/SBFC-Group/TryOS/refs/heads/Plutonium_(1.2)/Z_NonDevVersion.txt").Trim()).Start()
+        Catch ex As Exception
+            If Environment.CommandLine.Contains("/DevMode") = True Then
+                Debug.WriteLine(ex.Message)
+            End If
+        End Try
+    End Sub
+
+    Public User As TouchTest.UserManager
+
+    Private Sub ShowUpCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles ShowUpCheckbox.CheckedChanged
+        If ShowUpCheckbox.Checked = True Then
+            If User.DoesSettingExist("ShowUpdatePopUp=True;") = True Then
+            ElseIf User.DoesSettingExist("ShowUpdatePopUp=False;") = True Then
+                User.ReplaceSettingInUserSettings("ShowUpdatePopUp=False;", "ShowUpdatePopUp=True;")
+            End If
+            PictureBox1.Visible = True
+            TryOSBigUpdateButton.Visible = True
+            TryOSBigUpdateButton.Enabled = True
+        ElseIf ShowUpCheckbox.Checked = False Then
+            If User.DoesSettingExist("ShowUpdatePopUp=False;") = True Then
+            ElseIf User.DoesSettingExist("ShowUpdatePopUp=True;") = True Then
+                User.ReplaceSettingInUserSettings("ShowUpdatePopUp=True;", "ShowUpdatePopUp=False;")
+            End If
+            PictureBox1.Visible = False
+            TryOSBigUpdateButton.Visible = False
+            TryOSBigUpdateButton.Enabled = False
         End If
     End Sub
 End Class

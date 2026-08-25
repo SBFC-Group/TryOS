@@ -208,6 +208,8 @@ Public Class UI
             End If
         ElseIf Command.Contains("GetWallpaper") = True Then
             Return Form1.Panel1.BackgroundImage
+        ElseIf Command.Contains("GetPathWallpaper") = True Then
+            Return WallpaperFolder & "\Wallpaper_" & Form1.LoadedWallpaper.ToString & "." & Form1.WallpaperFileFormat
         ElseIf Command.Contains("whoami") = True Then
             If Command.Contains("/nogui") = True Then
                 Return Form1.User.Role

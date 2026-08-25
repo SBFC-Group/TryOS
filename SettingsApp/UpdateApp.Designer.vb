@@ -23,6 +23,7 @@ Partial Class UpdateApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(UpdateApp))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -32,7 +33,11 @@ Partial Class UpdateApp
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.ShowUpCheckbox = New System.Windows.Forms.CheckBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.TryOSBigUpdateButton = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -42,6 +47,9 @@ Partial Class UpdateApp
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.Silver
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.ShowUpCheckbox)
+        Me.Panel1.Controls.Add(Me.PictureBox1)
+        Me.Panel1.Controls.Add(Me.TryOSBigUpdateButton)
         Me.Panel1.Controls.Add(Me.TextBox2)
         Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Controls.Add(Me.Button2)
@@ -56,7 +64,7 @@ Partial Class UpdateApp
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(152, 252)
+        Me.TextBox2.Location = New System.Drawing.Point(251, 210)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(100, 20)
         Me.TextBox2.TabIndex = 8
@@ -64,7 +72,7 @@ Partial Class UpdateApp
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(152, 226)
+        Me.TextBox1.Location = New System.Drawing.Point(251, 184)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(100, 20)
         Me.TextBox1.TabIndex = 7
@@ -129,6 +137,42 @@ Partial Class UpdateApp
         '
         Me.Timer1.Enabled = True
         '
+        'ShowUpCheckbox
+        '
+        Me.ShowUpCheckbox.AutoSize = True
+        Me.ShowUpCheckbox.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ShowUpCheckbox.Location = New System.Drawing.Point(37, 232)
+        Me.ShowUpCheckbox.Name = "ShowUpCheckbox"
+        Me.ShowUpCheckbox.Size = New System.Drawing.Size(334, 28)
+        Me.ShowUpCheckbox.TabIndex = 14
+        Me.ShowUpCheckbox.Text = "Don't show TryOS 1.2 Update Popup"
+        Me.ShowUpCheckbox.UseVisualStyleBackColor = True
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(37, 266)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(314, 189)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 13
+        Me.PictureBox1.TabStop = False
+        Me.PictureBox1.Visible = False
+        '
+        'TryOSBigUpdateButton
+        '
+        Me.TryOSBigUpdateButton.BackColor = System.Drawing.Color.Gainsboro
+        Me.TryOSBigUpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.TryOSBigUpdateButton.Font = New System.Drawing.Font("Trebuchet MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TryOSBigUpdateButton.Location = New System.Drawing.Point(37, 461)
+        Me.TryOSBigUpdateButton.Name = "TryOSBigUpdateButton"
+        Me.TryOSBigUpdateButton.Size = New System.Drawing.Size(314, 36)
+        Me.TryOSBigUpdateButton.TabIndex = 12
+        Me.TryOSBigUpdateButton.Text = "Update To TryOS 1.2"
+        Me.TryOSBigUpdateButton.UseVisualStyleBackColor = False
+        Me.TryOSBigUpdateButton.Visible = False
+        '
         'UpdateApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -139,6 +183,7 @@ Partial Class UpdateApp
         Me.Size = New System.Drawing.Size(999, 620)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -152,4 +197,7 @@ Partial Class UpdateApp
     Friend WithEvents Label1 As Windows.Forms.Label
     Friend WithEvents Button1 As Windows.Forms.Button
     Friend WithEvents Timer1 As Windows.Forms.Timer
+    Friend WithEvents ShowUpCheckbox As Windows.Forms.CheckBox
+    Friend WithEvents PictureBox1 As Windows.Forms.PictureBox
+    Friend WithEvents TryOSBigUpdateButton As Windows.Forms.Button
 End Class

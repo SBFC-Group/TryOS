@@ -40,7 +40,26 @@
             End If
 
         Else
-            If ProgressBar1.Value = 20 Then
+            If ProgressBar1.Value = 10 Then
+                Dim VersionOB As New Version(My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles"))
+
+                'My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles", TryController.GetVersion(), False)
+
+                If VersionOB.Revision < 410 Then
+                    If My.Computer.FileSystem.DirectoryExists(My.Application.Info.DirectoryPath & "\Apps\Settings") Then
+                        My.Computer.FileSystem.DeleteDirectory(My.Application.Info.DirectoryPath & "\Apps\Settings", FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+
+                    If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\TempApp.tryapp") Then
+                        My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\TempApp.tryapp")
+                    End If
+
+                    My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\TempApp.tryapp", My.Resources.SettingsApp, False)
+                    TryOS_Store_Manager.Class1.InstallTryOSApp(My.Application.Info.DirectoryPath & "\TempApp.tryapp")
+
+                    My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\TempApp.tryapp")
+                End If
+            ElseIf ProgressBar1.Value = 20 Then
                 If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Settings\UpdateTryOS_Store.setting") Then
                     My.Computer.FileSystem.DeleteDirectory(My.Application.Info.DirectoryPath & "\Apps\TryOS_Store", FileIO.DeleteDirectoryOption.DeleteAllContents)
 
@@ -91,16 +110,6 @@
                     My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\UserVersion.swfiles", TryController.GetVersion(), False)
 
                     If Not VersionOB.Revision > 400 Or VersionOB.Revision = 400 Then
-                        If My.Computer.FileSystem.DirectoryExists(My.Application.Info.DirectoryPath & "\Apps\Settings") = False Then
-
-                            If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\TempApp.tryapp") Then
-                                My.Computer.FileSystem.DeleteFile(My.Application.Info.DirectoryPath & "\TempApp.tryapp")
-                            End If
-
-                            My.Computer.FileSystem.WriteAllBytes(My.Application.Info.DirectoryPath & "\TempApp.tryapp", My.Resources.SettingsApp, False)
-                            TryOS_Store_Manager.Class1.InstallTryOSApp(My.Application.Info.DirectoryPath & "\TempApp.tryapp")
-                        End If
-
                         If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\Settings\UseAppViewer.setting") = False Then
                             My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Settings\UseAppViewer.setting", "True", False)
                         End If
