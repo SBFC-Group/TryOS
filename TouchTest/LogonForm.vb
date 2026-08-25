@@ -260,8 +260,8 @@
                 'Creates an new LoadingUser Form to safely load the user
                 Dim LogonLoadingUser As New LoadingUser
 
-                'Creates a temp UserManager Object
-                LogonLoadingUser.User = New UserManager(TextBox1.Text, True)
+                'Creates an UserManager Object
+                LogonLoadingUser.User = New UserManager(TextBox1.Text, False)
 
                 'Opens The LoadingUser Form
                 LogonLoadingUser.Show()

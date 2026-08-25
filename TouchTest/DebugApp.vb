@@ -74,8 +74,12 @@ Restore-TryOS-Store - Restores TryOS Store from internal .tryapp file"
                 Else
                     RichTextBox2.Text = "False"
                 End If
+            ElseIf RichTextBox1.Text.Contains("ShowUsersList") = True Then
+                For Each u As UserManager In UserManager.Resuevomer(6769)
+                    TryController.WriteToDebuggerOutput("Username: " & u.Username & " IsSandboxed: " & u.SandboxedUser.ToString)
+                Next
             Else
-                UI.RunCommands(RichTextBox1.Text, Form1.User, Me)
+                    UI.RunCommands(RichTextBox1.Text, Form1.User, Me)
             End If
         End If
     End Sub

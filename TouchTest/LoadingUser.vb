@@ -208,9 +208,11 @@
                     UI.DisableOpenFramework = True
                     Form1.Close()
                     UI.DisableOpenFramework = False
-                    Form1.User = New UserManager(Username)
+                    Form1.User = User
+                    'Form1.User = New UserManager(Username)
                 Else
-                    Form1.User = New UserManager(Username)
+                    Form1.User = User
+                    'Form1.User = New UserManager(Username)
                 End If
 
             End If

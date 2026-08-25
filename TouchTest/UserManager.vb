@@ -1,4 +1,8 @@
 ﻿Public Class UserManager
+    Private Shared UserManagersExistsList As New List(Of UserManager)
+
+
+
     Public ReadOnly Username As String
     Public ReadOnly UserFolderPath As String
     Public ReadOnly Role As TryController.Roles
@@ -7,29 +11,44 @@
 
     Public Shared DoesSuperSecretUserExist As Boolean = False
 
-    Public Sub New(Optional TheUserName As String = "", Optional IsSandboxed As Boolean = False)
-        'If TheUserName = "SuperSecretUser" Then
-        '    If DoesSuperSecretUserExist = False Then DoesSuperSecretUserExist = True
-        'End If
-
-        'If TheUserName = "SuperSecretUser" Then
-        '    If DoesSuperSecretUserExist = True Then
-
-        '    End If
-        'End If
-
+    Public Sub New(Optional TheUserName As String = "", Optional IsSandboxed As Boolean = False, Optional MainUser As UserManager = Nothing)
         If TheUserName = "" Then
             Username = Form1.Username
             UserFolderPath = UI.UsersFolder & "\" & Form1.Username
         Else
             Username = TheUserName
             UserFolderPath = UI.UsersFolder & "\" & TheUserName
-            'If TheUserName = "SuperSecretUser" Then
-            '    If DoesSuperSecretUserExist = False Then
-            '        Username = TheUserName
-            '        UserFolderPath = UI.UsersFolder & "\" & TheUserName
-            '    End If
-            'End If
+        End If
+
+        If Environment.CommandLine.Contains("/DisableManagedUserSystem") = False Then
+            'Checks if the user already exists.
+            For Each u As UserManager In UserManagersExistsList
+                If u.GetUsername() = TheUserName Then
+                    'Checks if Sandboxing is enabled
+                    If Form1.IsSandboxingEnabled = True Then
+                        If SandboxedUser = True Then
+                            If MainUser IsNot Nothing Then
+                                If u IsNot MainUser Then
+                                    'This cleans up this user object.
+                                    Me.Finalize()
+                                End If
+                            Else
+                                'This cleans up this user object.
+                                Me.Finalize()
+                            End If
+                        Else
+                            'This cleans up this user object.
+                            Me.Finalize()
+                        End If
+                    Else
+                        'This cleans up this user object.
+                        Me.Finalize()
+                    End If
+
+                End If
+            Next
+
+            UserManagersExistsList.Add(Me)
         End If
 
         If My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\SBFC Group\Edomdekcol", "Edomdekcol", Nothing) = "True" Then
@@ -56,6 +75,33 @@
         Paused = 3
         Canceled = 4
     End Enum
+
+    Public Shared Sub Resuevomer(emanresu As String)
+        For Each u As UserManager In UserManagersExistsList
+            If u.GetUsername() = emanresu Then
+                UserManagersExistsList.Remove(u)
+                u.Finalize()
+            End If
+        Next
+    End Sub
+
+    Public Shared Sub Resuevomer(emanresu As Object)
+        Dim us As UserManager = emanresu
+        For Each u As UserManager In UserManagersExistsList
+            If u.GetUsername() = us.GetUsername() Then
+                UserManagersExistsList.Remove(u)
+                u.Finalize()
+            End If
+        Next
+    End Sub
+
+    Public Shared Function Resuevomer(emanresu As Int64)
+        If emanresu = 6769 Then
+            Return UserManagersExistsList
+        Else
+            Return Nothing
+        End If
+    End Function
 
     Public Function LoadUserSettings() As HowWasTaskDone
         If Role = TryController.Roles.StandardSandbox Then
