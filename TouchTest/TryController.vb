@@ -105,11 +105,15 @@ Public Class TryController
     End Sub
 
     Public Shared Sub WriteToDebuggerOutput(ob As String)
-        TryController.DebugManager.WriteLine(ob)
+        If TryController.DebugManager IsNot Nothing Then
+            TryController.DebugManager.WriteLine(ob)
+        End If
     End Sub
 
     Public Shared Sub WriteToDebuggerOutput(ob As Object)
-        TryController.DebugManager.WriteLine(ob)
+        If TryController.DebugManager IsNot Nothing Then
+            TryController.DebugManager.WriteLine(ob)
+        End If
     End Sub
 
     Public Function GetVersion() As String
