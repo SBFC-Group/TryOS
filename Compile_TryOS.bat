@@ -5,7 +5,8 @@ copy ".\TouchTest\bin\Debug\*.dll" ".\TouchTest\bin\Debug\TryOS_Build\"
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\Settings"
 copy ".\TouchTest\bin\Debug\Settings\ShellName USW.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\ShellName.setting"
 copy ".\TouchTest\bin\Debug\Settings\LogonWallpaper.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\"
-echo True > ".\TouchTest\bin\Debug\Settings\TryOS_Build\UseAppViewer.setting"
+copy ".\TouchTest\bin\Debug\Settings\UseAppViewer.setting" ".\TouchTest\bin\Debug\TryOS_Build\Settings\"
+::echo True > ".\TouchTest\bin\Debug\Settings\TryOS_Build\UseAppViewer.setting"
 
 :: Creates new ShellApps Folder to load newer ui elements and for newer Settings to load the new gui (20-03-2026 now haves the new ShellApp dll)
 mkdir ".\TouchTest\bin\Debug\TryOS_Build\ShellApps"

@@ -68,10 +68,11 @@ Public Class MyControllerForm
                         Dim b2 As Byte() = Convert.FromBase64String(WallpaperImagePath)
                         WallpaperImagePath = System.Text.Encoding.UTF8.GetString(b2)
                     Catch ex As Exception
-                        Main.UI.ShowError(ex.Message)
+                        Main.UI.ShowError(ex.Message & " HERE")
                     End Try
                     Main.UI.RunCommands("SetWallpaper " & WallpaperImagePath, Main.Form1.User)
 
+                    'TryController.WriteToDebuggerOutput("It Happened: " & WallpaperImagePath)
                 End If
             End If
         End If

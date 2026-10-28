@@ -121,12 +121,19 @@
 
                     If My.Computer.FileSystem.DirectoryExists(UI.SettingsFolder) Then
                         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\LogonWallpaper.setting") Then
+
+
                             Wallpaper = UI.WallpaperFolder & "\" & My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\LogonWallpaper.setting")
+
+                            Dim byt As Byte() = System.Text.Encoding.UTF8.GetBytes(Wallpaper)
+                            Wallpaper = Convert.ToBase64String(byt)
+                            Dim byt2 As Byte() = System.Text.Encoding.UTF8.GetBytes(Wallpaper)
+                            Wallpaper = Convert.ToBase64String(byt2)
                         End If
                     End If
 
                     Dim Role As String = "Vkd0U1RrMXJNVFphZWtKUFlXdHJPUT09"
-                    Dim Software_Config As String = "U1hORVlYSnJUVzlrWlVadmNrRndjSE05Um1Gc2MyVTdDa2x6UkdGeWEwMXZaR1ZHYjNKUWNtOW5jbUZ0UFVaaGJITmxPd3BKYzFWemFXNW5UbVYzWlhKWFlXeHNjR0Z3WlhKTWIyRmtaWEk5VkhKMVpUcz0==="
+                    Dim Software_Config As String = "U1hOVWNtRnVjM0JoY21WdWRFVnVZV0pzWldROVZISjFaVHNLU1hORVlYSnJUVzlrWlVadmNrRndjSE05Um1Gc2MyVTdDa2x6UkdGeWEwMXZaR1ZHYjNKUWNtOW5jbUZ0UFVaaGJITmxPd3BKYzFWemFXNW5UbVYzWlhKWFlXeHNjR0Z3WlhKTWIyRmtaWEk5VkhKMVpUcz0="
                     Dim UserVersion As String = My.Application.Info.Version.Major.ToString & "." & My.Application.Info.Version.Minor.ToString & "." & My.Application.Info.Version.Build.ToString & "." & My.Application.Info.Version.Revision.ToString
                     'Dim AppList As String = "Settings|ProgramInfo|TryOS_Store_New|Internet++"
                     Dim ReaderForPassword As String = TextBox1.Text

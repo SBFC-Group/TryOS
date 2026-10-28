@@ -22,7 +22,7 @@
 
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Password.swfiles", ReaderForPassword, False)
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Role.swfiles", "VkRCU1RrNUZNVFpXV0hCUVZrVnJPUT09", False)
-                My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Software.swfiles", "U1hORVlYSnJUVzlrWlVadmNrRndjSE05Um1Gc2MyVTdDa2x6UkdGeWEwMXZaR1ZHYjNKUWNtOW5jbUZ0UFVaaGJITmxPd3BKYzFWemFXNW5UbVYzWlhKWFlXeHNjR0Z3WlhKTWIyRmtaWEk5VkhKMVpUc0tSRzlsYzBoaGMxUnBiV1ZDWVhJOVJtRnNjMlU3Q2tselZISmhibk53WVhKbGJuUkZibUZpYkdWa1BVWmhiSE5sT3c9PQ==", False)
+                My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\Software.swfiles", "U1hOVWNtRnVjM0JoY21WdWRFVnVZV0pzWldROVZISjFaVHNLU1hORVlYSnJUVzlrWlVadmNrRndjSE05Um1Gc2MyVTdDa2x6UkdGeWEwMXZaR1ZHYjNKUWNtOW5jbUZ0UFVaaGJITmxPd3BKYzFWemFXNW5UbVYzWlhKWFlXeHNjR0Z3WlhKTWIyRmtaWEk5VkhKMVpUcz0=", False)
                 My.Computer.FileSystem.WriteAllText(UI.UsersFolder & "\Program\Settings\UserMode.swfiles", "UserMode=Disabled", False)
             End If
         End Sub

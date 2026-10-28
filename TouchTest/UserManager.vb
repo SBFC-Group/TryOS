@@ -394,7 +394,7 @@
 
             Reader2 = Reader2.Replace("
 ;", "")
-
+            TryController.WriteToDebuggerOutput(Reader2)
             SaveUserSettings(Reader2)
         ElseIf type = SettingType.ChangeValue Then
             'This part changes the value.
@@ -441,6 +441,8 @@
 ;", "")
 
             SaveUserSettings(Reader2)
+
+            TryController.WriteToDebuggerOutput(Reader2)
         End If
     End Sub
 

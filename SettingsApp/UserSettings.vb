@@ -187,7 +187,7 @@ Public Class UserSettings
                     My.Computer.FileSystem.CreateDirectory(UserFolder & "\Data")
 
                     Dim Role As String = "VkRCU1RrNUZNVFpXV0hCUVZrVnJPUT09"
-                    Dim Software_Config As String = "VjJGc2JIQmhjR1Z5UFdwd1p6MHhPd3BKYzBSaGNtdE5iMlJsUm05eVFYQndjejFHWVd4elpUc0tTWE5WYzJsdVowNWxkMlZ5VjJGc2JIQmhjR1Z5VEc5aFpHVnlQVlJ5ZFdVNw=="
+                    Dim Software_Config As String = "U1hOVWNtRnVjM0JoY21WdWRFVnVZV0pzWldROVZISjFaVHNLU1hORVlYSnJUVzlrWlVadmNrRndjSE05Um1Gc2MyVTdDa2x6UkdGeWEwMXZaR1ZHYjNKUWNtOW5jbUZ0UFVaaGJITmxPd3BKYzFWemFXNW5UbVYzWlhKWFlXeHNjR0Z3WlhKTWIyRmtaWEk5VkhKMVpUcz0="
                     Dim UserVersion As String = My.Application.Info.Version.Major.ToString & "." & My.Application.Info.Version.Minor.ToString & "." & My.Application.Info.Version.Build.ToString & "." & My.Application.Info.Version.Revision.ToString
                     'Dim AppList As String = "Settings|ProgramInfo|TryOS_Store_New|Internet++"
                     Dim ReaderForPassword As String = CreatePasswordTextBox.Text
