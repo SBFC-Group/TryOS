@@ -36,8 +36,7 @@
     Private Sub AppsApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim plugins = OpenFramework_Data.OpenFramework.LoadAppsDlls(Form1.SandboxedUser)
 
-        If plugins IsNot Nothing Then
-        Else
+        If plugins Is Nothing Then
             Return
         End If
 
@@ -61,7 +60,7 @@
 
     Private Sub PluginButton_Click(sender As Object, e As EventArgs)
         Dim btn As Button = CType(sender, Button)
-        Dim plugin As OpenFramework_Interface = CType(btn.Tag, OpenFramework_Interface)
+        Dim plugin As OpenFramework_Interface = CType(btn.Tag.OpenFramework_Interface, OpenFramework_Interface)
 
         If ButtonPressed IsNot Nothing Then
             Try
