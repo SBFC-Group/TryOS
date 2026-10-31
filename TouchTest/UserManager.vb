@@ -386,6 +386,8 @@
             'TryController.DebugManager.WriteLine(Reader)
 
             SaveUserSettings(Reader)
+
+            TryController.WriteToDebuggerOutput(Reader)
         ElseIf type = SettingType.NewSettingName Then
             Return
         ElseIf type = SettingType.ChangeValue Then
@@ -442,6 +444,8 @@
 ;", "")
 
             SaveUserSettings(Reader2)
+
+            TryController.WriteToDebuggerOutput(Reader2)
         ElseIf type = SettingType.ChangeValue Then
             'This part changes the value.
             If My.Computer.FileSystem.FileExists(UserFolderPath & "\Settings\Software.swfiles") = False Then

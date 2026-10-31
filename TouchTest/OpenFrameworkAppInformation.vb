@@ -5,6 +5,7 @@ Public Class OpenFrameworkAppInformation
     Public ReadOnly Name As String
     Public ReadOnly AppPath As String
     Private OpenFramework_Button As Button
+    Public OpenFramework_Handler As New OpenFramework_Handler
     Public ReadOnly OpenFramework_Interface As OpenFramework_Interface
     Public ReadOnly Version As Version
 

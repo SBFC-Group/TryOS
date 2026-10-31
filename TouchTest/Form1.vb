@@ -644,6 +644,20 @@ Public Class Form1
         End If
     End Sub
 
+    Public Function CloseControlCenter_(ob As Object)
+        If ob = 1 Then
+            Return Timer1
+        ElseIf ob = 2 Then
+            Return Timer2
+        ElseIf ob = 3 Then
+            Return TimeAndDate
+        ElseIf ob = 4 Then
+            Return PowerTimer
+        Else
+            Return Nothing
+        End If
+    End Function
+
     Public BatteryPower As Int64 = 100
     Public HasBattery As Boolean = False
 

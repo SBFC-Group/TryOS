@@ -26,7 +26,7 @@ Namespace OpenFramework_Data
                             If Environment.CommandLine.Contains("/DevMode") = True Then
                                 TryController.DebugManager.WriteLine("Loaded App: " & p.Name)
                             End If
-                            p.OpenFramework_Interface.Initialize(host)
+                            p.OpenFramework_Interface.Initialize(p.OpenFramework_Handler)
                             Dim btn As New Button()
                             btn.Name = p.Name
                             btn.BackgroundImage = p.OpenFramework_Interface.Icon

@@ -26,7 +26,7 @@ Public Class TryController
     End Sub
 
     Public Function GetBranch()
-        Return "Plutonium_(1.2)"
+        Return "Helium_(1.3)"
     End Function
 
     Private Sub TryController_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -104,8 +104,16 @@ Public Class TryController
         End If
     End Sub
 
+    Public Shared Sub WriteToDebuggerOutput(ob As String)
+        If TryController.DebugManager IsNot Nothing Then
+            TryController.DebugManager.WriteLine(ob)
+        End If
+    End Sub
+
     Public Shared Sub WriteToDebuggerOutput(ob As Object)
-        TryController.DebugManager.WriteLine(ob)
+        If TryController.DebugManager IsNot Nothing Then
+            TryController.DebugManager.WriteLine(ob)
+        End If
     End Sub
 
     Public Function GetVersion() As String
