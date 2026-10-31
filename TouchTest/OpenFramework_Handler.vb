@@ -42,11 +42,11 @@ Public Class OpenFramework_Handler
     End Function
 
     Public Function GetUsername() As String Implements OpenFramework_UI_Handler.GetUsername
-        Return Form1.SandboxedUser.Username
+        Return Form1.SandboxedUser.GetUsername
     End Function
 
     Public Function GetUserFolder() As String Implements OpenFramework_UI_Handler.GetUserFolder
-        Return Form1.SandboxedUser.UserFolderPath
+        Return Form1.SandboxedUser.GetUserFolderPath()
     End Function
 
     Public Function GetRole() As TryController.Roles Implements OpenFramework_UI_Handler.GetRole

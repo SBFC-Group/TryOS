@@ -78,6 +78,11 @@ Restore-TryOS-Store - Restores TryOS Store from internal .tryapp file"
                 For Each u As UserManager In UserManager.Resuevomer(6769)
                     TryController.WriteToDebuggerOutput("Username: " & u.Username & " IsSandboxed: " & u.SandboxedUser.ToString)
                 Next
+            ElseIf RichTextBox1.Text.Contains("CreateSameUser") = True Then
+                Dim user As UserManager = New UserManager("SuperSecretUser")
+                If user Is Nothing Then
+                    UI.ShowError("Can't that user. loser!!!!!")
+                End If
             Else
                     UI.RunCommands(RichTextBox1.Text, Form1.User, Me)
             End If

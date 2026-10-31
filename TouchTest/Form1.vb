@@ -45,9 +45,9 @@ Public Class Form1
         Me.Icon = My.Resources.desktop_windows_119229
 
         If IsSandboxingEnabled = True Then
-            SandboxedUser = New UserManager(User.Username, True)
+            SandboxedUser = New UserManager(User.GetUsername(), True)
         Else
-            SandboxedUser = New UserManager(User.Username, False)
+            SandboxedUser = New UserManager(User.GetUsername(), False)
         End If
 
         Timer1.Start()

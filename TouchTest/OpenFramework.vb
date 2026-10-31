@@ -5,7 +5,7 @@ Namespace OpenFramework_Data
     Public Class OpenFramework
 
         Public Shared Function GetOpenFrameworkVersion()
-            Return "0.37.5"
+            Return "0.37.6"
         End Function
 
         Public Shared FlowLayoutPanelUse As FlowLayoutPanel = Form1.FlowLayoutPanel1
@@ -59,7 +59,7 @@ Namespace OpenFramework_Data
             Dim frm As Form = plugin.GetForm()
             If Form1.currentForm IsNot Nothing Then
                 If frm.Text = AppName Then
-                    Exit Sub
+                    Return
                 End If
             End If
             AppName = frm.Text
@@ -87,10 +87,10 @@ Namespace OpenFramework_Data
                     order.Add(ctrl.Tag.OpenFramework_Interface.ToString())
                 Next
             End If
-            If IO.File.Exists(Form1.User.UserFolderPath & "\Settings\TaskInteracter_Order.json") Then
-                IO.File.WriteAllText(Form1.User.UserFolderPath & "\Settings\TaskInteracter_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
+            If IO.File.Exists(Form1.User.GetUserFolderPath() & "\Settings\TaskInteracter_Order.json") Then
+                IO.File.WriteAllText(Form1.User.GetUserFolderPath() & "\Settings\TaskInteracter_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
             Else
-                IO.File.WriteAllText(Form1.User.UserFolderPath & "\Settings\Taskbar_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
+                IO.File.WriteAllText(Form1.User.GetUserFolderPath() & "\Settings\Taskbar_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
             End If
 
         End Sub
@@ -117,11 +117,11 @@ Namespace OpenFramework_Data
                 ControlThing = FlowLayoutPanelUse
             End If
 
-            Dim path As String = Form1.User.UserFolderPath & "\Settings\Taskbar_Order.json"
+            Dim path As String = Form1.User.GetUserFolderPath() & "\Settings\Taskbar_Order.json"
 
             If IO.File.Exists(path) = False Then
-                If IO.File.Exists(Form1.User.UserFolderPath & "\Settings\TaskInteracter_Order.json") Then
-                    path = Form1.User.UserFolderPath & "\Settings\TaskInteracter_Order.json"
+                If IO.File.Exists(Form1.User.GetUserFolderPath() & "\Settings\TaskInteracter_Order.json") Then
+                    path = Form1.User.GetUserFolderPath() & "\Settings\TaskInteracter_Order.json"
                 End If
             End If
 
@@ -169,7 +169,7 @@ Namespace OpenFramework_Data
 
             'Dim AppFormlist As New List(Of OpenFrameworkAppInformation)()
 
-            Dim dir1 = My.Application.Info.DirectoryPath & "\Apps"
+            Dim dir1 = UI.AppsFolder
 
             If My.Computer.FileSystem.DirectoryExists(dir1) = False Then
                 If InDevMode = True Then

@@ -244,7 +244,7 @@ Public Class UI
                 If Command.Contains("/role") = True Then
                     Return Form1.User.Role
                 Else
-                    Return Form1.User.Username
+                    Return Form1.User.GetUsername()
                 End If
             Else
                 If Command.Contains("/role") = True Then
@@ -269,8 +269,8 @@ Public Class UI
                     ShowError(Form1.User.Role.ToString)
                     Return Form1.User.Role.ToString
                 Else
-                    ShowError(Form1.User.Username)
-                    Return Form1.User.Username
+                    ShowError(Form1.User.GetUsername())
+                    Return Form1.User.GetUsername()
                 End If
             End If
         ElseIf Command.Contains("ThemeManager") = True Then
@@ -900,7 +900,7 @@ Public Class UI
     End Function
 
     Public Sub SaveCurrentNotifications()
-        If My.Computer.FileSystem.DirectoryExists(Form1.User.UserFolderPath & "\Settings\PastNotifications") = True Then
+        If My.Computer.FileSystem.DirectoryExists(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications") = True Then
             If Form1.ModernControlCenter Is Nothing Then Return
 
             Dim NotiList As String = Nothing
@@ -919,33 +919,33 @@ Public Class UI
                     NotiList = NotiList & "|" & Noti.NotificationName
                 End If
 
-                If My.Computer.FileSystem.DirectoryExists(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & Noti.NotificationName) = True Then Continue For
+                If My.Computer.FileSystem.DirectoryExists(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & Noti.NotificationName) = True Then Continue For
 
                 'Create Notification's Folder
-                My.Computer.FileSystem.CreateDirectory(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & Noti.NotificationName)
+                My.Computer.FileSystem.CreateDirectory(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & Noti.NotificationName)
 
-                My.Computer.FileSystem.WriteAllText(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & Noti.NotificationName & "\Title.txt", Encode_Local_1(Noti.NotificationInfo.Name), False)
+                My.Computer.FileSystem.WriteAllText(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & Noti.NotificationName & "\Title.txt", Encode_Local_1(Noti.NotificationInfo.Name), False)
 
-                My.Computer.FileSystem.WriteAllText(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & Noti.NotificationName & "\Text.txt", Encode_Local_1(Noti.NotificationInfo.Text), False)
+                My.Computer.FileSystem.WriteAllText(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & Noti.NotificationName & "\Text.txt", Encode_Local_1(Noti.NotificationInfo.Text), False)
 
                 If Noti.NotificationInfo.Notification = NotificationClass.NotificationType.Information Then
-                    My.Computer.FileSystem.WriteAllText(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & Noti.NotificationName & "\NotificationType.txt", Encode_Local_1("1"), False)
+                    My.Computer.FileSystem.WriteAllText(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & Noti.NotificationName & "\NotificationType.txt", Encode_Local_1("1"), False)
                 ElseIf Noti.NotificationInfo.Notification = NotificationClass.NotificationType.Warring Then
-                    My.Computer.FileSystem.WriteAllText(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & Noti.NotificationName & "\NotificationType.txt", Encode_Local_1("2"), False)
+                    My.Computer.FileSystem.WriteAllText(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & Noti.NotificationName & "\NotificationType.txt", Encode_Local_1("2"), False)
                 ElseIf Noti.NotificationInfo.Notification = NotificationClass.NotificationType.Alert Then
-                    My.Computer.FileSystem.WriteAllText(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & Noti.NotificationName & "\NotificationType.txt", Encode_Local_1("3"), False)
+                    My.Computer.FileSystem.WriteAllText(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & Noti.NotificationName & "\NotificationType.txt", Encode_Local_1("3"), False)
                 ElseIf Noti.NotificationInfo.Notification = NotificationClass.NotificationType.SomethingElse Then
-                    My.Computer.FileSystem.WriteAllText(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & Noti.NotificationName & "\NotificationType.txt", Encode_Local_1("4"), False)
+                    My.Computer.FileSystem.WriteAllText(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & Noti.NotificationName & "\NotificationType.txt", Encode_Local_1("4"), False)
                 End If
 
             Next
 
             If NotiList = Nothing Then
-                If My.Computer.FileSystem.FileExists(Form1.User.UserFolderPath & "\Settings\PastNotifications\NotificationList.txt") Then
-                    My.Computer.FileSystem.DeleteFile(Form1.User.UserFolderPath & "\Settings\PastNotifications\NotificationList.txt")
+                If My.Computer.FileSystem.FileExists(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\NotificationList.txt") Then
+                    My.Computer.FileSystem.DeleteFile(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\NotificationList.txt")
                 End If
             Else
-                My.Computer.FileSystem.WriteAllText(Form1.User.UserFolderPath & "\Settings\PastNotifications\NotificationList.txt", Encode_Local_1(NotiList), False)
+                My.Computer.FileSystem.WriteAllText(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\NotificationList.txt", Encode_Local_1(NotiList), False)
             End If
 
             CheckIfNotificationExists(NotiInPath)
@@ -956,7 +956,7 @@ Public Class UI
         Dim DoesNotExistAnymore As New List(Of String)
 
         Dim files() As System.IO.DirectoryInfo
-        Dim dirinfo As New System.IO.DirectoryInfo(Form1.User.UserFolderPath & "\Settings\PastNotifications")
+        Dim dirinfo As New System.IO.DirectoryInfo(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications")
         files = dirinfo.GetDirectories("*", IO.SearchOption.TopDirectoryOnly)
         For Each file In files
             'TryController.DebugManager.WriteLine(file.Name)
@@ -967,22 +967,22 @@ Public Class UI
         Next
 
         For Each s As String In DoesNotExistAnymore
-            My.Computer.FileSystem.DeleteDirectory(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & s, FileIO.DeleteDirectoryOption.DeleteAllContents)
+            My.Computer.FileSystem.DeleteDirectory(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & s, FileIO.DeleteDirectoryOption.DeleteAllContents)
         Next
 
     End Sub
 
     Public Sub LoadNotifications()
-        If My.Computer.FileSystem.DirectoryExists(Form1.User.UserFolderPath & "\Settings\PastNotifications") = True Then
+        If My.Computer.FileSystem.DirectoryExists(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications") = True Then
             If Form1.ModernControlCenter Is Nothing Then Return
 
-            If My.Computer.FileSystem.FileExists(Form1.User.UserFolderPath & "\Settings\PastNotifications\NotificationList.txt") = False Then Return
+            If My.Computer.FileSystem.FileExists(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\NotificationList.txt") = False Then Return
 
-            Dim NotiSplit As String() = Decode_Local_1(My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\PastNotifications\NotificationList.txt")).Split("|"c)
+            Dim NotiSplit As String() = Decode_Local_1(My.Computer.FileSystem.ReadAllText(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\NotificationList.txt")).Split("|"c)
 
             For Each NotiString As String In NotiSplit
-                If My.Computer.FileSystem.DirectoryExists(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & NotiString) Then
-                    Form1.ModernControlCenter.CreateNotificationBox(NotificationClass.CreateNotification(Decode_Local_1(My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & NotiString & "\Title.txt")), Decode_Local_1(My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & NotiString & "\Text.txt")), Convert.ToInt64(Decode_Local_1(My.Computer.FileSystem.ReadAllText(Form1.User.UserFolderPath & "\Settings\PastNotifications\" & NotiString & "\NotificationType.txt")))), True, NotiString)
+                If My.Computer.FileSystem.DirectoryExists(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & NotiString) Then
+                    Form1.ModernControlCenter.CreateNotificationBox(NotificationClass.CreateNotification(Decode_Local_1(My.Computer.FileSystem.ReadAllText(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & NotiString & "\Title.txt")), Decode_Local_1(My.Computer.FileSystem.ReadAllText(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & NotiString & "\Text.txt")), Convert.ToInt64(Decode_Local_1(My.Computer.FileSystem.ReadAllText(Form1.User.GetUserFolderPath() & "\Settings\PastNotifications\" & NotiString & "\NotificationType.txt")))), True, NotiString)
                 End If
             Next
         End If

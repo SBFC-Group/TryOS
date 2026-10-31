@@ -4,6 +4,7 @@
 
 
     Public ReadOnly Username As String
+    Private Username_Private As String
     Public ReadOnly UserFolderPath As String
     Public ReadOnly Role As TryController.Roles
     Public ReadOnly SandboxedUser As Boolean
@@ -13,10 +14,10 @@
 
     Public Sub New(Optional TheUserName As String = "", Optional IsSandboxed As Boolean = False, Optional MainUser As UserManager = Nothing)
         If TheUserName = "" Then
-            Username = Form1.Username
+            Username_Private = Form1.Username
             UserFolderPath = UI.UsersFolder & "\" & Form1.Username
         Else
-            Username = TheUserName
+            Username_Private = TheUserName
             UserFolderPath = UI.UsersFolder & "\" & TheUserName
         End If
 
@@ -31,18 +32,22 @@
                                 If u IsNot MainUser Then
                                     'This cleans up this user object.
                                     Me.Finalize()
+                                    Return
                                 End If
                             Else
                                 'This cleans up this user object.
                                 Me.Finalize()
+                                Return
                             End If
                         Else
                             'This cleans up this user object.
                             Me.Finalize()
+                            Return
                         End If
                     Else
                         'This cleans up this user object.
                         Me.Finalize()
+                        Return
                     End If
 
                 End If
@@ -107,7 +112,7 @@
         If Role = TryController.Roles.StandardSandbox Then
             Return HowWasTaskDone.Canceled
         Else
-            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
+            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username_Private & "\Settings\Software.swfiles")
             Try
                 Dim b As Byte() = Convert.FromBase64String(usedencode)
                 usedencode = System.Text.Encoding.UTF8.GetString(b)
@@ -175,7 +180,7 @@
             Catch ex As Exception
             End Try
 
-            My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username & "\Settings\Software.swfiles", Reader, False)
+            My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath & "\Users\" & Username_Private & "\Settings\Software.swfiles", Reader, False)
 
             Return HowWasTaskDone.Completed
         End If
@@ -184,7 +189,7 @@
     ''' <summary>This will not be deprecated. Because this is used by TryOS Itself. But it's better to use the newer Contains("setting name here")</summary>
     Public Function DoesSettingExist(SettingName As String) As Boolean
         'Gets Data
-        Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
+        Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username_Private & "\Settings\Software.swfiles")
 
         'Makes it readable
         Try
@@ -212,7 +217,7 @@
     Public Function AddSettingToUserSettings(SettingName As String) As HowWasTaskDone
         If DoesSettingExist(SettingName) = False Then
             'Gets Data
-            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
+            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username_Private & "\Settings\Software.swfiles")
 
             'Makes it readable
             Try
@@ -248,7 +253,7 @@
     Public Function RemoveSettingFromUserSettings(SettingName As String) As HowWasTaskDone
         If DoesSettingExist(SettingName) = True Then
             'Gets Data
-            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
+            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username_Private & "\Settings\Software.swfiles")
 
             'Makes it readable
             Try
@@ -282,7 +287,7 @@
     Public Function ReplaceSettingInUserSettings(SettingName As String, NewName As String) As HowWasTaskDone
         If DoesSettingExist(SettingName) = True Then
             'Gets Data
-            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username & "\Settings\Software.swfiles")
+            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username_Private & "\Settings\Software.swfiles")
 
             'Makes it readable
             Try
@@ -566,11 +571,11 @@
         ChangeValue = 4
     End Enum
 
-    Public Function GetUsername()
-        Return Username
+    Public Function GetUsername() As String
+        Return Username_Private
     End Function
 
-    Public Function GetUserFolderPath()
+    Public Function GetUserFolderPath() As String
         Return UserFolderPath
     End Function
 

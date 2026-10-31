@@ -60,8 +60,8 @@ Public Class MyControllerForm
 
         If Bo3 = True Then
             If Main.Form1.User.DoesSettingExist("IsUsingNewerWallpaperLoader=True") = True Then
-                If My.Computer.FileSystem.FileExists(Main.Form1.User.UserFolderPath & "\Settings\WallpaperImage.swfiles") Then
-                    Dim WallpaperImagePath As String = My.Computer.FileSystem.ReadAllText(Main.Form1.User.UserFolderPath & "\Settings\WallpaperImage.swfiles")
+                If My.Computer.FileSystem.FileExists(Main.Form1.User.GetUserFolderPath() & "\Settings\WallpaperImage.swfiles") Then
+                    Dim WallpaperImagePath As String = My.Computer.FileSystem.ReadAllText(Main.Form1.User.GetUserFolderPath() & "\Settings\WallpaperImage.swfiles")
                     Try
                         Dim b As Byte() = Convert.FromBase64String(WallpaperImagePath)
                         WallpaperImagePath = System.Text.Encoding.UTF8.GetString(b)

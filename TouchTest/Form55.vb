@@ -10,7 +10,7 @@
                 WebView21.CoreWebView2.Settings.AreDevToolsEnabled = False
                 WebView21.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = False
             End If
-            WebView21.CoreWebView2.Profile.DefaultDownloadFolderPath = Form1.User.UserFolderPath & "\Downloads\"
+            WebView21.CoreWebView2.Profile.DefaultDownloadFolderPath = Form1.User.GetUserFolderPath() & "\Downloads\"
             WebView21.CoreWebView2.Settings.IsStatusBarEnabled = False
             AddHandler WebView21.CoreWebView2.DownloadStarting, AddressOf DD
 
@@ -36,9 +36,9 @@
 
     Private Sub MyTimer_Tick(sender As Object, e As EventArgs)
         sender.Stop()
-        My.Computer.FileSystem.MoveFile(sender.Tag, Form1.User.UserFolderPath & "\Temp\App.tryapp")
-        TryOS_Store_Manager.Class1.InstallTryOSApp(Form1.User.UserFolderPath & "\Temp\App.tryapp")
-        My.Computer.FileSystem.DeleteFile(Form1.User.UserFolderPath & "\Temp\App.tryapp")
+        My.Computer.FileSystem.MoveFile(sender.Tag, Form1.User.GetUserFolderPath() & "\Temp\App.tryapp")
+        TryOS_Store_Manager.Class1.InstallTryOSApp(Form1.User.GetUserFolderPath() & "\Temp\App.tryapp")
+        My.Computer.FileSystem.DeleteFile(Form1.User.GetUserFolderPath() & "\Temp\App.tryapp")
         OpenFramework_Data.OpenFramework.RestoreButtonOrder(False)
         'sender.Stop()
     End Sub

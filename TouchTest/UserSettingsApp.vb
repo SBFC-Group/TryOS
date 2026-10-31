@@ -148,7 +148,7 @@
     End Sub
 
     Public Sub LoadUser(Text_ As String)
-        If Form1.User.Username = Text_ Then
+        If Form1.User.GetUsername() = Text_ Then
         Else
             Dim MyRole As TryController.Roles = Form1.GetRole()
             If MyRole = TryController.Roles.Guest Then
