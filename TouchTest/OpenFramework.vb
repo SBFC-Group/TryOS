@@ -80,6 +80,15 @@ Namespace OpenFramework_Data
             IO.File.WriteAllText(Form1.User.UserFolderPath & "\Settings\Taskbar_Order.json", Newtonsoft.Json.JsonConvert.SerializeObject(order))
         End Sub
 
+        Public Function loadapps(user As Object) As Object
+            Dim int As Int64 = user
+            If int = 3827 Then
+                Return host
+            Else
+                Return Nothing
+            End If
+        End Function
+
         Public Sub RestoreButtonOrder(Optional AllowCustom As Boolean = False, Optional ControlThing As Control = Nothing)
             If AllowCustom = False Then
                 ControlThing = FlowLayoutPanelUse

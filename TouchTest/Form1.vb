@@ -80,6 +80,14 @@ Public Class Form1
             UserManager.LoadTaskbarButtons()
         End If
 
+        If UI.LogonBool = False Then
+            If My.Computer.FileSystem.FileExists(User.UserFolderPath & "\Settings\DisallowCustom.swfiles") Then
+                UI.DisableCustomCode = True
+            Else
+                UI.DisableCustomCode = False
+            End If
+        End If
+
         'Checks if DisableCustomCode is false
         If UI.DisableCustomCode = False Then
 
@@ -104,11 +112,6 @@ Public Class Form1
                 End If
             End If
         End If
-
-
-
-
-
     End Sub
 
     Public Sub New()
@@ -122,6 +125,10 @@ Public Class Form1
 
     Public Function Funnything() As Panel
         Return Panel2
+    End Function
+
+    Public Function Z_Funnything2() As FlowLayoutPanel
+        Return OpenFramework_Data.OpenFramework.FlowLayoutPanelUse
     End Function
 
     Public TestingMode As Boolean = True

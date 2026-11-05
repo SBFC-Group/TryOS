@@ -472,4 +472,58 @@ Public Class Explorer
         Button2.Enabled = CurrentPlaceInHistory < PathHistory.Count - 1
 
     End Sub
+
+    Private ContainsFolder As Boolean
+
+    Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
+        If ListView1.SelectedItems.Count > 0 Then
+
+            If ListView1.SelectedItems.Count = 1 Then
+                Dim file As New IO.FileInfo(ListView1.SelectedItems(0).Tag.ToString())
+                'Dim filePath As String = ListView1.SelectedItems(0).Tag.ToString()
+                If ListView1.SelectedItems(0).ImageKey = "Folder" Then
+                    OpenWithToolStripMenuItem.Visible = False
+                ElseIf file.Extension = "swnote" Then
+                    OpenWithToolStripMenuItem.Visible = True
+                ElseIf file.Extension = "swfiles" Then
+                    OpenWithToolStripMenuItem.Visible = True
+                ElseIf file.Extension = ".jpg" Then
+                    OpenWithToolStripMenuItem.Visible = True
+                ElseIf file.Extension = ".png" Then
+                    OpenWithToolStripMenuItem.Visible = True
+                ElseIf file.Extension = ".gif" Then
+                    OpenWithToolStripMenuItem.Visible = True
+                ElseIf file.Extension = ".tryapp" Then
+                    OpenWithToolStripMenuItem.Visible = True
+                Else
+                    OpenWithToolStripMenuItem.Visible = True
+                End If
+            End If
+        Else
+            'For Each s As ListViewItem In ListView1.SelectedItems
+
+            'Next
+        End If
+    End Sub
+
+    Private ff As String = ""
+
+    Private Sub ListView1_MouseDown(sender As Object, e As MouseEventArgs) Handles ListView1.MouseDown
+        If e.Button = MouseButtons.Right Then
+            If Me.ListView1.Items.Count > 0 Then
+                If Not Me.ListView1.FocusedItem Is Nothing Then
+                    Dim lvItem As ListViewItem
+                    lvItem = Me.ListView1.GetItemAt(e.X, e.Y)
+                    'Me.ContextMenuStrip1.MenuItems.Item(0).Text = lvItem.Text() 'Or what ever item?
+                    ff = lvItem.Tag
+                    Me.ContextMenuStrip1.Show(Me.ListView1, New Drawing.Point(e.X, e.Y))
+                End If
+            End If
+
+        End If
+    End Sub
+
+    Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
+        MsgBox(ff)
+    End Sub
 End Class

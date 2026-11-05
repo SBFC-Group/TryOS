@@ -68,8 +68,12 @@ Public Class UI
             Dim Text1 As String = Command
             Text1 = Text1.Replace("Console>", "")
             Text1 = Text1.Replace("SetWallpaper ", "")
-            Form1.Panel1.BackgroundImage = Bitmap.FromFile(Text1)
-            Return $"Loaded Wallpaper from {Text1}"
+            If My.Computer.FileSystem.FileExists(Text1) Then
+                Form1.Panel1.BackgroundImage = Bitmap.FromFile(Text1)
+                Return $"Loaded Wallpaper from {Text1}"
+            Else
+                Return $"Failed to load Wallpaper from {Text1}. The file does not exist."
+            End If
         ElseIf Command.Contains("GetWallpaper") = True Then
             Return Form1.Panel1.BackgroundImage
         ElseIf Command.Contains("whoami") = True Then

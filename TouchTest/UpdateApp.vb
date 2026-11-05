@@ -63,6 +63,8 @@
             TryOSBigUpdateButton.Visible = True
             TryOSBigUpdateButton.Enabled = True
         End If
+
+        Branch = UI.RunCommands("GetBranch")
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

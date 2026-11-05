@@ -215,6 +215,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NeedThisClass.vb" />
+    <Compile Include="NotificationClass.vb" />
     <Compile Include="TaskbarOrderApp.Designer.vb">
       <DependentUpon>TaskbarOrderApp.vb</DependentUpon>
     </Compile>

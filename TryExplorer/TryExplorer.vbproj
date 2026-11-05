@@ -196,4 +196,7 @@
     <None Include="Resources\document_memo_stroke_pad_editor_text_note_icon_256412.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call C:\Users\Sebastian\Documents\GitHub\TryOS_Cerium\CompileTryExplorerApp.bat</PostBuildEvent>
+  </PropertyGroup>
 </Project>

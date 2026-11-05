@@ -16,7 +16,6 @@ Public Class TryController
 
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\ShellName.setting") Then
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\ShellName.setting")
-            'UI.OpenFormByName(Reader)
 
             Try
                 Dim form As Form = UI.GetForm(Reader)
@@ -57,7 +56,7 @@ Public Class TryController
             End If
         End If
 
-            If args.Contains("/EnableSecureMode") = True Then
+        If args.Contains("/EnableSecureMode") = True Then
             SecureModeTimer.Start()
         End If
     End Sub
@@ -90,7 +89,7 @@ Public Class TryController
     End Enum
 
     Public Function ShowStopWindow()
-
+        Return Nothing
     End Function
 
     Public Function IsZipFile(filePath As String) As Boolean

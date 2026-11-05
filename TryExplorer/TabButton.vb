@@ -15,4 +15,8 @@
             Main.TryExplorer.TabThatExist = Main.TryExplorer.TabThatExist - 1
         End If
     End Sub
+
+    Private Sub Button2_MouseDown(sender As Object, e As Windows.Forms.MouseEventArgs) Handles Button2.MouseDown
+        'ContextMenuStrip1.Show(Button2, e.Location)
+    End Sub
 End Class
