@@ -112,7 +112,7 @@
         If Role = TryController.Roles.StandardSandbox Then
             Return HowWasTaskDone.Canceled
         Else
-            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username_Private & "\Settings\Software.swfiles")
+            Dim usedencode As String = My.Computer.FileSystem.ReadAllText(UI.UsersFolder & "\" & Username_Private & "\Settings\Software.swfiles").Trim()
             Try
                 Dim b As Byte() = Convert.FromBase64String(usedencode)
                 usedencode = System.Text.Encoding.UTF8.GetString(b)
@@ -416,7 +416,7 @@
             'Makes sure that we don't override pre-existing setting names
             If Contains(NewNameOrValue) = True Then Return
 
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles")
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles").Trim()
 
             Dim b As Byte() = Convert.FromBase64String(Reader)
             Reader = System.Text.Encoding.UTF8.GetString(b)
@@ -459,7 +459,7 @@
 
             If Contains(setting) = False Then Return
 
-            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles")
+            Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles").Trim()
 
             Dim b As Byte() = Convert.FromBase64String(Reader)
             Reader = System.Text.Encoding.UTF8.GetString(b)
@@ -504,7 +504,7 @@
             Return False
         End If
 
-        Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles")
+        Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles").Trim()
 
         Dim b As Byte() = Convert.FromBase64String(Reader)
         Reader = System.Text.Encoding.UTF8.GetString(b)
@@ -541,7 +541,7 @@
 
         If Contains(setting) = False Then Return Nothing
 
-        Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles")
+        Dim Reader As String = My.Computer.FileSystem.ReadAllText(UserFolderPath & "\Settings\Software.swfiles").Trim()
 
         Dim b As Byte() = Convert.FromBase64String(Reader)
         Reader = System.Text.Encoding.UTF8.GetString(b)

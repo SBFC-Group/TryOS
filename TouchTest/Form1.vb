@@ -104,7 +104,7 @@ Public Class Form1
         End If
 
         If UI_SM.DoesOldGUIWork = True Then
-            'This checks if the newer TaskInteracter is enabled. (Removing this soon)
+            'This checks if the newer TaskInteracter is enabled.
             If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\ShellApps\ShellGUI\ShellGUI.TaskInteracter.txt") = False Then
 
                 AddHandler Button3.Click, AddressOf SettingsForm.PluginButton_Click
