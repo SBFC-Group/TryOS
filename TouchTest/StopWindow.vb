@@ -39,4 +39,8 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         End
     End Sub
+
+    Private Sub RichTextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles RichTextBox1.KeyDown
+        e.SuppressKeyPress = True
+    End Sub
 End Class

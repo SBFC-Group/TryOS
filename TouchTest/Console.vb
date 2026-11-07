@@ -33,7 +33,14 @@
     Public Sub RunAutoToShell(Number As Integer)
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\AutoRun_" & Number.ToString & ".setting") Then
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\AutoRun_" & Number.ToString & ".setting")
-            UI.RunCommands(Reader, Form1.User, Me)
+            Dim TempObject As Object = Nothing
+            Try
+                TempObject = UI.RunCommands(Reader, Form1.User, Me)
+            Catch ex As Exception
+                If Environment.CommandLine.Contains("/DevMode") = True Then
+                    TryController.WriteToDebuggerOutput(ex.Message)
+                End If
+            End Try
             Dim Number2 As Integer = Number
             Number2 = Number2 + 1
             RunAutoToShell(Number2)
@@ -41,7 +48,7 @@
     End Sub
 
     Public Sub WriteLine(value As String)
-        TryController.DebugManager.WriteLine(value)
+        TryController.WriteToDebuggerOutput(value)
     End Sub
 
     Public Function ReadLine() As String
@@ -51,8 +58,4 @@
     Public Sub Beep()
         System.Console.Beep()
     End Sub
-
-
-
-
 End Class

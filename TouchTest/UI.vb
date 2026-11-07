@@ -10,6 +10,7 @@ Public Class UI
     Public UsersFolder As String = My.Application.Info.DirectoryPath & "\Users"
 
     'The User that's logged in's Folder
+    ''' <summary>This was only used in early 1.0 builds.</summary>
     Public UserFolder As String = My.Application.Info.DirectoryPath & "\Users\"
 
     Public DisableOpenFramework As Boolean = False

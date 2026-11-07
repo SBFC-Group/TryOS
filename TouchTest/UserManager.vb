@@ -2,8 +2,9 @@
     Private Shared UserManagersExistsList As New List(Of UserManager)
 
 
-
+    ''' <summary>This is deprecated and no longer contains the username. Use GetUsername()</summary>
     Public ReadOnly Username As String
+
     Private Username_Private As String
     Public ReadOnly UserFolderPath As String
     Public ReadOnly Role As TryController.Roles
@@ -27,7 +28,7 @@
                 If u.GetUsername() = TheUserName Then
                     'Checks if Sandboxing is enabled
                     If Form1.IsSandboxingEnabled = True Then
-                        If SandboxedUser = True Then
+                        If IsSandboxed = True Then
                             If MainUser IsNot Nothing Then
                                 If u IsNot MainUser Then
                                     'This cleans up this user object.

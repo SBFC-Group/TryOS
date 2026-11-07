@@ -24,9 +24,9 @@ Partial Class StopWindow
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -40,28 +40,6 @@ Partial Class StopWindow
         Me.Panel1.Size = New System.Drawing.Size(1096, 505)
         Me.Panel1.TabIndex = 0
         '
-        'RichTextBox1
-        '
-        Me.RichTextBox1.BackColor = System.Drawing.Color.White
-        Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.RichTextBox1.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.RichTextBox1.DetectUrls = False
-        Me.RichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RichTextBox1.Enabled = False
-        Me.RichTextBox1.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.ForeColor = System.Drawing.Color.Black
-        Me.RichTextBox1.Location = New System.Drawing.Point(0, 0)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.ReadOnly = True
-        Me.RichTextBox1.ShortcutsEnabled = False
-        Me.RichTextBox1.Size = New System.Drawing.Size(1096, 505)
-        Me.RichTextBox1.TabIndex = 0
-        Me.RichTextBox1.Text = "TestingThis"
-        '
-        'Timer1
-        '
-        Me.Timer1.Interval = 10000
-        '
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -74,6 +52,27 @@ Partial Class StopWindow
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "End Program"
         Me.Button1.UseVisualStyleBackColor = False
+        '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.BackColor = System.Drawing.SystemColors.Window
+        Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.RichTextBox1.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.RichTextBox1.DetectUrls = False
+        Me.RichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RichTextBox1.Font = New System.Drawing.Font("Trebuchet MS", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RichTextBox1.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.RichTextBox1.Location = New System.Drawing.Point(0, 0)
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.ReadOnly = True
+        Me.RichTextBox1.ShortcutsEnabled = False
+        Me.RichTextBox1.Size = New System.Drawing.Size(1096, 505)
+        Me.RichTextBox1.TabIndex = 0
+        Me.RichTextBox1.Text = "TestingThis"
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 10000
         '
         'StopWindow
         '
