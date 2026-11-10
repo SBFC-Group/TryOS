@@ -3,6 +3,8 @@
 Public Class AppList
     Private LocalAppInfo As AppInfo
 
+
+
     Public Sub LoadApps(FolderPath As String)
         Dim dir1 = FolderPath
         Dim files() As System.IO.DirectoryInfo

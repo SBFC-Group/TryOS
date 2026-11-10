@@ -80,7 +80,6 @@ Partial Class Form55
         Me.Button3.Size = New System.Drawing.Size(108, 98)
         Me.Button3.TabIndex = 2
         Me.Button3.UseVisualStyleBackColor = True
-        Me.Button3.Visible = False
         '
         'StorePanel
         '
