@@ -138,10 +138,28 @@
                     UI.DisableOpenFramework = Convert.ToBoolean(setting)
                 ElseIf setting.Contains("IsDarkModeForApps=") = True Then
                     setting = setting.Replace("IsDarkModeForApps=", "")
-                    Form1.IsUsingDarkThemeForApps = Convert.ToBoolean(setting)
+                    If Form1.ThemeManager Is Nothing Then
+                        Form1.IsUsingDarkThemeForApps = Convert.ToBoolean(setting)
+                    Else
+                        Dim bool As Boolean = Convert.ToBoolean(setting)
+                        If bool = True Then
+                            Form1.ThemeManager.SetThemeSetting("DarkThemeForApps", ThemeManager.ThemeMode.Dark)
+                        ElseIf bool = False Then
+                            Form1.ThemeManager.SetThemeSetting("DarkThemeForApps", ThemeManager.ThemeMode.Light)
+                        End If
+                    End If
                 ElseIf setting.Contains("IsDarkModeForProgram=") = True Then
                     setting = setting.Replace("IsDarkModeForProgram=", "")
-                    Form1.IsUsingDarkThemeForPrograms = Convert.ToBoolean(setting)
+                    If Form1.ThemeManager Is Nothing Then
+                        Form1.IsUsingDarkThemeForPrograms = Convert.ToBoolean(setting)
+                    Else
+                        Dim bool As Boolean = Convert.ToBoolean(setting)
+                        If bool = True Then
+                            Form1.ThemeManager.SetThemeSetting("DarkThemeForProgram", ThemeManager.ThemeMode.Dark)
+                        ElseIf bool = False Then
+                            Form1.ThemeManager.SetThemeSetting("DarkThemeForProgram", ThemeManager.ThemeMode.Light)
+                        End If
+                    End If
                 ElseIf setting.Contains("DoesHasTimeBar=") = True Then
                     setting = setting.Replace("DoesHasTimeBar=", "")
                     Form1.TimebarPanel.Visible = Convert.ToBoolean(setting)

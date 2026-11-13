@@ -67,6 +67,10 @@ Public Class Form1
             End Try
         End If
 
+        If Environment.CommandLine.Contains("/CreateThemeMgr") = True Then
+            ThemeManager = New ThemeManager(TryController.CoreID)
+        End If
+
         'This loads the user settings
         If AllowNewerLoader = True Then
             If Environment.CommandLine.Contains("/UseOldLoader") Then
