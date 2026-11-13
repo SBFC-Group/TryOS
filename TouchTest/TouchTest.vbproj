@@ -523,6 +523,7 @@
     <Compile Include="ThemeApp.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ThemeManager.vb" />
     <Compile Include="TryController.Designer.vb">
       <DependentUpon>TryController.vb</DependentUpon>
     </Compile>
