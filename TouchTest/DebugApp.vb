@@ -82,9 +82,25 @@ Restore-TryOS-Store - Restores TryOS Store from internal .tryapp file"
                 Dim user As UserManager = New UserManager("SuperSecretUser")
                 If user Is Nothing Then
                     UI.ShowError("Can't that user. loser!!!!!")
+                    End
                 End If
+            ElseIf RichTextBox1.Text.Contains("SWFiles3Check1") = True Then
+                RichTextBox2.Text = TryController.IsSWFilesVersionTheNewst(Form1.User.GetUserFolderPath() & "\Settings\Software.swfiles").ToString
+            ElseIf RichTextBox1.Text.Contains("SWFiles3Check2") = True Then
+                RichTextBox2.Text = TryController.IsSWFilesVersionTheNewst(My.Application.Info.DirectoryPath & "\testswfiles3.swfiles").ToString
+            ElseIf RichTextBox1.Text.Contains("SWFiles3Create") = True Then
+                If My.Computer.FileSystem.FileExists(My.Application.Info.DirectoryPath & "\testswfiles3.swfiles") Then Return
+                If My.Computer.FileSystem.DirectoryExists(Form1.User.GetUserFolderPath() & "\Temp\testswfiles3") = False Then
+                    My.Computer.FileSystem.CreateDirectory(Form1.User.GetUserFolderPath() & "\Temp\testswfiles3")
+                Else
+                    My.Computer.FileSystem.DeleteDirectory(Form1.User.GetUserFolderPath() & "\Temp\testswfiles3", FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    My.Computer.FileSystem.CreateDirectory(Form1.User.GetUserFolderPath() & "\Temp\testswfiles3")
+                End If
+
+                Dim writer As New SWFiles.CreateSWFiles
+                writer.CreateSWFiles3File(My.Application.Info.DirectoryPath & "\testswfiles3.swfiles", "Testing This crap", Form1.User.GetUserFolderPath() & "\Temp\testswfiles3")
             Else
-                    UI.RunCommands(RichTextBox1.Text, Form1.User, Me)
+                UI.RunCommands(RichTextBox1.Text, Form1.User, Me)
             End If
         End If
     End Sub

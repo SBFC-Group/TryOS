@@ -199,4 +199,54 @@ Public Class TryController
         End Try
 
     End Sub
+
+    Private Shared Function IsZipFile(filePath As String) As Boolean
+        ' ZIP files start with "PK" (50 4B in hex)
+        Dim buffer(3) As Byte
+        Using fs As New FileStream(filePath, FileMode.Open, FileAccess.Read)
+            fs.Read(buffer, 0, buffer.Length)
+        End Using
+
+        ' Check first 4 bytes
+        Return buffer(0) = &H50 AndAlso buffer(1) = &H4B AndAlso
+               (buffer(2) = &H3 OrElse buffer(2) = &H5 OrElse buffer(2) = &H7) AndAlso
+               (buffer(3) = &H4 OrElse buffer(3) = &H6 OrElse buffer(3) = &H8)
+    End Function
+
+
+    Public Enum SWFilesVersion
+        Other = 0
+        SWFiles_1_0 = 1
+        SWFiles_1_1 = 2
+        SWFiles_2_0 = 3
+        SWFiles_3_0 = 4
+    End Enum
+
+    ''' <summary>This checks if the swfiles file is version 1.0/1.1/2.0 (text file based) or 3.0 (zip based)</summary>
+    Public Shared Function IsSWFilesVersionTheNewst(Path As String) As SWFilesVersion
+        If My.Computer.FileSystem.FileExists(Path) = False Then Return Nothing
+
+        If Path.EndsWith(".swfiles") = False Then Return SWFilesVersion.Other
+
+        If IsZipFile(Path) = False Then
+            Dim reader As String = My.Computer.FileSystem.ReadAllText(Path)
+
+            Try
+                Dim b As Byte() = Convert.FromBase64String(reader)
+                reader = System.Text.Encoding.UTF8.GetString(b)
+            Catch ex As Exception
+                Return SWFilesVersion.SWFiles_1_0
+            End Try
+
+            Try
+                Dim b As Byte() = Convert.FromBase64String(reader)
+                reader = System.Text.Encoding.UTF8.GetString(b)
+                Return SWFilesVersion.SWFiles_2_0
+            Catch ex As Exception
+                Return SWFilesVersion.SWFiles_1_1
+            End Try
+        Else
+            Return SWFilesVersion.SWFiles_3_0
+        End If
+    End Function
 End Class

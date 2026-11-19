@@ -4,7 +4,14 @@
     Private Sub RichTextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles RichTextBox2.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            UI.RunCommands(sender.Text, User, Me)
+            Dim TempObject As Object = Nothing
+            Try
+                TempObject = UI.RunCommands(sender.Text, User, Me)
+            Catch ex As Exception
+                If Environment.CommandLine.Contains("/DevMode") = True Then
+                    TryController.WriteToDebuggerOutput(ex.Message)
+                End If
+            End Try
         End If
     End Sub
 
@@ -13,7 +20,14 @@
         If My.Computer.FileSystem.FileExists(UI.SettingsFolder & "\RunCommandAtStart.setting") Then
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\RunCommandAtStart.setting")
             RichTextBox2.Text = RichTextBox2.Text & Reader
-            UI.RunCommands(RichTextBox2.Text, Form1.User, Me)
+            Dim TempObject As Object = Nothing
+            Try
+                TempObject = UI.RunCommands(RichTextBox2.Text, User, Me)
+            Catch ex As Exception
+                If Environment.CommandLine.Contains("/DevMode") = True Then
+                    TryController.WriteToDebuggerOutput(ex.Message)
+                End If
+            End Try
             If Reader = "run shell" Then
                 WindowState = FormWindowState.Minimized
             ElseIf Reader = "run LogonPage" Then
@@ -35,7 +49,7 @@
             Dim Reader As String = My.Computer.FileSystem.ReadAllText(UI.SettingsFolder & "\AutoRun_" & Number.ToString & ".setting")
             Dim TempObject As Object = Nothing
             Try
-                TempObject = UI.RunCommands(Reader, Form1.User, Me)
+                TempObject = UI.RunCommands(Reader, User, Me)
             Catch ex As Exception
                 If Environment.CommandLine.Contains("/DevMode") = True Then
                     TryController.WriteToDebuggerOutput(ex.Message)
